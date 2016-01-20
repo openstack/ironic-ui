@@ -1,12 +1,8 @@
 ===============================
-ironic-ui
+Ironic UI
 ===============================
 
-cIronic plugin UI for Horizon to allow users to view and manage bare metal nodes, ports and drivers.
-
-Please feel here a long description which must be at least 3 lines wrapped on
-80 cols, so that distribution package maintainers can use it in their packages.
-Note that this is a hard requirement.
+The Ironic UI is a Horizon plugin that will allow users to view and manage bare metal nodes, ports and drivers.
 
 * Free software: Apache license
 * Documentation: http://docs.openstack.org/developer/ironic-ui
@@ -16,4 +12,4 @@ Note that this is a hard requirement.
 Features
 --------
 
-* TODO
+* WIP
