@@ -1,4 +1,3 @@
-# Copyright (c) 2013 Hewlett-Packard Development Company, L.P.
 # Copyright (c) 2016 Hewlett Packard Enterprise Development Company LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# THIS FILE IS MANAGED BY THE GLOBAL REQUIREMENTS REPO - DO NOT EDIT
-import setuptools
-
-# In python < 2.7.4, a lazy loading of package `pbr` will break
-# setuptools if some other modules registered functions in `atexit`.
-# solution from: http://bugs.python.org/issue15881#msg170215
-try:
-    import multiprocessing  # noqa
-except ImportError:
-    pass
-
-setuptools.setup(
-    setup_requires=['pbr>=1.8'],
-    pbr=True)
+# The name of the panel to be added to HORIZON_CONFIG. Required.
+PANEL = 'ironic'
+# The name of the dashboard the PANEL associated with. Required.
+PANEL_DASHBOARD = 'admin'
+# The name of the panel group the PANEL is associated with.
+PANEL_GROUP = 'admin'
+# Python panel class of the PANEL to be added.
+ADD_PANEL = 'ironic_ui.ironic.panel.Ironic'
+# A list of applications to be prepended to INSTALLED_APPS
+ADD_INSTALLED_APPS = ['ironic_ui', ]
+# Automatically discover static resources in installed apps
+AUTO_DISCOVER_STATIC_FILES = True

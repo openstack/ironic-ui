@@ -2,5 +2,8 @@ include AUTHORS
 include ChangeLog
 exclude .gitignore
 exclude .gitreview
+include setup.py
+
+recursive-include ironic_ui *.js *.html *.scss
 
 global-exclude *.pyc

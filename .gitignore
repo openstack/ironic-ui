@@ -52,3 +52,6 @@ ChangeLog
 *~
 .*.swp
 .*sw?
+
+.secret_key_store
+*.lock
