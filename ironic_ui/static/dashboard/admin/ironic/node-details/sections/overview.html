@@ -1,0 +1,50 @@
+<div class="row">
+
+  <!-- General -->
+  <div class="col-md-6 status detail">
+    <h4 translate>General</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt translate>Name</dt>
+      <dd>{$ ctrl.node['name'] $}</dd>
+      <dt translate>Maintenance</dt>
+      <dd>{$ ctrl.node['maintenance'] ? 'True' : 'False' $}</dd>
+      <dt translate>Maintenance Reason</dt>
+      <dd>{$ ctrl.node['maintenance_reason'] $}</dd>
+      <dt translate>Inspection Started At</dt>
+      <dd>{$ ctrl.node['inspection_started_at'] $}</dd>
+      <dt translate>Inspection Finished At</dt>
+      <dd>{$ ctrl.node['inspection_finished_at'] $}</dd>
+      <dt translate>Reservation</dt>
+      <dd>{$ ctrl.node['reservation'] $}</dd>
+      <dt translate>Console Enabled</dt>
+      <dd>{$ ctrl.node['console_enabled'] ? 'True' : 'False' $}</dd>
+    </dl>
+  </div>
+
+  <!-- Provisioning Status -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Provisioning Status</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt translate>Instance ID</dt>
+      <dd>
+        <a href="/admin/instances/{$ ctrl.node['instance_uuid'] $}/detail">
+          {$ ctrl.node['instance_uuid'] $}
+        </a>
+      </dd>
+      <dt translate>Power State</dt>
+      <dd ng-class="{'running': ctrl.node['target_power_state']}">{$ ctrl.node['power_state'] $}</dd>
+      <dt translate>Target Power State</dt>
+      <dd>{$ ctrl.node['target_power_state'] $}</dd>
+      <dt translate>Provision State</dt>
+      <dd>{$ ctrl.node['provision_state'] $}</dd>
+      <dt translate>Target Provision State</dt>
+      <dd>{$ ctrl.node['target_provision_state'] $}</dd>
+      <dt translate>Last Error</dt>
+      <dd>{$ ctrl.node['last_error'] $}</dd>
+      <dt translate>Updated At</dt>
+      <dd>{$ ctrl.node['updated_at'] $}</dd>
+    </dl>
+  </div>
+</div>

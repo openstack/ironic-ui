@@ -1,0 +1,45 @@
+<div class="detail-page"
+     ng-controller="horizon.dashboard.admin.ironic.NodeDetailsController as ctrl"
+     ng-init="ctrl.init()">
+
+  <div class="pull-right">
+    <action-list dropdown>
+      <action button-type="split-button"
+              action-classes="'btn btn-default btn-sm'"
+              callback="ctrl.actions.powerOn"
+              item="ctrl.node"
+              disabled="ctrl.node['power_state']!=='power off'">
+        {$ 'Power on' | translate $}
+      </action>
+      <menu>
+        <action button-type="menu-item"
+                callback="ctrl.actions.powerOff"
+                item="ctrl.node"
+                disabled="ctrl.node['power_state']!=='power on'">
+          {$ 'Power off' | translate $}
+        </action>
+        <action button-type="menu-item"
+                callback="ctrl.actions.promptForPutNodeInMaintenanceMode"
+                item="ctrl.node"
+                disabled="ctrl.node['maintenance']">
+          {$ 'Maintenance on' | translate $}
+        </action>
+        <action button-type="menu-item"
+                callback="ctrl.actions.removeNodeFromMaintenanceMode"
+                item="ctrl.node"
+                disabled="!ctrl.node['maintenance']">
+          {$ 'Maintenance off' | translate $}
+        </action>
+      </menu>
+    </action-list>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <tabset>
+    <tab ng-repeat="section in ctrl.sections"
+         heading="{$ section.heading $}">
+      <ng-include src="section.templateUrl"></ng-include>
+    </tab>
+  </tabset>
+</div>

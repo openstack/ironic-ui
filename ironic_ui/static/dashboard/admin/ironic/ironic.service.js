@@ -110,7 +110,7 @@
 
     function putNodeInMaintenanceMode(uuid, reason) {
       var data = {
-        maint_reason: (reason ? reason : gettext('No maintenance reason given.'))
+        maint_reason: (reason ? reason : gettext("No maintenance reason given."))
       };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/maintenance', data).error(function() {
         toastService.add('error',

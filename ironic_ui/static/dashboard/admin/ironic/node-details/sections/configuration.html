@@ -1,0 +1,120 @@
+<div class="row">
+
+  <!-- General -->
+  <div class="col-md-6 status detail">
+    <h4 translate>General</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt translate>Node ID</dt>
+      <dd>{$ ctrl.node['uuid'] $}</dd>
+      <dt translate>Chassis ID</dt>
+      <dd>{$ ctrl.node['chassis_uuid'] $}</dd>
+      <dt translate>Created At</dt>
+      <dd>{$ ctrl.node['created_at'] $}</dd>
+      <dt translate>Extra</dt>
+      <dd>{$ ctrl.node['extra'] $}</dd>
+    </dl>
+  </div>
+
+  <!-- Ports -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Ports</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt ng-repeat-start="port in ctrl.ports">
+        {$ 'MAC ' + (1 + $index) $}</dt>
+      <dd ng-if="port.extra.vif_port_id">
+        <a href="/admin/networks/ports/{$ port.extra.vif_port_id $}/detail">
+          {$ port.address $}
+        </a>
+      </dd>
+      <dd ng-if="!port.extra.vif_port_id">
+        {$ port.address $}
+      </dd>
+      <p ng-repeat-end></p>
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Properties -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Properties</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt translate>Memory</dt>
+      <dd>{$ ctrl.node['properties']['memory_mb'] + ' MB' $}</dd>
+      <dt translate>CPU Arch</dt>
+      <dd>{$ ctrl.node['properties']['cpu_arch'] $}</dd>
+      <dt translate>Local GB</dt>
+      <dd>{$ ctrl.node['properties']['local_gb'] $}</dd>
+      <dt translate>CPUs</dt>
+      <dd>{$ ctrl.node['properties']['cpus'] $}</dd>
+    </dl>
+  </div>
+
+  <!-- Driver Info -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Driver Info</h4>
+    <hr class="header_rule">
+    <div ng-switch="ctrl.node['driver']">
+      <dl ng-switch-when="pxe_ssh" class="dl-horizontal">
+        <dt translate>Driver</dt>
+        <dd>{$ ctrl.node['driver'] $}</dd>
+        <dt translate>SSH Port</dt>
+        <dd>{$ ctrl.node['driver_info']['ssh_port'] $}</dd>
+        <dt translate>SSH Username</dt>
+        <dd>{$ ctrl.node['driver_info']['ssh_username'] $}</dd>
+        <dt translate>Deploy Kernel</dt>
+        <dd>
+          <a href="/admin/images/{$ ctrl.node['driver_info']['deploy_kernel'] $}/detail">
+            {$ ctrl.node['driver_info']['deploy_kernel'] $}
+          </a>
+        </dd>
+        <dt translate>Deploy Ramdisk</dt>
+        <dd>
+          <a href="/admin/images/{$ ctrl.node['driver_info']['deploy_ramdisk'] $}/detail">
+            {$ ctrl.node['driver_info']['deploy_ramdisk'] $}
+          </a>
+        </dd>
+      </dl>
+      <dl ng-switch-default class="dl-horizontal">
+        <dt ng-repeat-start="(id, value) in ctrl.node['driver_info']">{$ id $}</dt>
+        <dd ng-repeat-end>{$ value $}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Capabilities -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Capabilities</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dd>{$ ctrl.node['capabilities'] $}</dd>
+    </dl>
+  </div>
+
+  <!-- Instance Info -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Instance Info</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt translate>Instance Name</dt>
+      <dd>{$ ctrl.node['instance_info']['display_name'] $}</dd>
+      <dt translate>Ramdisk</dt>
+      <dd>
+        <a href="/admin/images/{$ ctrl.node['instance_info']['ramdisk'] $}/detail">
+          {$ ctrl.node['instance_info']['ramdisk'] $}
+        </a>
+      </dd>
+      <dt translate>Kernel</dt>
+      <dd>
+        <a href="/admin/images/{$ ctrl.node['instance_info']['kernel'] $}/detail">
+          {$ ctrl.node['instance_info']['kernel'] $}
+        </a>
+      </dd>
+    </dl>
+  </div>
+</div>
