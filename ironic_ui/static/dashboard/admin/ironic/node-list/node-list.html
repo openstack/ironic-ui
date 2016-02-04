@@ -1,0 +1,150 @@
+<table ng-controller="IronicNodeListController as table"
+       hz-table ng-cloak
+       st-table="table.nodes"
+       st-safe-src="table.nodesSrc"
+       default-sort="name"
+       default-sort-reverse="false"
+       class="table-striped table-rsp table-detail modern">
+
+  <thead>
+    <tr>
+      <th colspan="8" class="search-header">
+        <search-bar group-classes="input-group-sm"
+                    icon-classes="fa-search">
+        </search-bar>
+      </th>
+      <th class="action-col">
+        <action-list dropdown>
+          <action button-type="split-button"
+                  action-classes="'btn btn-default btn-sm'"
+                  callback="table.actions.powerOnAll"
+                  item="tCtrl.selected"
+                  disabled="tCtrl.selected.length === 0">
+            {$ 'Power on' | translate $}
+          </action>
+          <menu>
+            <action button-type="menu-item"
+                    callback="table.actions.powerOffAll"
+                    item="tCtrl.selected"
+                    disabled="tCtrl.selected.length === 0">
+              {$ 'Power off' | translate $}
+            </action>
+            <action button-type="menu-item"
+                    callback="table.actions.putAllInMaintenanceMode"
+                    item="tCtrl.selected"
+                    disabled="tCtrl.selected.length === 0">
+              {$ 'Maintenance on' | translate $}
+            </action>
+            <action button-type="menu-item"
+                    callback="table.actions.removeAllFromMaintenanceMode"
+                    item="tCtrl.selected"
+                    disabled="tCtrl.selected.length === 0">
+              {$ 'Maintenance off' | translate $}
+            </action>
+          </menu>
+        </action-list>
+      </th>
+    </tr>
+
+    <tr>
+      <th class="select-col">
+        <input type="checkbox"
+               hz-select-all="table.nodes"/>
+      </th>
+      <th translate class="rsp-p1" st-sort="name" st-sort-default="name">
+        Node Name
+      </th>
+      <th translate class="rsp-p1" st-sort="instance_uuid">
+        Instance ID
+      </th>
+      <th translate class="rsp-p2" st-sort="power_state">
+        Power State
+      </th>
+      <th translate class="rsp-p2" st-sort="provision_state">
+        Provisioning State
+      </th>
+      <th translate class="rsp-p2" st-sort="maintenance">
+        Maintenance
+      </th>
+      <th translate class="rsp-p2" st-sort="ports">
+        Ports
+      </th>
+      <th translate class="rsp-p2" st-sort="driver">
+        Driver
+      </th>
+      <th translate>
+        Actions
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="node in table.nodes">
+      <td class="select-col">
+        <input type="checkbox"
+               hz-select="node"
+               ng-model="tCtrl.selections[node.id].checked"/>
+      </td>
+
+      <td class="rsp-p1">
+        <a href="{$ node.uuid $}">
+          {$ node.name || node.uuid $}
+        </a>
+      </td>
+      <td class="rsp-p1">
+        <!-- multiple tags used purposefully to ensure that the link
+        is removed if node uuid == no instance. Using ng-attr-href
+        only removed the href and the <a> styling remained which could
+        cause confusion for users. -->
+        <a href="/admin/instances/{$ node.instance_uuid $}/detail"
+           ng-if="node.instance_uuid">
+          {$ node.instance_uuid $}
+        </a>
+        <span ng-if="!node.instance_uuid">{$ 'No Instance' | translate $}</span>
+      </td>
+      <td class="rsp-p2" >
+        <div ng-class="{'running': node['target_power_state']}">
+          {$ node.power_state $}
+        </div>
+      </td>
+      <td class="rsp-p2">{$ node.provision_state $}</td>
+      <td class="rsp-p2">{$ node.maintenance $}</td>
+      <td class="rsp-p2">{$ node.ports.length $}</td>
+      <td class="rsp-p2">{$ node.driver $}</td>
+      <td class="action-col">
+
+        <action-list dropdown>
+          <action button-type="split-button"
+                  action-classes="'btn btn-default btn-sm'"
+                  callback="table.actions.powerOn"
+                  disabled="node['power_state']!=='power off'"
+                  item="node">
+            {$ 'Power on' | translate $}
+          </action>
+          <menu>
+            <action button-type="menu-item"
+                    callback="table.actions.powerOff"
+                    disabled="node['power_state']!=='power on'"
+                    item="node">
+              {$ 'Power off' | translate $}
+            </action>
+            <action button-type="menu-item"
+                    callback="table.actions.putNodeInMaintenanceMode"
+                    disabled="node['maintenance']"
+                    item="node">
+              {$ 'Maintenance on' | translate $}
+            </action>
+            <action button-type="menu-item"
+                    callback="table.actions.removeNodeFromMaintenanceMode"
+                    disabled="!node['maintenance']"
+                    item="node">
+              {$ 'Maintenance off' | translate $}
+            </action>
+          </menu>
+        </action-list>
+
+      </td>
+    </tr>
+  </tbody>
+  <tfoot hz-table-footer items="table.nodes"></tfoot>
+</table>

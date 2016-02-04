@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block title %}{% trans "Ironic Bare Metal Provisioning" %}{% endblock %}
 
-{% block title %}
-  {{ page_title }}
+{% block page_header %}
+  <hz-page-header header="{% trans "Ironic Bare Metal Provisioning" %}"></hz-page-header>
 {% endblock %}
 
 {% block main %}
+  <ng-include src="'{{ STATIC_URL }}dashboard/admin/ironic/node-list/node-list.html'"></ng-include>
 {% endblock %}
