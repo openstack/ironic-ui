@@ -1,4 +1,5 @@
 # Copyright 2015 Cisco Systems, Inc.
+# Copyright (c) 2016 Hewlett Packard Enterprise Development Company LP
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
@@ -13,7 +14,7 @@
 #    under the License.
 
 import horizon
-from ironic_ui.ironic.panel import Ironic
+from ironic_ui.content.ironic.panel import Ironic
 from openstack_dashboard.test import helpers as test
 
 

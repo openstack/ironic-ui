@@ -1,4 +1,5 @@
 # Copyright (c) 2016 Hewlett Packard Enterprise Development Company LP
+# Copyright (c) 2016 Cray Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,8 +21,9 @@ PANEL_DASHBOARD = 'admin'
 # The name of the panel group the PANEL is associated with.
 PANEL_GROUP = 'admin'
 # Python panel class of the PANEL to be added.
-ADD_PANEL = 'ironic_ui.ironic.panel.Ironic'
+ADD_PANEL = 'ironic_ui.content.ironic.panel.Ironic'
 # A list of applications to be prepended to INSTALLED_APPS
 ADD_INSTALLED_APPS = ['ironic_ui', ]
+ADD_ANGULAR_MODULES = ['horizon.dashboard.admin.ironic']
 # Automatically discover static resources in installed apps
 AUTO_DISCOVER_STATIC_FILES = True

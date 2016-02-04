@@ -1,5 +1,6 @@
 # Copyright 2016 Cisco Systems, Inc.
 # Copyright (c) 2016 Hewlett Packard Enterprise Development Company LP
+# Copyright (c) 2016 Cray Inc.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
@@ -13,10 +14,12 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django.utils.translation import ugettext_lazy as _
-from horizon import views
+from django.views import generic
 
 
-class IndexView(views.HorizonTemplateView):
+class IndexView(generic.TemplateView):
     template_name = 'admin/ironic/index.html'
-    page_title = _("Ironic Bare Metal Provisioning")
+
+
+class DetailView(generic.TemplateView):
+    template_name = 'admin/ironic/node_detail.html'

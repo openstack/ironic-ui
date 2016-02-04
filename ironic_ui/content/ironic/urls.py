@@ -1,5 +1,6 @@
 # Copyright 2016 Cisco Systems, Inc.
 # Copyright (c) 2016 Hewlett Packard Enterprise Development Company LP
+# Copyright (c) 2016 Cray Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,8 +15,10 @@
 # limitations under the License.
 
 from django.conf.urls import url
-from ironic_ui.ironic import views
+
+from ironic_ui.content.ironic import views
 
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name="index"),
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^([^/]+)/$', views.DetailView.as_view(), name='detail'),
 ]
