@@ -16,7 +16,7 @@
 
 from django.views import generic
 
-from ironic_ui.api import myservice
+from ironic_ui.api import ironic
 
 from openstack_dashboard.api.rest import urls
 
@@ -35,7 +35,7 @@ class Nodes(generic.View):
         :param request: HTTP request.
         :return: nodes.
         """
-        items = myservice.node_list(request)
+        items = ironic.node_list(request)
         return {
             'items': [i.to_dict() for i in items],
         }
@@ -54,7 +54,7 @@ class Node(generic.View):
         :param node_id: Node name or uuid.
         :return: node.
         """
-        return myservice.node_get(request, node_id).to_dict()
+        return ironic.node_get(request, node_id).to_dict()
 
 
 @urls.register
@@ -70,7 +70,7 @@ class Ports(generic.View):
         :return: List of ports.
         """
         node_id = request.GET.get('node_id')
-        items = myservice.node_list_ports(request, node_id)
+        items = ironic.node_list_ports(request, node_id)
         return {
             'items': [i.to_dict() for i in items],
         }
@@ -90,7 +90,7 @@ class StatesPower(generic.View):
         :return: Return code
         """
         state = request.DATA.get('state')
-        return myservice.node_set_power_state(request, node_id, state)
+        return ironic.node_set_power_state(request, node_id, state)
 
 
 @urls.register
@@ -107,7 +107,7 @@ class Maintenance(generic.View):
         :return: Return code
         """
         maint_reason = request.DATA.get('maint_reason')
-        return myservice.node_set_maintenance(
+        return ironic.node_set_maintenance(
             request,
             node_id,
             'on',
@@ -121,4 +121,4 @@ class Maintenance(generic.View):
         :param node_id: Node name or uuid
         :return: Return code
         """
-        return myservice.node_set_maintenance(request, node_id, 'off')
+        return ironic.node_set_maintenance(request, node_id, 'off')
