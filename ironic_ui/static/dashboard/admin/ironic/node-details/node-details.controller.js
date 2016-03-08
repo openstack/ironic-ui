@@ -47,10 +47,18 @@
     ];
 
     ctrl.basePath = basePath;
-    ctrl.init = init;
+    ctrl.re_uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
+    ctrl.isUuid = isUuid;
+    ctrl.getVifPortId = getVifPortId;
 
-    ///////////////
-
+    init();
+    
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.init
+     * @description Initialize the controller instance based on the current page url.
+     *
+     * @return {void}
+     */
     function init() {
       // Fetch the Node ID from the URL.
       var pattern = /(.*\/admin\/ironic\/)(.+)\/(detail)?/;
@@ -61,27 +69,56 @@
       });
     }
 
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrieveNode
+     * @description Retrieve the node instance for a specified node id,
+     * and store it in the controller instance.
+     *
+     * @param {string} uuid – Node name or UUID
+     * @return {promise} promise
+     */
     function retrieveNode(uuid) {
       return ironic.getNode(uuid).then(function (response) {
-        var node = response.data;
-        ctrl.node = node;
-        if (node['target_power_state']) {
-          actions.updateNode(node);
-        }
+        ctrl.node = response.data;
       });
     }
 
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrievePorts
+     * @description Retrieve the ports associated with a specified node, and store
+     * them in the controller instance.
+     *
+     * @param {string} node_id – Node name or UUID
+     * @return {void}
+     */
     function retrievePorts(node_id) {
       ironic.getPortsWithNode(node_id).then(function (response) {
         ctrl.ports = response.data.items;
-        // Ensure that the vif_port_id property exists for all ports
-        angular.forEach(ctrl.ports,
-                        function(port, key) {
-                          if (angular.isUndefined(port.extra.vif_port_id)) {
-                            port.extra.vif_port_id = "";
-                          }
-                        });
-        });
+      });
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.isUuid
+     * @description Test whether a string is an OpenStack UUID
+     *
+     * @param {string} str – string
+     * @return {boolean} True if the string is an OpenStack UUID, otherwise false
+     */
+    function isUuid(str) {
+      return str.match(ctrl.re_uuid) ? true : false;
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.getVifPortId
+     * @description Get the vif_port_id property of a specified port
+     *
+     * @param {object} port – instance of port
+     * @return {string} Value of vif_port_id property or "" if the property does not exist
+     */
+    function getVifPortId(port) {
+      return (angular.isDefined(port.extra) &&
+              angular.isDefined(port.extra.vif_port_id)) ?
+        port.extra.vif_port_id : "";
     }
   }
 

@@ -28,7 +28,11 @@
     }
 
     function createPort(nodeUuid, index, extra) {
-      return {uuid: portUuid(nodeUuid, index), extra: extra};
+      var port = {uuid: portUuid(nodeUuid, index)};
+      if (angular.isDefined(extra)) {
+        port.extra = extra;
+      }
+      return port;
     }
 
     function createNode(name, uuid) {
@@ -44,7 +48,7 @@
       getPortsWithNode: function (uuid) {
         var ports = [];
         for (var i = 0; i < numPorts; i++) {
-          ports.push(createPort(uuid, i, {}));
+          ports.push(createPort(uuid, i));
         }
         return $q.when({data: {items: ports}});
       }
@@ -68,7 +72,6 @@
         $location: $location,
         'horizon.dashboard.admin.ironic.actions': {},
         'horizon.dashboard.admin.basePath': '/static'});
-      ctrl.init();
 
       scope.$apply();
     }));
@@ -84,7 +87,7 @@
 
     it('should have a node', function () {
       expect(ctrl.node).toBeDefined();
-      expect(ctrl.node).toEqual(createNode(nodeName, nodeUuid))
+      expect(ctrl.node).toEqual(createNode(nodeName, nodeUuid));
     });
 
     it('should have ports', function () {
@@ -93,11 +96,27 @@
 
       var ports = [];
       for (var i = 0; i < ctrl.ports.length; i++) {
-        ports.push(createPort(ctrl.node.uuid, i, {vif_port_id: ''}));
+        ports.push(createPort(ctrl.node.uuid, i));
       }
       expect(ctrl.ports).toEqual(ports);
     });
 
-  });
+    it('should have a uuid regular expression pattern', function () {
+      expect(ctrl.re_uuid).toBeDefined();
+    });
 
+    it('should have an isUuid function', function () {
+      expect(ctrl.isUuid).toBeDefined();
+      expect(ctrl.isUuid(ctrl.node.uuid)).toEqual(true);
+      expect(ctrl.isUuid("not a uuid")).toEqual(false);
+    });
+
+    it('should have a getVifPortId function', function () {
+      expect(ctrl.getVifPortId).toBeDefined();
+      expect(ctrl.getVifPortId(createPort(ctrl.node.uuid, 1))).toEqual("");
+      var extra = {vif_port_id: "port_uuid"};
+      expect(ctrl.getVifPortId(createPort(ctrl.node.uuid, 1, extra))).
+        toEqual("port_uuid");
+    });
+  })
 })();
