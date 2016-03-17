@@ -148,6 +148,9 @@
         state: 'on'
       };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power', data)
+        .success(function () {
+          toastService.add('success', gettext('Refresh page to see updated power status'));
+        })
         .error(function () {
           toastService.add('error', gettext('Unable to power on the node'));
         });
@@ -167,6 +170,9 @@
         state: 'off'
       };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power', data)
+        .success(function () {
+          toastService.add('success', gettext('Refresh page to see updated power status'));
+        })
         .error(function () {
           toastService.add('error', gettext('Unable to power off the node'));
         });
