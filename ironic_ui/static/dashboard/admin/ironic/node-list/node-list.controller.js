@@ -1,5 +1,6 @@
 /*
  * © Copyright 2016 Hewlett Packard Enterprise Development Company LP
+ * Copyright 2016 Cray Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +36,43 @@
     ctrl.basePath = basePath;
     ctrl.actions = actions;
 
+    /**
+     * Filtering - client-side MagicSearch
+     * all facets for node table
+     */
+    ctrl.nodeFacets = [
+      {
+        'label': gettext('Name'),
+        'name': 'name',
+        'singleton': true
+      },
+      {
+        'label': gettext('UUID'),
+        'name': 'uuid',
+        'singleton': true
+      },
+      {
+        'label': gettext('Power State'),
+        'name': 'power_state',
+        'singleton': true
+      },
+      {
+        'label': gettext('Provisioning State'),
+        'name': 'provision_state',
+        'singleton': true
+      },
+      {
+        'label': gettext('Maintenance'),
+        'name': 'maintenance',
+        'singleton': true
+      },
+      {
+        'label': gettext('Driver'),
+        'name': 'driver',
+        'singleton': true
+      }
+    ];
+
     init();
 
     // RETRIVE NODES AND PORTS
@@ -65,3 +103,4 @@
   }
 
 })();
+
