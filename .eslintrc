@@ -1,0 +1,23 @@
+# Enable eslint-plugin-angular
+plugins:
+  - angular
+
+extends: openstack
+
+# Set up globals
+globals:
+  angular: false
+  module: false
+
+env:
+  browser: true
+  jasmine: true
+
+rules:
+  angular/no-private-call: 0
+  angular/no-services:
+    - 2
+    - - $http
+      - $resource
+      - Restangular
+  angular/no-service-method: 0

@@ -55,3 +55,8 @@ ChangeLog
 
 .secret_key_store
 *.lock
+
+# Node generated files
+package/
+node_modules/
+npm-debug.log

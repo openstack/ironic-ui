@@ -42,34 +42,34 @@
      */
     ctrl.nodeFacets = [
       {
-        'label': gettext('Name'),
-        'name': 'name',
-        'singleton': true
+        label: gettext('Name'),
+        name: 'name',
+        singleton: true
       },
       {
-        'label': gettext('UUID'),
-        'name': 'uuid',
-        'singleton': true
+        label: gettext('UUID'),
+        name: 'uuid',
+        singleton: true
       },
       {
-        'label': gettext('Power State'),
-        'name': 'power_state',
-        'singleton': true
+        label: gettext('Power State'),
+        name: 'power_state',
+        singleton: true
       },
       {
-        'label': gettext('Provisioning State'),
-        'name': 'provision_state',
-        'singleton': true
+        label: gettext('Provisioning State'),
+        name: 'provision_state',
+        singleton: true
       },
       {
-        'label': gettext('Maintenance'),
-        'name': 'maintenance',
-        'singleton': true
+        label: gettext('Maintenance'),
+        name: 'maintenance',
+        singleton: true
       },
       {
-        'label': gettext('Driver'),
-        'name': 'driver',
-        'singleton': true
+        label: gettext('Driver'),
+        name: 'driver',
+        singleton: true
       }
     ];
 
@@ -103,4 +103,3 @@
   }
 
 })();
-

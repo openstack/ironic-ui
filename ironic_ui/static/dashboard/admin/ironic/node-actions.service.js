@@ -16,8 +16,8 @@
  */
 (function () {
   'use strict';
-  
-  var POWER_STATE_ON ='power on';
+
+  var POWER_STATE_ON = 'power on';
   var POWER_STATE_OFF = 'power off';
 
   angular
@@ -51,7 +51,7 @@
         return $q.reject(gettext("Node is not powered off."));
       }
       return ironic.powerOnNode(node.uuid).then(
-        function(response) {
+        function() {
           // Set power state to be indeterminate
           node.power_state = null;
         },
@@ -65,7 +65,7 @@
         return $q.reject(gettext("Node is not powered on."));
       }
       return ironic.powerOffNode(node.uuid).then(
-        function(response) {
+        function() {
           // Set power state to be indeterminate
           node.power_state = null;
         },

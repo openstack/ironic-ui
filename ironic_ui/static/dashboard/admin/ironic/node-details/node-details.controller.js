@@ -52,7 +52,7 @@
     ctrl.getVifPortId = getVifPortId;
 
     init();
-    
+
     /**
      * @name horizon.dashboard.admin.ironic.NodeDetailsController.init
      * @description Initialize the controller instance based on the current page url.
@@ -88,11 +88,11 @@
      * @description Retrieve the ports associated with a specified node, and store
      * them in the controller instance.
      *
-     * @param {string} node_id – Node name or UUID
+     * @param {string} nodeId – Node name or UUID
      * @return {void}
      */
-    function retrievePorts(node_id) {
-      ironic.getPortsWithNode(node_id).then(function (response) {
+    function retrievePorts(nodeId) {
+      ironic.getPortsWithNode(nodeId).then(function (response) {
         ctrl.ports = response.data.items;
       });
     }
@@ -105,7 +105,7 @@
      * @return {boolean} True if the string is an OpenStack UUID, otherwise false
      */
     function isUuid(str) {
-      return str.match(ctrl.re_uuid) ? true : false;
+      return !!str.match(ctrl.re_uuid);
     }
 
     /**
@@ -116,9 +116,9 @@
      * @return {string} Value of vif_port_id property or "" if the property does not exist
      */
     function getVifPortId(port) {
-      return (angular.isDefined(port.extra) &&
-              angular.isDefined(port.extra.vif_port_id)) ?
-        port.extra.vif_port_id : "";
+      return angular.isDefined(port.extra) &&
+             angular.isDefined(port.extra.vif_port_id)
+             ? port.extra.vif_port_id : "";
     }
   }
 

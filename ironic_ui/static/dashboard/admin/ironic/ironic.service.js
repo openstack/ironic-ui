@@ -61,7 +61,7 @@
       return apiService.get('/api/ironic/nodes/')
         .error(function() {
           toastService.add('error', gettext('Unable to retrieve Ironic nodes.'));
-      });
+        });
     }
 
     /**
@@ -90,7 +90,7 @@
 
     function getPortsWithNode(uuid) {
       var config = {
-        'params' : {
+        params : {
           node_id: uuid
         }
       };
@@ -103,14 +103,15 @@
      * @name horizon.app.core.openstack-service-api.ironic.putNodeInMaintenanceMode
      * @description Put the node in maintenance mode.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#put--v1-nodes-(node_ident)-maintenance
+     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * put--v1-nodes-(node_ident)-maintenance}
      *
      * @param {string} uuid – UUID or logical name of a node.
      */
 
     function putNodeInMaintenanceMode(uuid, reason) {
       var data = {
-        maint_reason: (reason ? reason : gettext("No maintenance reason given."))
+        maint_reason: reason ? reason : gettext("No maintenance reason given.")
       };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/maintenance', data).error(function() {
         toastService.add('error',
@@ -122,7 +123,8 @@
      * @name horizon.app.core.openstack-service-api.ironic.removeNodeFromMaintenanceMode
      * @description Remove the node from maintenance mode.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#delete--v1-nodes-(node_ident)-maintenance
+     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * delete--v1-nodes-(node_ident)-maintenance}
      *
      * @param {string} uuid – UUID or logical name of a node.
      */
@@ -138,7 +140,8 @@
      * @name horizon.app.core.openstack-service-api.ironic.powerOnNode
      * @description Set the power state of the node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#put--v1-nodes-(node_ident)-states-power
+     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * put--v1-nodes-(node_ident)-states-power}
      *
      * @param {string} uuid – UUID or logical name of a node.
      */
@@ -160,7 +163,8 @@
      * @name horizon.app.core.openstack-service-api.ironic.powerOffNode
      * @description Set the power state of the node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#put--v1-nodes-(node_ident)-states-power
+     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * put--v1-nodes-(node_ident)-states-power}
      *
      * @param {string} uuid – UUID or logical name of a node.
      */

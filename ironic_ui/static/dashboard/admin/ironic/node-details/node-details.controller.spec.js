@@ -118,5 +118,5 @@
       expect(ctrl.getVifPortId(createPort(ctrl.node.uuid, 1, extra))).
         toEqual("port_uuid");
     });
-  })
+  });
 })();

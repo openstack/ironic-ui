@@ -2,7 +2,6 @@
   "name": "ironic-ui",
   "version": "1.0.0",
   "description": "Horizon plugin for OpenStack Ironic.",
-  "main": "index.html",
   "scripts": {
     "lint": "eslint ./"
   },
@@ -13,8 +12,8 @@
   "author": "Openstack <openstack-dev@lists.openstack.org>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "eslint": "1.9.0",
-    "eslint-config-openstack": "1.2.3",
-    "eslint-plugin-angular": "0.4.0"
+    "eslint": "^1.10.3",
+    "eslint-config-openstack": "^1.2.4",
+    "eslint-plugin-angular": "1.0.0"
   }
 }
