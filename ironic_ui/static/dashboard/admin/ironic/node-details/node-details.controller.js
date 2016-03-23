@@ -26,10 +26,15 @@
     '$location',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.actions',
-    'horizon.dashboard.admin.basePath'
+    'horizon.dashboard.admin.basePath',
+    'horizon.dashboard.admin.ironic.maintenance.service'
   ];
 
-  function IronicNodeDetailsController($location, ironic, actions, basePath) {
+  function IronicNodeDetailsController($location,
+                                       ironic,
+                                       actions,
+                                       basePath,
+                                       maintenanceService) {
     var ctrl = this;
     var path = basePath + 'ironic/node-details/sections/';
 
@@ -50,6 +55,8 @@
     ctrl.re_uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
     ctrl.isUuid = isUuid;
     ctrl.getVifPortId = getVifPortId;
+    ctrl.putNodeInMaintenanceMode = putNodeInMaintenanceMode;
+    ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
 
     init();
 
@@ -120,6 +127,13 @@
              angular.isDefined(port.extra.vif_port_id)
              ? port.extra.vif_port_id : "";
     }
-  }
 
+    function putNodeInMaintenanceMode() {
+      maintenanceService.putNodeInMaintenanceMode(ctrl.node);
+    }
+
+    function removeNodeFromMaintenanceMode() {
+      maintenanceService.removeNodeFromMaintenanceMode(ctrl.node);
+    }
+  }
 })();

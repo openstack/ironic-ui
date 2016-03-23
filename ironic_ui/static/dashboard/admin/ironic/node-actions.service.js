@@ -56,7 +56,7 @@
           node.power_state = null;
         },
         function(reason) {
-          toastService.add('error', gettext(reason));
+          toastService.add('error', reason);
         });
     }
 
@@ -70,7 +70,7 @@
           node.power_state = null;
         },
         function(reason) {
-          toastService.add('error', gettext(reason));
+          toastService.add('error', reason);
         }
       );
     }
@@ -85,16 +85,17 @@
 
     // maintenance
 
-    function putInMaintenanceMode(node) {
+    function putInMaintenanceMode(node, maintReason) {
       if (node.maintenance !== false) {
         return $q.reject(gettext("Node is already in maintenance mode."));
       }
-      return ironic.putNodeInMaintenanceMode(node.uuid, "").then(
+      return ironic.putNodeInMaintenanceMode(node.uuid, maintReason).then(
         function () {
           node.maintenance = true;
+          node.maintenance_reason = maintReason;
         },
         function(reason) {
-          toastService.add('error', gettext(reason));
+          toastService.add('error', reason);
         }
       );
     }
@@ -106,26 +107,41 @@
       return ironic.removeNodeFromMaintenanceMode(node.uuid).then(
         function () {
           node.maintenance = false;
+          node.maintenance_reason = "";
         },
         function (reason) {
-          toastService.add('error', gettext(reason));
+          toastService.add('error', reason);
         }
       );
     }
 
-    function putNodesInMaintenanceMode(nodes) {
-      return applyFuncToNodes(putInMaintenanceMode, nodes);
+    function putNodesInMaintenanceMode(nodes, maintReason) {
+      return applyFuncToNodes(putInMaintenanceMode, nodes, maintReason);
     }
 
     function removeNodesFromMaintenanceMode(nodes) {
       return applyFuncToNodes(removeFromMaintenanceMode, nodes);
     }
 
-    function applyFuncToNodes(fn, nodes) {
+    /*
+     * @name horizon.dashboard.admin.ironic.actions.applyFuncToNodes
+     * @description Apply a specified function to each member of a
+     * collection of nodes
+     *
+     * @param {function} fn – Function to be applied.
+     * The function should accept a node as the first argument. An optional
+     * second argument can be used to provide additional information.
+     * @param {Array<node>} nodes - Collection of nodes
+     * @param {object} extra - Additional argument passed to the function
+     * @return {promise} - Single promise that represents the combined
+     * return status from all function invocations. The promise is rejected
+     * if any individual call fails.
+     */
+    function applyFuncToNodes(fn, nodes, extra) {
       var promises = [];
       angular.forEach(nodes,
                       function(node) {
-                        promises.push(fn(node));
+                        promises.push(fn(node, extra));
                       });
       return $q.all(promises);
     }

@@ -22,19 +22,27 @@
       .controller('IronicNodeListController', IronicNodeListController);
 
   IronicNodeListController.$inject = [
-    '$scope',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.actions',
-    'horizon.dashboard.admin.basePath'
+    'horizon.dashboard.admin.basePath',
+    'horizon.dashboard.admin.ironic.maintenance.service'
   ];
 
-  function IronicNodeListController($scope, ironic, actions, basePath) {
+  function IronicNodeListController(ironic,
+                                    actions,
+                                    basePath,
+                                    maintenanceService) {
     var ctrl = this;
 
     ctrl.nodes = [];
     ctrl.nodeSrc = [];
     ctrl.basePath = basePath;
     ctrl.actions = actions;
+
+    ctrl.putNodeInMaintenanceMode = putNodeInMaintenanceMode;
+    ctrl.putNodesInMaintenanceMode = putNodesInMaintenanceMode;
+    ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
+    ctrl.removeNodesFromMaintenanceMode = removeNodesFromMaintenanceMode;
 
     /**
      * Filtering - client-side MagicSearch
@@ -99,6 +107,22 @@
           node.ports = response.data.items;
         }
       );
+    }
+
+    function putNodeInMaintenanceMode(node) {
+      maintenanceService.putNodeInMaintenanceMode(node);
+    }
+
+    function putNodesInMaintenanceMode(nodes) {
+      maintenanceService.putNodesInMaintenanceMode(nodes);
+    }
+
+    function removeNodeFromMaintenanceMode(node) {
+      maintenanceService.removeNodeFromMaintenanceMode(node);
+    }
+
+    function removeNodesFromMaintenanceMode(nodes) {
+      maintenanceService.removeNodesFromMaintenanceMode(nodes);
     }
   }
 
