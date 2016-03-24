@@ -27,6 +27,5 @@ except ImportError:
     pass
 
 setuptools.setup(
-    setup_requires=['pbr>=1.8',
-                    'python-ironicclient>=1.1'],
+    setup_requires=['pbr>=1.8'],
     pbr=True)
