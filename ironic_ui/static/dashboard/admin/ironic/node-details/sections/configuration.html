@@ -68,7 +68,7 @@
         <dt translate>Deploy Kernel</dt>
         <dd>
           <a ng-if="deploy_kernel_is_uuid = ctrl.isUuid(ctrl.node.driver_info.deploy_kernel)"
-             href="/admin/images/{$ ctrl.node.driver_info.deploy_kernel $}/detail">
+             href="/dashboard/admin/images/{$ ctrl.node.driver_info.deploy_kernel $}/detail">
             {$ ctrl.node.driver_info.deploy_kernel $}
           </a>
           <span ng-if="!deploy_kernel_is_uuid">
@@ -78,7 +78,7 @@
         <dt translate>Deploy Ramdisk</dt>
         <dd>
           <a ng-if="deploy_ramdisk_is_uuid = ctrl.isUuid(ctrl.node.driver_info.deploy_ramdisk)"
-             href="/admin/images/{$ ctrl.node.driver_info.deploy_ramdisk $}/detail">
+             href="/dashboard/admin/images/{$ ctrl.node.driver_info.deploy_ramdisk $}/detail">
             {$ ctrl.node.driver_info.deploy_ramdisk $}
           </a>
           <span ng-if="!deploy_ramdisk_is_uuid">
@@ -113,13 +113,13 @@
       <dd>{$ ctrl.node.instance_info.display_name $}</dd>
       <dt translate>Ramdisk</dt>
       <dd>
-        <a href="/admin/images/{$ ctrl.node.instance_info.ramdisk $}/detail">
+        <a href="/dashboard/admin/images/{$ ctrl.node.instance_info.ramdisk $}/detail">
           {$ ctrl.node.instance_info.ramdisk $}
         </a>
       </dd>
       <dt translate>Kernel</dt>
       <dd>
-        <a href="/admin/images/{$ ctrl.node.instance_info.kernel $}/detail">
+        <a href="/dashboard/admin/images/{$ ctrl.node.instance_info.kernel $}/detail">
           {$ ctrl.node.instance_info.kernel $}
         </a>
       </dd>
