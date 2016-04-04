@@ -3,7 +3,7 @@
 # process, which may cause wedges in the gate later.
 
 # Require Horizon
--e git://github.com/openstack/horizon.git#egg=horizon
+http://tarballs.openstack.org/horizon/horizon-stable-mitaka.tar.gz#egg=horizon
 
 hacking>=0.10.2,<0.11  # Apache-2.0
 
