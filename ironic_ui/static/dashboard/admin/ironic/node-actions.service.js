@@ -20,6 +20,20 @@
   var POWER_STATE_ON = 'power on';
   var POWER_STATE_OFF = 'power off';
 
+  var DELETE_NODE_TITLE = gettext("Delete Node");
+  var DELETE_NODE_MSG =
+      gettext('Are you sure you want to delete node "%s"? ' +
+              'This action cannot be undone.');
+  var DELETE_NODE_SUCCESS = gettext('Successfully deleted node "%s"');
+  var DELETE_NODE_ERROR = gettext('Unable to delete node "%s"');
+
+  var DELETE_NODES_TITLE = gettext("Delete Nodes");
+  var DELETE_NODES_MSG =
+      gettext('Are you sure you want to delete nodes "%s"? ' +
+              'This action cannot be undone.');
+  var DELETE_NODES_SUCCESS = gettext('Successfully deleted nodes "%s"');
+  var DELETE_NODES_ERROR = gettext('Error deleting nodes "%s"');
+
   angular
     .module('horizon.dashboard.admin.ironic')
     .factory('horizon.dashboard.admin.ironic.actions', actions);
@@ -27,11 +41,15 @@
   actions.$inject = [
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.framework.widgets.toast.service',
-    '$q'
+    'horizon.framework.widgets.modal.deleteModalService',
+    '$q',
+    '$rootScope'
   ];
 
-  function actions(ironic, toastService, $q) {
+  function actions(ironic, toastService, deleteModalService, $q, $rootScope) {
     var service = {
+      deleteNode: deleteNode,
+      deleteNodes: deleteNodes,
       powerOn: powerOn,
       powerOff: powerOff,
       powerOnAll: powerOnNodes,
@@ -44,33 +62,62 @@
 
     return service;
 
+    function deleteNode(node) {
+      var labels = {
+        title: DELETE_NODE_TITLE,
+        message: DELETE_NODE_MSG,
+        submit: DELETE_NODE_TITLE,
+        success: DELETE_NODE_SUCCESS,
+        error: DELETE_NODE_ERROR
+      };
+      var context = {
+        labels: labels,
+        deleteEntity: ironic.deleteNode,
+        successEvent: "ironic-ui:delete-node-success"
+      };
+      return deleteModalService.open($rootScope, [node], context);
+    }
+
+    function deleteNodes(nodes) {
+      var labels = {
+        title: DELETE_NODES_TITLE,
+        message: DELETE_NODES_MSG,
+        submit: DELETE_NODES_TITLE,
+        success: DELETE_NODES_SUCCESS,
+        error: DELETE_NODES_ERROR
+      };
+      var context = {
+        labels: labels,
+        deleteEntity: ironic.deleteNode,
+        successEvent: "ironic-ui:delete-node-success"
+      };
+      return deleteModalService.open($rootScope, nodes, context);
+    }
+
     // power state
 
     function powerOn(node) {
       if (node.power_state !== POWER_STATE_OFF) {
-        return $q.reject(gettext("Node is not powered off."));
+        var msg = gettext("Node %s is not powered off.");
+        return $q.reject(interpolate(msg, [node], false));
       }
       return ironic.powerOnNode(node.uuid).then(
         function() {
           // Set power state to be indeterminate
           node.power_state = null;
-        },
-        function(reason) {
-          toastService.add('error', reason);
-        });
+        }
+      );
     }
 
     function powerOff(node) {
       if (node.power_state !== POWER_STATE_ON) {
-        return $q.reject(gettext("Node is not powered on."));
+        var msg = gettext("Node %s is not powered on.");
+        return $q.reject(interpolate(msg, [node], false));
       }
       return ironic.powerOffNode(node.uuid).then(
         function() {
           // Set power state to be indeterminate
           node.power_state = null;
-        },
-        function(reason) {
-          toastService.add('error', reason);
         }
       );
     }
@@ -87,30 +134,26 @@
 
     function putInMaintenanceMode(node, maintReason) {
       if (node.maintenance !== false) {
-        return $q.reject(gettext("Node is already in maintenance mode."));
+        var msg = gettext("Node %s is already in maintenance mode.");
+        return $q.reject(interpolate(msg, [node], false));
       }
       return ironic.putNodeInMaintenanceMode(node.uuid, maintReason).then(
         function () {
           node.maintenance = true;
           node.maintenance_reason = maintReason;
-        },
-        function(reason) {
-          toastService.add('error', reason);
         }
       );
     }
 
     function removeFromMaintenanceMode(node) {
       if (node.maintenance !== true) {
-        return $q.reject(gettext("Node is not in maintenance mode."));
+        var msg = gettext("Node %s is not in maintenance mode.");
+        return $q.reject(interpolate(msg, [node], false));
       }
       return ironic.removeNodeFromMaintenanceMode(node.uuid).then(
         function () {
           node.maintenance = false;
           node.maintenance_reason = "";
-        },
-        function (reason) {
-          toastService.add('error', reason);
         }
       );
     }

@@ -28,158 +28,253 @@
   ];
 
   /**
-   * @ngdoc service
-   * @name horizon.app.core.openstack-service-api.ironic
-   * @description Provides access to Ironic API
+   * Service that provides access to the Ironic client API
+   *
+   * @param {object} apiService - HTTP service
+   * @param {object} toastService - User message service
+   * @return {object} Ironic API service
    */
-
   function ironicAPI(apiService, toastService) {
     var service = {
-      getNodes: getNodes,
+      createNode: createNode,
+      deleteNode: deleteNode,
+      getDrivers: getDrivers,
+      getDriverProperties: getDriverProperties,
       getNode: getNode,
+      getNodes: getNodes,
       getPortsWithNode: getPortsWithNode,
-      putNodeInMaintenanceMode: putNodeInMaintenanceMode,
-      removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
+      powerOffNode: powerOffNode,
       powerOnNode: powerOnNode,
-      powerOffNode: powerOffNode
+      putNodeInMaintenanceMode: putNodeInMaintenanceMode,
+      removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode
     };
 
     return service;
 
-    ///////////
-
     /**
-     * @name horizon.app.core.openstack-service-api.ironic.getNodes
-     * @description Retrieve a list of nodes
+     * Retrieve a list of nodes
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-nodes
      *
-     * @return Node collection in JSON
+     * @return {promise} Node collection in JSON
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#NodeCollection
      */
-
     function getNodes() {
       return apiService.get('/api/ironic/nodes/')
         .error(function() {
-          toastService.add('error', gettext('Unable to retrieve Ironic nodes.'));
+          toastService.add('error',
+                           gettext('Unable to retrieve Ironic nodes.'));
         });
     }
 
     /**
-     * @name horizon.app.core.openstack-service-api.ironic.getNode
-     * @description Retrieve information about the given node.
+     * Retrieve information about the given node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-nodes-(node_ident)
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-
+     * nodes-(node_ident)
      *
      * @param {string} uuid – UUID or logical name of a node.
+     * @return {promise} Node
      */
-
     function getNode(uuid) {
-      return apiService.get('/api/ironic/nodes/' + uuid).error(function() {
-        toastService.add('error', gettext('Unable to retrieve the Ironic node.'));
-      });
+      return apiService.get('/api/ironic/nodes/' + uuid)
+        .error(function(reason) {
+          var msg = gettext('Unable to retrieve the Ironic node: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
+        });
     }
 
     /**
-     * @name horizon.app.core.openstack-service-api.ironic.getPortsWithNode
-     * @description Retrieve a list of ports associated with a node.
+     * Retrieve a list of ports associated with a node.
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-ports
      *
      * @param {string} uuid – UUID or logical name of a node.
+     * @return {promise} List of ports
      */
-
     function getPortsWithNode(uuid) {
       var config = {
         params : {
           node_id: uuid
         }
       };
-      return apiService.get('/api/ironic/ports/', config).error(function() {
-        toastService.add('error', gettext('Unable to retrieve the Ironic node ports.'));
-      });
+      return apiService.get('/api/ironic/ports/', config)
+        .error(function(reason) {
+          var msg = gettext(
+            'Unable to retrieve the Ironic node ports: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
+        });
     }
 
     /**
-     * @name horizon.app.core.openstack-service-api.ironic.putNodeInMaintenanceMode
-     * @description Put the node in maintenance mode.
+     * Put the node in maintenance mode.
      *
-     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * put--v1-nodes-(node_ident)-maintenance}
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * put--v1-nodes-(node_ident)-maintenance
      *
      * @param {string} uuid – UUID or logical name of a node.
+     * @param {string} reason – Reason for why node is being put into
+     * maintenance mode
+     * @return {promise} Promise
      */
-
     function putNodeInMaintenanceMode(uuid, reason) {
       var data = {
         maint_reason: reason ? reason : gettext("No maintenance reason given.")
       };
-      return apiService.patch('/api/ironic/nodes/' + uuid + '/maintenance', data).error(function() {
-        toastService.add('error',
-            gettext('Unable to put the Ironic node in maintenance mode.'));
-      });
+      return apiService.patch('/api/ironic/nodes/' + uuid + '/maintenance',
+                              data)
+        .error(function(reason) {
+          var msg = gettext(
+            'Unable to put the Ironic node in maintenance mode: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
+        });
     }
 
     /**
-     * @name horizon.app.core.openstack-service-api.ironic.removeNodeFromMaintenanceMode
-     * @description Remove the node from maintenance mode.
+     * Remove the node from maintenance mode.
      *
-     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * delete--v1-nodes-(node_ident)-maintenance}
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * delete--v1-nodes-(node_ident)-maintenance
      *
      * @param {string} uuid – UUID or logical name of a node.
+     * @return {promise} Promise
      */
-
     function removeNodeFromMaintenanceMode(uuid) {
-      return apiService.delete('/api/ironic/nodes/' + uuid + '/maintenance').error(function() {
-        toastService.add('error',
-            gettext('Unable to remove the Ironic node from maintenance mode.'));
-      });
+      return apiService.delete('/api/ironic/nodes/' + uuid + '/maintenance')
+        .error(function(reason) {
+          var msg = gettext('Unable to remove the Ironic node ' +
+                            'from maintenance mode: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
+        });
     }
 
     /**
-     * @name horizon.app.core.openstack-service-api.ironic.powerOnNode
-     * @description Set the power state of the node.
+     * Set the power state of the node.
      *
-     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * put--v1-nodes-(node_ident)-states-power}
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * put--v1-nodes-(node_ident)-states-power
      *
      * @param {string} uuid – UUID or logical name of a node.
+     * @return {promise} Promise
      */
-
     function powerOnNode(uuid) {
       var data = {
         state: 'on'
       };
-      return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power', data)
-        .success(function () {
-          toastService.add('success', gettext('Refresh page to see updated power status'));
+      return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power',
+                              data)
+        .success(function() {
+          toastService.add('success',
+                           gettext('Refresh page to see updated power status'));
         })
-        .error(function () {
-          toastService.add('error', gettext('Unable to power on the node'));
+        .error(function(reason) {
+          var msg = gettext('Unable to power on the node: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
         });
     }
 
     /**
-     * @name horizon.app.core.openstack-service-api.ironic.powerOffNode
-     * @description Set the power state of the node.
+     * Set the power state of the node.
      *
-     * \href{http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * put--v1-nodes-(node_ident)-states-power}
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * put--v1-nodes-(node_ident)-states-power
      *
      * @param {string} uuid – UUID or logical name of a node.
+     * @return {promise} Promise
      */
-
     function powerOffNode(uuid) {
       var data = {
         state: 'off'
       };
-      return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power', data)
-        .success(function () {
-          toastService.add('success', gettext('Refresh page to see updated power status'));
+      return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power',
+                              data)
+        .success(function() {
+          toastService.add('success',
+                           gettext('Refresh page to see updated power status'));
         })
-        .error(function () {
-          toastService.add('error', gettext('Unable to power off the node'));
+        .error(function(reason) {
+          var msg = gettext('Unable to power off the node: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
         });
+    }
+
+    /**
+     * Create an Ironic node
+     *
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#post--v1-nodes
+     *
+     * @param {object} params – Object containing parameters that define
+     * the node to be created
+     * @return {promise} Promise
+     */
+    function createNode(params) {
+      var data = {
+        node: params
+      };
+      return apiService.post('/api/ironic/nodes/', data)
+        .success(function() {
+        })
+        .error(function(reason) {
+          var msg = gettext('Unable to create node: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
+        });
+    }
+
+    /**
+     * Delete the specified node from inventory
+     *
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * delete--v1-nodes
+     *
+     * @param {string} nodeIdent – UUID or logical name of a node.
+     * @return {promise} Promise
+     */
+    function deleteNode(nodeIdent) {
+      var data = {
+        node: nodeIdent
+      };
+      return apiService.delete('/api/ironic/nodes/', data)
+        .success(function() {
+        })
+        .error(function(reason) {
+          var msg = gettext('Unable to delete node %s: %s');
+          toastService.add(
+            'error',
+            interpolate(msg, [nodeIdent, reason], false));
+        });
+    }
+
+    /**
+     * Retrieve the list of Ironic drivers
+     *
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-drivers
+     *
+     * @return {promise} Driver collection in JSON
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#DriverList
+     */
+    function getDrivers() {
+      return apiService.get('/api/ironic/drivers/').error(function(reason) {
+        var msg = gettext('Unable to retrieve Ironic drivers: %s');
+        toastService.add('error', interpolate(msg, [reason], false));
+      });
+    }
+
+    /**
+     * Retrieve properities of a specified driver
+     *
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * get--v1-drivers-properties
+     *
+     * @param {string} driverName - Driver name
+     * @returns {promise} Property list
+     */
+    function getDriverProperties(driverName) {
+      return apiService.get(
+        '/api/ironic/drivers/' + driverName + '/properties').error(
+          function(reason) {
+            var msg = gettext(
+              'Unable to retrieve driver properties: %s');
+            toastService.add('error', interpolate(msg, [reason], false));
+          });
     }
   }
 

@@ -1,0 +1,207 @@
+<div class="modal-header">
+  <h3 class="modal-title" translate>Enroll Node</h3>
+</div>
+<div class="modal-body">
+  <h4 class="modal-title" translate>General</h4>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="name"
+             class="col-sm-3 control-label"
+             translate>Node Name</label>
+
+      <div class="col-sm-9">
+        <input type="text"
+               class="form-control"
+               ng-model="ctrl.node.name"
+               id="name"
+               name="name"
+               placeholder="{$ 'A unique node name. Optional.' | translate $}"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="driver"
+             class="col-sm-3 control-label"
+             translate>Node Driver</label>
+      <div class="col-sm-9">
+        <select id="driver"
+                class="form-control"
+                ng-options="driver as driver.name for driver in ctrl.drivers"
+                ng-model="ctrl.selectedDriver"
+                ng-change="ctrl.loadDriverProperties(ctrl.selectedDriver.name)">
+          <option value="" disabled selected translate>Select a Driver</option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <div ng-if="!ctrl.loadingDriverProperties && ctrl.driverProperties">
+    <hr/>
+    <h4 class="modal-title" translate>Driver Info</h4>
+  </div>
+
+  <form class="form-horizontal"
+        name="DriverInfoForm"
+        id="DriverInfoForm">
+    <p class="text-center"
+       ng-if="ctrl.loadingDriverProperties">
+      <small><em><i class="fa fa-spin fa-refresh"></i></em></small>
+    </p>
+    <div class="form-group"
+         ng-repeat="(name, property) in ctrl.driverProperties"
+         ng-show="property.isActive()">
+      <label for="{$ name $}"
+             class="col-sm-3 control-label"
+             style="white-space: nowrap"
+             translate>
+        {$ name $}
+        <span class="help-icon"
+              data-container="body"
+              title=""
+              data-toggle="tooltip"
+              data-original-title="{$ property.getDescription() | translate $}">
+          <span class="fa fa-question-circle"></span>
+        </span>
+      </label>
+      <div ng-if="!property.getSelectOptions()" class="col-sm-9">
+        <input type="text"
+               class="form-control"
+               id="{$ name $}"
+               name="{$ name $}"
+               ng-model="property.inputValue"
+               placeholder="{$ property.getDescription() | translate $}"
+               ng-required="property.isRequired()"/>
+      </div>
+      <div ng-if="property.getSelectOptions()" class="col-sm-9">
+        <select id="{$ name $}"
+                class="form-control"
+                ng-options="opt for opt in property.getSelectOptions()"
+                ng-model="property.inputValue"
+                ng-required="property.isRequired()">
+          <option value=""
+                  disabled
+                  selected
+                  translate>{$ property.getDescription() $}</option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <hr/>
+  <h4 class="modal-title" translate>Properties</h4>
+
+  <form class="form-horizontal"
+        id="AddPropertyForm"
+        name="AddPropertyForm"
+        style="margin-bottom:10px;">
+    <div class="input-group input-group-sm">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        Property</span>
+      <input class="form-control"
+             type="text"
+             ng-model="propertyName"
+             validate-unique="ctrl.checkPropertyUnique"
+             placeholder="{$ 'Property Name' | translate $}"/>
+      <span class="input-group-btn">
+        <button class="btn btn-primary"
+                type="button"
+                ng-disabled="!propertyName || AddPropertyForm.$invalid"
+                ng-click="ctrl.node.properties[propertyName] = null;
+                          propertyName = null">
+          <span class="fa fa-plus"> </span>
+        </button>
+      </span>
+    </div>
+  </form>
+
+  <form class="form-horizontal"
+        id="PropertiesForm"
+        name="PropertiesForm">
+    <div class="input-group input-group-sm"
+         ng-repeat="(propertyName, propertyValue) in ctrl.node.properties">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        {$ propertyName $}
+      </span>
+      <input class="form-control"
+             type="text"
+             name="{$ propertyName $}"
+             ng-model="ctrl.node.properties[propertyName]"
+             ng-required="true"/>
+      <div class="input-group-btn">
+        <a class="btn btn-default"
+           ng-click="ctrl.deleteProperty(propertyName)">
+          <span class="fa fa-minus"> </span>
+        </a>
+      </div>
+    </div>
+  </form>
+
+  <hr/>
+  <h4 class="modal-title" translate>Extra</h4>
+
+  <form class="form-horizontal"
+        id="AddExtraForm"
+        name="AddExtraForm"
+        style="margin-bottom:10px;">
+    <div class="input-group input-group-sm">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        Extra</span>
+      <input class="form-control"
+             type="text"
+             ng-model="extraName"
+             validate-unique="ctrl.checkExtraUnique"
+             placeholder="{$ 'Property Name' | translate $}"/>
+      <span class="input-group-btn">
+        <button class="btn btn-primary"
+                type="button"
+                ng-disabled="!extraName || AddExtraForm.$invalid"
+                ng-click="ctrl.node.extra[extraName] = null;
+                          extraName = null">
+          <span class="fa fa-plus"> </span>
+        </button>
+      </span>
+    </div>
+  </form>
+
+  <form class="form-horizontal"
+        id="ExtraForm"
+        name="ExtraForm">
+    <div class="input-group input-group-sm"
+         ng-repeat="(propertyName, propertyValue) in ctrl.node.extra">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        {$ propertyName $}
+      </span>
+      <input class="form-control"
+             type="text"
+             name="{$ propertyName $}"
+             ng-model="ctrl.node.extra[propertyName]"
+             ng-required="true"/>
+      <div class="input-group-btn">
+        <a class="btn btn-default"
+           ng-click="ctrl.deleteExtra(propertyName)">
+          <span class="fa fa-minus"> </span>
+        </a>
+      </div>
+    </div>
+  </form>
+ </div>
+<div class="modal-footer ng-scope">
+  <button class="btn btn-default"
+          ng-click="ctrl.cancel()">
+    <span class="fa fa-close"></span>
+    <span class="ng-scope" translate>Cancel</span>
+  </button>
+  <button type="submit"
+          ng-disabled="!ctrl.driverProperties ||
+                       DriverInfoForm.$invalid ||
+                       PropertiesForm.$invalid ||
+                       ExtraForm.$invalid"
+          ng-click="ctrl.enroll()"
+          class="btn btn-primary"
+          translate>
+    Enroll Node
+  </button>
+</div>

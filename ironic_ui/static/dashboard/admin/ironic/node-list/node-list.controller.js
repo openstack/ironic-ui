@@ -22,16 +22,20 @@
       .controller('IronicNodeListController', IronicNodeListController);
 
   IronicNodeListController.$inject = [
+    '$rootScope',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.basePath',
-    'horizon.dashboard.admin.ironic.maintenance.service'
+    'horizon.dashboard.admin.ironic.maintenance.service',
+    'horizon.dashboard.admin.ironic.enroll-node.service'
   ];
 
-  function IronicNodeListController(ironic,
+  function IronicNodeListController($rootScope,
+                                    ironic,
                                     actions,
                                     basePath,
-                                    maintenanceService) {
+                                    maintenanceService,
+                                    enrollNodeService) {
     var ctrl = this;
 
     ctrl.nodes = [];
@@ -43,6 +47,7 @@
     ctrl.putNodesInMaintenanceMode = putNodesInMaintenanceMode;
     ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
     ctrl.removeNodesFromMaintenanceMode = removeNodesFromMaintenanceMode;
+    ctrl.enrollNode = enrollNode;
 
     /**
      * Filtering - client-side MagicSearch
@@ -80,6 +85,15 @@
         singleton: true
       }
     ];
+
+    // Listen for the creation of new nodes, and update the node list
+    $rootScope.$on('ironic-ui:new-node', function() {
+      init();
+    });
+
+    $rootScope.$on('ironic-ui:delete-node-success', function() {
+      init();
+    });
 
     init();
 
@@ -123,6 +137,10 @@
 
     function removeNodesFromMaintenanceMode(nodes) {
       maintenanceService.removeNodesFromMaintenanceMode(nodes);
+    }
+
+    function enrollNode() {
+      enrollNodeService.modal();
     }
   }
 

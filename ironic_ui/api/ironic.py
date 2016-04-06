@@ -117,3 +117,52 @@ def node_set_maintenance(request, node_id, state, maint_reason=None):
         node_id,
         state,
         maint_reason=maint_reason)
+
+
+def node_create(request, params):
+    """Create a node
+
+    :param request: HTTP request.
+    :param params: Dictionary of node parameters
+    """
+    node_manager = ironicclient(request).node
+    node = node_manager.create(**params)
+    field_list = ['chassis_uuid',
+                  'driver',
+                  'driver_info',
+                  'properties',
+                  'extra',
+                  'uuid',
+                  'name']
+    return dict([(f, getattr(node, f, '')) for f in field_list])
+
+
+def node_delete(request, node_id):
+    """Delete a node from inventory.
+
+    :param request: HTTP request.
+    :param node_id: The UUID of the node.
+    :return: node.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.delete
+    """
+    return ironicclient(request).node.delete(node_id)
+
+
+def driver_list(request):
+    """Retrieve a list of drivers.
+
+    :param request: HTTP request.
+    :return: A list of drivers.
+    """
+    return ironicclient(request).driver.list()
+
+
+def driver_properties(request, driver_name):
+    """Retrieve the properties of a specified driver
+
+    :param request: HTTP request
+    :param driver_name: Name of the driver
+    :return: Property list
+    """
+    return ironicclient(request).driver.properties(driver_name)

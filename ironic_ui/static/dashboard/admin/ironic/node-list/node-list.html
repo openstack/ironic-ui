@@ -15,7 +15,14 @@
       </th>
     </tr>
     <tr>
-      <th colspan="100" class="action-col">
+      <th colspan="8">
+        <button class="btn btn-default btn-sm pull-right"
+                ng-click="table.enrollNode()">
+          <span class="fa fa-plus"></span>
+          <span translate>Enroll Node</span>
+        </button>
+      </th>
+      <th class="action-col">
         <action-list dropdown class="pull-right">
           <action button-type="split-button"
                   action-classes="'btn btn-default btn-sm'"
@@ -42,6 +49,13 @@
                     item="tCtrl.selected"
                     disabled="tCtrl.selected.length === 0">
               {$ 'Maintenance off' | translate $}
+            </action>
+            <action button-type="menu-item"
+                    callback="table.actions.deleteNodes"
+                    item="tCtrl.selected"
+                    disabled="tCtrl.selected.length === 0">
+              <span class="fa fa-trash"></span>
+              {$ 'Delete nodes' | translate $}
             </action>
           </menu>
         </action-list>
@@ -140,9 +154,15 @@
                     item="node">
               {$ 'Maintenance off' | translate $}
             </action>
+            <action button-type="menu-item"
+                    callback="table.actions.deleteNode"
+                    disabled="!(node['provision_state']==='available' || node['provision_state']==='nostate' || node['provision_state']==='manageable' || node['provision_state']==='enroll')"
+                    item="node">
+              <span class="fa fa-trash"></span>
+              {$ 'Delete node' | translate $}
+            </action>
           </menu>
         </action-list>
-
       </td>
     </tr>
   </tbody>
