@@ -1,0 +1,210 @@
+# Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-24 16:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-04-01 04:26+0000\n"
+"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "Actions"
+msgstr "アクション"
+
+msgid "CPU Arch"
+msgstr "CPU アーキテクチャー"
+
+msgid "CPUs"
+msgstr "CPU"
+
+msgid "Cancel"
+msgstr "取り消し"
+
+msgid "Capabilities"
+msgstr "機能"
+
+msgid "Chassis ID"
+msgstr "シャーシ ID"
+
+msgid "Configuration"
+msgstr "設定"
+
+msgid "Console Enabled"
+msgstr "コンソールの有効化"
+
+msgid "Created At"
+msgstr "作成時刻"
+
+msgid "Deploy Kernel"
+msgstr "カーネルのデプロイ"
+
+msgid "Deploy Ramdisk"
+msgstr "RAM ディスクのデプロイ"
+
+msgid "Driver"
+msgstr "ドライバー"
+
+msgid "Driver Info"
+msgstr "ドライバー情報"
+
+msgid "Extra"
+msgstr "拡張"
+
+msgid "General"
+msgstr "一般"
+
+msgid "Inspection Finished At"
+msgstr "検査終了時刻"
+
+msgid "Inspection Started At"
+msgstr "検査開始時刻"
+
+msgid "Instance ID"
+msgstr "インスタンス ID"
+
+msgid "Instance Info"
+msgstr "インスタンス情報"
+
+msgid "Instance Name"
+msgstr "インスタンス名"
+
+msgid "Kernel"
+msgstr "カーネル"
+
+msgid "Last Error"
+msgstr "最後のエラー"
+
+msgid "Local GB"
+msgstr "ローカル GB"
+
+msgid "Maintenance"
+msgstr "メンテナンス"
+
+msgid "Maintenance Reason"
+msgstr "メンテナンスの理由"
+
+msgid "Maintenance off"
+msgstr "メンテナンスオフ"
+
+msgid "Maintenance on"
+msgstr "メンテナンスオン"
+
+msgid "Memory"
+msgstr "メモリー"
+
+msgid "Name"
+msgstr "名前"
+
+msgid "No Instance"
+msgstr "インスタンスなし"
+
+msgid "No maintenance reason given."
+msgstr "メンテナンスの理由がありません。"
+
+msgid "Node ID"
+msgstr "ノード ID"
+
+msgid "Node Name"
+msgstr "ノード名"
+
+msgid "Node is already in maintenance mode."
+msgstr "ノードは既にメンテナンスモードです。"
+
+msgid "Node is not in maintenance mode."
+msgstr "ノードはメンテナンスモードになっていません。"
+
+msgid "Node is not powered off."
+msgstr "ノードの電源がオフになっていません。"
+
+msgid "Node is not powered on."
+msgstr "ノードの電源がオンになっていません。"
+
+msgid "Overview"
+msgstr "概要"
+
+msgid "Ports"
+msgstr "ポート"
+
+msgid "Power State"
+msgstr "電源状態"
+
+msgid "Power off"
+msgstr "電源オフ"
+
+msgid "Power on"
+msgstr "電源オン"
+
+msgid "Properties"
+msgstr "プロパティー"
+
+msgid ""
+"Provide a reason for why you are putting the selected node(s) into "
+"maintenance mode (optional)"
+msgstr ""
+"選択したノードをメンテナンスモードにする理由を設定してください（オプション）"
+
+msgid "Provision State"
+msgstr "プロビジョニング状態"
+
+msgid "Provisioning State"
+msgstr "プロビジョニング状態"
+
+msgid "Provisioning Status"
+msgstr "プロビジョニング状態"
+
+msgid "Put Node(s) Into Maintenance Mode"
+msgstr "ノードをメンテナンスモードにします"
+
+msgid "Ramdisk"
+msgstr "RAM ディスク"
+
+msgid "Refresh page to see updated power status"
+msgstr "電源状態を更新するにはページをリフレッシュしてください"
+
+msgid "Reservation"
+msgstr "予約"
+
+msgid "SSH Port"
+msgstr "SSH ポート"
+
+msgid "SSH Username"
+msgstr "SSH ユーザー名"
+
+msgid "Target Power State"
+msgstr "ターゲット電源状態"
+
+msgid "Target Provision State"
+msgstr "ターゲットプロビジョニング状態"
+
+msgid "UUID"
+msgstr "UUID"
+
+msgid "Unable to power off the node"
+msgstr "ノードを電源OFFにできません。"
+
+msgid "Unable to power on the node"
+msgstr "ノードを電源オンにできません"
+
+msgid "Unable to put the Ironic node in maintenance mode."
+msgstr "Ironic ノードをメンテナンスモードにできません。"
+
+msgid "Unable to remove the Ironic node from maintenance mode."
+msgstr "Ironic ノードをメンテナンスモードから削除できません。"
+
+msgid "Unable to retrieve Ironic nodes."
+msgstr "Ironic ノードの一覧を取得できません"
+
+msgid "Unable to retrieve the Ironic node ports."
+msgstr "Ironic ノードのポート一覧を取得できません"
+
+msgid "Unable to retrieve the Ironic node."
+msgstr "Ironic ノードを取得できません。"
+
+msgid "Updated At"
+msgstr "最終更新"
