@@ -42,14 +42,9 @@
     <h4 translate>Properties</h4>
     <hr class="header_rule">
     <dl class="dl-horizontal">
-      <dt translate>Memory</dt>
-      <dd>{$ ctrl.node.properties.memory_mb + ' MB' $}</dd>
-      <dt translate>CPU Arch</dt>
-      <dd>{$ ctrl.node.properties.cpu_arch $}</dd>
-      <dt translate>Local GB</dt>
-      <dd>{$ ctrl.node.properties.local_gb $}</dd>
-      <dt translate>CPUs</dt>
-      <dd>{$ ctrl.node.properties.cpus $}</dd>
+      <dt ng-repeat-start="(propertyName, propertyValue) in ctrl.node.properties">
+        {$ propertyName $}</dt>
+      <dd ng-repeat-end>{$ propertyValue $}</dd>
     </dl>
   </div>
 
@@ -107,22 +102,29 @@
   <!-- Instance Info -->
   <div class="col-md-6 status detail">
     <h4 translate>Instance Info</h4>
-    <hr class="header_rule">
-    <dl class="dl-horizontal">
-      <dt translate>Instance Name</dt>
-      <dd>{$ ctrl.node.instance_info.display_name $}</dd>
-      <dt translate>Ramdisk</dt>
-      <dd>
-        <a href="/dashboard/admin/images/{$ ctrl.node.instance_info.ramdisk $}/detail">
-          {$ ctrl.node.instance_info.ramdisk $}
-        </a>
-      </dd>
-      <dt translate>Kernel</dt>
-      <dd>
-        <a href="/dashboard/admin/images/{$ ctrl.node.instance_info.kernel $}/detail">
-          {$ ctrl.node.instance_info.kernel $}
-        </a>
-      </dd>
-    </dl>
+    <hr class="header_rule"/>
+    <div ng-switch="ctrl.node.driver">
+      <dl ng-switch-when="pxe_ssh" class="dl-horizontal">
+        <dt translate>Instance Name</dt>
+        <dd>{$ ctrl.node.instance_info.display_name $}</dd>
+        <dt translate>Ramdisk</dt>
+        <dd>
+          <a href="/admin/images/{$ ctrl.node.instance_info.ramdisk $}/detail">
+            {$ ctrl.node.instance_info.ramdisk $}
+          </a>
+        </dd>
+        <dt translate>Kernel</dt>
+        <dd>
+          <a href="/admin/images/{$ ctrl.node.instance_info.kernel $}/detail">
+            {$ ctrl.node.instance_info.kernel $}
+          </a>
+        </dd>
+      </dl>
+      <dl ng-switch-default class="dl-horizontal">
+        <dt ng-repeat-start="(id, value) in ctrl.node.instance_info">{$ id $}</dt>
+        <dd ng-repeat-end>{$ value $}</dd>
+      </dl>
+    </div>
   </div>
+
 </div>
