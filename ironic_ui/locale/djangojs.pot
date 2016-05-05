@@ -1,14 +1,14 @@
-# Translations template for PROJECT.
+# Translations template for ironic-ui.
 # Copyright (C) 2016 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the ironic-ui project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-04-07 06:37+0000\n"
+"Project-Id-Version: ironic-ui 1.1.1.dev8\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-05-05 06:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,65 +147,49 @@ msgstr ""
 msgid "Properties"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:45
-msgid "Memory"
-msgstr ""
-
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:47
-msgid "CPU Arch"
-msgstr ""
-
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:49
-msgid "Local GB"
-msgstr ""
-
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:51
-msgid "CPUs"
-msgstr ""
-
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:58
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:53
 msgid "Driver Info"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:62
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:57
 #: ironic_ui/static/dashboard/admin/ironic/node-list/node-list.controller.js:78
 #: ironic_ui/static/dashboard/admin/ironic/node-list/node-list.html:74
 msgid "Driver"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:64
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:59
 msgid "SSH Port"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:66
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:61
 msgid "SSH Username"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:68
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:63
 msgid "Deploy Kernel"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:78
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:73
 msgid "Deploy Ramdisk"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:100
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:95
 msgid "Capabilities"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:109
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:104
 msgid "Instance Info"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:112
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:108
 msgid "Instance Name"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:114
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:110
 msgid "Ramdisk"
 msgstr ""
 
-#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:120
+#: ironic_ui/static/dashboard/admin/ironic/node-details/sections/configuration.html:116
 msgid "Kernel"
 msgstr ""
 
