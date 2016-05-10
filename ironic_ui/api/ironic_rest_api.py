@@ -40,6 +40,24 @@ class Nodes(generic.View):
             'items': [i.to_dict() for i in items],
         }
 
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create an Ironic node
+
+        :param request: HTTP request
+        """
+        params = request.DATA.get('node')
+        return ironic.node_create(request, params)
+
+    @rest_utils.ajax(data_required=True)
+    def delete(self, request):
+        """Delete an Ironic node from inventory
+
+        :param request: HTTP request
+        """
+        params = request.DATA.get('node')
+        return ironic.node_delete(request, params)
+
 
 @urls.register
 class Node(generic.View):
@@ -122,3 +140,37 @@ class Maintenance(generic.View):
         :return: Return code
         """
         return ironic.node_set_maintenance(request, node_id, 'off')
+
+
+@urls.register
+class Drivers(generic.View):
+
+    url_regex = r'ironic/drivers/$'
+
+    @rest_utils.ajax()
+    def get(self, request):
+        """Get the list of drivers
+
+        :param request: HTTP request
+        :return: drivers
+        """
+        items = ironic.driver_list(request)
+        return {
+            'items': [i.to_dict() for i in items]
+        }
+
+
+@urls.register
+class DriverProperties(generic.View):
+
+    url_regex = r'ironic/drivers/(?P<driver_name>[0-9a-zA-Z_-]+)/properties$'
+
+    @rest_utils.ajax()
+    def get(self, request, driver_name):
+        """Get the properties associated with a specified driver
+
+        :param request: HTTP request
+        :param driver_name: Driver name
+        :return: Dictionary of properties
+        """
+        return ironic.driver_properties(request, driver_name)
