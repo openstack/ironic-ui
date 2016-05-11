@@ -56,8 +56,14 @@
 
     beforeEach(module('horizon.dashboard.admin.ironic'));
 
-    beforeEach(module('horizon.app.core.openstack-service-api', function($provide) {
-      $provide.value('horizon.app.core.openstack-service-api.ironic', ironicAPI);
+    beforeEach(module(function($provide) {
+      $provide.value('horizon.app.core.openstack-service-api.ironic',
+                     ironicAPI);
+    }));
+
+    beforeEach(module(function($provide) {
+      $provide.value('horizon.dashboard.admin.ironic.maintenance.service',
+                     {});
     }));
 
     beforeEach(inject(function ($injector, _$rootScope_, _$location_) {
@@ -67,11 +73,11 @@
       var $location = _$location_;
       $location.path('/admin/ironic/' + nodeUuid + '/');
 
-      ctrl = controller('horizon.dashboard.admin.ironic.NodeDetailsController', {
-        $scope: scope,
-        $location: $location,
-        'horizon.dashboard.admin.ironic.actions': {},
-        'horizon.dashboard.admin.basePath': '/static'});
+      ctrl = controller(
+        'horizon.dashboard.admin.ironic.NodeDetailsController',
+        {$location: $location,
+         'horizon.dashboard.admin.ironic.actions': {},
+         'horizon.dashboard.admin.basePath': '/static'});
 
       scope.$apply();
     }));
