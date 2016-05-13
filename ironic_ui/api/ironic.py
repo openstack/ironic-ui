@@ -27,7 +27,7 @@ from openstack_dashboard.api import base
 
 LOG = logging.getLogger(__name__)
 
-DEFAULT_IRONIC_API_VERSION = '1.6'
+DEFAULT_IRONIC_API_VERSION = '1.11'
 DEFAULT_INSECURE = False
 DEFAULT_CACERT = None
 
@@ -101,6 +101,19 @@ def node_set_power_state(request, node_id, state):
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_power_state
     """
     return ironicclient(request).node.set_power_state(node_id, state)
+
+
+def node_set_provision_state(request, node_uuid, state):
+    """Set the target provision state for a given node.
+
+    :param request: HTTP request.
+    :param node_uuid: The UUID of the node.
+    :param state: the target provision state to set.
+    :return: node.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_provision_state
+    """
+    return ironicclient(request).node.set_provision_state(node_uuid, state)
 
 
 def node_set_maintenance(request, node_id, state, maint_reason=None):

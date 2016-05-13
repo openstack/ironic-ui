@@ -75,6 +75,7 @@
       deleteNodes: deleteNodes,
       deletePort: deletePort,
       deletePorts: deletePorts,
+      getProvisionStateTransitionVerb: getProvisionStateTransitionVerb,
       powerOn: powerOn,
       powerOff: powerOff,
       powerOnAll: powerOnNodes,
@@ -82,7 +83,8 @@
       putNodeInMaintenanceMode: putInMaintenanceMode,
       removeNodeFromMaintenanceMode: removeFromMaintenanceMode,
       putAllInMaintenanceMode: putNodesInMaintenanceMode,
-      removeAllFromMaintenanceMode: removeNodesFromMaintenanceMode
+      removeAllFromMaintenanceMode: removeNodesFromMaintenanceMode,
+      setProvisionState: setProvisionState
     };
 
     return service;
@@ -189,6 +191,24 @@
 
     function removeNodesFromMaintenanceMode(nodes) {
       return applyFuncToNodes(removeFromMaintenanceMode, nodes);
+    }
+
+    /*
+     * @name horizon.dashboard.admin.ironic.actions.setProvisionState
+     * @description Set the provisioning state of a specified node
+     *
+     * @param {object} args - Object with two properties named 'node'
+     * and 'verb'.
+     *  node: node object.
+     *  verb: string the value of which is the verb used to move
+     *  the node to the desired target state for the node.
+     */
+    function setProvisionState(args) {
+      ironic.setNodeProvisionState(args.node.uuid, args.verb);
+    }
+
+    function getProvisionStateTransitionVerb(sourceState, targetState) {
+      return ironic.getProvisionStateTransitionVerb(sourceState, targetState);
     }
 
     function createPort(node) {

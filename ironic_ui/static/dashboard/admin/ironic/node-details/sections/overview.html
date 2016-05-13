@@ -6,19 +6,19 @@
     <hr class="header_rule">
     <dl class="dl-horizontal">
       <dt translate>Name</dt>
-      <dd>{$ ctrl.node['name'] $}</dd>
+      <dd>{$ ctrl.node.name $}</dd>
       <dt translate>Maintenance</dt>
-      <dd>{$ ctrl.node['maintenance'] | yesno $}</dd>
+      <dd>{$ ctrl.node.maintenance | yesno $}</dd>
       <dt translate>Maintenance Reason</dt>
-      <dd>{$ ctrl.node['maintenance_reason'] | noValue $}</dd>
+      <dd>{$ ctrl.node.maintenance_reason | noValue $}</dd>
       <dt translate>Inspection Started At</dt>
-      <dd>{$ ctrl.node['inspection_started_at'] | date: 'medium' | noValue $}</dd>
+      <dd>{$ ctrl.node.inspection_started_at | date: 'medium' | noValue $}</dd>
       <dt translate>Inspection Finished At</dt>
-      <dd>{$ ctrl.node['inspection_finished_at'] | date: 'medium' | noValue $}</dd>
+      <dd>{$ ctrl.node.inspection_finished_at | date: 'medium' | noValue $}</dd>
       <dt translate>Reservation</dt>
-      <dd>{$ ctrl.node['reservation'] | noValue $}</dd>
+      <dd>{$ ctrl.node.reservation | noValue $}</dd>
       <dt translate>Console Enabled</dt>
-      <dd>{$ ctrl.node['console_enabled'] | yesno $}</dd>
+      <dd>{$ ctrl.node.console_enabled | yesno $}</dd>
     </dl>
   </div>
 
@@ -29,22 +29,22 @@
     <dl class="dl-horizontal">
       <dt translate>Instance ID</dt>
       <dd>
-        <a href="/admin/instances/{$ ctrl.node['instance_uuid'] $}/detail">
-          {$ ctrl.node['instance_uuid'] | noValue $}
+        <a href="/admin/instances/{$ ctrl.node.instance_uuid $}/detail">
+          {$ ctrl.node.instance_uuid | noValue $}
         </a>
       </dd>
       <dt translate>Power State</dt>
-      <dd ng-class="{'running': ctrl.node['target_power_state']}">{$ ctrl.node['power_state'] $}</dd>
+      <dd ng-class="{'running': ctrl.node.target_power_state}">{$ ctrl.node.power_state $}</dd>
       <dt translate>Target Power State</dt>
-      <dd>{$ ctrl.node['target_power_state'] | noValue $}</dd>
+      <dd>{$ ctrl.node.target_power_state | noValue $}</dd>
       <dt translate>Provision State</dt>
-      <dd>{$ ctrl.node['provision_state'] | noValue $}</dd>
+      <dd>{$ ctrl.node.provision_state | noValue $}</dd>
       <dt translate>Target Provision State</dt>
-      <dd>{$ ctrl.node['target_provision_state'] | noValue $}</dd>
+      <dd>{$ ctrl.node.target_provision_state | noValue $}</dd>
       <dt translate>Last Error</dt>
-      <dd>{$ ctrl.node['last_error'] | noValue $}</dd>
+      <dd>{$ ctrl.node.last_error | noValue $}</dd>
       <dt translate>Updated At</dt>
-      <dd>{$ ctrl.node['updated_at'] | date: 'medium' | noValue $}</dd>
+      <dd>{$ ctrl.node.updated_at | date: 'medium' | noValue $}</dd>
     </dl>
   </div>
 </div>

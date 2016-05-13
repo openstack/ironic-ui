@@ -52,6 +52,7 @@
     // selected driver
     ctrl.driverProperties = null;
     ctrl.driverPropertyGroups = null;
+    ctrl.moveNodeToManageableState = false;
 
     // Parameter object that defines the node to be enrolled
     ctrl.node = {
@@ -276,9 +277,14 @@
       });
 
       ironic.createNode(ctrl.node).then(
-        function() {
+        function(response) {
+          $log.info("create node response = " + JSON.stringify(response));
           $modalInstance.close();
           $rootScope.$emit(ironicEvents.ENROLL_NODE_SUCCESS);
+          if (ctrl.moveNodeToManageableState) {
+            $log.info("Setting node provision state");
+            ironic.setNodeProvisionState(response.data.uuid, 'manage');
+          }
         },
         function() {
           // No additional error processing for now

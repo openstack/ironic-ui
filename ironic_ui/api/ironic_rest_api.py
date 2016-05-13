@@ -131,6 +131,23 @@ class StatesPower(generic.View):
 
 
 @urls.register
+class StatesProvision(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_uuid>[0-9a-f-]+)/states/provision$'
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, node_uuid):
+        """Set the provision state for a specified node.
+
+        :param request: HTTP request.
+        :param node_id: Node uuid
+        :return: Return code
+        """
+        state = request.DATA.get('state')
+        return ironic.node_set_provision_state(request, node_uuid, state)
+
+
+@urls.register
 class Maintenance(generic.View):
 
     url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/maintenance$'

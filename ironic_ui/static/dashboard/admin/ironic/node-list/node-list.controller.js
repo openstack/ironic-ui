@@ -24,6 +24,7 @@
   IronicNodeListController.$inject = [
     '$scope',
     '$rootScope',
+    'horizon.framework.widgets.toast.service',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
@@ -34,6 +35,7 @@
 
   function IronicNodeListController($scope,
                                     $rootScope,
+                                    toastService,
                                     ironic,
                                     ironicEvents,
                                     actions,
@@ -43,7 +45,7 @@
     var ctrl = this;
 
     ctrl.nodes = [];
-    ctrl.nodeSrc = [];
+    ctrl.nodesSrc = [];
     ctrl.basePath = basePath;
     ctrl.actions = actions;
 
@@ -52,6 +54,7 @@
     ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
     ctrl.removeNodesFromMaintenanceMode = removeNodesFromMaintenanceMode;
     ctrl.enrollNode = enrollNode;
+    ctrl.refresh = refresh;
 
     /**
      * Filtering - client-side MagicSearch
@@ -132,11 +135,19 @@
     }
 
     function onGetNodes(response) {
-      ctrl.nodesSrc = response.data.items;
-      ctrl.nodesSrc.forEach(function (node) {
+      angular.forEach(response.data.items, function (node) {
         node.id = node.uuid;
         retrievePorts(node);
+
+        // Report any changes in last-error
+        if (node.last_error !== "" &&
+            angular.isDefined(ctrl.nodesSrc[node.uuid]) &&
+            node.last_error !== ctrl.nodesSrc[node.uuid].last_error) {
+          toastService.add('error',
+                           "Node " + node.name + ". " + node.last_error);
+        }
       });
+      ctrl.nodesSrc = response.data.items;
     }
 
     function retrievePorts(node) {
@@ -165,6 +176,10 @@
 
     function enrollNode() {
       enrollNodeService.modal();
+    }
+
+    function refresh() {
+      init();
     }
   }
 

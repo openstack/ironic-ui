@@ -24,6 +24,7 @@ PANEL_GROUP = 'admin'
 ADD_PANEL = 'ironic_ui.content.ironic.panel.Ironic'
 # A list of applications to be prepended to INSTALLED_APPS
 ADD_INSTALLED_APPS = ['ironic_ui', ]
+# A list of AngularJS modules to be loaded when Angular bootstraps.
 ADD_ANGULAR_MODULES = ['horizon.dashboard.admin.ironic']
 # Automatically discover static resources in installed apps
 AUTO_DISCOVER_STATIC_FILES = True

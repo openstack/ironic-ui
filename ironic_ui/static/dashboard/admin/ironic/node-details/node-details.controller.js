@@ -26,6 +26,7 @@
     '$scope',
     '$rootScope',
     '$location',
+    'horizon.framework.widgets.toast.service',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
@@ -37,6 +38,7 @@
   function IronicNodeDetailsController($scope,
                                        $rootScope,
                                        $location,
+                                       toastService,
                                        ironic,
                                        ironicEvents,
                                        actions,
@@ -61,6 +63,7 @@
       }
     ];
 
+    ctrl.node = null;
     ctrl.ports = [];
     ctrl.portsSrc = [];
     ctrl.basePath = basePath;
@@ -72,6 +75,7 @@
     ctrl.createPort = createPort;
     ctrl.deletePort = deletePort;
     ctrl.deletePorts = deletePorts;
+    ctrl.refresh = refresh;
 
     var createPortHandler =
         $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS,
@@ -119,9 +123,19 @@
      * @return {promise} promise
      */
     function retrieveNode(uuid) {
+      var lastError = ctrl.node ? ctrl.node.last_error : null;
+
       return ironic.getNode(uuid).then(function (response) {
         ctrl.node = response.data;
         ctrl.node.id = uuid;
+
+        if (lastError &&
+            ctrl.node.last_error !== "" &&
+            ctrl.node.last_error !== lastError) {
+          toastService.add(
+            'error',
+            "Node " + ctrl.node.name + ". " + ctrl.node.last_error);
+        }
       });
     }
 
@@ -211,6 +225,16 @@
         selectedPorts.push({id: port.uuid, name: port.address});
       });
       ctrl.actions.deletePorts(selectedPorts);
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.refresh
+     * @description Update node information
+     *
+     * @return {void}
+     */
+    function refresh() {
+      init();
     }
   }
 })();

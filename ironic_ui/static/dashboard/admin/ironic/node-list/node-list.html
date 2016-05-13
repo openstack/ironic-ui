@@ -15,11 +15,18 @@
       <thead>
         <tr>
           <th colspan="8">
-            <button class="btn btn-default btn-sm pull-right"
-                    ng-click="table.enrollNode()">
-              <span class="fa fa-plus"></span>
-              <span translate>Enroll Node</span>
-            </button>
+            <div class="pull-right">
+              <button class="btn btn-default btn-sm"
+                      style="margin-right:10px;"
+                      ng-click="table.refresh()">
+                <span translate>Refresh</span>
+              </button>
+              <button class="btn btn-default btn-sm"
+                      ng-click="table.enrollNode()">
+                <span class="fa fa-plus"></span>
+                <span translate>Enroll Node</span>
+              </button>
+            </div>
           </th>
           <th class="action-col">
             <action-list dropdown class="pull-right">
@@ -117,7 +124,7 @@
             <span ng-if="!node.instance_uuid">{$ 'No Instance' | translate $}</span>
           </td>
           <td class="rsp-p2" >
-            <div ng-class="{'running': node['target_power_state']}">
+            <div ng-class="{'running': node.target_power_state}">
               {$ node.power_state $}
             </div>
           </td>
@@ -130,32 +137,32 @@
               <action button-type="split-button"
                       action-classes="'btn btn-default btn-sm'"
                       callback="table.actions.powerOn"
-                      disabled="node['power_state']!=='power off'"
+                      disabled="node.power_state !== 'power off'"
                       item="node">
                 {$ 'Power on' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
                         callback="table.actions.powerOff"
-                        disabled="node['power_state']!=='power on'"
+                        disabled="node.power_state !== 'power on'"
                         item="node">
                   {$ 'Power off' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.putNodeInMaintenanceMode"
-                        disabled="node['maintenance']"
+                        disabled="node.maintenance"
                         item="node">
                   {$ 'Maintenance on' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.removeNodeFromMaintenanceMode"
-                        disabled="!node['maintenance']"
+                        disabled="!node.maintenance"
                         item="node">
                   {$ 'Maintenance off' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.actions.deleteNode"
-                        disabled="!(node['provision_state']==='available' || node['provision_state']==='nostate' || node['provision_state']==='manageable' || node['provision_state']==='enroll')"
+                        disabled="!(node.provision_state === 'available' || node.provision_state === 'nostate' || node.provision_state === 'manageable' || node.provision_state === 'enroll')"
                         item="node">
                   <span class="fa fa-trash"></span>
                   {$ 'Delete node' | translate $}
@@ -165,7 +172,19 @@
                         item="node">
                   {$ 'Create port' | translate $}
                 </action>
-              </menu>
+                <action ng-repeat="targetState in
+                                   ['manageable', 'available', 'active']"
+                        button-type="menu-item"
+                        callback="table.actions.setProvisionState"
+                        item="{node: node,
+                              verb: table.actions.getProvisionStateTransitionVerb(
+                              node.provision_state,
+                              targetState)}"
+                        disabled="table.actions.getProvisionStateTransitionVerb(
+                                  node.provision_state,
+                                  targetState) === null">
+                  {$ ('Move to ' | translate) + targetState $}
+                </action>
             </action-list>
           </td>
         </tr>

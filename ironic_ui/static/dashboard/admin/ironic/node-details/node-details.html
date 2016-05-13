@@ -2,30 +2,47 @@
      ng-controller="horizon.dashboard.admin.ironic.NodeDetailsController as ctrl">
 
   <div class="pull-right">
+    <button class="btn btn-default btn-sm"
+            style="margin-right:10px;"
+            ng-click="ctrl.refresh()">
+      <span translate>Refresh</span>
+    </button>
     <action-list dropdown>
       <action button-type="split-button"
               action-classes="'btn btn-default btn-sm'"
               callback="ctrl.actions.powerOn"
               item="ctrl.node"
-              disabled="ctrl.node['power_state']!=='power off'">
+              disabled="ctrl.node.power_state!=='power off'">
         {$ 'Power on' | translate $}
       </action>
       <menu>
         <action button-type="menu-item"
                 callback="ctrl.actions.powerOff"
                 item="ctrl.node"
-                disabled="ctrl.node['power_state']!=='power on'">
+                disabled="ctrl.node.power_state!=='power on'">
           {$ 'Power off' | translate $}
         </action>
         <action button-type="menu-item"
                 callback="ctrl.putNodeInMaintenanceMode"
-                disabled="ctrl.node['maintenance']">
+                disabled="ctrl.node.maintenance">
           {$ 'Maintenance on' | translate $}
         </action>
         <action button-type="menu-item"
                 callback="ctrl.removeNodeFromMaintenanceMode"
-                disabled="!ctrl.node['maintenance']">
+                disabled="!ctrl.node.maintenance">
           {$ 'Maintenance off' | translate $}
+        </action>
+        <action ng-repeat="targetState in ['manageable', 'available', 'active']"
+                button-type="menu-item"
+                callback="ctrl.actions.setProvisionState"
+                item="{node: ctrl.node,
+                      verb: ctrl.actions.getProvisionStateTransitionVerb(
+                      ctrl.node.provision_state,
+                      targetState)}"
+                disabled="ctrl.actions.getProvisionStateTransitionVerb(
+                          ctrl.node.provision_state,
+                          targetState) === null">
+          {$ ('Move to ' | translate) + targetState $}
         </action>
       </menu>
     </action-list>
