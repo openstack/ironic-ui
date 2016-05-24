@@ -5,9 +5,9 @@
 # Nicolas Fournier <nicolas.fournier3@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 1.1.1.dev9\n"
+"Project-Id-Version: ironic-ui 1.1.1.dev13\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-05-05 12:53+0000\n"
+"POT-Creation-Date: 2016-05-23 20:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -105,18 +105,6 @@ msgstr "ID du noeud"
 msgid "Node Name"
 msgstr "Nom du noeud"
 
-msgid "Node is already in maintenance mode."
-msgstr "Le noeud est déjà en mode maintenance."
-
-msgid "Node is not in maintenance mode."
-msgstr "Le noeud n'est pas en mode maintenance."
-
-msgid "Node is not powered off."
-msgstr "Le noeud n'est pas éteint."
-
-msgid "Node is not powered on."
-msgstr "Le noeud n'est pas allumé."
-
 msgid "Overview"
 msgstr "Vue d'ensemble"
 
@@ -178,26 +166,8 @@ msgstr "État de déploiement de la cible"
 msgid "UUID"
 msgstr "UUID"
 
-msgid "Unable to power off the node"
-msgstr "Impossible d'éteindre le noeud"
-
-msgid "Unable to power on the node"
-msgstr "Impossible d'allumer le noeud"
-
-msgid "Unable to put the Ironic node in maintenance mode."
-msgstr "Impossible de mettre le noeud Ironic en mode maintenance."
-
-msgid "Unable to remove the Ironic node from maintenance mode."
-msgstr "Impossible de supprimer le noeud Ironic du mode maintenance"
-
 msgid "Unable to retrieve Ironic nodes."
 msgstr "Impossible de récupérer les noeud Ironic."
-
-msgid "Unable to retrieve the Ironic node ports."
-msgstr "Impossible de récupérer les ports du noeud Ironic."
-
-msgid "Unable to retrieve the Ironic node."
-msgstr "Impossible de récupérer le noeud Ironic."
 
 msgid "Updated At"
 msgstr "Mis à jour à"
