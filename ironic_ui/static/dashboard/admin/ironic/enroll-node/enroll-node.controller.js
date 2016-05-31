@@ -27,6 +27,7 @@
     '$rootScope',
     '$modalInstance',
     'horizon.app.core.openstack-service-api.ironic',
+    'horizon.app.core.openstack-service-api.glance',
     'horizon.dashboard.admin.ironic.enroll-node.service',
     '$log'
   ];
@@ -34,11 +35,13 @@
   function EnrollNodeController($rootScope,
                                 $modalInstance,
                                 ironic,
+                                glance,
                                 enrollNodeService,
                                 $log) {
     var ctrl = this;
 
     ctrl.drivers = null;
+    ctrl.images = null;
     ctrl.loadingDriverProperties = false;
     // Object containing the set of properties associated with the currently
     // selected driver
@@ -57,6 +60,7 @@
 
     function init() {
       loadDrivers();
+      getImages();
     }
 
     /**
@@ -67,6 +71,17 @@
     function loadDrivers() {
       ironic.getDrivers().then(function(response) {
         ctrl.drivers = response.data.items;
+      });
+    }
+
+    /**
+     * Get the list of images from Glance
+     *
+     * @return {void}
+     */
+    function getImages() {
+      glance.getImages().then(function(response) {
+        ctrl.images = response.data.items;
       });
     }
 
