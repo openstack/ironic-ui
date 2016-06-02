@@ -102,8 +102,9 @@
       if (!this.isActiveExpr) {
         return true;
       }
-      var active = this.isActiveExpr.evaluate(this.propertySet);
-      return active === null ? true : active;
+      var ret = this.isActiveExpr.evaluate(this.propertySet);
+      return ret[0] === PostfixExpr.status.OK &&
+        typeof ret[1] === "boolean" ? ret[1] : true;
     };
 
     /*
@@ -219,10 +220,10 @@
           } else {
             expr.addProperty(match[2]);
             expr.addValue(this.desc.substring(i, j));
-            expr.addOperator("==");
+            expr.addOperator(PostfixExpr.op.EQ);
             numAdds++;
             if (numAdds > 1) {
-              expr.addOperator("or");
+              expr.addOperator(PostfixExpr.op.OR);
             }
             i = notInsideMatch;
           }
@@ -249,14 +250,14 @@
       var parts = match[1].split(", or ");
       expr.addProperty(parts[1]);
       expr.addValue(null);
-      expr.addOperator("==");
+      expr.addOperator(PostfixExpr.op.EQ);
 
       parts = parts[0].split(", ");
       for (var i = 0; i < parts.length; i++) {
         expr.addProperty(parts[i]);
         expr.addValue(null);
-        expr.addOperator("==");
-        expr.addOperator("and");
+        expr.addOperator(PostfixExpr.op.EQ);
+        expr.addOperator(PostfixExpr.op.AND);
       }
       $log.debug("_analyzeOneOfDependencies | " +
                  this.desc + " | " +
@@ -281,6 +282,22 @@
       this.elem = [];
     }
 
+    PostfixExpr.op = {
+      EQ: "==",
+      AND: "and",
+      OR: "or"
+    };
+
+    PostfixExpr.UNDEFINED = null;
+
+    PostfixExpr.status = {
+      OK: 0,
+      ERROR: 1,
+      BAD_ARG: 2,
+      UNKNOWN_OP: 3,
+      MALFORMED: 4
+    };
+
     PostfixExpr.prototype.addProperty = function(propertyName) {
       this.elem.push({name: propertyName});
     };
@@ -294,13 +311,42 @@
     };
 
     /**
+     * Evaluate a boolean binary operation
+     *
+     * @param {array} valStack - Stack of values to operate on
+     * @param {string} opId - operator id
+     *
+     * @return {integer} Return code
+     */
+    function _evaluateBoolBinaryOp(valStack, opId) {
+      var retCode = PostfixExpr.status.OK;
+      var val1 = valStack.pop();
+      var val2 = valStack.pop();
+      if (typeof val1 === "boolean" &&
+          typeof val2 === "boolean") {
+        switch (opId) {
+          case PostfixExpr.op.AND:
+            valStack.push(val1 && val2);
+            break;
+          case PostfixExpr.op.OR:
+            valStack.push(val1 || val2);
+            break;
+          default:
+            retCode = PostfixExpr.status.UNKNOWN_OP;
+        }
+      } else {
+        retCode = PostfixExpr.status.BAD_ARG;
+      }
+      return retCode;
+    }
+
+    /**
      * Evaluate the experssion using property values from a specified
      * set
      *
      * @param {object} propertySet - Dictionary of DriverProperty instances
      *
-     * @return {value} Value of the expression. Null if the expression
-     * could not be successfully evaluated.
+     * @return {array} Return code and Value of the expression
      */
     PostfixExpr.prototype.evaluate = function(propertySet) {
       var resultStack = [];
@@ -311,20 +357,23 @@
         } else if (angular.isDefined(elem.value)) {
           resultStack.push(elem.value);
         } else if (angular.isDefined(elem.op)) {
-          if (elem.op === "==") {
-            resultStack.push(resultStack.pop() === resultStack.pop());
-          } else if (elem.op === "or") {
-            resultStack.push(resultStack.pop() || resultStack.pop());
-          } else if (elem.op === "and") {
-            resultStack.push(resultStack.pop() && resultStack.pop());
+          if (elem.op === PostfixExpr.op.EQ) {
+            var val1 = resultStack.pop();
+            var val2 = resultStack.pop();
+            resultStack.push(val1 === val2);
           } else {
-            return null;
+            var ret = _evaluateBoolBinaryOp(resultStack, elem.op);
+            if (ret !== PostfixExpr.status.OK) {
+              return [ret, PostfixExpr.UNDEFINED];
+            }
           }
         } else {
-          return null;
+          return [PostfixExpr.status.UNKNOWN_ELEMENT, PostfixExpr.UNDEFINED];
         }
       }
-      return resultStack.length === 1 ? resultStack.pop() : null;
+      return resultStack.length === 1
+        ? [PostfixExpr.status.OK, resultStack.pop()]
+        : [PostfixExpr.status.MALFORMED, PostfixExpr.UNDEFINED];
     };
 
     return service;
