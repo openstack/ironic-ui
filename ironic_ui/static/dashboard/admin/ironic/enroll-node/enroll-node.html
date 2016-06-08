@@ -5,9 +5,20 @@
 <div class="modal-body">
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
-      <li class="required active"><a href="" data-target="#nodeInfo" data-toggle="tab" translate>Node Info</a></li>
-      <li ng-if="!ctrl.driverProperties" class="disabled"><a data-target="#driverDetails" translate>Driver Details</a></li>
-      <li ng-if="ctrl.driverProperties"><a href="" data-target="#driverDetails" data-toggle="tab" translate>Driver Details</a></li>
+      <li class="required active">
+        <a href=""
+           data-target="#nodeInfo"
+           data-toggle="tab"
+           translate>Node Info</a></li>
+      <li ng-if="!ctrl.driverProperties"
+          class="disabled">
+        <a data-target="#driverDetails"
+           translate>Driver Details</a></li>
+      <li ng-if="ctrl.driverProperties">
+        <a href=""
+           data-target="#driverDetails"
+           data-toggle="tab"
+           translate>Driver Details</a></li>
     </ul>
 
     <!--enroll node form-->
@@ -153,43 +164,63 @@
             <small><em><i class="fa fa-spin fa-refresh"></i></em></small>
           </p>
           <div class="form-group"
-                 ng-repeat="(name, property) in ctrl.driverProperties"
-                 ng-show="property.isActive()">
-              <label for="{$ name $}"
-                     class="control-label"
-                     style="white-space: nowrap"
-                     translate>
-                {$ name $}
-                <span class="help-icon"
-                      data-container="body"
-                      title=""
-                      data-toggle="tooltip"
-                      data-original-title="{$ property.getDescription() | translate $}">
-                  <span class="fa fa-question-circle"></span>
-                </span>
-              </label>
-              <div ng-if="!property.getSelectOptions()" class="">
-                <input type="text"
-                       class="form-control"
-                       id="{$ name $}"
-                       name="{$ name $}"
-                       ng-model="property.inputValue"
-                       placeholder="{$ property.getDescription() | translate $}"
-                       ng-required="property.isRequired()"/>
-              </div>
-              <div ng-if="property.getSelectOptions()" class="">
-                <select id="{$ name $}"
-                        class="form-control"
-                        ng-options="opt for opt in property.getSelectOptions()"
-                        ng-model="property.inputValue"
-                        ng-required="property.isRequired()">
-                  <option value=""
-                          disabled
-                          selected
-                          translate>{$ property.getDescription() $}</option>
-                </select>
+               ng-repeat="(name, property) in ctrl.driverProperties"
+               ng-show="property.isActive()">
+            <label for="{$ name $}"
+                   class="control-label"
+                   style="white-space: nowrap"
+                   translate>
+              {$ name $}
+              <span class="help-icon"
+                    data-container="body"
+                    title=""
+                    data-toggle="tooltip"
+                    data-original-title="{$ property.getDescription() | translate $}">
+                <span class="fa fa-question-circle"></span>
+              </span>
+            </label>
+            <div ng-if="!property.getSelectOptions()"
+                 ng-class="name === 'deploy_kernel' ||
+                           name === 'deploy_ramdisk' ? 'input-group' : ''">
+              <input type="text"
+                     class="form-control"
+                     id="{$ name $}"
+                     name="{$ name $}"
+                     ng-model="property.inputValue"
+                     placeholder="{$ property.getDescription() | translate $}"
+                     ng-required="property.isRequired()"/>
+              <div ng-if="name === 'deploy_kernel' ||
+                          name === 'deploy_ramdisk'"
+                   class="input-group-btn">
+                <button type="button"
+                        class="btn btn-primary dropdown-toggle"
+                        data-toggle="dropdown"
+                        translate>
+                  Choose an Image
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item"
+                       ng-repeat="imageObj in ctrl.images"
+                       href="#"
+                       ng-click="property.inputValue = imageObj.id">{$ imageObj.name + ' [' + imageObj.id + ']' $}</a>
+                  </li>
+                </ul>
               </div>
             </div>
+            <div ng-if="property.getSelectOptions()" class="">
+              <select id="{$ name $}"
+                      class="form-control"
+                      ng-options="opt for opt in property.getSelectOptions()"
+                      ng-model="property.inputValue"
+                      ng-required="property.isRequired()">
+                <option value=""
+                        disabled
+                        selected
+                        translate>{$ property.getDescription() $}</option>
+              </select>
+            </div>
+          </div>
         </div>
         <!--end driver details tab-->
       </div>
