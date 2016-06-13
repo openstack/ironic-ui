@@ -26,6 +26,11 @@
    * to support and display Ironic related content.
    */
   angular
-    .module('horizon.dashboard.admin.ironic', []);
+    .module('horizon.dashboard.admin.ironic', [])
+    .constant('horizon.dashboard.admin.ironic.validHostNamePattern',
+              '^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$') // eslint-disable-line max-len
+
+    .constant('horizon.dashboard.admin.ironic.validUuidPattern',
+              '^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$'); // eslint-disable-line max-len
 
 })();
