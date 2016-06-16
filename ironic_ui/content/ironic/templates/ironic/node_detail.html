@@ -2,6 +2,15 @@
 {% load i18n %}
 {% block title %}{% trans "Node Details" %}{% endblock %}
 
+{% block breadcrumb_nav %}
+  <ol class="breadcrumb">
+    <li>{% trans "Admin" %}</li>
+    <li>{% trans "System" %}</li>
+    <li>{% trans "Ironic Bare Metal Provisioning" %}</li>
+    <li class="active">{% trans "Node Details" %}</li>
+  </ol>
+{% endblock %}
+
 {% block page_header %}
   <hz-page-header header="{% trans "Node Details" %}"></hz-page-header>
 {% endblock %}
