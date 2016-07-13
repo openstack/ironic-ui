@@ -54,7 +54,7 @@
           expect(property.required).toBe(false);
           expect(property.defaultValue).toBe(null);
           expect(property.inputValue).toBe(null);
-          expect(property.getActualValue()).toBe(null);
+          expect(property.getInputValue()).toBe(null);
           expect(property.isActive()).toBe(true);
         });
 

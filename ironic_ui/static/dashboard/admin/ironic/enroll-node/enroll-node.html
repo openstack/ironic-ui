@@ -1,4 +1,11 @@
-<div class="modal-header">
+<div class="modal-header" modal-draggable>
+  <button type="button"
+          class="close"
+          ng-click="$dismiss()"
+          aria-hidden="true"
+          aria-label="Close">
+    <span aria-hidden="true" class="fa fa-times"></span>
+  </button>
   <h3 class="modal-title" translate>Enroll Node</h3>
 </div>
 <!-- begin general node info modal -->
@@ -30,7 +37,9 @@
         <!-- node info tab-->
         <div class="tab-pane active" id="nodeInfo">
           <!--node name-->
-          <div class="form-group">
+          <div class="form-group"
+               ng-class="{'has-error': enrollNodeForm.name.$invalid &&
+                         enrollNodeForm.name.$dirty}">
             <label for="name"
                    class="control-label"
                    translate>Node Name</label>
@@ -40,6 +49,7 @@
                      ng-model="ctrl.node.name"
                      id="name"
                      name="name"
+                     ng-pattern="ctrl.validHostNameRegex"
                      placeholder="{$ 'A unique node name. Optional.' | translate $}"/>
             </div>
           </div>
@@ -48,6 +58,7 @@
             <label for="driver"
                    class="control-label"
                    translate>Node Driver</label>
+            <span class="hz-icon-required fa fa-asterisk"></span>
             <div>
               <select id="driver"
                       class="form-control"
@@ -90,8 +101,7 @@
             <div class="input-group input-group-sm"
                  ng-repeat="(propertyName, propertyValue) in ctrl.node.properties">
               <span class="input-group-addon"
-                    style="width:25%;text-align:right"
-                    translate>
+                    style="width:25%;text-align:right">
                 {$ propertyName $}
               </span>
               <input class="form-control"
@@ -138,8 +148,7 @@
           <div class="input-group input-group-sm"
                ng-repeat="(propertyName, propertyValue) in ctrl.node.extra">
             <span class="input-group-addon"
-                  style="width:25%;text-align:right"
-                  translate>
+                  style="width:25%;text-align:right">
               {$ propertyName $}
             </span>
             <input class="form-control"
@@ -163,14 +172,20 @@
              ng-if="ctrl.loadingDriverProperties">
             <small><em><i class="fa fa-spin fa-refresh"></i></em></small>
           </p>
-          <div class="form-group"
-               ng-repeat="(name, property) in ctrl.driverProperties"
-               ng-show="property.isActive()">
+          <div ng-repeat="propertyGroup in ctrl.driverPropertyGroups"
+               ng-class="{'well': propertyGroup.length > 1}">
+            <div class="form-group"
+               ng-repeat="property in propertyGroup | filter:ctrl.isDriverPropertyActive"
+               ng-init="name = property.name;
+                        selectOptions = property.getSelectOptions()"
+               ng-class="{'has-error': enrollNodeForm.{$ name $}.$invalid &&
+                         enrollNodeForm.{$ name $}.$dirty}">
             <label for="{$ name $}"
                    class="control-label"
-                   style="white-space: nowrap"
-                   translate>
+                   style="white-space: nowrap">
               {$ name $}
+              <span ng-if="property.isRequired()"
+                    class="hz-icon-required fa fa-asterisk"></span>
               <span class="help-icon"
                     data-container="body"
                     title=""
@@ -179,16 +194,20 @@
                 <span class="fa fa-question-circle"></span>
               </span>
             </label>
-            <div ng-if="!property.getSelectOptions()"
-                 ng-class="name === 'deploy_kernel' ||
-                           name === 'deploy_ramdisk' ? 'input-group' : ''">
+            <div ng-if="!selectOptions"
+                 ng-class="{'input-group': name === 'deploy_kernel' ||
+                           name === 'deploy_ramdisk'}">
               <input type="text"
                      class="form-control"
                      id="{$ name $}"
                      name="{$ name $}"
                      ng-model="property.inputValue"
-                     placeholder="{$ property.getDescription() | translate $}"
-                     ng-required="property.isRequired()"/>
+                     ng-pattern="property.getValidValueRegex()"
+                     placeholder="{$ property.defaultValue !== undefined ?
+                                  property.defaultValue :
+                                  property.getDescription() $}"
+                     ng-required="property.isRequired()"
+                     empty-to-pristine/>
               <div ng-if="name === 'deploy_kernel' ||
                           name === 'deploy_ramdisk'"
                    class="input-group-btn">
@@ -208,18 +227,28 @@
                 </ul>
               </div>
             </div>
-            <div ng-if="property.getSelectOptions()" class="">
-              <select id="{$ name $}"
+            <div ng-if="selectOptions" class="">
+              <select ng-if="selectOptions.length > 4"
+                      id="{$ name $}"
                       class="form-control"
-                      ng-options="opt for opt in property.getSelectOptions()"
+                      ng-options="opt for opt in selectOptions"
                       ng-model="property.inputValue"
                       ng-required="property.isRequired()">
-                <option value=""
+                <option ng-if="property.defaultValue === undefined"
+                        value=""
                         disabled
                         selected
                         translate>{$ property.getDescription() $}</option>
               </select>
+              <div ng-if="selectOptions.length <= 4"
+                   class="btn-group">
+                <label class="btn btn-default"
+                       ng-repeat="opt in selectOptions"
+                       ng-model="property.inputValue"
+                       btn-radio="opt">{$ opt $}</label>
+              </div>
             </div>
+          </div>
           </div>
         </div>
         <!--end driver details tab-->

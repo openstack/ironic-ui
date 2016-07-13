@@ -17,13 +17,33 @@
   'use strict';
 
   var REQUIRED = " " + gettext("Required") + ".";
-  var selectOptionsRegexp =
-      new RegExp(
-        gettext('(?:[Oo]ne of )(?!this)((?:(?:"[^"]+"|[^,\. ]+)(?:, |\.))+)'));
-  var defaultValueRegexp = new RegExp(gettext('default is ([^". ]+|"[^"]+")'));
-  var oneOfRegexp =
-      new RegExp(gettext('One of this, (.*) must be specified\.'));
-  var notInsideMatch = -1;
+
+  var SELECT_OPTIONS_REGEX =
+    new RegExp(
+      gettext('(?:[Oo]ne of )(?!this)((?:(?:"[^"]+"|[^,\\. ]+)(?:, |\\.))+)'));
+
+  var DEFAULT_IS_REGEX =
+      new RegExp(gettext('default (?:value )?is ([^"\\. ]+|"[^"]+")'));
+
+  var DEFAULTS_TO_REGEX =
+      new RegExp(gettext('Defaults to ([^"\\. ]+|"[^"]+")'));
+
+  var DEFAULT_IN_PARENS_REGEX =
+      new RegExp(gettext(' ([^" ]+|"[^"]+") \\(Default\\)'));
+
+  var DEFAULT_REGEX_LIST = [DEFAULT_IS_REGEX,
+                            DEFAULTS_TO_REGEX,
+                            DEFAULT_IN_PARENS_REGEX];
+  var ONE_OF_REGEX =
+      new RegExp(gettext('One of this, (.*) must be specified\\.'));
+
+  var NOT_INSIDE_MATCH = -1;
+
+  var VALID_PORT_REGEX = new RegExp('^\\d+$');
+
+  var VALID_IPV4_ADDRESS = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"; // eslint-disable-line max-len
+
+  var VALID_IPV6_ADDRESS = "^\\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?\\s*$"; // eslint-disable-line max-len
 
   angular
     .module('horizon.dashboard.admin.ironic')
@@ -33,25 +53,95 @@
   enrollNodeService.$inject = [
     '$modal',
     'horizon.dashboard.admin.basePath',
-    '$log'
+    '$log',
+    'horizon.dashboard.admin.ironic.validHostNamePattern',
+    'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
 
-  function enrollNodeService($modal, basePath, $log) {
+  function enrollNodeService($modal,
+                             basePath,
+                             $log,
+                             validHostNamePattern,
+                             validUuidPattern) {
     var service = {
       modal: modal,
-      DriverProperty: DriverProperty
+      DriverProperty: DriverProperty,
+      Graph: Graph
     };
+
+    var VALID_ADDRESS_HOSTNAME_REGEX = new RegExp(VALID_IPV4_ADDRESS + "|" +
+                                                  VALID_IPV6_ADDRESS + "|" +
+                                                  validHostNamePattern);
+
+    var VALID_IMAGE_REGEX = new RegExp(validUuidPattern + "|" +
+                                       "^(https?|file)://.+$");
 
     function modal() {
       var options = {
         controller: 'EnrollNodeController as ctrl',
+        backdrop: 'static',
         templateUrl: basePath + '/ironic/enroll-node/enroll-node.html'
       };
       return $modal.open(options);
     }
 
     /**
-     * Construct a new driver property
+       The DriverProperty class is used to represent an ironic driver
+       property. It is currently used by the enroll-node form to
+       support property display, value assignment and validation.
+
+       The following rules are used to extract information about a property
+       from the description returned by the driver.
+
+       1. If the description ends with " Required." a value must be
+       supplied for the property.
+
+       2. The following syntax is used to extract default values
+       from property descriptions.
+
+       Default is <value>(<space>|.)
+       default is “<value>”
+       default value is <value>(<space>|.)
+       default value is “<value>”
+       Defaults to <value>(<space>|.)
+       Defaults to “<value>”
+       <value> (Default)
+
+       3. The following syntax is used to determine whether a property
+       is considered active. In the example below if the user specifies
+       a value for <property-name-1>, properties 2 to n will be tagged
+       inactive, and hidden from view. All properties are considered
+       to be required.
+
+       One of this, <property-name-1>, <property-name-2>, …, or
+       <property-name-n> must be specified.
+
+       4. The following syntax is used to determine whether a property
+       is restricted to a set of enumerated values. The property will
+       be displayed as an HTML select element.
+
+       [Oo]ne of <value-1>, "<value-2>", …, <value-n>.
+
+       5. The following syntax is used to determine whether a property is
+       active and required based on the value of another property.
+       If the property is not active it will not be displayed.
+
+       Required|Used only if <property-name> is set to <value-1>
+       (or "<value-2>")*.
+
+       Notes:
+       1. The properties "deploy_kernel" and "deploy_ramdisk" are
+       assumed to accept Glance image uuids as valid values.
+
+       2. Property names ending in _port are assumed to only accept
+       postive integer values
+
+       3. Property names ending in _address are assumed to only accept
+       valid IPv4 and IPv6 addresses; and hostnames
+    */
+
+    /**
+     * @description Construct a new driver property
      *
      * @class DriverProperty
      * @param {string} name - Name of property
@@ -60,21 +150,28 @@
      *
      * @property {string} defaultValue - Default value of the property
      * @property {string[]} selectOptions - If the property is limited to a
-     * set of enumerted values then selectOptions will be an array of those
+     * set of enumerated values then selectOptions will be an array of those
      * values, otherwise null
      * @property {boolean} required - Boolean value indicating whether a value
      * must be supplied for this property if it is active
      * @property {PostfixExpr} isActiveExpr - Null if this property is always
      * active; otherwise, a boolean expression that when evaluated will
-     * return whether this variable is active
-     * @propery {string} inputValue User assigned value for this property
+     * return whether this variable is active. A property is considered
+     * active if its role is not eliminated by the values of other
+     * properties in the property-set.
+     * @property {string} inputValue - User assigned value for this property
+     * @property {regexp} validValueRegex - Regular expression used to
+     * determine whether an input value is valid.
+     * @returns {object} Driver property
      */
     function DriverProperty(name, desc, propertySet) {
       this.name = name;
       this.desc = desc;
       this.propertySet = propertySet;
+
       // Determine whether this property should be presented as a selection
       this.selectOptions = this._analyzeSelectOptions();
+
       this.required = null;  // Initialize to unknown
       // Expression to be evaluated to determine whether property is active.
       // By default the property is considered active.
@@ -94,8 +191,40 @@
       if (this.required === null) {
         this.required = desc.endsWith(REQUIRED);
       }
+
       this.defaultValue = this._getDefaultValue();
-      this.inputValue = null;
+      this.inputValue = this.defaultValue;
+
+      // Infer that property is a boolean that can be represented as a
+      // True/False selection
+      if (this.selectOptions === null &&
+          (this.defaultValue === "True" || this.defaultValue === "False")) {
+        this.selectOptions = ["True", "False"];
+      }
+
+      this.validValueRegex = _determineValidValueRegex(this.name);
+    }
+
+    /**
+     * @description Return a regular expression that can be used to
+     * validate the value of a specified property
+     *
+     * @param {string} propertyName - Name of property
+     * @return {regexp} Regular expression object or undefined
+     */
+    function _determineValidValueRegex(propertyName) {
+      var regex;
+      if (propertyName.endsWith("_port")) {
+        regex = VALID_PORT_REGEX;
+      } else if (propertyName.endsWith("_address")) {
+        regex = VALID_ADDRESS_HOSTNAME_REGEX;
+      } else if (propertyName === "deploy_kernel") {
+        regex = VALID_IMAGE_REGEX;
+      } else if (propertyName === "deploy_ramdisk") {
+        regex = VALID_IMAGE_REGEX;
+      }
+
+      return regex;
     }
 
     DriverProperty.prototype.isActive = function() {
@@ -107,17 +236,27 @@
         typeof ret[1] === "boolean" ? ret[1] : true;
     };
 
-    /*
-     * Must a value be provided for this property
+    /**
+     * @description Get a regular expression object that can be used to
+     * determine whether a value is valid for this property
+     *
+     * @return {regexp} Regular expression object or undefined
+     */
+    DriverProperty.prototype.getValidValueRegex = function() {
+      return this.validValueRegex;
+    };
+
+    /**
+     * @description Must a value be provided for this property
      *
      * @return {boolean} True if a value must be provided for this property
      */
     DriverProperty.prototype.isRequired = function() {
-      return this.required && this.isActive();
+      return this.required;
     };
 
     DriverProperty.prototype._analyzeSelectOptions = function() {
-      var match = this.desc.match(selectOptionsRegexp);
+      var match = this.desc.match(SELECT_OPTIONS_REGEX);
       if (!match) {
         return null;
       }
@@ -131,7 +270,7 @@
     };
 
     /**
-     * Get the list of select options for this property
+     * @description Get the list of select options for this property
      *
      * @return {string[]} null if this property is not selectable; else,
      * an array of selectable options
@@ -141,7 +280,7 @@
     };
 
     /**
-     * Remove leading/trailing double-quotes from a string
+     * @description Remove leading/trailing double-quotes from a string
      *
      * @param {string} str - String to be trimmed
      * @return {string} trim'd string
@@ -152,29 +291,43 @@
     }
 
     /**
-     * Get the default value of this property
+     * @description Get the default value of this property
      *
      * @return {string} Default value of this property
      */
     DriverProperty.prototype._getDefaultValue = function() {
-      var match = this.desc.match(defaultValueRegexp);
-      return match ? trimQuotes(match[1]) : null;
+      var value;
+      for (var i = 0; i < DEFAULT_REGEX_LIST.length; i++) {
+        var match = this.desc.match(DEFAULT_REGEX_LIST[i]);
+        if (match) {
+          value = trimQuotes(match[1]);
+          break;
+        }
+      }
+      $log.debug("_getDefaultValue | " + this.desc + " | " + value);
+      return value;
     };
 
     /**
-     * Get the actual value of this property
+     * @description Get the input value of this property
      *
-     * @return {string} Get the actual value of this property. If
-     * an input value has not been specified, but a default value exists
-     * that will be returned.
+     * @return {string} the input value of this property
      */
-    DriverProperty.prototype.getActualValue = function() {
-      return this.inputValue ? this.inputValue
-        : this.defaultValue ? this.defaultValue : null;
+    DriverProperty.prototype.getInputValue = function() {
+      return this.inputValue;
     };
 
     /**
-     * Get the description of this property
+     * @description Get the default value of this property
+     *
+     * @return {string} the default value of this property
+     */
+    DriverProperty.prototype.getDefaultValue = function() {
+      return this.defaultValue;
+    };
+
+    /**
+     * @description Get the description of this property
      *
      * @return {string} Description of this property
      */
@@ -183,9 +336,9 @@
     };
 
     /**
-     * Use the property description to build an expression that will
-     * evaluate to a boolean result indicating whether the property is
-     * active
+     * @description Use the property description to build an expression
+     * that will evaluate to a boolean result indicating whether the
+     * property is active
      *
      * @return {array} null if this property is not dependent on any others;
      * otherwise,
@@ -207,15 +360,15 @@
       var expr = new PostfixExpr();
       var numAdds = 0;
 
-      var i = notInsideMatch;
+      var i = NOT_INSIDE_MATCH;
       var j = re.lastIndex;
       while (j < this.desc.length) {
-        if (i === notInsideMatch && this.desc.charAt(j) === ".") {
+        if (i === NOT_INSIDE_MATCH && this.desc.charAt(j) === ".") {
           break;
         }
 
         if (this.desc.charAt(j) === '"') {
-          if (i === notInsideMatch) {
+          if (i === NOT_INSIDE_MATCH) {
             i = j + 1;
           } else {
             expr.addProperty(match[2]);
@@ -225,7 +378,7 @@
             if (numAdds > 1) {
               expr.addOperator(PostfixExpr.op.OR);
             }
-            i = notInsideMatch;
+            i = NOT_INSIDE_MATCH;
           }
         }
         j++;
@@ -238,7 +391,7 @@
     };
 
     DriverProperty.prototype._analyzeOneOfDependencies = function() {
-      var match = this.desc.match(oneOfRegexp);
+      var match = this.desc.match(ONE_OF_REGEX);
       if (!match) {
         return null;
       }
@@ -249,13 +402,13 @@
 
       var parts = match[1].split(", or ");
       expr.addProperty(parts[1]);
-      expr.addValue(null);
+      expr.addValue(undefined);
       expr.addOperator(PostfixExpr.op.EQ);
 
       parts = parts[0].split(", ");
       for (var i = 0; i < parts.length; i++) {
         expr.addProperty(parts[i]);
-        expr.addValue(null);
+        expr.addValue(undefined);
         expr.addOperator(PostfixExpr.op.EQ);
         expr.addOperator(PostfixExpr.op.AND);
       }
@@ -264,6 +417,17 @@
                  JSON.stringify(match) + ", " +
                  JSON.stringify(expr));
       return [true, expr];
+    };
+
+    /**
+     * @description Get the names of the driver-properties whose values
+     * determine whether this property is active
+     *
+     * @return {object} Object the properties of which are names of
+     * activating driver-properties or null
+     */
+    DriverProperty.prototype.getActivators = function() {
+      return this.isActiveExpr ? this.isActiveExpr.getProperties() : null;
     };
 
     /**
@@ -288,7 +452,7 @@
       OR: "or"
     };
 
-    PostfixExpr.UNDEFINED = null;
+    PostfixExpr.UNDEFINED = undefined;
 
     PostfixExpr.status = {
       OK: 0,
@@ -298,20 +462,58 @@
       MALFORMED: 4
     };
 
+    /**
+     * @description Add a property to the expression
+     *
+     * @param {string} propertyName - Property name
+     *
+     * @return {void}
+     */
     PostfixExpr.prototype.addProperty = function(propertyName) {
       this.elem.push({name: propertyName});
     };
 
+    /**
+     * @description Add a value to the expression
+     *
+     * @param {object} value - value
+     *
+     * @return {void}
+     */
     PostfixExpr.prototype.addValue = function(value) {
       this.elem.push({value: value});
     };
 
+    /**
+     * @description Add an operator to the expression
+     *
+     * @param {PostfixExpr.op} opId - operator
+     *
+     * @return {void}
+     */
     PostfixExpr.prototype.addOperator = function(opId) {
       this.elem.push({op: opId});
     };
 
     /**
-     * Evaluate a boolean binary operation
+     * @description Get a list of property names referenced by this
+     * expression
+     *
+     * @return {object} An object each property of which corresponds to
+     * a property in the expression
+     */
+    PostfixExpr.prototype.getProperties = function() {
+      var properties = {};
+      angular.forEach(this.elem, function(elem) {
+        if (angular.isDefined(elem.name)) {
+          properties[elem.name] = true;
+        }
+      });
+      return properties;
+    };
+
+    /**
+     * @description Evaluate a boolean binary operation
      *
      * @param {array} valStack - Stack of values to operate on
      * @param {string} opId - operator id
@@ -341,8 +543,8 @@
     }
 
     /**
-     * Evaluate the experssion using property values from a specified
-     * set
+     * @description Evaluate the experssion using property values from
+     * a specified set
      *
      * @param {object} propertySet - Dictionary of DriverProperty instances
      *
@@ -352,11 +554,11 @@
       var resultStack = [];
       for (var i = 0, len = this.elem.length; i < len; i++) {
         var elem = this.elem[i];
-        if (angular.isDefined(elem.name)) {
-          resultStack.push(propertySet[elem.name].getActualValue());
-        } else if (angular.isDefined(elem.value)) {
+        if (elem.hasOwnProperty("name")) {
+          resultStack.push(propertySet[elem.name].getInputValue());
+        } else if (elem.hasOwnProperty("value")) {
           resultStack.push(elem.value);
-        } else if (angular.isDefined(elem.op)) {
+        } else if (elem.hasOwnProperty("op")) {
           if (elem.op === PostfixExpr.op.EQ) {
             var val1 = resultStack.pop();
             var val2 = resultStack.pop();
@@ -374,6 +576,108 @@
       return resultStack.length === 1
         ? [PostfixExpr.status.OK, resultStack.pop()]
         : [PostfixExpr.status.MALFORMED, PostfixExpr.UNDEFINED];
+    };
+
+    /**
+     * @description Class for representing and manipulating undirected
+     * graphs
+     *
+     * @property {object} vertices - Associative array of vertex objects
+     * indexed by property name
+     * @return {object} Graph
+     */
+    function Graph() {
+      this.vertices = {};
+    }
+
+    Graph.prototype.getVertex = function(vertexName) {
+      var vertex = null;
+      if (this.vertices.hasOwnProperty(vertexName)) {
+        vertex = this.vertices[vertexName];
+      }
+      return vertex;
+    };
+
+    /**
+     * @description Add a vertex to this graph
+     *
+     * @param {string} name - Vertex name
+     * @param {object} data - Vertex data
+     * @returns {object} - Newly created vertex
+     */
+    Graph.prototype.addVertex = function(name, data) {
+      var vertex = {name: name, data: data, adjacents: []};
+      this.vertices[name] = vertex;
+      return vertex;
+    };
+
+    /**
+     * @description Add an undirected edge between two vertices
+     *
+     * @param {string} vertexName1 - Name of first vertex
+     * @param {string} vertexName2 - Name of second vertex
+     * @returns {void}
+     */
+    Graph.prototype.addEdge = function(vertexName1, vertexName2) {
+      this.vertices[vertexName1].adjacents.push(vertexName2);
+      this.vertices[vertexName2].adjacents.push(vertexName1);
+    };
+
+    /**
+     * @description Depth-first-search graph traversal utility function
+     *
+     * @param {object} vertex - Root vertex from which traveral will begin.
+     * It is assumed that this vertex has not alreday been visited as part
+     * of this traversal.
+     * @param {object} visited - Associative array. Each named property
+     * corresponds to a vertex with the same name, and has boolean value
+     * indicating whether the vertex has been alreday visited.
+     * @param {object[]} component - Array of vertices that define a strongly
+     * connected component.
+     * @returns {void}
+     */
+    Graph.prototype._dfsTraverse = function(vertex, visited, component) {
+      var graph = this;
+      visited[vertex.name] = true;
+      component.push(vertex);
+
+      /* eslint-disable no-unused-vars */
+      angular.forEach(vertex.adjacents, function(vertexName) {
+        if (!visited[vertexName]) {
+          graph._dfsTraverse(graph.vertices[vertexName], visited, component);
+        }
+      });
+      /* eslint-enable no-unused-vars */
+    };
+
+    /**
+     * @description Perform a depth-first-search on a specified graph to
+     * find strongly connected components. A user provided function will
+     * be called to process each component.
+     *
+     * @param {function} componentFunc - Function called on each strongly
+     * connected component. Accepts aruments: array of vertex objects, and
+     * user-provided extra data that can be used in processing the component.
+     * @param {object} extra - Extra data that is passed into the component
+     * processing function.
+     * @returns {void}
+     */
+    Graph.prototype.dfs = function(componentFunc, extra) {
+      var graph = this;
+      var visited = {};
+      angular.forEach(
+        graph.vertices,
+        function(unused, name) {
+          visited[name] = false;
+        });
+
+      angular.forEach(this.vertices, function(vertex, vertexName) {
+        if (!visited[vertexName]) {
+          var component = [];
+          graph._dfsTraverse(vertex, visited, component);
+          componentFunc(component, extra);
+        }
+      });
     };
 
     return service;
