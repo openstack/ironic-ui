@@ -1,25 +1,33 @@
-.. ironic-ui documentation master file, created by
-   sphinx-quickstart on Tue Jul  9 22:26:36 2013.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+===============================================
+Welcome to Ironic UI's developer documentation!
+===============================================
 
-Welcome to ironic-ui's documentation!
-========================================================
+Introduction
+============
 
-Contents:
+The ironic UI is an OpenStack Horizon plugin that will allow users to view and
+manage their ironic bare metal nodes, ports and drivers.
+
+The documentation provided here is continually kept up-to-date based
+on the latest code that has been committed, and may not represent the state of
+the project at any specific prior release.
+
+For information on any current or prior version of Ironic, see `the release
+notes`_.
+
+.. _the release notes: http://docs.openstack.org/releasenotes/ironic-ui/
+
+For more information on ironic, see `the ironic documentation`_.
+
+.. _the ironic documentation: http://docs.openstack.org/developer/ironic/
+
+Administrator's Guide
+=====================
 
 .. toctree::
-   :maxdepth: 2
+  :maxdepth: 1
 
-   readme
-   installation
-   usage
-   contributing
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+  Introduction to ironic UI <readme>
+  Introduction to ironic <http://docs.openstack.org/developer/ironic/deploy/user-guide.html>
+  Installing the ironic UI <installation>
+  Contributing <contributing>
