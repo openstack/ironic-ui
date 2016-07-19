@@ -122,7 +122,7 @@
             </div>
           </td>
           <td class="rsp-p2">{$ node.provision_state $}</td>
-          <td class="rsp-p2">{$ node.maintenance $}</td>
+          <td class="rsp-p2">{$ node.maintenance | yesno $}</td>
           <td class="rsp-p2">{$ node.ports.length $}</td>
           <td class="rsp-p2">{$ node.driver $}</td>
           <td class="actions_column">
@@ -159,6 +159,11 @@
                         item="node">
                   <span class="fa fa-trash"></span>
                   {$ 'Delete node' | translate $}
+                </action>
+                <action button-type="menu-item"
+                        callback="table.actions.createPort"
+                        item="node">
+                  {$ 'Create port' | translate $}
                 </action>
               </menu>
             </action-list>

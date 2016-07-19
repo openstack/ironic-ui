@@ -93,6 +93,25 @@ class Ports(generic.View):
             'items': [i.to_dict() for i in items],
         }
 
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create a network port
+
+        :param request: HTTP request
+        :return: Port
+        """
+        port = request.DATA.get('port')
+        return ironic.port_create(request, port).to_dict()
+
+    @rest_utils.ajax(data_required=True)
+    def delete(self, request):
+        """Delete a network port
+
+        :param request: HTTP request
+        """
+        params = request.DATA.get('port_uuid')
+        return ironic.port_delete(request, params)
+
 
 @urls.register
 class StatesPower(generic.View):

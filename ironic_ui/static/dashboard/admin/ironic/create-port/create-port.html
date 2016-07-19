@@ -1,0 +1,90 @@
+<div class="modal-header" modal-draggable>
+  <button type="button"
+          class="close"
+          ng-click="$dismiss()"
+          aria-hidden="true"
+          aria-label="Close">
+    <span aria-hidden="true" class="fa fa-times"></span>
+  </button>
+  <h3 class="modal-title" translate>Create Port</h3>
+</div>
+<div class="modal-body">
+  <form id="CreatePortForm" name="CreatePortForm">
+    <div class="form-group"
+         ng-class="{'has-error': CreatePortForm.macAddress.$invalid &&
+                   CreatePortForm.macAddress.$dirty}">
+      <label for="macAddress"
+             class="control-label"
+             translate>MAC address</label>
+      <div>
+        <input type="text"
+               class="form-control"
+               ng-model="ctrl.port.address"
+               id="macAddress"
+               name="macAddress"
+               ng-required="true"
+               ng-pattern="'([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})'"
+               auto-focus
+               placeholder="{$ 'MAC address for this port. Required.' | translate $}"/>
+      </div>
+    </div>
+  </form>
+
+  <form id="AddExtraForm" name="AddExtraForm" style="margin-bottom:10px;">
+    <label for="extras" class="control-label" translate>Extras</label>
+    <div class="input-group input-group-sm">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        Add Extra:</span>
+      <input class="form-control"
+             type="text"
+             ng-model="extraName"
+             validate-unique="ctrl.checkExtraUnique"
+             placeholder="{$ 'Property Name' | translate $}"/>
+      <span class="input-group-btn">
+        <button class="btn btn-primary"
+                type="button"
+                ng-disabled="!extraName || AddExtraForm.$invalid"
+                ng-click="ctrl.port.extra[extraName] = null;
+                          extraName = null">
+          <span class="fa fa-plus"> </span>
+        </button>
+      </span>
+    </div>
+  </form>
+
+  <form class="form-horizontal" id="ExtraForm" name="ExtraForm">
+    <div class="input-group input-group-sm"
+         ng-repeat="(propertyName, propertyValue) in ctrl.port.extra">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        {$ propertyName $}
+      </span>
+      <input class="form-control"
+             type="text"
+             name="{$ propertyName $}"
+             ng-model="ctrl.port.extra[propertyName]"
+             ng-required="true"/>
+      <div class="input-group-btn">
+        <a class="btn btn-default"
+           ng-click="ctrl.deleteExtra(propertyName)">
+          <span class="fa fa-minus"> </span>
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+<!--modal footer-->
+<div class="modal-footer ng-scope">
+  <button class="btn btn-default" ng-click="ctrl.cancel()">
+    <span class="fa fa-close"></span>
+    <span class="ng-scope" translate>Cancel</span>
+  </button>
+  <button type="submit"
+          ng-disabled="CreatePortForm.$invalid || ExtraForm.$invalid"
+          ng-click="ctrl.createPort()"
+          class="btn btn-primary"
+          translate>
+    Create Port
+  </button>
+</div>

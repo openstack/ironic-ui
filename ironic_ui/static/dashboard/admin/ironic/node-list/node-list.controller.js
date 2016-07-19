@@ -24,6 +24,7 @@
   IronicNodeListController.$inject = [
     '$rootScope',
     'horizon.app.core.openstack-service-api.ironic',
+    'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.basePath',
     'horizon.dashboard.admin.ironic.maintenance.service',
@@ -32,6 +33,7 @@
 
   function IronicNodeListController($rootScope,
                                     ironic,
+                                    ironicEvents,
                                     actions,
                                     basePath,
                                     maintenanceService,
@@ -87,11 +89,19 @@
     ];
 
     // Listen for the creation of new nodes, and update the node list
-    $rootScope.$on('ironic-ui:new-node', function() {
+    $rootScope.$on(ironicEvents.ENROLL_NODE_SUCCESS, function() {
       init();
     });
 
-    $rootScope.$on('ironic-ui:delete-node-success', function() {
+    $rootScope.$on(ironicEvents.DELETE_NODE_SUCCESS, function() {
+      init();
+    });
+
+    $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS, function() {
+      init();
+    });
+
+    $rootScope.$on(ironicEvents.DELETE_PORT_SUCCESS, function() {
       init();
     });
 

@@ -8,9 +8,9 @@
       <dt translate>Node ID</dt>
       <dd>{$ ctrl.node.uuid $}</dd>
       <dt translate>Chassis ID</dt>
-      <dd>{$ ctrl.node.chassis_uuid $}</dd>
+      <dd>{$ ctrl.node.chassis_uuid | noValue $}</dd>
       <dt translate>Created At</dt>
-      <dd>{$ ctrl.node.created_at $}</dd>
+      <dd>{$ ctrl.node.created_at | date:'medium' $}</dd>
       <dt translate>Extra</dt>
       <dd>{$ ctrl.node.extra $}</dd>
     </dl>
@@ -20,19 +20,89 @@
   <div class="col-md-6 status detail">
     <h4 translate>Ports</h4>
     <hr class="header_rule">
-    <dl class="dl-horizontal">
-      <dt ng-repeat-start="port in ctrl.ports">
-        {$ 'MAC ' + (1 + $index) $}</dt>
-      <dd ng-if="vif_port_id = ctrl.getVifPortId(port)">
-        <a href="/dashboard/admin/networks/ports/{$ vif_port_id $}/detail">
-          {$ port.address $}
-        </a>
-      </dd>
-      <dd ng-if="!vif_port_id">
-        {$ port.address $}
-      </dd>
-      <p ng-repeat-end></p>
-    </dl>
+    <table hz-table ng-cloak
+           st-table="ctrl.ports"
+           st-safe-src="ctrl.portsSrc"
+           class="table table-striped table-rsp table-detail">
+      <thead>
+        <tr>
+          <th colspan="4" class="action-col">
+            <action-list dropdown class="pull-right">
+              <action button-type="split-button"
+                      action-classes="'btn btn-default btn-sm'"
+                      callback="ctrl.createPort">
+                {$ 'Create port' | translate $}
+              </action>
+              <menu>
+                <action button-type="menu-item"
+                        callback="ctrl.deletePorts"
+                        item="tCtrl.selected"
+                        disabled="tCtrl.selected.length === 0">
+                  <span class="fa fa-trash"></span>
+                  {$ 'Delete ports' | translate $}
+                </action>
+              </menu>
+            </action-list>
+          </th>
+        </tr>
+        <tr>
+          <th class="multi_select_column">
+            <input type="checkbox"
+                   hz-select-all="ctrl.ports"/>
+          </th>
+          <th translate class="rsp-p1" style="white-space:nowrap">
+            MAC Address
+          </th>
+          <th translate class="rsp-p2" style="width:100%;">
+            Extra
+          </th>
+          <th translate class="actions_column">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="port in ctrl.ports">
+          <td class="multi_select_column">
+            <input type="checkbox"
+                   hz-select="port"
+                   ng-model="tCtrl.selections[port.id].checked"/>
+          <td ng-if="vif_port_id = ctrl.getVifPortId(port)"
+              class="rsp-p1">
+            <a href="/dashboard/admin/networks/ports/{$ vif_port_id $}/detail">
+              {$ port.address $}
+            </a>
+          </td>
+          <td ng-if="!vif_port_id" class="rsp-p1">
+            {$ port.address $}
+          </td>
+          <td>
+            <dl class="dl-horizontal">
+              <dt style="width:auto;" ng-repeat-start="(id, value) in port.extra">
+                {$ id $}
+              </dt>
+              <dd>
+                {$ value $}
+              </dd>
+              <p ng-repeat-end></p>
+            </dl>
+          </td>
+          <td class="actions_column">
+            <action-list>
+              <action action-classes="'btn btn-default btn-sm'"
+                      callback="ctrl.deletePort"
+                      item="port">
+                <span class="fa fa-trash"></span>
+              </action>
+            </action-list>
+          </td>
+        </tr>
+        <tr hz-no-items
+            items="ctrl.ports"
+            message="ctrl.noPortsText">
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 

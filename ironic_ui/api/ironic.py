@@ -166,3 +166,24 @@ def driver_properties(request, driver_name):
     :return: Property list
     """
     return ironicclient(request).driver.properties(driver_name)
+
+
+def port_create(request, params):
+    """Create network port
+
+    :param request: HTTP request
+    :param params: Port creation parameters
+    :return: Port
+    """
+    port_manager = ironicclient(request).port
+    return port_manager.create(**params)
+
+
+def port_delete(request, port_uuid):
+    """Delete a network port
+
+    :param request: HTTP request
+    :param port_uuid: Port uuid
+    :return: Port
+    """
+    return ironicclient(request).port.delete(port_uuid)

@@ -23,20 +23,30 @@
           IronicNodeDetailsController);
 
   IronicNodeDetailsController.$inject = [
+    '$scope',
+    '$rootScope',
     '$location',
     'horizon.app.core.openstack-service-api.ironic',
+    'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.basePath',
-    'horizon.dashboard.admin.ironic.maintenance.service'
+    'horizon.dashboard.admin.ironic.maintenance.service',
+    'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
 
-  function IronicNodeDetailsController($location,
+  function IronicNodeDetailsController($scope,
+                                       $rootScope,
+                                       $location,
                                        ironic,
+                                       ironicEvents,
                                        actions,
                                        basePath,
-                                       maintenanceService) {
+                                       maintenanceService,
+                                       validUuidPattern) {
     var ctrl = this;
     var path = basePath + 'ironic/node-details/sections/';
+
+    ctrl.noPortsText = gettext('No network ports have been defined');
 
     ctrl.actions = actions;
 
@@ -51,18 +61,42 @@
       }
     ];
 
+    ctrl.ports = [];
+    ctrl.portsSrc = [];
     ctrl.basePath = basePath;
-    ctrl.re_uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
+    ctrl.re_uuid = new RegExp(validUuidPattern);
     ctrl.isUuid = isUuid;
     ctrl.getVifPortId = getVifPortId;
     ctrl.putNodeInMaintenanceMode = putNodeInMaintenanceMode;
     ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
+    ctrl.createPort = createPort;
+    ctrl.deletePort = deletePort;
+    ctrl.deletePorts = deletePorts;
+
+    var createPortHandler =
+        $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS,
+                       function() {
+                         init();
+                       });
+
+    var deletePortHandler =
+        $rootScope.$on(ironicEvents.DELETE_PORT_SUCCESS,
+                       function() {
+                         init();
+                         $scope.$broadcast('hzTable:clearSelected');
+                       });
+
+    $scope.$on('$destroy', function() {
+      createPortHandler();
+      deletePortHandler();
+    });
 
     init();
 
     /**
      * @name horizon.dashboard.admin.ironic.NodeDetailsController.init
-     * @description Initialize the controller instance based on the current page url.
+     * @description Initialize the controller instance based on the
+     * current page url.
      *
      * @return {void}
      */
@@ -87,20 +121,24 @@
     function retrieveNode(uuid) {
       return ironic.getNode(uuid).then(function (response) {
         ctrl.node = response.data;
+        ctrl.node.id = uuid;
       });
     }
 
     /**
      * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrievePorts
-     * @description Retrieve the ports associated with a specified node, and store
-     * them in the controller instance.
+     * @description Retrieve the ports associated with a specified node,
+     * and store them in the controller instance.
      *
      * @param {string} nodeId – Node name or UUID
      * @return {void}
      */
     function retrievePorts(nodeId) {
       ironic.getPortsWithNode(nodeId).then(function (response) {
-        ctrl.ports = response.data.items;
+        ctrl.portsSrc = response.data.items;
+        ctrl.portsSrc.forEach(function(port) {
+          port.id = port.uuid;
+        });
       });
     }
 
@@ -109,7 +147,8 @@
      * @description Test whether a string is an OpenStack UUID
      *
      * @param {string} str – string
-     * @return {boolean} True if the string is an OpenStack UUID, otherwise false
+     * @return {boolean} True if the string is an OpenStack UUID,
+     * otherwise false
      */
     function isUuid(str) {
       return !!str.match(ctrl.re_uuid);
@@ -120,7 +159,8 @@
      * @description Get the vif_port_id property of a specified port
      *
      * @param {object} port – instance of port
-     * @return {string} Value of vif_port_id property or "" if the property does not exist
+     * @return {string} Value of vif_port_id property or
+     * "" if the property does not exist
      */
     function getVifPortId(port) {
       return angular.isDefined(port.extra) &&
@@ -134,6 +174,43 @@
 
     function removeNodeFromMaintenanceMode() {
       maintenanceService.removeNodeFromMaintenanceMode(ctrl.node);
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.createPort
+     * @description Initiate creation of a newtwork port for the current
+     * node
+     *
+     * @return {void}
+     */
+    function createPort() {
+      ctrl.actions.createPort(ctrl.node);
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.deletePort
+     * @description Delete a specified port
+     *
+     * @param {port []} port – port to be deleted
+     * @return {void}
+     */
+    function deletePort(port) {
+      ctrl.actions.deletePort({id: port.uuid, name: port.address});
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.deletePorts
+     * @description Delete a specified list of ports
+     *
+     * @param {port []} ports – list of ports to be deleted
+     * @return {void}
+     */
+    function deletePorts(ports) {
+      var selectedPorts = [];
+      angular.forEach(ports, function(port) {
+        selectedPorts.push({id: port.uuid, name: port.address});
+      });
+      ctrl.actions.deletePorts(selectedPorts);
     }
   }
 })();

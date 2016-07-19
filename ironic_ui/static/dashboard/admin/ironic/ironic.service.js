@@ -28,7 +28,7 @@
   ];
 
   /**
-   * Service that provides access to the Ironic client API
+   * @description Service that provides access to the Ironic client API
    *
    * @param {object} apiService - HTTP service
    * @param {object} toastService - User message service
@@ -37,7 +37,9 @@
   function ironicAPI(apiService, toastService) {
     var service = {
       createNode: createNode,
+      createPort: createPort,
       deleteNode: deleteNode,
+      deletePort: deletePort,
       getDrivers: getDrivers,
       getDriverProperties: getDriverProperties,
       getNode: getNode,
@@ -52,7 +54,7 @@
     return service;
 
     /**
-     * Retrieve a list of nodes
+     * @description Retrieve a list of nodes
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-nodes
      *
      * @return {promise} Node collection in JSON
@@ -67,7 +69,7 @@
     }
 
     /**
-     * Retrieve information about the given node.
+     * @description Retrieve information about the given node.
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-
      * nodes-(node_ident)
@@ -84,7 +86,7 @@
     }
 
     /**
-     * Retrieve a list of ports associated with a node.
+     * @description Retrieve a list of ports associated with a node.
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-ports
      *
@@ -106,7 +108,7 @@
     }
 
     /**
-     * Put the node in maintenance mode.
+     * @description Put the node in maintenance mode.
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#
      * put--v1-nodes-(node_ident)-maintenance
@@ -130,7 +132,7 @@
     }
 
     /**
-     * Remove the node from maintenance mode.
+     * @description Remove the node from maintenance mode.
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#
      * delete--v1-nodes-(node_ident)-maintenance
@@ -148,7 +150,7 @@
     }
 
     /**
-     * Set the power state of the node.
+     * @description Set the power state of the node.
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#
      * put--v1-nodes-(node_ident)-states-power
@@ -173,7 +175,7 @@
     }
 
     /**
-     * Set the power state of the node.
+     * @description Set the power state of the node.
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#
      * put--v1-nodes-(node_ident)-states-power
@@ -198,7 +200,7 @@
     }
 
     /**
-     * Create an Ironic node
+     * @description Create an Ironic node
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#post--v1-nodes
      *
@@ -220,7 +222,7 @@
     }
 
     /**
-     * Delete the specified node from inventory
+     * @description Delete the specified node from inventory
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#
      * delete--v1-nodes
@@ -244,7 +246,7 @@
     }
 
     /**
-     * Retrieve the list of Ironic drivers
+     * @description Retrieve the list of Ironic drivers
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-drivers
      *
@@ -259,7 +261,7 @@
     }
 
     /**
-     * Retrieve properities of a specified driver
+     * @description Retrieve properities of a specified driver
      *
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#
      * get--v1-drivers-properties
@@ -275,6 +277,47 @@
               'Unable to retrieve driver properties: %s');
             toastService.add('error', interpolate(msg, [reason], false));
           });
+    }
+
+    /**
+     * @description Create a network port
+     *
+     * @param {object} port – Object containing parameters that define
+     * the port to be created
+     * @return {promise} Promise
+     */
+    function createPort(port) {
+      var data = {
+        port: port
+      };
+      return apiService.post('/api/ironic/ports/', data)
+        .success(function() {
+          toastService.add('success',
+                           gettext('Port successfully created'));
+        })
+        .error(function(reason) {
+          var msg = gettext('Unable to create port: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
+        });
+    }
+
+    /**
+     * @description Delete a network port
+     *
+     * @param {string} portUuid – UUID of the port to be deleted
+     * @return {promise} Promise
+     */
+    function deletePort(portUuid) {
+      var data = {
+        port_uuid: portUuid
+      };
+      return apiService.delete('/api/ironic/ports/', data)
+        .success(function() {
+        })
+        .error(function(reason) {
+          var msg = gettext('Unable to delete port: %s');
+          toastService.add('error', interpolate(msg, [reason], false));
+        });
     }
   }
 

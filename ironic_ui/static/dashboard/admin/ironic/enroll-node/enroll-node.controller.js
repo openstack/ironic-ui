@@ -27,6 +27,7 @@
     '$rootScope',
     '$modalInstance',
     'horizon.app.core.openstack-service-api.ironic',
+    'horizon.dashboard.admin.ironic.events',
     'horizon.app.core.openstack-service-api.glance',
     'horizon.dashboard.admin.ironic.enroll-node.service',
     'horizon.dashboard.admin.ironic.validHostNamePattern',
@@ -36,6 +37,7 @@
   function EnrollNodeController($rootScope,
                                 $modalInstance,
                                 ironic,
+                                ironicEvents,
                                 glance,
                                 enrollNodeService,
                                 validHostNamePattern,
@@ -276,7 +278,7 @@
       ironic.createNode(ctrl.node).then(
         function() {
           $modalInstance.close();
-          $rootScope.$emit('ironic-ui:new-node');
+          $rootScope.$emit(ironicEvents.ENROLL_NODE_SUCCESS);
         },
         function() {
           // No additional error processing for now
