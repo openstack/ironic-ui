@@ -34,7 +34,7 @@ installation please see http://docs.openstack.org/developer/horizon/quickstart.h
 
   `source .venv/bin/activate`
 
-3. Copy the _2200_ironic.py file from ironic-ui/enabled directory to
+3. Copy the _2200_ironic.py file from ironic_ui/enabled directory to
 horizon/openstack_dashboard/local/enabled
 
 4. Change into the ironic-ui repository and package the plugin:
