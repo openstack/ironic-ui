@@ -1,15 +1,16 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
+# Yoshiki Eguchi <yoshiki.eguchi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 1.1.1.dev28\n"
+"Project-Id-Version: ironic-ui 1.1.1.dev33\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-07-13 21:09+0000\n"
+"POT-Creation-Date: 2016-08-15 22:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-05-18 09:18+0000\n"
-"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"PO-Revision-Date: 2016-08-06 02:49+0000\n"
+"Last-Translator: Yoshiki Eguchi <yoshiki.eguchi@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -20,6 +21,9 @@ msgstr "一意のノード名。オプション。"
 
 msgid "Actions"
 msgstr "アクション"
+
+msgid "Add New Property:"
+msgstr "新しいプロパティーの追加:"
 
 #, python-format
 msgid ""
@@ -39,6 +43,9 @@ msgstr "機能"
 
 msgid "Chassis ID"
 msgstr "シャーシ ID"
+
+msgid "Choose an Image"
+msgstr "イメージの選択"
 
 msgid "Configuration"
 msgstr "設定"
@@ -69,6 +76,9 @@ msgstr "RAM ディスクのデプロイ"
 
 msgid "Driver"
 msgstr "ドライバー"
+
+msgid "Driver Details"
+msgstr "ドライバー詳細"
 
 msgid "Driver Info"
 msgstr "ドライバー情報"
@@ -149,6 +159,9 @@ msgstr "ノードドライバー"
 
 msgid "Node ID"
 msgstr "ノード ID"
+
+msgid "Node Info"
+msgstr "ノード情報"
 
 msgid "Node Name"
 msgstr "ノード名"
@@ -279,3 +292,6 @@ msgstr "Ironic ノードを取得できません: %s"
 
 msgid "Updated At"
 msgstr "最終更新"
+
+msgid "{$ property.getDescription() $}"
+msgstr "{$ property.getDescription() $}"
