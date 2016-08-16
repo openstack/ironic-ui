@@ -1,0 +1,323 @@
+# OpenStack Infra <zanata@openstack.org>, 2015. #zanata
+# zhangjingwen <zhangjingwen@cn.fujitsu.com>, 2015. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
+# sunanchen <KF.sunanchen@h3c.com>, 2016. #zanata
+# vuuv <froms2008@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 1.1.1.dev33\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-08-15 22:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-08-09 08:52+0000\n"
+"Last-Translator: Shengjing Zhu <zsj950618@gmail.com>\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh-CN\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+msgstr "([^\" ]+|\"[^\"]+\") \\(Default标签\\)"
+
+msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+msgid "A unique node name. Optional."
+msgstr "独一无二的节点名称。可选。"
+
+msgid "Actions"
+msgstr "动作"
+
+msgid "Add Extra:"
+msgstr "增加额外信息"
+
+msgid "Add New Property:"
+msgstr "增加新的属性"
+
+#, python-format
+msgid ""
+"Are you sure you want to delete node \"%s\"? This action cannot be undone."
+msgstr "你确认要删除节点\"%s\"嘛？此操作将不可恢复"
+
+#, python-format
+msgid ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr "你确认要删除节点\"%s\"嘛？此操作将不可恢复"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Capabilities"
+msgstr "能力"
+
+msgid "Chassis ID"
+msgstr "机架ID"
+
+msgid "Choose an Image"
+msgstr "选择一个镜像"
+
+msgid "Configuration"
+msgstr "配置"
+
+msgid "Console Enabled"
+msgstr "允许控制台"
+
+msgid "Created At"
+msgstr "创建于"
+
+msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "默认为 ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "Delete Node"
+msgstr "删除节点"
+
+msgid "Delete Nodes"
+msgstr "删除多个节点"
+
+msgid "Delete node"
+msgstr "删除节点"
+
+msgid "Delete nodes"
+msgstr "删除多个节点"
+
+msgid "Deploy Kernel"
+msgstr "部署内核"
+
+msgid "Deploy Ramdisk"
+msgstr "部署虚拟内存盘"
+
+msgid "Driver"
+msgstr "驱动"
+
+msgid "Driver Details"
+msgstr "驱动详情"
+
+msgid "Driver Info"
+msgstr "驱动信息"
+
+msgid "Enroll Node"
+msgstr "注册节点"
+
+#, python-format
+msgid "Error deleting nodes \"%s\""
+msgstr "删除多个节点\"%s\"错误"
+
+msgid "Extra"
+msgstr "额外信息"
+
+msgid "Extra Property Name"
+msgstr "额外属性名称"
+
+msgid "Extras"
+msgstr "额外信息"
+
+msgid "General"
+msgstr "概要信息"
+
+msgid "Inspection Finished At"
+msgstr "检查结束于"
+
+msgid "Inspection Started At"
+msgstr "检查开始于"
+
+msgid "Instance ID"
+msgstr "云主机ID"
+
+msgid "Instance Info"
+msgstr "实例信息"
+
+msgid "Instance Name"
+msgstr "实例名字"
+
+msgid "Kernel"
+msgstr "内核"
+
+msgid "Last Error"
+msgstr "最近的一次错误"
+
+msgid "Maintenance"
+msgstr "维护"
+
+msgid "Maintenance Reason"
+msgstr "维护原因"
+
+msgid "Maintenance off"
+msgstr "退出维护模式"
+
+msgid "Maintenance on"
+msgstr "处于维护状态"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "No Instance"
+msgstr "没有实例"
+
+msgid "No maintenance reason given."
+msgstr "缺少提供维护原因"
+
+#, python-format
+msgid "Node %s is already in maintenance mode."
+msgstr "节点\"%s\"已经处于维护模式"
+
+#, python-format
+msgid "Node %s is not in maintenance mode."
+msgstr "节点\"%s\"没有处于维护模式"
+
+#, python-format
+msgid "Node %s is not powered off."
+msgstr "节点\"%s\"电源没有关闭"
+
+#, python-format
+msgid "Node %s is not powered on."
+msgstr "节点\"%s\"电源没有开启"
+
+msgid "Node Driver"
+msgstr "节点驱动"
+
+msgid "Node ID"
+msgstr "节点ID"
+
+msgid "Node Info"
+msgstr "节点信息"
+
+msgid "Node Name"
+msgstr "节点名称"
+
+msgid "One of this, (.*) must be specified\\."
+msgstr "必须指定其中的一个 (.*)"
+
+msgid "Overview"
+msgstr "概览"
+
+msgid "Ports"
+msgstr "端口"
+
+msgid "Power State"
+msgstr "电源状态"
+
+msgid "Power off"
+msgstr "关闭电源"
+
+msgid "Power on"
+msgstr "打开电源"
+
+msgid "Properties"
+msgstr "属性"
+
+msgid "Property Name"
+msgstr "属性名称"
+
+msgid ""
+"Provide a reason for why you are putting the selected node(s) into "
+"maintenance mode (optional)"
+msgstr "提供一个你为什么选择将节点置于维护模式的原因（可选）"
+
+msgid "Provision State"
+msgstr "配置状态"
+
+msgid "Provisioning State"
+msgstr "配置状态"
+
+msgid "Provisioning Status"
+msgstr "配置状态"
+
+msgid "Put Node(s) Into Maintenance Mode"
+msgstr "将节点置于维护模式"
+
+msgid "Ramdisk"
+msgstr "内存盘"
+
+msgid "Refresh page to see updated power status"
+msgstr "刷新页面来确认电源状态是否更新"
+
+msgid "Required"
+msgstr "必需的"
+
+msgid "Reservation"
+msgstr "预留"
+
+msgid "SSH Port"
+msgstr "SSH端口"
+
+msgid "SSH Username"
+msgstr "SSH用户名"
+
+msgid "Select a Driver"
+msgstr "选择一种驱动"
+
+#, python-format
+msgid "Successfully deleted node \"%s\""
+msgstr "成功删除节点\"%s\""
+
+#, python-format
+msgid "Successfully deleted nodes \"%s\""
+msgstr "成功删除多个节点\"%s\""
+
+msgid "Target Power State"
+msgstr "标记电源状态"
+
+msgid "Target Provision State"
+msgstr "标记配置状态"
+
+msgid "UUID"
+msgstr "UUID"
+
+#, python-format
+msgid "Unable to create node: %s"
+msgstr "无法创建Ironic节点: %s"
+
+#, python-format
+msgid "Unable to delete node \"%s\""
+msgstr "无法删除节点\"%s\""
+
+#, python-format
+msgid "Unable to delete node %s: %s"
+msgstr "无法删除Ironic节点\"%s\": %s"
+
+#, python-format
+msgid "Unable to power off the node: %s"
+msgstr "无法关闭节点电源: %s"
+
+#, python-format
+msgid "Unable to power on the node: %s"
+msgstr "无法启动节点电源: %s"
+
+#, python-format
+msgid "Unable to put the Ironic node in maintenance mode: %s"
+msgstr "无法将Ironic节点置于维护模式: %s"
+
+#, python-format
+msgid "Unable to remove the Ironic node from maintenance mode: %s"
+msgstr "无法将Ironic节点退出维护模式: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic drivers: %s"
+msgstr "无法获取Ironic驱动: %s"
+
+msgid "Unable to retrieve Ironic nodes."
+msgstr "无法获取Ironic节点信息"
+
+#, python-format
+msgid "Unable to retrieve driver properties: %s"
+msgstr "无法获取驱动属性: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node ports: %s"
+msgstr "无法获取Ironic节点端口信息: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node: %s"
+msgstr "无法获取Ironic节点信息: %s"
+
+msgid "Updated At"
+msgstr "已更新于"
+
+msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "默认值 (?:value )?是 ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "{$ property.getDescription() $}"
+msgstr "{$ property.getDescription() $}"
