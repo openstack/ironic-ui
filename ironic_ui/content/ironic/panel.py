@@ -17,7 +17,27 @@ from django.utils.translation import ugettext_lazy as _
 
 import horizon
 
+from openstack_dashboard.api import base
+from openstack_dashboard.dashboards.admin import dashboard
+
 
 class Ironic(horizon.Panel):
     name = _("Ironic Bare Metal Provisioning")
     slug = 'ironic'
+    permissions = ('openstack.roles.admin',)
+
+    def allowed(self, context):
+        request = context['request']
+        if not base.is_service_enabled(request, 'baremetal'):
+            return False
+        else:
+            return super(Ironic, self).allowed(context)
+
+    def nav(self, context):
+        request = context['request']
+        if not base.is_service_enabled(request, 'baremetal'):
+            return False
+        else:
+            return True
+
+dashboard.Admin.register(Ironic)
