@@ -1,0 +1,21 @@
+---
+prelude: >
+    This release adds support for adding and deleting
+    nodes. Support has also been added for adding and
+    deleting ports. The panel will now be hidden if the
+    baremetal service is not present in the scenario where
+    the collection of running services differs between
+    multiple keystone regions.
+features:
+  - Add and delete nodes
+  - Add and delete ports
+  - Panel hidden if baremetal service or admin rights are not present
+  - UX improvements across the interface
+  - Breadcrumbs have been added
+issues:
+  - Currently it is not possible to edit a node via the UI
+    once it has been enrolled. Therefore, the enrollment must
+    be done accurately to ensure the node is enrolled accurately
+    and can then be made available. At present, any errors
+    made during enrollment can only be corrected by deleting
+    the node and enrolling it again.

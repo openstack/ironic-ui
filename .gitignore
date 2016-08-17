@@ -60,3 +60,6 @@ ChangeLog
 package/
 node_modules/
 npm-debug.log
+
+# release notes build
+releasenotes/build
