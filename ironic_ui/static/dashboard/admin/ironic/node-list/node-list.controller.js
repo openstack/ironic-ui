@@ -22,6 +22,7 @@
       .controller('IronicNodeListController', IronicNodeListController);
 
   IronicNodeListController.$inject = [
+    '$scope',
     '$rootScope',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
@@ -31,7 +32,8 @@
     'horizon.dashboard.admin.ironic.enroll-node.service'
   ];
 
-  function IronicNodeListController($rootScope,
+  function IronicNodeListController($scope,
+                                    $rootScope,
                                     ironic,
                                     ironicEvents,
                                     actions,
@@ -89,20 +91,32 @@
     ];
 
     // Listen for the creation of new nodes, and update the node list
-    $rootScope.$on(ironicEvents.ENROLL_NODE_SUCCESS, function() {
-      init();
-    });
+    var enrollNodeHandler =
+        $rootScope.$on(ironicEvents.ENROLL_NODE_SUCCESS,
+                       function() {
+                         init();
+                       });
 
-    $rootScope.$on(ironicEvents.DELETE_NODE_SUCCESS, function() {
-      init();
-    });
+    var deleteNodeHandler = $rootScope.$on(ironicEvents.DELETE_NODE_SUCCESS,
+                                           function() {
+                                             init();
+                                           });
 
-    $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS, function() {
-      init();
-    });
+    var createPortHandler = $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS,
+                                           function() {
+                                             init();
+                                           });
 
-    $rootScope.$on(ironicEvents.DELETE_PORT_SUCCESS, function() {
-      init();
+    var deletePortHandler = $rootScope.$on(ironicEvents.DELETE_PORT_SUCCESS,
+                                           function() {
+                                             init();
+                                           });
+
+    $scope.$on('destroy', function() {
+      enrollNodeHandler();
+      deleteNodeHandler();
+      createPortHandler();
+      deletePortHandler();
     });
 
     init();
