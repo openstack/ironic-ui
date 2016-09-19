@@ -6,13 +6,13 @@
     <hr class="header_rule">
     <dl class="dl-horizontal">
       <dt translate>Node ID</dt>
-      <dd>{$ ctrl.node.uuid $}</dd>
+      <dd>{$ ctrl.node.uuid | noValue $}</dd>
       <dt translate>Chassis ID</dt>
       <dd>{$ ctrl.node.chassis_uuid | noValue $}</dd>
       <dt translate>Created At</dt>
-      <dd>{$ ctrl.node.created_at | date:'medium' $}</dd>
+      <dd>{$ ctrl.node.created_at | date:'medium' | noValue $}</dd>
       <dt translate>Extra</dt>
-      <dd>{$ ctrl.node.extra $}</dd>
+      <dd>{$ ctrl.node.extra | noValue $}</dd>
     </dl>
   </div>
 
@@ -114,7 +114,7 @@
     <dl class="dl-horizontal">
       <dt ng-repeat-start="(propertyName, propertyValue) in ctrl.node.properties">
         {$ propertyName $}</dt>
-      <dd ng-repeat-end>{$ propertyValue $}</dd>
+      <dd ng-repeat-end>{$ propertyValue | noValue $}</dd>
     </dl>
   </div>
 
@@ -125,29 +125,29 @@
     <div ng-switch="ctrl.node.driver">
       <dl ng-switch-when="pxe_ssh" class="dl-horizontal">
         <dt translate>Driver</dt>
-        <dd>{$ ctrl.node.driver $}</dd>
+        <dd>{$ ctrl.node.driver | noValue $}</dd>
         <dt translate>SSH Port</dt>
-        <dd>{$ ctrl.node.driver_info.ssh_port $}</dd>
+        <dd>{$ ctrl.node.driver_info.ssh_port | noValue $}</dd>
         <dt translate>SSH Username</dt>
-        <dd>{$ ctrl.node.driver_info.ssh_username $}</dd>
+        <dd>{$ ctrl.node.driver_info.ssh_username | noValue $}</dd>
         <dt translate>Deploy Kernel</dt>
         <dd>
           <a ng-if="deploy_kernel_is_uuid = ctrl.isUuid(ctrl.node.driver_info.deploy_kernel)"
              href="/dashboard/admin/images/{$ ctrl.node.driver_info.deploy_kernel $}/detail">
-            {$ ctrl.node.driver_info.deploy_kernel $}
+            {$ ctrl.node.driver_info.deploy_kernel | noValue $}
           </a>
           <span ng-if="!deploy_kernel_is_uuid">
-            {$ ctrl.node.driver_info.deploy_kernel $}
+            {$ ctrl.node.driver_info.deploy_kernel | noValue $}
           </span>
         </dd>
         <dt translate>Deploy Ramdisk</dt>
         <dd>
           <a ng-if="deploy_ramdisk_is_uuid = ctrl.isUuid(ctrl.node.driver_info.deploy_ramdisk)"
              href="/dashboard/admin/images/{$ ctrl.node.driver_info.deploy_ramdisk $}/detail">
-            {$ ctrl.node.driver_info.deploy_ramdisk $}
+            {$ ctrl.node.driver_info.deploy_ramdisk | noValue $}
           </a>
           <span ng-if="!deploy_ramdisk_is_uuid">
-            {$ ctrl.node.driver_info.deploy_ramdisk $}
+            {$ ctrl.node.driver_info.deploy_ramdisk | noValue $}
           </span>
         </dd>
       </dl>
@@ -176,23 +176,23 @@
     <div ng-switch="ctrl.node.driver">
       <dl ng-switch-when="pxe_ssh" class="dl-horizontal">
         <dt translate>Instance Name</dt>
-        <dd>{$ ctrl.node.instance_info.display_name $}</dd>
+        <dd>{$ ctrl.node.instance_info.display_name | noValue $}</dd>
         <dt translate>Ramdisk</dt>
         <dd>
           <a href="/dashboard/admin/images/{$ ctrl.node.instance_info.ramdisk $}/detail">
-            {$ ctrl.node.instance_info.ramdisk $}
+            {$ ctrl.node.instance_info.ramdisk | noValue $}
           </a>
         </dd>
         <dt translate>Kernel</dt>
         <dd>
           <a href="/dashboard/admin/images/{$ ctrl.node.instance_info.kernel $}/detail">
-            {$ ctrl.node.instance_info.kernel $}
+            {$ ctrl.node.instance_info.kernel | noValue $}
           </a>
         </dd>
       </dl>
       <dl ng-switch-default class="dl-horizontal">
         <dt ng-repeat-start="(id, value) in ctrl.node.instance_info">{$ id $}</dt>
-        <dd ng-repeat-end>{$ value $}</dd>
+        <dd ng-repeat-end>{$ value | noValue $}</dd>
       </dl>
     </div>
   </div>
