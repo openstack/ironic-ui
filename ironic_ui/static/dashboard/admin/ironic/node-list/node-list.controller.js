@@ -24,6 +24,7 @@
   IronicNodeListController.$inject = [
     '$scope',
     '$rootScope',
+    '$q',
     'horizon.framework.widgets.toast.service',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
@@ -35,6 +36,7 @@
 
   function IronicNodeListController($scope,
                                     $rootScope,
+                                    $q,
                                     toastService,
                                     ironic,
                                     ironicEvents,
@@ -135,9 +137,10 @@
     }
 
     function onGetNodes(response) {
+      var promises = [];
       angular.forEach(response.data.items, function (node) {
         node.id = node.uuid;
-        retrievePorts(node);
+        promises.push(retrievePorts(node));
 
         // Report any changes in last-error
         if (node.last_error !== "" &&
@@ -147,11 +150,13 @@
                            "Node " + node.name + ". " + node.last_error);
         }
       });
-      ctrl.nodesSrc = response.data.items;
+      $q.all(promises).then(function() {
+        ctrl.nodesSrc = response.data.items;
+      });
     }
 
     function retrievePorts(node) {
-      ironic.getPortsWithNode(node.uuid).then(
+      return ironic.getPortsWithNode(node.uuid).then(
         function (response) {
           node.ports = response.data.items;
         }
