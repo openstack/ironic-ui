@@ -14,7 +14,7 @@
 #    under the License.
 
 import horizon
-from ironic_ui.content.ironic.panel import Ironic
+from ironic_ui.content.ironic import panel as i_panel
 from openstack_dashboard.test import helpers as test
 
 
@@ -23,4 +23,4 @@ class RegistrationTests(test.TestCase):
         dashboard = horizon.get_dashboard('admin')
         panel = dashboard.get_panel('ironic')
 
-        self.assertEqual(panel.__class__, Ironic)
+        self.assertEqual(panel.__class__, i_panel.Ironic)
