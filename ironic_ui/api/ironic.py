@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.conf import settings
 
 from ironicclient import client
@@ -24,8 +22,6 @@ from horizon.utils.memoized import memoized  # noqa
 
 from openstack_dashboard.api import base
 
-
-LOG = logging.getLogger(__name__)
 
 DEFAULT_IRONIC_API_VERSION = '1.11'
 DEFAULT_INSECURE = False
