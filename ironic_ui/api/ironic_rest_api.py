@@ -143,8 +143,8 @@ class StatesProvision(generic.View):
         :param node_id: Node uuid
         :return: Return code
         """
-        state = request.DATA.get('state')
-        return ironic.node_set_provision_state(request, node_uuid, state)
+        verb = request.DATA.get('verb')
+        return ironic.node_set_provision_state(request, node_uuid, verb)
 
 
 @urls.register

@@ -243,19 +243,20 @@
      * put--v1-nodes-(node_ident)-states-provision
      *
      * @param {string} uuid – UUID of a node.
-     * @param {string} state – Target provision state
+     * @param {string} verb – Provisioning verb used to move node to desired
+     *                        target state
      * @return {promise} Promise
      */
-    function setNodeProvisionState(uuid, state) {
+    function setNodeProvisionState(uuid, verb) {
       var data = {
-        state: state
+        verb: verb
       };
       return apiService.put('/api/ironic/nodes/' + uuid + '/states/provision',
                             data)
         .success(function() {
-          toastService.add(
-            'success',
-            gettext('Successfully set target node provision state'));
+          var msg = gettext(
+            'A request has been made to change the provisioning state of node %s');
+          toastService.add('success', interpolate(msg, [uuid], false));
         })
         .error(function(reason) {
           var msg = gettext('Unable to set node provision state: %s');
