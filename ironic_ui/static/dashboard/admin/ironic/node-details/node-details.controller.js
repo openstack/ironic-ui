@@ -31,6 +31,7 @@
     'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.basePath',
+    'horizon.dashboard.admin.ironic.edit-node.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
@@ -43,6 +44,7 @@
                                        ironicEvents,
                                        actions,
                                        basePath,
+                                       editNodeService,
                                        maintenanceService,
                                        validUuidPattern) {
     var ctrl = this;
@@ -72,10 +74,17 @@
     ctrl.getVifPortId = getVifPortId;
     ctrl.putNodeInMaintenanceMode = putNodeInMaintenanceMode;
     ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
+    ctrl.editNode = editNode;
     ctrl.createPort = createPort;
     ctrl.deletePort = deletePort;
     ctrl.deletePorts = deletePorts;
     ctrl.refresh = refresh;
+
+    var editNodeHandler =
+        $rootScope.$on(ironicEvents.EDIT_NODE_SUCCESS,
+                       function() {
+                         init();
+                       });
 
     var createPortHandler =
         $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS,
@@ -91,6 +100,7 @@
                        });
 
     $scope.$on('$destroy', function() {
+      editNodeHandler();
       createPortHandler();
       deletePortHandler();
     });
@@ -188,6 +198,10 @@
 
     function removeNodeFromMaintenanceMode() {
       maintenanceService.removeNodeFromMaintenanceMode(ctrl.node);
+    }
+
+    function editNode() {
+      editNodeService.modal(ctrl.node);
     }
 
     /**

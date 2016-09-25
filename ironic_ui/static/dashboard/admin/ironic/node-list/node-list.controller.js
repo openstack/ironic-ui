@@ -31,7 +31,8 @@
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.basePath',
     'horizon.dashboard.admin.ironic.maintenance.service',
-    'horizon.dashboard.admin.ironic.enroll-node.service'
+    'horizon.dashboard.admin.ironic.enroll-node.service',
+    'horizon.dashboard.admin.ironic.edit-node.service'
   ];
 
   function IronicNodeListController($scope,
@@ -43,7 +44,8 @@
                                     actions,
                                     basePath,
                                     maintenanceService,
-                                    enrollNodeService) {
+                                    enrollNodeService,
+                                    editNodeService) {
     var ctrl = this;
 
     ctrl.nodes = [];
@@ -56,6 +58,7 @@
     ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
     ctrl.removeNodesFromMaintenanceMode = removeNodesFromMaintenanceMode;
     ctrl.enrollNode = enrollNode;
+    ctrl.editNode = editNode;
     ctrl.refresh = refresh;
 
     /**
@@ -107,6 +110,11 @@
                                              init();
                                            });
 
+    var editNodeHandler = $rootScope.$on(ironicEvents.EDIT_NODE_SUCCESS,
+                                         function() {
+                                           init();
+                                         });
+
     var createPortHandler = $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS,
                                            function() {
                                              init();
@@ -120,6 +128,7 @@
     $scope.$on('destroy', function() {
       enrollNodeHandler();
       deleteNodeHandler();
+      editNodeHandler();
       createPortHandler();
       deletePortHandler();
     });
@@ -181,6 +190,10 @@
 
     function enrollNode() {
       enrollNodeService.modal();
+    }
+
+    function editNode(node) {
+      editNodeService.modal(node);
     }
 
     function refresh() {

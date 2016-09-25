@@ -33,17 +33,17 @@
       active: 'active',
       manageable: 'manage'
     },
-    adopt_failed: {
+    'adopt failed': {
       manageable: 'manage',
       active: 'adopt'
     },
-    inspect_failed: {
+    'inspect failed': {
       manageable: 'manage'
     },
-    clean_failed: {
+    'clean failed': {
       manageable: 'manage'
     },
-    deploy_failed: {
+    'deploy failed': {
       active: 'active',
       manageable: 'deleted'
     },
@@ -85,7 +85,8 @@
       powerOnNode: powerOnNode,
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
       removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
-      setNodeProvisionState: setNodeProvisionState
+      setNodeProvisionState: setNodeProvisionState,
+      updateNode: updateNode
     };
 
     return service;
@@ -307,6 +308,32 @@
           toastService.add(
             'error',
             interpolate(msg, [nodeIdent, reason], false));
+        });
+    }
+
+    /**
+     * @description Update the definition of a specified node.
+     *
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * patch--v1-nodes-(node_ident)
+     *
+     * @param {string} uuid – UUID of a node.
+     * @param {object[]} patch – Sequence of update operations
+     * @return {promise} Promise
+     */
+    function updateNode(uuid, patch) {
+      var data = {
+        patch: patch
+      };
+      return apiService.patch('/api/ironic/nodes/' + uuid, data)
+        .success(function() {
+          var msg = gettext(
+            'Successfully updated node %s');
+          toastService.add('success', interpolate(msg, [uuid], false));
+        })
+        .error(function(reason) {
+          var msg = gettext('Unable to update node %s: %s');
+          toastService.add('error', interpolate(msg, [uuid, reason], false));
         });
     }
 

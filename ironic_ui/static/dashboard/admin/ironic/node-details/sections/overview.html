@@ -6,7 +6,7 @@
     <hr class="header_rule">
     <dl class="dl-horizontal">
       <dt translate>Name</dt>
-      <dd>{$ ctrl.node.name $}</dd>
+      <dd>{$ ctrl.node.name | noValue $}</dd>
       <dt translate>Maintenance</dt>
       <dd>{$ ctrl.node.maintenance | yesno $}</dd>
       <dt translate>Maintenance Reason</dt>
@@ -34,7 +34,7 @@
         </a>
       </dd>
       <dt translate>Power State</dt>
-      <dd ng-class="{'running': ctrl.node.target_power_state}">{$ ctrl.node.power_state $}</dd>
+      <dd ng-class="{'running': ctrl.node.target_power_state}">{$ ctrl.node.power_state | noValue $}</dd>
       <dt translate>Target Power State</dt>
       <dd>{$ ctrl.node.target_power_state | noValue $}</dd>
       <dt translate>Provision State</dt>

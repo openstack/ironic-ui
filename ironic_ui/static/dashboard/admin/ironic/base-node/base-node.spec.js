@@ -18,7 +18,7 @@
   "use strict";
 
   describe(
-    'horizon.dashboard.admin.ironic.enroll-node.service',
+    'horizon.dashboard.admin.ironic.base-node.service',
     function() {
       var service;
 
@@ -32,7 +32,7 @@
 
       beforeEach(inject(function($injector) {
         service =
-          $injector.get('horizon.dashboard.admin.ironic.enroll-node.service');
+          $injector.get('horizon.dashboard.admin.ironic.base-node.service');
       }));
 
       it('defines the service', function() {
