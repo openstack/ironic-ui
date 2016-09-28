@@ -31,3 +31,4 @@ Administrator's Guide
   Introduction to ironic <http://docs.openstack.org/developer/ironic/deploy/user-guide.html>
   Installing the ironic UI <installation>
   Contributing <contributing>
+  Release notes <http://docs.openstack.org/releasenotes/ironic-ui>

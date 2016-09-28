@@ -1,0 +1,12 @@
+---
+prelude: >
+    This release adds support for editing nodes and
+    moving those nodes between enroll, manageable, available
+    and active states. It is now possible to enroll a node
+    without all required fields for moving to manageable state
+    being present due to the facility for editing the node once
+    it has been created.
+features:
+  - Edit nodes after creation
+  - Move nodes between enroll, manageable, available and active states
+  - Ability to enroll a node without all required fields for other states
