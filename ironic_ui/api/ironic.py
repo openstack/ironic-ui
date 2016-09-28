@@ -158,6 +158,19 @@ def node_delete(request, node_id):
     return ironicclient(request).node.delete(node_id)
 
 
+def node_update(request, node_id, patch):
+    """Update a specified node.
+
+    :param request: HTTP request.
+    :param node_id: The UUID of the node.
+    :param patch: Sequence of update operations
+    :return: node.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.update
+    """
+    ironicclient(request).node.update(node_id, patch)
+
+
 def driver_list(request):
     """Retrieve a list of drivers.
 

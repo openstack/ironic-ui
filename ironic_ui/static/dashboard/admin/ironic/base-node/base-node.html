@@ -6,7 +6,7 @@
           aria-label="Close">
     <span aria-hidden="true" class="fa fa-times"></span>
   </button>
-  <h3 class="modal-title" translate>Enroll Node</h3>
+  <h3 class="modal-title" translate>{$ ctrl.modalTitle $}</h3>
 </div>
 <!-- begin general node info modal -->
 <div class="modal-body">
@@ -28,9 +28,9 @@
            translate>Driver Details</a></li>
     </ul>
 
-    <!--enroll node form-->
-    <form id="enrollNodeForm"
-          name="enrollNodeForm">
+    <!--base node form-->
+    <form id="baseNodeForm"
+          name="baseNodeForm">
 
       <!--tabbed content-->
       <div class="tab-content">
@@ -38,8 +38,8 @@
         <div class="tab-pane active" id="nodeInfo">
           <!--node name-->
           <div class="form-group"
-               ng-class="{'has-error': enrollNodeForm.name.$invalid &&
-                         enrollNodeForm.name.$dirty}">
+               ng-class="{'has-error': baseNodeForm.name.$invalid &&
+                         baseNodeForm.name.$dirty}">
             <label for="name"
                    class="control-label"
                    translate>Node Name</label>
@@ -69,9 +69,9 @@
               </select>
             </div>
           </div>
-          <!--properties-->
-          <form id="AddPropertyForm"
-                name="AddPropertyForm">
+          <!--properties add-property-->
+          <form id="addPropertyForm"
+                name="addPropertyForm">
             <div class="form-group">
               <label for="properties"
                      class="control-label"
@@ -90,7 +90,7 @@
                 <span class="input-group-btn">
                   <button class="btn btn-primary"
                           type="button"
-                          ng-disabled="!propertyName || AddPropertyForm.$invalid"
+                          ng-disabled="!propertyName || addPropertyForm.$invalid"
                           ng-click="ctrl.node.properties[propertyName] = null;
                                     propertyName = null">
                     <span class="fa fa-plus"> </span>
@@ -99,9 +99,9 @@
               </div>
             </div>
           </form>
-          <!--properties list-->
-          <form id="PropertiesForm"
-                name="PropertiesForm">
+          <!--properties property-list-->
+          <form id="propertiesForm"
+                name="propertiesForm">
             <div class="form-group">
               <div class="input-group input-group-sm"
                    ng-repeat="(propertyName, propertyValue) in ctrl.node.properties">
@@ -123,9 +123,9 @@
               </div>
             </div>
           </form>
-          <!--extras-->
-          <form id="AddExtraForm"
-                name="AddExtraForm">
+          <!--extras add-property-->
+          <form id="addExtraForm"
+                name="addExtraForm">
             <div class="form-group">
               <label for="extras"
                      class="control-label"
@@ -144,7 +144,7 @@
                 <span class="input-group-btn">
                   <button class="btn btn-primary"
                           type="button"
-                          ng-disabled="!extraName || AddExtraForm.$invalid"
+                          ng-disabled="!extraName || addExtraForm.$invalid"
                           ng-click="ctrl.node.extra[extraName] = null;
                                     extraName = null">
                     <span class="fa fa-plus"> </span>
@@ -153,9 +153,9 @@
               </div>
             </div>
           </form>
-          <!--extras list-->
-          <form id="ExtraForm"
-                name="ExtraForm">
+          <!--extras property-list-->
+          <form id="extraForm"
+                name="extraForm">
             <div class="form-group">
               <div class="input-group input-group-sm"
                    ng-repeat="(propertyName, propertyValue) in ctrl.node.extra">
@@ -177,6 +177,63 @@
               </div>
             </div>
           </form>
+          <!--instance-info add-property-->
+          <form ng-if="ctrl.showInstanceInfo"
+                id="addInstancePropertyForm"
+                name="addInstancePropertyForm">
+            <div class="form-group">
+              <label for="instanceProperty"
+                     class="control-label"
+                     translate>Instance Info</label>
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon"
+                      style="width:25%;text-align:right"
+                      translate>
+                  Add New Instance Property:</span>
+                <input class="form-control"
+                       id="instanceProperty"
+                       type="text"
+                       ng-model="instancePropertyName"
+                       validate-unique="ctrl.checkInstancePropertyUnique"
+                       placeholder="{$ 'Instance Property Name' | translate $}"/>
+                <span class="input-group-btn">
+                  <button class="btn btn-primary"
+                          type="button"
+                          ng-disabled="!instancePropertyName ||
+                                       addInstancePropertyForm.$invalid"
+                          ng-click="ctrl.node.instance_info[instancePropertyName] = null;
+                                    instancePropertyName = null">
+                    <span class="fa fa-plus"> </span>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </form>
+          <!--instance-info property-list-->
+          <form ng-if="ctrl.showInstanceInfo"
+                id="instanceInfoForm"
+                name="instanceInfoForm">
+            <div class="form-group">
+              <div class="input-group input-group-sm"
+                   ng-repeat="(propertyName, propertyValue) in ctrl.node.instance_info">
+                <span class="input-group-addon"
+                      style="width:25%;text-align:right">
+                  {$ propertyName $}
+                </span>
+                <input class="form-control"
+                       type="text"
+                       name="{$ propertyName $}"
+                       ng-model="ctrl.node.instance_info[propertyName]"
+                       ng-required="true"/>
+                <div class="input-group-btn">
+                  <a class="btn btn-default"
+                     ng-click="ctrl.deleteInstanceProperty(propertyName)">
+                    <span class="fa fa-minus"> </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
         <!--end node info tab-->
 
@@ -192,8 +249,8 @@
                ng-repeat="property in propertyGroup | filter:ctrl.isDriverPropertyActive"
                ng-init="name = property.name;
                         selectOptions = property.getSelectOptions()"
-               ng-class="{'has-error': enrollNodeForm.{$ name $}.$invalid &&
-                         enrollNodeForm.{$ name $}.$dirty}">
+               ng-class="{'has-error': baseNodeForm.{$ name $}.$invalid &&
+                         baseNodeForm.{$ name $}.$dirty}">
             <label for="{$ name $}"
                    class="control-label"
                    style="white-space: nowrap">
@@ -269,7 +326,7 @@
       </div>
       <!--end tabbed content-->
     </form>
-    <!--end enroll node form-->
+    <!--end base node form-->
   </div>
 </div>
 <!--modal footer-->
@@ -282,13 +339,12 @@
 
   <button type="submit"
           ng-disabled="!ctrl.driverProperties ||
-                        enrollNodeForm.$invalid ||
-                        PropertiesForm.$invalid ||
-                        ExtraForm.$invalid ||
-                        InstanceInfoForm.$invalid"
-          ng-click="ctrl.enroll()"
+                        propertiesForm.$invalid ||
+                        extraForm.$invalid ||
+                        instanceInfoForm.$invalid"
+          ng-click="ctrl.submit()"
           class="btn btn-primary"
           translate>
-    Enroll Node
+    {$ ctrl.submitButtonTitle $}
   </button>
 </div>

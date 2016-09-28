@@ -69,10 +69,20 @@ class Node(generic.View):
         """Get information on a specific node.
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid.
+        :param node_id: Node id.
         :return: node.
         """
         return ironic.node_get(request, node_id).to_dict()
+
+    @rest_utils.ajax(data_required=True)
+    def patch(self, request, node_id):
+        """Update an Ironic node
+
+        :param request: HTTP request
+        :param node_uuid: Node uuid.
+        """
+        patch = request.DATA.get('patch')
+        return ironic.node_update(request, node_id, patch)
 
 
 @urls.register

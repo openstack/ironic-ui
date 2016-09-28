@@ -185,6 +185,12 @@
                                   targetState) === null">
                   {$ ('Move to ' | translate) + targetState $}
                 </action>
+                <action button-type="menu-item"
+                        callback="table.editNode"
+                        item="node">
+                  {$ 'Edit' | translate $}
+                </action>
+              </menu>
             </action-list>
           </td>
         </tr>
