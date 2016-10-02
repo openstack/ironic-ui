@@ -69,171 +69,64 @@
               </select>
             </div>
           </div>
-          <!--properties add-property-->
-          <form id="addPropertyForm"
-                name="addPropertyForm">
-            <div class="form-group">
-              <label for="properties"
-                     class="control-label"
-                     translate>Properties</label>
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon"
-                      style="width:25%;text-align:right"
-                      translate>
-                  Add New Property:</span>
-                <input class="form-control"
-                       id="properties"
-                       type="text"
-                       ng-model="propertyName"
-                       validate-unique="ctrl.checkPropertyUnique"
-                       placeholder="{$ 'Property Name' | translate $}"/>
-                <span class="input-group-btn">
-                  <button class="btn btn-primary"
-                          type="button"
-                          ng-disabled="!propertyName || addPropertyForm.$invalid"
-                          ng-click="ctrl.node.properties[propertyName] = null;
-                                    propertyName = null">
-                    <span class="fa fa-plus"> </span>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </form>
-          <!--properties property-list-->
-          <form id="propertiesForm"
-                name="propertiesForm">
-            <div class="form-group">
-              <div class="input-group input-group-sm"
-                   ng-repeat="(propertyName, propertyValue) in ctrl.node.properties">
-                <span class="input-group-addon"
-                      style="width:25%;text-align:right">
-                  {$ propertyName $}
-                </span>
-                <input class="form-control"
-                       type="text"
-                       name="{$ propertyName $}"
-                       ng-model="ctrl.node.properties[propertyName]"
-                       ng-required="true"/>
-                <div class="input-group-btn">
-                  <a class="btn btn-default"
-                     ng-click="ctrl.deleteProperty(propertyName)">
-                    <span class="fa fa-minus"> </span>
-                  </a>
+          <!--property collections-->
+          <div ng-repeat="collection in ctrl.propertyCollections">
+            <form
+               id="add-{$ collection.id $}-form"
+               name="add-{$ collection.id $}-form">
+              <div class="form-group">
+                <label for="add-{$ collection.id $}-input"
+                       class="control-label"
+                       translate>{$ collection.title $}</label>
+                <div class="input-group input-group-sm">
+                  <span class="input-group-addon"
+                        style="width:25%;text-align:right"
+                        translate>
+                    {$ collection.addPrompt $}:</span>
+                  <input class="form-control"
+                         id="add-{$ collection.id $}-input"
+                         type="text"
+                         ng-model="ctrl[collection.id]"
+                         placeholder="{$ collection.placeholder | translate $}"/>
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary"
+                            type="button"
+                            ng-disabled="!ctrl[collection.id] ||
+                                         !ctrl.collectionCheckPropertyUnique(collection.id,
+                                         ctrl[collection.id]) ||
+                                         add-{$ collection.id $}-form.$invalid"
+                            ng-click="ctrl.node[collection.id][ctrl[collection.id]] = null;
+                                      ctrl[collection.id] = null">
+                      <span class="fa fa-plus"> </span>
+                    </button>
+                  </span>
                 </div>
               </div>
-            </div>
-          </form>
-          <!--extras add-property-->
-          <form id="addExtraForm"
-                name="addExtraForm">
-            <div class="form-group">
-              <label for="extras"
-                     class="control-label"
-                     translate>Extras</label>
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon"
-                      style="width:25%;text-align:right"
-                      translate>
-                  Add Extra:</span>
-                <input class="form-control"
-                       id="extras"
-                       type="text"
-                       ng-model="extraName"
-                       validate-unique="ctrl.checkExtraUnique"
-                       placeholder="{$ 'Extra Property Name' | translate $}"/>
-                <span class="input-group-btn">
-                  <button class="btn btn-primary"
-                          type="button"
-                          ng-disabled="!extraName || addExtraForm.$invalid"
-                          ng-click="ctrl.node.extra[extraName] = null;
-                                    extraName = null">
-                    <span class="fa fa-plus"> </span>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </form>
-          <!--extras property-list-->
-          <form id="extraForm"
-                name="extraForm">
-            <div class="form-group">
-              <div class="input-group input-group-sm"
-                   ng-repeat="(propertyName, propertyValue) in ctrl.node.extra">
-                <span class="input-group-addon"
-                      style="width:25%;text-align:right">
-                  {$ propertyName $}
-                </span>
-                <input class="form-control"
-                       type="text"
-                       name="{$ propertyName $}"
-                       ng-model="ctrl.node.extra[propertyName]"
-                       ng-required="true"/>
-                <div class="input-group-btn">
-                  <a class="btn btn-default"
-                     ng-click="ctrl.deleteExtra(propertyName)">
-                    <span class="fa fa-minus"> </span>
-                  </a>
+            </form>
+            <form id="{$ collection.id $}-form"
+                  name="{$ collection.id $}-form">
+              <div class="form-group">
+                <div class="input-group input-group-sm"
+                     ng-repeat="(propertyName, propertyValue) in ctrl.node[collection.id]">
+                  <span class="input-group-addon"
+                        style="width:25%;text-align:right">
+                    {$ propertyName $}
+                  </span>
+                  <input class="form-control"
+                         type="text"
+                         name="{$ propertyName $}"
+                         ng-model="ctrl.node[collection.id][propertyName]"
+                         ng-required="true"/>
+                  <div class="input-group-btn">
+                    <a class="btn btn-default"
+                       ng-click="ctrl.collectionDeleteProperty(collection.id, propertyName)">
+                      <span class="fa fa-minus"> </span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-          <!--instance-info add-property-->
-          <form ng-if="ctrl.showInstanceInfo"
-                id="addInstancePropertyForm"
-                name="addInstancePropertyForm">
-            <div class="form-group">
-              <label for="instanceProperty"
-                     class="control-label"
-                     translate>Instance Info</label>
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon"
-                      style="width:25%;text-align:right"
-                      translate>
-                  Add New Instance Property:</span>
-                <input class="form-control"
-                       id="instanceProperty"
-                       type="text"
-                       ng-model="instancePropertyName"
-                       validate-unique="ctrl.checkInstancePropertyUnique"
-                       placeholder="{$ 'Instance Property Name' | translate $}"/>
-                <span class="input-group-btn">
-                  <button class="btn btn-primary"
-                          type="button"
-                          ng-disabled="!instancePropertyName ||
-                                       addInstancePropertyForm.$invalid"
-                          ng-click="ctrl.node.instance_info[instancePropertyName] = null;
-                                    instancePropertyName = null">
-                    <span class="fa fa-plus"> </span>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </form>
-          <!--instance-info property-list-->
-          <form ng-if="ctrl.showInstanceInfo"
-                id="instanceInfoForm"
-                name="instanceInfoForm">
-            <div class="form-group">
-              <div class="input-group input-group-sm"
-                   ng-repeat="(propertyName, propertyValue) in ctrl.node.instance_info">
-                <span class="input-group-addon"
-                      style="width:25%;text-align:right">
-                  {$ propertyName $}
-                </span>
-                <input class="form-control"
-                       type="text"
-                       name="{$ propertyName $}"
-                       ng-model="ctrl.node.instance_info[propertyName]"
-                       ng-required="true"/>
-                <div class="input-group-btn">
-                  <a class="btn btn-default"
-                     ng-click="ctrl.deleteInstanceProperty(propertyName)">
-                    <span class="fa fa-minus"> </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
         <!--end node info tab-->
 

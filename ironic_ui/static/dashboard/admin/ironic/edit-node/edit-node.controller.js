@@ -54,9 +54,13 @@
     ctrl.submitButtonTitle = gettext("Update Node");
 
     ctrl.node.instance_info = {};
-    ctrl.showInstanceInfo = true;
 
     ctrl.baseNode = null;
+
+    ctrl.propertyCollections.push({id: "instance_info",
+                                   title: "Instance Info",
+                                   addPrompt: "Add Instance Property",
+                                   placeholder: "Instance Property Name"});
 
     init(node);
 
@@ -95,28 +99,6 @@
         ctrl.node.uuid = node.uuid;
       });
     }
-
-    /**
-     * @description Delete a node instance property
-     *
-     * @param {string} propertyName - Name of the property
-     * @return {void}
-     */
-    ctrl.deleteInstanceProperty = function(propertyName) {
-      delete ctrl.node.instance_info[propertyName];
-    };
-
-    /**
-     * @description Check whether the specified node instance property
-     * already exists
-     *
-     * @param {string} propertyName - Name of the instance property
-     * @return {boolean} True if the property already exists,
-     * otherwise false
-     */
-    ctrl.checkInstancePropertyUnique = function(propertyName) {
-      return !(propertyName in ctrl.node.instance_info);
-    };
 
     /**
      * @description Construct a patch that converts source node into
