@@ -52,9 +52,9 @@
           expect(property.propertySet).toBe(propertySet);
           expect(property.getSelectOptions()).toBe(null);
           expect(property.required).toBe(false);
-          expect(property.defaultValue).toBe(null);
-          expect(property.inputValue).toBe(null);
-          expect(property.getInputValue()).toBe(null);
+          expect(property.defaultValue).toBe(undefined);
+          expect(property.inputValue).toBe(undefined);
+          expect(property.getInputValue()).toBe(undefined);
           expect(property.isActive()).toBe(true);
         });
 
