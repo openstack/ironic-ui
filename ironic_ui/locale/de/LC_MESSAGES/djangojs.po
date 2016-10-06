@@ -1,0 +1,441 @@
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Frank Kloeker <eumel@arcor.de>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 2.1.1.dev1\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-09-29 13:22+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-10-01 09:27+0000\n"
+"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+msgstr " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+
+msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr ""
+"Eine Anfrage wurde erstellt, um den Provisionierungsstatus des Nodes %s zu "
+"ändern"
+
+msgid "A unique node name. Optional."
+msgstr "Ein einzigartiger Knotenname. Optional."
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Add Extra:"
+msgstr "Extra hinzufügen:"
+
+msgid "Add New Instance Property:"
+msgstr "Eine neue Instanzeigenschaft hinzufügen:"
+
+msgid "Add New Property:"
+msgstr "Eine neue Eigenschaft hinzufügen:"
+
+#, python-format
+msgid ""
+"Are you sure you want to delete node \"%s\"? This action cannot be undone."
+msgstr ""
+"Sind Sie sicher, dass Sie den Knoten %s löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr ""
+"Sind Sie sicher, dass Sie die Knoten %s löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete port \"%s\"? This action cannot be undone."
+msgstr ""
+"Sind Sie sicher, dass Sie den Port %s löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr ""
+"Sind Sie sicher, dass Sie die Ports %s löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Chassis ID"
+msgstr "Chassis-ID"
+
+msgid "Choose an Image"
+msgstr "Wähle ein Abbild"
+
+msgid "Configuration"
+msgstr "Konfiguration"
+
+msgid "Console Enabled"
+msgstr "Konsole aktiviert"
+
+msgid "Create Port"
+msgstr "Erstelle Port"
+
+msgid "Create port"
+msgstr "Port erstellen"
+
+msgid "Created At"
+msgstr "Erstellt am"
+
+msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Standard zu ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "Delete Node"
+msgstr "Lösche Knoten"
+
+msgid "Delete Nodes"
+msgstr "Knoten löschen"
+
+msgid "Delete Port"
+msgstr "Lösche Port"
+
+msgid "Delete Ports"
+msgstr "Lösche Ports"
+
+msgid "Delete node"
+msgstr "Lösche Knoten"
+
+msgid "Delete nodes"
+msgstr "Lösche Knoten"
+
+msgid "Delete ports"
+msgstr "Ports löschen"
+
+msgid "Deploy Kernel"
+msgstr "Kernel bereitstellen"
+
+msgid "Deploy Ramdisk"
+msgstr "Ramdisk bereitstellen"
+
+msgid "Driver"
+msgstr "Treiber"
+
+msgid "Driver Details"
+msgstr "Treiberdetails"
+
+msgid "Driver Info"
+msgstr "Treiberinformationen"
+
+msgid "Edit"
+msgstr "Editieren"
+
+msgid "Edit Node"
+msgstr "Knoten editieren"
+
+msgid "Enroll Node"
+msgstr "Knoten ausrollen"
+
+#, python-format
+msgid "Error deleting nodes \"%s\""
+msgstr "Fehler beim Löschen der Knoten \"%s\""
+
+#, python-format
+msgid "Error deleting ports \"%s\""
+msgstr "Fehler beim Löschen der Ports \"%s\""
+
+msgid "Extra"
+msgstr "Extra"
+
+msgid "Extra Property Name"
+msgstr "Extra Eigenschaftname"
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "General"
+msgstr "Allgemein"
+
+msgid "Inspection Finished At"
+msgstr "Inspektion beenden um"
+
+msgid "Inspection Started At"
+msgstr "Inspektion gestartet um"
+
+msgid "Instance ID"
+msgstr "Instanz-ID"
+
+msgid "Instance Info"
+msgstr "Instanzinformation"
+
+msgid "Instance Name"
+msgstr "Instanzname"
+
+msgid "Instance Property Name"
+msgstr "Instanzeigenschaftname"
+
+msgid "Kernel"
+msgstr "Kernel"
+
+msgid "Last Error"
+msgstr "Letzter Fehler"
+
+msgid "MAC Address"
+msgstr "MAC-Adresse"
+
+msgid "MAC address"
+msgstr "MAC-Adresse"
+
+msgid "MAC address for this port. Required."
+msgstr "MAC-Adresse für diesen Port. Erforderlich."
+
+msgid "Maintenance"
+msgstr "Wartung"
+
+msgid "Maintenance Reason"
+msgstr "Grund der Wartung"
+
+msgid "Maintenance off"
+msgstr "Wartung ausschalten"
+
+msgid "Maintenance on"
+msgstr "Wartung einschalten"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "No Instance"
+msgstr "Keine Instanz"
+
+msgid "No maintenance reason given."
+msgstr "Kein Wartungsgrund angegeben."
+
+msgid "No network ports have been defined"
+msgstr "Kein Netzwerkport ist definiert"
+
+msgid "Node"
+msgstr "Knoten"
+
+#, python-format
+msgid "Node %s is already in maintenance mode."
+msgstr "Knoten %s ist schon im Wartungsmodus."
+
+#, python-format
+msgid "Node %s is not in maintenance mode."
+msgstr "Knoten %s ist nicht im Wartungsmodus"
+
+#, python-format
+msgid "Node %s is not powered off."
+msgstr "Knoten %s ist nicht ausgeschaltet."
+
+#, python-format
+msgid "Node %s is not powered on."
+msgstr "Knoten %s ist nicht eingeschaltet."
+
+msgid "Node Driver"
+msgstr "Knotentreiber"
+
+msgid "Node ID"
+msgstr "Knoten-ID"
+
+msgid "Node Info"
+msgstr "Knoten Information"
+
+msgid "Node Name"
+msgstr "Knotenname"
+
+msgid "One of this, (.*) must be specified\\."
+msgstr "Einer von diesen, (.*) muss spezifiziert sein\\."
+
+msgid "Overview"
+msgstr "Übersicht"
+
+msgid "Port successfully created"
+msgstr "Port erfolgreich erstellt"
+
+msgid "Ports"
+msgstr "Ports"
+
+msgid "Power State"
+msgstr "Zustand"
+
+msgid "Power off"
+msgstr "Ausschalten"
+
+msgid "Power on"
+msgstr "Einschalten"
+
+msgid "Properties"
+msgstr "Eigenschaften"
+
+msgid "Property Name"
+msgstr "Eigenschaftname"
+
+msgid ""
+"Provide a reason for why you are putting the selected node(s) into "
+"maintenance mode (optional)"
+msgstr ""
+"Stelle einen Grund zur Verfügung, warum Sie den/die ausgewählte(n) Knoten in "
+"den Wartungsmodus setzen (optional)"
+
+msgid "Provision State"
+msgstr "Bereitstellungsstatus"
+
+msgid "Provisioning State"
+msgstr "Provisionierungsstatus"
+
+msgid "Provisioning Status"
+msgstr "Provisionierungsstatus"
+
+msgid "Put Node(s) Into Maintenance Mode"
+msgstr "Setze Knoten in Wartungsmodus"
+
+msgid "Ramdisk"
+msgstr "Ramdisk"
+
+msgid "Refresh"
+msgstr "Aktualisieren"
+
+msgid "Refresh page to see updated power status"
+msgstr "Aktualisiere Seite, um den Power Status zu sehen"
+
+msgid "Required"
+msgstr "Erforderlich"
+
+msgid "Reservation"
+msgstr "Reservierung"
+
+msgid "SSH Port"
+msgstr "SSH Port"
+
+msgid "SSH Username"
+msgstr "SSH Benutzername"
+
+msgid "Select a Driver"
+msgstr "Wähle einen Treiber"
+
+msgid "Submit"
+msgstr "Absenden"
+
+#, python-format
+msgid "Successfully deleted node \"%s\""
+msgstr "Knoten \"%s\" erfolgreich gelöscht"
+
+#, python-format
+msgid "Successfully deleted nodes \"%s\""
+msgstr "Knoten \"%s\" erfolgreich gelöscht"
+
+#, python-format
+msgid "Successfully deleted port \"%s\""
+msgstr "Port \"%s\" erfolgreich gelöscht"
+
+#, python-format
+msgid "Successfully deleted ports \"%s\""
+msgstr "Ports \"%s\" erfolgreich gelöscht"
+
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "Knoten %s erfolgreich aktualisiert"
+
+msgid "Target Power State"
+msgstr "Ziel Power-Status"
+
+msgid "Target Provision State"
+msgstr "Ziel Bereitstellungsstatus"
+
+msgid "UUID"
+msgstr "UUID"
+
+msgid "Unable to create node update patch."
+msgstr "Konnte Knoten-Aktualisierungspatch nicht erstellen."
+
+#, python-format
+msgid "Unable to create node: %s"
+msgstr "Konnte Knoten nicht erstellen: %s"
+
+#, python-format
+msgid "Unable to create port: %s"
+msgstr "Konnte Port nicht erstellen: %s"
+
+#, python-format
+msgid "Unable to delete node \"%s\""
+msgstr "Konnte Knoten %s nicht löschen"
+
+#, python-format
+msgid "Unable to delete node %s: %s"
+msgstr "Konnte Knoten nicht löschen: %s: %s"
+
+#, python-format
+msgid "Unable to delete port \"%s\""
+msgstr "Konnte Port \"%s\" nicht löschen"
+
+#, python-format
+msgid "Unable to delete port: %s"
+msgstr "Konnte Port nicht löschen: %s"
+
+#, python-format
+msgid "Unable to power off the node: %s"
+msgstr "Konnte den Knoten nicht ausschalten: %s"
+
+#, python-format
+msgid "Unable to power on the node: %s"
+msgstr "Konnte den Knoten nicht einschalten: %s"
+
+#, python-format
+msgid "Unable to put the Ironic node in maintenance mode: %s"
+msgstr "Konnte den Ironic Knoten nicht in den Wartungsmodus setzen: %s"
+
+#, python-format
+msgid "Unable to remove the Ironic node from maintenance mode: %s"
+msgstr "Konnte den Wartungsmodus vom Ironic Knoten nicht löschen: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic drivers: %s"
+msgstr "Konnte Ironic Treiber nicht abrufen: %s"
+
+msgid "Unable to retrieve Ironic nodes."
+msgstr "Konnte die Ironic Knoten nicht abrufen."
+
+#, python-format
+msgid "Unable to retrieve driver properties: %s"
+msgstr "Konnte Treibereigenschaften nicht abrufen: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node ports: %s"
+msgstr "Konnte die Ironic Knotenports nicht abrufen: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node: %s"
+msgstr "Konnte den Ironic Knoten nicht abrufen: %s"
+
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "Konnte Provisionierungsstatus nicht setzen: %s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "Konnte Knoten %s nicht aktualisieren: %s"
+
+msgid "Update Node"
+msgstr "Knoten aktualisieren"
+
+msgid "Updated At"
+msgstr "Aktualisiert am"
+
+msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Standard (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "{$ ctrl.modalTitle $}"
+msgstr "{$ ctrl.modalTitle $}"
+
+msgid "{$ ctrl.submitButtonTitle $}"
+msgstr "{$ ctrl.submitButtonTitle $}"
+
+msgid "{$ property.getDescription() $}"
+msgstr "{$ property.getDescription() $}"
