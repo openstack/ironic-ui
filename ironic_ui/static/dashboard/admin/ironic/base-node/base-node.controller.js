@@ -51,7 +51,24 @@
 
     ctrl.modalTitle = gettext("Node");
     ctrl.submitButtonTitle = gettext("Submit");
-    ctrl.showInstanceInfo = false;
+
+    /* A property-collection is a set of properties that will be displayed
+       in the node view as a minimal browser ui that supports:
+       - adding new properties
+       - displaying the list of properties in the set
+       - changing the value of properties
+    */
+    ctrl.propertyCollections = [
+      {id: "properties",
+       title: "Properties",
+       addPrompt: "Add Property",
+       placeholder: "Property Name"
+      },
+      {id: "extra",
+       title: "Extras",
+       addPrompt: "Add Extra",
+       placeholder: "Extra Property Name"
+      }];
 
     // Node object suitable for Ironic api
     ctrl.node = {
@@ -247,46 +264,26 @@
     };
 
     /**
-     * @desription Delete a node property
+     * @description Check whether the specified property already exists
      *
-     * @param {string} propertyName - Name of the property
-     * @return {void}
-     */
-    ctrl.deleteProperty = function(propertyName) {
-      delete ctrl.node.properties[propertyName];
-    };
-
-    /**
-     * @description Check whether the specified node property already exists
-     *
+     * @param {string} collectionId - Collection ID
      * @param {string} propertyName - Name of the property
      * @return {boolean} True if the property already exists,
      * otherwise false
      */
-    ctrl.checkPropertyUnique = function(propertyName) {
-      return !(propertyName in ctrl.node.properties);
+    ctrl.collectionCheckPropertyUnique = function(collectionId, propertyName) {
+      return !(propertyName in ctrl.node[collectionId]);
     };
 
     /**
      * @description Delete a node metadata property
      *
+     * @param {string} collectionId - Collection ID
      * @param {string} propertyName - Name of the property
      * @return {void}
      */
-    ctrl.deleteExtra = function(propertyName) {
-      delete ctrl.node.extra[propertyName];
-    };
-
-    /**
-     * @description Check whether the specified node metadata property
-     * already exists
-     *
-     * @param {string} propertyName - Name of the metadata property
-     * @return {boolean} True if the property already exists,
-     * otherwise false
-     */
-    ctrl.checkExtraUnique = function(propertyName) {
-      return !(propertyName in ctrl.node.extra);
+    ctrl.collectionDeleteProperty = function(collectionId, propertyName) {
+      delete ctrl.node[collectionId][propertyName];
     };
 
     /**
