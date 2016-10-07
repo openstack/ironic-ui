@@ -28,7 +28,8 @@
     }
 
     function createPort(nodeUuid, index, extra) {
-      var port = {uuid: portUuid(nodeUuid, index)};
+      var uuid = portUuid(nodeUuid, index);
+      var port = {uuid: uuid, id: uuid};
       if (angular.isDefined(extra)) {
         port.extra = extra;
       }
@@ -36,7 +37,7 @@
     }
 
     function createNode(name, uuid) {
-      return {name: name, uuid: uuid};
+      return {name: name, uuid: uuid, id: uuid};
     }
 
     var ironicAPI = {
@@ -62,6 +63,16 @@
     }));
 
     beforeEach(module(function($provide) {
+      $provide.value('horizon.framework.widgets.toast.service',
+                     {});
+    }));
+
+    beforeEach(module(function($provide) {
+      $provide.value('horizon.dashboard.admin.ironic.edit-node.service',
+                     {});
+    }));
+
+    beforeEach(module(function($provide) {
       $provide.value('horizon.dashboard.admin.ironic.maintenance.service',
                      {});
     }));
@@ -75,7 +86,8 @@
 
       ctrl = controller(
         'horizon.dashboard.admin.ironic.NodeDetailsController',
-        {$location: $location,
+        {$scope: scope,
+         $location: $location,
          'horizon.dashboard.admin.ironic.actions': {},
          'horizon.dashboard.admin.basePath': '/static'});
 
@@ -97,14 +109,14 @@
     });
 
     it('should have ports', function () {
-      expect(ctrl.ports).toBeDefined();
-      expect(ctrl.ports.length).toEqual(numPorts);
+      expect(ctrl.portsSrc).toBeDefined();
+      expect(ctrl.portsSrc.length).toEqual(numPorts);
 
       var ports = [];
-      for (var i = 0; i < ctrl.ports.length; i++) {
+      for (var i = 0; i < numPorts; i++) {
         ports.push(createPort(ctrl.node.uuid, i));
       }
-      expect(ctrl.ports).toEqual(ports);
+      expect(ctrl.portsSrc).toEqual(ports);
     });
 
     it('should have a uuid regular expression pattern', function () {
