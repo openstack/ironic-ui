@@ -70,7 +70,7 @@
      * @return {void}
      */
     NodeUpdatePatch.prototype._updateStatus = function(status) {
-      this.status = Match.max(this.status, status);
+      this.status = Math.max(this.status, status);
     };
 
     /**
