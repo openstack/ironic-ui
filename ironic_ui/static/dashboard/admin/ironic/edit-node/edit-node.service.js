@@ -80,7 +80,8 @@
      * @return {boolean} True if the item is a number, string, or date
      */
     function isProperty(item) {
-      return angular.isNumber(item) ||
+      return item === null ||
+        angular.isNumber(item) ||
         angular.isString(item) ||
         angular.isDate(item);
     }
