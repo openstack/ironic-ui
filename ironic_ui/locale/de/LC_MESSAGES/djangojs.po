@@ -1,14 +1,14 @@
-# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Frank Kloeker <eumel@arcor.de>, 2016. #zanata
+# Robert Simai <robert.simai@suse.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev1\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev2\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-09-29 13:22+0000\n"
+"POT-Creation-Date: 2016-10-07 11:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-01 09:27+0000\n"
+"PO-Revision-Date: 2016-10-07 08:01+0000\n"
 "Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -24,11 +24,11 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
 msgstr ""
-"Eine Anfrage wurde erstellt, um den Provisionierungsstatus des Nodes %s zu "
+"Eine Anfrage wurde erstellt, um den Provisionierungsstatus des Knotens %s zu "
 "ändern"
 
 msgid "A unique node name. Optional."
-msgstr "Ein einzigartiger Knotenname. Optional."
+msgstr "Ein eindeutiger Knotenname. Optional."
 
 msgid "Actions"
 msgstr "Aktionen"
@@ -37,10 +37,10 @@ msgid "Add Extra:"
 msgstr "Extra hinzufügen:"
 
 msgid "Add New Instance Property:"
-msgstr "Eine neue Instanzeigenschaft hinzufügen:"
+msgstr "Neue Instanzeigenschaft hinzufügen:"
 
 msgid "Add New Property:"
-msgstr "Eine neue Eigenschaft hinzufügen:"
+msgstr "Neue Eigenschaft hinzufügen:"
 
 #, python-format
 msgid ""
@@ -77,7 +77,7 @@ msgid "Chassis ID"
 msgstr "Chassis-ID"
 
 msgid "Choose an Image"
-msgstr "Wähle ein Abbild"
+msgstr "Wählen Sie ein Abbild"
 
 msgid "Configuration"
 msgstr "Konfiguration"
@@ -95,7 +95,7 @@ msgid "Created At"
 msgstr "Erstellt am"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
-msgstr "Standard zu ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Standard ist ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "Delete Node"
 msgstr "Lösche Knoten"
@@ -134,10 +134,10 @@ msgid "Driver Info"
 msgstr "Treiberinformationen"
 
 msgid "Edit"
-msgstr "Editieren"
+msgstr "Bearbeiten"
 
 msgid "Edit Node"
-msgstr "Knoten editieren"
+msgstr "Knoten bearbeiten"
 
 msgid "Enroll Node"
 msgstr "Knoten ausrollen"
@@ -217,7 +217,7 @@ msgid "No maintenance reason given."
 msgstr "Kein Wartungsgrund angegeben."
 
 msgid "No network ports have been defined"
-msgstr "Kein Netzwerkport ist definiert"
+msgstr "Keine Netzwerkports definiert"
 
 msgid "Node"
 msgstr "Knoten"
@@ -245,7 +245,7 @@ msgid "Node ID"
 msgstr "Knoten-ID"
 
 msgid "Node Info"
-msgstr "Knoten Information"
+msgstr "Knoteninformation"
 
 msgid "Node Name"
 msgstr "Knotenname"
@@ -281,8 +281,8 @@ msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
 "maintenance mode (optional)"
 msgstr ""
-"Stelle einen Grund zur Verfügung, warum Sie den/die ausgewählte(n) Knoten in "
-"den Wartungsmodus setzen (optional)"
+"Geben Sie einen Grund an, warum Sie den/die ausgewählten Knoten in den "
+"Wartungsmodus setzen (optional)"
 
 msgid "Provision State"
 msgstr "Bereitstellungsstatus"
@@ -312,13 +312,13 @@ msgid "Reservation"
 msgstr "Reservierung"
 
 msgid "SSH Port"
-msgstr "SSH Port"
+msgstr "SSH-Port"
 
 msgid "SSH Username"
-msgstr "SSH Benutzername"
+msgstr "SSH-Benutzername"
 
 msgid "Select a Driver"
-msgstr "Wähle einen Treiber"
+msgstr "Wählen Sie einen Treiber"
 
 msgid "Submit"
 msgstr "Absenden"
@@ -357,27 +357,27 @@ msgstr "Konnte Knoten-Aktualisierungspatch nicht erstellen."
 
 #, python-format
 msgid "Unable to create node: %s"
-msgstr "Konnte Knoten nicht erstellen: %s"
+msgstr "Kann Knoten nicht erstellen: %s"
 
 #, python-format
 msgid "Unable to create port: %s"
-msgstr "Konnte Port nicht erstellen: %s"
+msgstr "Kann Port nicht erstellen: %s"
 
 #, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "Konnte Knoten %s nicht löschen"
+msgstr "Kann Knoten %s nicht löschen"
 
 #, python-format
 msgid "Unable to delete node %s: %s"
-msgstr "Konnte Knoten nicht löschen: %s: %s"
+msgstr "Kann Knoten nicht löschen: %s: %s"
 
 #, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "Konnte Port \"%s\" nicht löschen"
+msgstr "Kann Port \"%s\" nicht löschen"
 
 #, python-format
 msgid "Unable to delete port: %s"
-msgstr "Konnte Port nicht löschen: %s"
+msgstr "Kann Port nicht löschen: %s"
 
 #, python-format
 msgid "Unable to power off the node: %s"
@@ -397,14 +397,14 @@ msgstr "Konnte den Wartungsmodus vom Ironic Knoten nicht löschen: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
-msgstr "Konnte Ironic Treiber nicht abrufen: %s"
+msgstr "Kann Ironic Treiber nicht abrufen: %s"
 
 msgid "Unable to retrieve Ironic nodes."
 msgstr "Konnte die Ironic Knoten nicht abrufen."
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
-msgstr "Konnte Treibereigenschaften nicht abrufen: %s"
+msgstr "Kann Treibereigenschaften nicht abrufen: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
@@ -416,11 +416,11 @@ msgstr "Konnte den Ironic Knoten nicht abrufen: %s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
-msgstr "Konnte Provisionierungsstatus nicht setzen: %s"
+msgstr "Kann Provisionierungsstatus nicht setzen: %s"
 
 #, python-format
 msgid "Unable to update node %s: %s"
-msgstr "Konnte Knoten %s nicht aktualisieren: %s"
+msgstr "Kann Knoten %s nicht aktualisieren: %s"
 
 msgid "Update Node"
 msgstr "Knoten aktualisieren"
