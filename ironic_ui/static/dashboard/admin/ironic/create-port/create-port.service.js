@@ -23,7 +23,7 @@
 
   createPortService.$inject = [
     '$modal',
-    'horizon.dashboard.admin.basePath'
+    'horizon.dashboard.admin.ironic.basePath'
   ];
 
   function createPortService($modal, basePath) {
@@ -41,7 +41,7 @@
             return node;
           }
         },
-        templateUrl: basePath + '/ironic/create-port/create-port.html'
+        templateUrl: basePath + '/create-port/create-port.html'
       };
       return $modal.open(options);
     }

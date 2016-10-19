@@ -23,7 +23,7 @@
 
   enrollNodeService.$inject = [
     '$modal',
-    'horizon.dashboard.admin.basePath'
+    'horizon.dashboard.admin.ironic.basePath'
   ];
 
   function enrollNodeService($modal, basePath) {
@@ -35,7 +35,7 @@
       var options = {
         controller: 'EnrollNodeController as ctrl',
         backdrop: 'static',
-        templateUrl: basePath + '/ironic/base-node/base-node.html'
+        templateUrl: basePath + '/base-node/base-node.html'
       };
       return $modal.open(options);
     }
