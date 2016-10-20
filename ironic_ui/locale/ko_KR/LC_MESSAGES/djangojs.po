@@ -1,17 +1,18 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Eunseop Shin <kairos9603@gmail.com>, 2016. #zanata
 # HYUNGBAI PARK <openstack.make@gmail.com>, 2016. #zanata
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev1\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev3\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-09-29 13:22+0000\n"
+"POT-Creation-Date: 2016-10-12 10:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-08-17 09:15+0000\n"
-"Last-Translator: HYUNGBAI PARK <openstack.make@gmail.com>\n"
+"PO-Revision-Date: 2016-10-20 04:26+0000\n"
+"Last-Translator: Eunseop Shin <kairos9603@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -23,6 +24,10 @@ msgstr " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
 msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr "노드%s의 프로비저닝 상태를 변경하기 위한 요청이 이루어졌습니다."
+
 msgid "A unique node name. Optional."
 msgstr "단일한 노드 명칭. 선택사항."
 
@@ -31,6 +36,9 @@ msgstr "작업"
 
 msgid "Add Extra:"
 msgstr "Extra 추가하기:"
+
+msgid "Add New Instance Property:"
+msgstr "새 인스턴스 속석 추가"
 
 msgid "Add New Property:"
 msgstr "새로운 속성 추가"
@@ -118,6 +126,12 @@ msgstr "드라이버 세부사항"
 msgid "Driver Info"
 msgstr "드라이버 정보"
 
+msgid "Edit"
+msgstr "편집"
+
+msgid "Edit Node"
+msgstr "노드 편집"
+
 msgid "Enroll Node"
 msgstr "노드 등록하기"
 
@@ -155,6 +169,9 @@ msgstr "인스턴스 정보"
 
 msgid "Instance Name"
 msgstr "인스턴스 이름"
+
+msgid "Instance Property Name"
+msgstr "인스턴스 속성 이름"
 
 msgid "Kernel"
 msgstr "커널"
@@ -194,6 +211,9 @@ msgstr "유지보수 사유 없습니다."
 
 msgid "No network ports have been defined"
 msgstr "네트워크 포트가 정의되지 않았습니다"
+
+msgid "Node"
+msgstr "노드"
 
 #, python-format
 msgid "Node %s is already in maintenance mode."
@@ -270,6 +290,9 @@ msgstr "노드(들)을 유지보수 모드로 넣기"
 msgid "Ramdisk"
 msgstr "램디스크"
 
+msgid "Refresh"
+msgstr "갱신"
+
 msgid "Refresh page to see updated power status"
 msgstr "갱신된 전원 상태를 보기 위해 페이지 새로 고치기"
 
@@ -288,6 +311,9 @@ msgstr "SSH Username"
 msgid "Select a Driver"
 msgstr "드라이버 선택하기"
 
+msgid "Submit"
+msgstr "제출"
+
 #, python-format
 msgid "Successfully deleted node \"%s\""
 msgstr "노드 \"%s\"를 성공적으로 삭제했습니다"
@@ -304,6 +330,10 @@ msgstr "포트 \"%s\"를 성공적으로 삭제했습니다"
 msgid "Successfully deleted ports \"%s\""
 msgstr "포트들 \"%s\"를 성공적으로 삭제했습니다"
 
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "노드 %s가 성공적으로 업데이트 됨."
+
 msgid "Target Power State"
 msgstr "대상 전원 상태"
 
@@ -312,6 +342,9 @@ msgstr "대상 권한설정 상태"
 
 msgid "UUID"
 msgstr "UUID"
+
+msgid "Unable to create node update patch."
+msgstr "노드 업데이트 패치를 만들수 없습니다."
 
 #, python-format
 msgid "Unable to create node: %s"
@@ -372,11 +405,28 @@ msgstr "아이러닉 노드 포트를 되찾을 수 없습니다: %s"
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "아이러닉 노드를 되찾을 수 없습니다: %s "
 
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "노드 공급 상태를 설정 할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "노드 %s를 업데이트 할 수 없습니다: %s"
+
+msgid "Update Node"
+msgstr "노드 업데이트"
+
 msgid "Updated At"
 msgstr "업데이트 시점"
 
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "{$ ctrl.modalTitle $}"
+msgstr "{$ ctrl.modalTitle $}"
+
+msgid "{$ ctrl.submitButtonTitle $}"
+msgstr "{$ ctrl.submitButtonTitle $}"
 
 msgid "{$ property.getDescription() $}"
 msgstr "{$ property.getDescription() $}"
