@@ -1,0 +1,434 @@
+# Ilya Alekseyev <ilyaalekseyev@acm.org>, 2015. #zanata
+# OpenStack Infra <zanata@openstack.org>, 2015. #zanata
+# Alexander <ainikitenkov@gmail.com>, 2016. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Fedor Tarasenko <feodor.tarasenko@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-10-19 02:13+0000\n"
+"Last-Translator: Alexander <ainikitenkov@gmail.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+msgstr " ([^\" ]+|\"[^\"]+\") \\(По умолчанию\\)"
+
+msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr "Запрос был создал для изменения состояния подготовки узла %s"
+
+msgid "A unique node name. Optional."
+msgstr "Уникальное имя узла. Необязательный параметр."
+
+msgid "Actions"
+msgstr "Действия"
+
+#, python-format
+msgid ""
+"Are you sure you want to delete node \"%s\"? This action cannot be undone."
+msgstr ""
+"Вы действительно хотите удалить узел \"%s\"? Это действие не может быть "
+"отменено."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr ""
+"Вы действительно хотите удалить узлы \"%s\"? Это действие не может быть "
+"отменено."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete port \"%s\"? This action cannot be undone."
+msgstr ""
+"Вы действительно хотите удалить порт \"%s\"? Это действие не может быть "
+"отменено."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr ""
+"Вы действительно хотите удалить порты \"%s\"? Это действие не может быть "
+"отменено."
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Chassis ID"
+msgstr "ID устройства"
+
+msgid "Choose an Image"
+msgstr "Выберите образ"
+
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgid "Console Enabled"
+msgstr "Консоль активирована"
+
+msgid "Create Port"
+msgstr "Создать порт"
+
+msgid "Create port"
+msgstr "Создать порт"
+
+msgid "Created At"
+msgstr "Создано"
+
+msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "По умолчанию ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "Delete Node"
+msgstr "Удалить узел"
+
+msgid "Delete Nodes"
+msgstr "Удалить узлы"
+
+msgid "Delete Port"
+msgstr "Удалить порт"
+
+msgid "Delete Ports"
+msgstr "Удалить порты"
+
+msgid "Delete node"
+msgstr "Удалить узел"
+
+msgid "Delete nodes"
+msgstr "Удалить узлы"
+
+msgid "Delete ports"
+msgstr "Удалить порты"
+
+msgid "Deploy Kernel"
+msgstr "Развернуть ядро"
+
+msgid "Deploy Ramdisk"
+msgstr "Развернуть Ramdisk"
+
+msgid "Driver"
+msgstr "Драйвер"
+
+msgid "Driver Details"
+msgstr "Детали дравера"
+
+msgid "Driver Info"
+msgstr "Информация о драйвере"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Edit Node"
+msgstr "Редактировать узел"
+
+msgid "Enroll Node"
+msgstr "Зарегистрировать узел"
+
+#, python-format
+msgid "Error deleting nodes \"%s\""
+msgstr "Ошибка при удалении узлов \"%s\""
+
+#, python-format
+msgid "Error deleting ports \"%s\""
+msgstr "Ошибка при удалении портов \"%s\""
+
+msgid "Extra"
+msgstr "Дополнительно"
+
+msgid "Extras"
+msgstr "Дополнительно"
+
+msgid "General"
+msgstr "Общее"
+
+msgid "Inspection Finished At"
+msgstr "Проверка закончилась в"
+
+msgid "Inspection Started At"
+msgstr "Проверка началась в"
+
+msgid "Instance ID"
+msgstr "ID инстанса"
+
+msgid "Instance Info"
+msgstr "Информация об инстансе"
+
+msgid "Instance Name"
+msgstr "Имя инстанса"
+
+msgid "Kernel"
+msgstr "Ядро"
+
+msgid "Last Error"
+msgstr "Последняя ошибка"
+
+msgid "MAC Address"
+msgstr "MAC адрес"
+
+msgid "MAC address"
+msgstr "MAC адрес"
+
+msgid "MAC address for this port. Required."
+msgstr "MAC адрес для этого порта. Обязательный параметр."
+
+msgid "Maintenance"
+msgstr "Техническое обслуживание"
+
+msgid "Maintenance Reason"
+msgstr "Причина технического обслуживания"
+
+msgid "Maintenance off"
+msgstr "Не в режиме обслуживания"
+
+msgid "Maintenance on"
+msgstr "В режиме обслуживания"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "No Instance"
+msgstr "Нет инстанса"
+
+msgid "No maintenance reason given."
+msgstr "Не указаны причины обслуживания."
+
+msgid "No network ports have been defined"
+msgstr "Сетевые порты не были заданы"
+
+msgid "Node"
+msgstr "Узел"
+
+#, python-format
+msgid "Node %s is already in maintenance mode."
+msgstr "Узел %s уже находится в режиме обслуживания."
+
+#, python-format
+msgid "Node %s is not in maintenance mode."
+msgstr "Узел %s не в режиме обслуживания."
+
+#, python-format
+msgid "Node %s is not powered off."
+msgstr "Узел %s не выключен."
+
+#, python-format
+msgid "Node %s is not powered on."
+msgstr "Узел %s не включен."
+
+msgid "Node Driver"
+msgstr "Драйвер узла"
+
+msgid "Node ID"
+msgstr "ID узла"
+
+msgid "Node Info"
+msgstr "Информация об узле"
+
+msgid "Node Name"
+msgstr "Имя узла"
+
+msgid "One of this, (.*) must be specified\\."
+msgstr "Один из этих, (.*) должен быть определен\\."
+
+msgid "Overview"
+msgstr "Обзор"
+
+msgid "Port successfully created"
+msgstr "Порт создан успешно"
+
+msgid "Ports"
+msgstr "Порты"
+
+msgid "Power State"
+msgstr "Состояние"
+
+msgid "Power off"
+msgstr "Выключить"
+
+msgid "Power on"
+msgstr "Включить"
+
+msgid "Properties"
+msgstr "Свойства"
+
+msgid "Property Name"
+msgstr "Имя свойства"
+
+msgid ""
+"Provide a reason for why you are putting the selected node(s) into "
+"maintenance mode (optional)"
+msgstr ""
+"Опишите причину по которой вы переводите выбранные узлы в режим обслуживания "
+"(необязательно)"
+
+msgid "Provision State"
+msgstr "Статус развертывания"
+
+msgid "Provisioning State"
+msgstr "Статус развертывания"
+
+msgid "Provisioning Status"
+msgstr "Статус развертывания"
+
+msgid "Put Node(s) Into Maintenance Mode"
+msgstr "Перевести узел (узлы) в режим обслуживания"
+
+msgid "Ramdisk"
+msgstr "Ramdisk"
+
+msgid "Refresh"
+msgstr "Обновить"
+
+msgid "Refresh page to see updated power status"
+msgstr "Обновите страницу чтобы увидеть обновленный статус питания"
+
+msgid "Required"
+msgstr "Обязательно"
+
+msgid "Reservation"
+msgstr "Резервация"
+
+msgid "SSH Port"
+msgstr "Порт SSH"
+
+msgid "SSH Username"
+msgstr "Имя пользователя SSH"
+
+msgid "Select a Driver"
+msgstr "Выберите драйвер"
+
+msgid "Submit"
+msgstr "Отправить"
+
+#, python-format
+msgid "Successfully deleted node \"%s\""
+msgstr "Узел \"%s\" успешно удален"
+
+#, python-format
+msgid "Successfully deleted nodes \"%s\""
+msgstr "Узлы \"%s\" успешно удалены"
+
+#, python-format
+msgid "Successfully deleted port \"%s\""
+msgstr "Порт \"%s\" успешно удален"
+
+#, python-format
+msgid "Successfully deleted ports \"%s\""
+msgstr "Порты \"%s\" успешно удалены"
+
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "Узел %s успешно обновлен"
+
+msgid "Target Power State"
+msgstr "Целевое состояние"
+
+msgid "Target Provision State"
+msgstr "Целевой статус развертывания"
+
+msgid "UUID"
+msgstr "UUID"
+
+msgid "Unable to create node update patch."
+msgstr "Невозможно создать патч обновления узла."
+
+#, python-format
+msgid "Unable to create node: %s"
+msgstr "Невозможно создать узел: %s"
+
+#, python-format
+msgid "Unable to create port: %s"
+msgstr "Невозможно создать порт: %s"
+
+#, python-format
+msgid "Unable to delete node \"%s\""
+msgstr "Невозможно удалить узел \"%s\""
+
+#, python-format
+msgid "Unable to delete node %s: %s"
+msgstr "Невозможно удалить узел %s: %s"
+
+#, python-format
+msgid "Unable to delete port \"%s\""
+msgstr "Невозможно удалить порт \"%s\""
+
+#, python-format
+msgid "Unable to delete port: %s"
+msgstr "Невозможно удалить порт: %s"
+
+#, python-format
+msgid "Unable to power off the node: %s"
+msgstr "Невозможно выключить узел: %s"
+
+#, python-format
+msgid "Unable to power on the node: %s"
+msgstr "Невозможно включить узел: %s"
+
+#, python-format
+msgid "Unable to put the Ironic node in maintenance mode: %s"
+msgstr "Невозможно перевести ноду Ironic в режим обслуживания: %s"
+
+#, python-format
+msgid "Unable to remove the Ironic node from maintenance mode: %s"
+msgstr "Невозможно вывести узел Ironic из режима обслуживания: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic drivers: %s"
+msgstr "Невозможно получить драйвера Ironic: %s"
+
+msgid "Unable to retrieve Ironic nodes."
+msgstr "Невозможно получить узлы Ironic."
+
+#, python-format
+msgid "Unable to retrieve driver properties: %s"
+msgstr "Невозможно получить свойства драйвера: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node ports: %s"
+msgstr "Невозможно получить порты узла Ironic: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node: %s"
+msgstr "Невозможно получить узел Ironic: %s"
+
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "Не удается установить состояние подготовки узла: %s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "Невозможно обновить узел %s: %s"
+
+msgid "Update Node"
+msgstr "Обновить узел"
+
+msgid "Updated At"
+msgstr "Обновлено"
+
+msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "По умолчанию (?:value )? - ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "{$ collection.addPrompt $}:"
+msgstr "{$ collection.addPrompt $}:"
+
+msgid "{$ collection.title $}"
+msgstr "{$ collection.title $}"
+
+msgid "{$ ctrl.modalTitle $}"
+msgstr "{$ ctrl.modalTitle $}"
+
+msgid "{$ ctrl.submitButtonTitle $}"
+msgstr "{$ ctrl.submitButtonTitle $}"
+
+msgid "{$ property.getDescription() $}"
+msgstr "{$ property.getDescription() $}"

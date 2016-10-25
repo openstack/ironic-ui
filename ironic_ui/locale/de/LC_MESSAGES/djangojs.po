@@ -1,8 +1,6 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
-# Eunseop Shin <kairos9603@gmail.com>, 2016. #zanata
-# HYUNGBAI PARK <openstack.make@gmail.com>, 2016. #zanata
-# Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
-# Sungjin Kang <gang.sungjin@gmail.com>, 2016. #zanata
+# Frank Kloeker <eumel@arcor.de>, 2016. #zanata
+# Robert Simai <robert.simai@suse.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui 2.1.1.dev9\n"
@@ -11,12 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-20 05:14+0000\n"
-"Last-Translator: Eunseop Shin <kairos9603@gmail.com>\n"
-"Language-Team: Korean (South Korea)\n"
-"Language: ko-KR\n"
+"PO-Revision-Date: 2016-10-17 03:01+0000\n"
+"Last-Translator: Robert Simai <robert.simai@suse.com>\n"
+"Language-Team: German\n"
+"Language: de\n"
 "X-Generator: Zanata 3.7.3\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
 msgstr " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
@@ -26,386 +24,398 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
-msgstr "노드 %s의 프로비저닝 상태 변경을 위한 요청이 처리되었습니다."
+msgstr ""
+"Eine Anfrage wurde erstellt, um den Provisionierungszustand des Knotens %s "
+"zu ändern"
 
 msgid "A unique node name. Optional."
-msgstr "단일한 노드 명칭. 선택사항."
+msgstr "Ein eindeutiger Knotenname. Optional."
 
 msgid "Actions"
-msgstr "작업"
+msgstr "Aktionen"
 
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
-msgstr "노드 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+msgstr ""
+"Sind Sie sicher, dass Sie den Knoten %s löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr "노드들 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+msgstr ""
+"Sind Sie sicher, dass Sie die Knoten %s löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
-msgstr "포트 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+msgstr ""
+"Sind Sie sicher, dass Sie den Port \"%s\" löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr "포트들 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+msgstr ""
+"Sind Sie sicher, dass Sie die Ports \"%s\" löschen wollen? Diese Aktion kann "
+"nicht rückgängig gemacht werden."
 
 msgid "Cancel"
-msgstr "취소하기"
+msgstr "Abbrechen"
 
 msgid "Chassis ID"
-msgstr "Chassis ID"
+msgstr "Chassis-ID"
 
 msgid "Choose an Image"
-msgstr "이미지 선택하기"
+msgstr "Wählen Sie ein Abbild"
 
 msgid "Configuration"
-msgstr "구성"
+msgstr "Konfiguration"
 
 msgid "Console Enabled"
-msgstr "콘솔 활성화"
+msgstr "Konsole aktiviert"
 
 msgid "Create Port"
-msgstr "포트 생성하기"
+msgstr "Port erstellen"
 
 msgid "Create port"
-msgstr "포트 생성하기"
+msgstr "Port erstellen"
 
 msgid "Created At"
-msgstr "생성 시점"
+msgstr "Erstellt am"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
-msgstr "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Standard ist ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "Delete Node"
-msgstr "노드 삭제하기"
+msgstr "Knoten löschen"
 
 msgid "Delete Nodes"
-msgstr "노드들 삭제하기"
+msgstr "Knoten löschen"
 
 msgid "Delete Port"
-msgstr "포트 삭제하기"
+msgstr "Port löschen"
 
 msgid "Delete Ports"
-msgstr "포트 삭제하기"
+msgstr "Ports löschen"
 
 msgid "Delete node"
-msgstr "노드 삭제하기"
+msgstr "Knoten löschen"
 
 msgid "Delete nodes"
-msgstr "노드들 삭제하기"
+msgstr "Knoten löschen"
 
 msgid "Delete ports"
-msgstr "포트 삭제하기"
+msgstr "Ports löschen"
 
 msgid "Deploy Kernel"
-msgstr "커널 배치하기"
+msgstr "Kernel bereitstellen"
 
 msgid "Deploy Ramdisk"
-msgstr "램디스크 배치하기"
+msgstr "Ramdisk bereitstellen"
 
 msgid "Driver"
-msgstr "드라이버"
+msgstr "Treiber"
 
 msgid "Driver Details"
-msgstr "드라이버 세부사항"
+msgstr "Treiberdetails"
 
 msgid "Driver Info"
-msgstr "드라이버 정보"
+msgstr "Treiberinformationen"
 
 msgid "Edit"
-msgstr "편집"
+msgstr "Bearbeiten"
 
 msgid "Edit Node"
-msgstr "노드 편집"
+msgstr "Knoten bearbeiten"
 
 msgid "Enroll Node"
-msgstr "노드 등록하기"
+msgstr "Knoten ausrollen"
 
 #, python-format
 msgid "Error deleting nodes \"%s\""
-msgstr "노드들 \"%s\" 삭제 중 에러가 발생했습니다"
+msgstr "Fehler beim Löschen der Knoten \"%s\""
 
 #, python-format
 msgid "Error deleting ports \"%s\""
-msgstr "포트들 \"%s\" 삭제 중 에러가 발생했습니다"
+msgstr "Fehler beim Löschen der Ports \"%s\""
 
 msgid "Extra"
 msgstr "Extra"
 
 msgid "Extras"
-msgstr "Extra"
+msgstr "Extras"
 
 msgid "General"
-msgstr "일반"
+msgstr "Allgemein"
 
 msgid "Inspection Finished At"
-msgstr "점검 종료시점"
+msgstr "Inspektion beenden um"
 
 msgid "Inspection Started At"
-msgstr "점검 시작 시점"
+msgstr "Inspektion gestartet um"
 
 msgid "Instance ID"
-msgstr "인스턴스 ID"
+msgstr "Instanz-ID"
 
 msgid "Instance Info"
-msgstr "인스턴스 정보"
+msgstr "Instanzinformation"
 
 msgid "Instance Name"
-msgstr "인스턴스 이름"
+msgstr "Instanzname"
 
 msgid "Kernel"
-msgstr "커널"
+msgstr "Kernel"
 
 msgid "Last Error"
-msgstr "마지막 에러"
+msgstr "Letzter Fehler"
 
 msgid "MAC Address"
-msgstr "MAC 주소"
+msgstr "MAC-Adresse"
 
 msgid "MAC address"
-msgstr "MAC 주소"
+msgstr "MAC-Adresse"
 
 msgid "MAC address for this port. Required."
-msgstr "이 포트를 위한 MAC 주소. 필수항목."
+msgstr "MAC-Adresse für diesen Port. Erforderlich."
 
 msgid "Maintenance"
-msgstr "유지보수"
+msgstr "Wartung"
 
 msgid "Maintenance Reason"
-msgstr "유지보수 사유"
+msgstr "Grund der Wartung"
 
 msgid "Maintenance off"
-msgstr "유지보수 꺼짐"
+msgstr "Wartung ausschalten"
 
 msgid "Maintenance on"
-msgstr "유지보수 켜짐"
+msgstr "Wartung einschalten"
 
 msgid "Name"
-msgstr "이름"
+msgstr "Name"
 
 msgid "No Instance"
-msgstr "인스턴스 없음"
+msgstr "Keine Instanz"
 
 msgid "No maintenance reason given."
-msgstr "유지보수 사유 없습니다."
+msgstr "Kein Wartungsgrund angegeben."
 
 msgid "No network ports have been defined"
-msgstr "네트워크 포트가 정의되지 않았습니다"
+msgstr "Es wurden keine Netzwerkports definiert"
 
 msgid "Node"
-msgstr "노드"
+msgstr "Knoten"
 
 #, python-format
 msgid "Node %s is already in maintenance mode."
-msgstr "노드 %s는 이미 유지보수 모드입니다."
+msgstr "Knoten %s ist schon im Wartungsmodus."
 
 #, python-format
 msgid "Node %s is not in maintenance mode."
-msgstr "노드 %s는 유지보수 모드에 있지 않습니다."
+msgstr "Knoten %s ist nicht im Wartungsmodus"
 
 #, python-format
 msgid "Node %s is not powered off."
-msgstr "노드 %s의 전원이 꺼지지 않았습니다."
+msgstr "Knoten %s ist nicht ausgeschaltet."
 
 #, python-format
 msgid "Node %s is not powered on."
-msgstr "노드 %s의 전원이 켜지지 않았습니다."
+msgstr "Knoten %s ist nicht eingeschaltet."
 
 msgid "Node Driver"
-msgstr "노드 드라이버"
+msgstr "Knotentreiber"
 
 msgid "Node ID"
-msgstr "노드 ID"
+msgstr "Knoten-ID"
 
 msgid "Node Info"
-msgstr "노드 정보"
+msgstr "Knoteninformation"
 
 msgid "Node Name"
-msgstr "노드 명칭"
+msgstr "Knotenname"
 
 msgid "One of this, (.*) must be specified\\."
-msgstr "One of this, (.*) must be specified\\."
+msgstr "Einer von diesen, (.*) muss spezifiziert sein\\."
 
 msgid "Overview"
-msgstr "개요"
+msgstr "Übersicht"
 
 msgid "Port successfully created"
-msgstr "포트가 성공적으로 생성됐습니다"
+msgstr "Port erfolgreich erstellt"
 
 msgid "Ports"
-msgstr "포트들"
+msgstr "Ports"
 
 msgid "Power State"
-msgstr "전원 상태"
+msgstr "Zustand"
 
 msgid "Power off"
-msgstr "전원 꺼짐"
+msgstr "Ausschalten"
 
 msgid "Power on"
-msgstr "전원 켜짐"
+msgstr "Einschalten"
 
 msgid "Properties"
-msgstr "속성"
+msgstr "Eigenschaften"
 
 msgid "Property Name"
-msgstr "속성 명칭"
+msgstr "Eigenschaftname"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
 "maintenance mode (optional)"
-msgstr "선택된 노드를 유지보수 모드로 넣는지 사유를 제공합니다 (선택항목)"
+msgstr ""
+"Geben Sie einen Grund an, warum Sie den/die ausgewählten Knoten in den "
+"Wartungsmodus setzen (optional)"
 
 msgid "Provision State"
-msgstr "권한설정 상태"
+msgstr "Bereitstellungszustand"
 
 msgid "Provisioning State"
-msgstr "권한설정 상태"
+msgstr "Provisionierungszustand"
 
 msgid "Provisioning Status"
-msgstr "권한설정 상태"
+msgstr "Provisionierungsstatus"
 
 msgid "Put Node(s) Into Maintenance Mode"
-msgstr "노드(들)을 유지보수 모드로 넣기"
+msgstr "Knoten in Wartungsmodus setzen"
 
 msgid "Ramdisk"
-msgstr "램디스크"
+msgstr "Ramdisk"
 
 msgid "Refresh"
-msgstr "갱신"
+msgstr "Aktualisieren"
 
 msgid "Refresh page to see updated power status"
-msgstr "갱신된 전원 상태를 보기 위해 페이지 새로 고치기"
+msgstr "Aktualisiere Seite, um den Power Status zu sehen"
 
 msgid "Required"
-msgstr "필수항목"
+msgstr "Erforderlich"
 
 msgid "Reservation"
-msgstr "예약"
+msgstr "Reservierung"
 
 msgid "SSH Port"
-msgstr "SSH 포트"
+msgstr "SSH-Port"
 
 msgid "SSH Username"
-msgstr "SSH Username"
+msgstr "SSH-Benutzername"
 
 msgid "Select a Driver"
-msgstr "드라이버 선택하기"
+msgstr "Wählen Sie einen Treiber"
 
 msgid "Submit"
-msgstr "제출"
+msgstr "Abschicken"
 
 #, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "노드 \"%s\"를 성공적으로 삭제했습니다"
+msgstr "Knoten \"%s\" erfolgreich gelöscht"
 
 #, python-format
 msgid "Successfully deleted nodes \"%s\""
-msgstr "노드들 \"%s\"를 성공적으로 삭제했습니다"
+msgstr "Knoten \"%s\" erfolgreich gelöscht"
 
 #, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "포트 \"%s\"를 성공적으로 삭제했습니다"
+msgstr "Port \"%s\" erfolgreich gelöscht"
 
 #, python-format
 msgid "Successfully deleted ports \"%s\""
-msgstr "포트들 \"%s\"를 성공적으로 삭제했습니다"
+msgstr "Ports \"%s\" erfolgreich gelöscht"
 
 #, python-format
 msgid "Successfully updated node %s"
-msgstr "노드 %s가 성공적으로 업데이트 됨."
+msgstr "Knoten %s erfolgreich aktualisiert"
 
 msgid "Target Power State"
-msgstr "대상 전원 상태"
+msgstr "Ziel Power-Zustand"
 
 msgid "Target Provision State"
-msgstr "대상 권한설정 상태"
+msgstr "Ziel Bereitstellungszustand"
 
 msgid "UUID"
 msgstr "UUID"
 
 msgid "Unable to create node update patch."
-msgstr "노드 업데이트 패치를 만들수 없습니다."
+msgstr "Knoten-Aktualisierungspatch kann nicht erstellt werden."
 
 #, python-format
 msgid "Unable to create node: %s"
-msgstr "노드를 생성할 수 없습니다: %s"
+msgstr "Knoten kann nicht erstellt werden: %s"
 
 #, python-format
 msgid "Unable to create port: %s"
-msgstr "포트를 생성할 수 없습니다: %s"
+msgstr "Port kann nicht erstellt werden: %s"
 
 #, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "노드 \"%s\"를 삭제할 수 없습니다"
+msgstr "Knoten \"%s\" kann nicht gelöscht werden"
 
 #, python-format
 msgid "Unable to delete node %s: %s"
-msgstr "노드 %s를 삭제할 수 없습니다: %s"
+msgstr "Knoten kann nicht gelöscht werden: %s: %s"
 
 #, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "포트를 삭제할 수 없습니다: %s"
+msgstr "Port \"%s\" kann nicht gelöscht werden"
 
 #, python-format
 msgid "Unable to delete port: %s"
-msgstr "포트를 삭제할 수 없습니다: %s"
+msgstr "Port kann nicht gelöscht werden: %s"
 
 #, python-format
 msgid "Unable to power off the node: %s"
-msgstr "노드의 전원을 끌 수 없습니다: %s"
+msgstr "Konnte den Knoten nicht ausschalten: %s"
 
 #, python-format
 msgid "Unable to power on the node: %s"
-msgstr "노드의 전원을 켤 수 없습니다: %s"
+msgstr "Konnte den Knoten nicht einschalten: %s"
 
 #, python-format
 msgid "Unable to put the Ironic node in maintenance mode: %s"
-msgstr "유지보수 모드에서 아이러닉 노드를  넣을 수 없습니다: %s"
+msgstr "Konnte den Ironic Knoten nicht in den Wartungsmodus setzen: %s"
 
 #, python-format
 msgid "Unable to remove the Ironic node from maintenance mode: %s"
-msgstr "유지보수 모드에서 아이러닉 노드를 삭제할 수 없습니다: %s"
+msgstr "Konnte den Wartungsmodus vom Ironic Knoten nicht löschen: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
-msgstr "아이러닉 드라이버를 되찾을 수 없습니다: %s"
+msgstr "Ironic Treiber können nicht abgerufen werden: %s"
 
 msgid "Unable to retrieve Ironic nodes."
-msgstr "아이러닉 노드네트워크를 되찾을 수 없습니다."
+msgstr "Konnte die Ironic-Knoten nicht abrufen."
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
-msgstr "드라이버 속성을 되찾을 수 없습니다 : %s"
+msgstr "Treibereigenschaften können nicht abgerufen werden: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
-msgstr "아이러닉 노드 포트를 되찾을 수 없습니다: %s"
+msgstr "Konnte die Ironic-Knotenports nicht abrufen: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
-msgstr "아이러닉 노드를 되찾을 수 없습니다: %s "
+msgstr "Konnte den Ironic-Knoten nicht abrufen: %s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
-msgstr "노드 공급 상태를 설정 할 수 없습니다: %s"
+msgstr "Kann Provisionierungszustand nicht setzen: %s"
 
 #, python-format
 msgid "Unable to update node %s: %s"
-msgstr "노드 %s를 업데이트 할 수 없습니다: %s"
+msgstr "Knoten %s kann nicht aktualisiert werden: %s"
 
 msgid "Update Node"
-msgstr "노드 업데이트"
+msgstr "Knoten aktualisieren"
 
 msgid "Updated At"
-msgstr "업데이트 시점"
+msgstr "Aktualisiert am"
 
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
-msgstr "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Standard (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "{$ collection.addPrompt $}:"
 msgstr "{$ collection.addPrompt $}:"

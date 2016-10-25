@@ -1,0 +1,96 @@
+# Eunseop Shin <kairos9603@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-10-20 07:55+0000\n"
+"Last-Translator: Eunseop Shin <kairos9603@gmail.com>\n"
+"Language-Team: Korean (South Korea)\n"
+"Language: ko-KR\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "2.0.0"
+msgstr "2.0.0"
+
+msgid "2.1.0"
+msgstr "2.1.0"
+
+msgid "Ability to enroll a node without all required fields for other states"
+msgstr "다른 상태를 위해 요구되는 모든 필드를 제외한 노드 등록 능력"
+
+msgid "Add and delete nodes"
+msgstr "노드 추가, 삭제"
+
+msgid "Add and delete ports"
+msgstr "포트 추가, 삭제"
+
+msgid "Breadcrumbs have been added"
+msgstr "Breadcrumbs가 추가되었습니다."
+
+msgid "Current Series Release Notes"
+msgstr "최신 시리즈에 대한 릴리즈 노트"
+
+msgid ""
+"Currently it is not possible to edit a node via the UI once it has been "
+"enrolled. Therefore, the enrollment must be done accurately to ensure the "
+"node is enrolled accurately and can then be made available. At present, any "
+"errors made during enrollment can only be corrected by deleting the node and "
+"enrolling it again."
+msgstr ""
+"현재, 한번 등록된 노드를 UI를 통해 수정 하는것은 불가능합니다.  따라서 등록"
+"이 정확하게 등록되어 있는지 확인할 수 있도록 등록을 정확하게 수행해야 합니"
+"다. 현재, 등록과정에서 일어나는 모든 에러들은 노드를 제거 하고 다시 등록 하"
+"는 방법으로만 고칠 수 있습니다."
+
+msgid "Edit nodes after creation"
+msgstr "생성 이전에 노드 수정"
+
+msgid "Ironic UI Release Notes"
+msgstr "Ironic UI에 대한 릴리즈 노트"
+
+msgid "Known Issues"
+msgstr "알려진 이슈"
+
+msgid "Move nodes between enroll, manageable, available and active states"
+msgstr ""
+"노드의 수정과 등록, 관리가능, 사용가능 그리고 활성화 상태 사이에서 노드의 이"
+"동."
+
+msgid "New Features"
+msgstr "새로운 기능"
+
+msgid "Newton Series Release Notes"
+msgstr "Newton 시리즈에 대한 릴리즈 노트"
+
+msgid "Panel hidden if baremetal service or admin rights are not present"
+msgstr "패널은 베어메탈 서비스 이거나 관지자의 권한이 없을때 숨겨집니다."
+
+msgid ""
+"This release adds support for adding and deleting nodes. Support has also "
+"been added for adding and deleting ports. The panel will now be hidden if "
+"the baremetal service is not present in the scenario where the collection of "
+"running services differs between multiple keystone regions."
+msgstr ""
+"이번 릴리즈는 노드의 추가삭제에 관한 지원을 추가합니다. 또한 포트 추가삭제에 "
+"대한 지원도 포함합니다. 패널은 현재 베어메탈 서비스가 실행중인 서비스의 컬렉"
+"션이 다중 keystone영역에서 다르다는 시나리오에 존재하지 않을 때 숨겨집니다."
+
+msgid ""
+"This release adds support for editing nodes and moving those nodes between "
+"enroll, manageable, available and active states. It is now possible to "
+"enroll a node without all required fields for moving to manageable state "
+"being present due to the facility for editing the node once it has been "
+"created."
+msgstr ""
+"이번 릴리즈는 노드의 수정과 등록, 관리가능, 사용가능 그리고 활성화 상태 사이"
+"에서 노드의 이동에 대한 지원을 추가합니다. 현재 노드를 관리가능 상태로 옮기"
+"기 위해 요청된 모든 필드가 없어도 등록하는것이 가능합니다. 때문에 노드를 편집"
+"하기 위한 기능은 노드가 생성 됬을 때 한번만 가능합니다."
+
+msgid "UX improvements across the interface"
+msgstr "인터페이스 전반에 걸친 UX 향상"

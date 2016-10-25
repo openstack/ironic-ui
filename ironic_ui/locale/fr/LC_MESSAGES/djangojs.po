@@ -1,34 +1,77 @@
 # Gael Rehault <gael01@gmail.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Gérald LONLAS <g.lonlas@gmail.com>, 2016. #zanata
 # Martine Marin <mmarin@fr.ibm.com>, 2016. #zanata
 # Nicolas Fournier <nicolas.fournier3@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 1.1.1.dev13\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-05-23 20:35+0000\n"
+"POT-Creation-Date: 2016-10-07 16:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-04-30 05:12+0000\n"
-"Last-Translator: Nicolas Fournier <nicolas.fournier3@gmail.com>\n"
+"PO-Revision-Date: 2016-10-24 09:14+0000\n"
+"Last-Translator: Gérald LONLAS <g.lonlas@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
 "X-Generator: Zanata 3.7.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
+msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+msgstr " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+
+msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr ""
+"Une requête a été envoyé pour changer l'état du provisionnement du nœud %s"
+
+msgid "A unique node name. Optional."
+msgstr "Un nom de nœud unique. Optionnel."
+
 msgid "Actions"
 msgstr "Actions"
+
+#, python-format
+msgid ""
+"Are you sure you want to delete node \"%s\"? This action cannot be undone."
+msgstr ""
+"Etes-vous certain de vouloir supprimer le nœud \"%s\" ? Cette action est "
+"irréversible."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr ""
+"Etes-vous certain de vouloir supprimer les nœuds \"%s\" ? Cette action est "
+"irréversible."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete port \"%s\"? This action cannot be undone."
+msgstr ""
+"Etes-vous certain de vouloir supprimer le port \"%s\" ? Cette action est "
+"irréversible."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr ""
+"Etes-vous certain de vouloir supprimer les ports \"%s\" ? Cette action est "
+"irréversible."
 
 msgid "Cancel"
 msgstr "Annuler"
 
-msgid "Capabilities"
-msgstr "Capacités"
-
 msgid "Chassis ID"
 msgstr "ID du chassis"
+
+msgid "Choose an Image"
+msgstr "Choisir une image"
 
 msgid "Configuration"
 msgstr "Configuration"
@@ -36,8 +79,38 @@ msgstr "Configuration"
 msgid "Console Enabled"
 msgstr "Console Activée"
 
+msgid "Create Port"
+msgstr "Créer un port"
+
+msgid "Create port"
+msgstr "Créer le port"
+
 msgid "Created At"
 msgstr "Créé le"
+
+msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Par défaut ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "Delete Node"
+msgstr "Supprimer le nœud"
+
+msgid "Delete Nodes"
+msgstr "Supprimer les nœuds"
+
+msgid "Delete Port"
+msgstr "Supprimer le port"
+
+msgid "Delete Ports"
+msgstr "Supprimer les ports"
+
+msgid "Delete node"
+msgstr "Supprimer le nœud"
+
+msgid "Delete nodes"
+msgstr "Supprimer les nœuds"
+
+msgid "Delete ports"
+msgstr "Supprimer les ports"
 
 msgid "Deploy Kernel"
 msgstr "Kernel de déploiement"
@@ -46,13 +119,36 @@ msgid "Deploy Ramdisk"
 msgstr "Ramdisk de déploiement"
 
 msgid "Driver"
-msgstr "Driver"
+msgstr "Pilote"
+
+msgid "Driver Details"
+msgstr "Détails du pilote"
 
 msgid "Driver Info"
-msgstr "Info du Driver"
+msgstr "Info du pilote"
+
+msgid "Edit"
+msgstr "Editer"
+
+msgid "Edit Node"
+msgstr "Editer le nœud"
+
+msgid "Enroll Node"
+msgstr "Enroller le nœud"
+
+#, python-format
+msgid "Error deleting nodes \"%s\""
+msgstr "Erreur lors de la suppression des nœuds \"%s\""
+
+#, python-format
+msgid "Error deleting ports \"%s\""
+msgstr "Erreur lors de la suppression des ports \"%s\""
 
 msgid "Extra"
 msgstr "Extra"
+
+msgid "Extras"
+msgstr "Extras"
 
 msgid "General"
 msgstr "Général"
@@ -78,6 +174,15 @@ msgstr "Noyau"
 msgid "Last Error"
 msgstr "Dernière Erreur"
 
+msgid "MAC Address"
+msgstr "Adresse MAC"
+
+msgid "MAC address"
+msgstr "Adresse MAC"
+
+msgid "MAC address for this port. Required."
+msgstr "Adresse MAC pour ce port. Requis."
+
 msgid "Maintenance"
 msgstr "Maintenance"
 
@@ -99,14 +204,48 @@ msgstr "Pas d'instance"
 msgid "No maintenance reason given."
 msgstr "Aucune raison de maintenance fournie."
 
+msgid "No network ports have been defined"
+msgstr "Aucun port réseau n'a été défini"
+
+msgid "Node"
+msgstr "Nœud"
+
+#, python-format
+msgid "Node %s is already in maintenance mode."
+msgstr "Le nœud %s est déjà en mode maintenance."
+
+#, python-format
+msgid "Node %s is not in maintenance mode."
+msgstr "Le nœud %s n'est pas en mode maintenance."
+
+#, python-format
+msgid "Node %s is not powered off."
+msgstr "Le nœud %s n'est pas éteint."
+
+#, python-format
+msgid "Node %s is not powered on."
+msgstr "Le nœud %s n'est pas allumé."
+
+msgid "Node Driver"
+msgstr "Pilote du nœud"
+
 msgid "Node ID"
-msgstr "ID du noeud"
+msgstr "ID du nœud"
+
+msgid "Node Info"
+msgstr "Info du nœud"
 
 msgid "Node Name"
-msgstr "Nom du noeud"
+msgstr "Nom du nœud"
+
+msgid "One of this, (.*) must be specified\\."
+msgstr "Une des leurs (.*) doit être spécifié\\."
 
 msgid "Overview"
 msgstr "Vue d'ensemble"
+
+msgid "Port successfully created"
+msgstr "Port crée avec succès"
 
 msgid "Ports"
 msgstr "Ports"
@@ -123,11 +262,14 @@ msgstr "Allumer"
 msgid "Properties"
 msgstr "Propriétés"
 
+msgid "Property Name"
+msgstr "Nom de la propriété"
+
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
 "maintenance mode (optional)"
 msgstr ""
-"Fournir une raison pour avoir mis le(s) noeud(s) sélectionné(s) en mode "
+"Fournir une raison pour avoir mis le(s) nœud(s) sélectionné(s) en mode "
 "maintenance (optionnel)"
 
 msgid "Provision State"
@@ -140,13 +282,19 @@ msgid "Provisioning Status"
 msgstr "Statut de Déploiement"
 
 msgid "Put Node(s) Into Maintenance Mode"
-msgstr "Mettre le(s) noeud(s) en mode maintenance"
+msgstr "Mettre le(s) nœud(s) en mode maintenance"
 
 msgid "Ramdisk"
 msgstr "Ramdisk"
 
+msgid "Refresh"
+msgstr "Rafraichir"
+
 msgid "Refresh page to see updated power status"
 msgstr "Rafraichir la page pour voir les statuts d'alimentation à jour"
+
+msgid "Required"
+msgstr "Obligatoire"
 
 msgid "Reservation"
 msgstr "Réservation"
@@ -157,6 +305,32 @@ msgstr "Port SSH"
 msgid "SSH Username"
 msgstr "Utilisateur SSH"
 
+msgid "Select a Driver"
+msgstr "Sélectionner un pilote"
+
+msgid "Submit"
+msgstr "Envoyer"
+
+#, python-format
+msgid "Successfully deleted node \"%s\""
+msgstr "Suppression avec succès du nœud \"%s\" "
+
+#, python-format
+msgid "Successfully deleted nodes \"%s\""
+msgstr "Suppression avec succès des nœuds \"%s\" "
+
+#, python-format
+msgid "Successfully deleted port \"%s\""
+msgstr "Suppression avec succès du port \"%s\" "
+
+#, python-format
+msgid "Successfully deleted ports \"%s\""
+msgstr "Suppression avec succès des ports \"%s\" "
+
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "Mise à jour avec succès du nœud %s"
+
 msgid "Target Power State"
 msgstr "État de l'alimentation de la cible"
 
@@ -166,8 +340,96 @@ msgstr "État de déploiement de la cible"
 msgid "UUID"
 msgstr "UUID"
 
+msgid "Unable to create node update patch."
+msgstr "Impossible de créer le patch de mise à jour du nœud."
+
+#, python-format
+msgid "Unable to create node: %s"
+msgstr "Impossible de créer le nœud : %s"
+
+#, python-format
+msgid "Unable to create port: %s"
+msgstr "Impossible de créer le port : %s"
+
+#, python-format
+msgid "Unable to delete node \"%s\""
+msgstr "Impossible de supprimer le nœud \"%s\""
+
+#, python-format
+msgid "Unable to delete node %s: %s"
+msgstr "Impossible de supprimer le nœud %s : %s"
+
+#, python-format
+msgid "Unable to delete port \"%s\""
+msgstr "Impossible de supprimer le port \"%s\""
+
+#, python-format
+msgid "Unable to delete port: %s"
+msgstr "Impossible de supprimer le port : %s"
+
+#, python-format
+msgid "Unable to power off the node: %s"
+msgstr "Impossible d'éteindre le nœud : %s"
+
+#, python-format
+msgid "Unable to power on the node: %s"
+msgstr "Impossible d'allumer le nœud : %s"
+
+#, python-format
+msgid "Unable to put the Ironic node in maintenance mode: %s"
+msgstr "Impossible de mettre le nœud Ironic en maintenance : %s"
+
+#, python-format
+msgid "Unable to remove the Ironic node from maintenance mode: %s"
+msgstr "Impossible d'enlever le nœud Ironic de la maintenance : %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic drivers: %s"
+msgstr "Impossible de récupérer les pilotes Ironic : %s"
+
 msgid "Unable to retrieve Ironic nodes."
-msgstr "Impossible de récupérer les noeud Ironic."
+msgstr "Impossible de récupérer les nœuds Ironic."
+
+#, python-format
+msgid "Unable to retrieve driver properties: %s"
+msgstr "Impossible de récupérer les propriétés du pilote : %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node ports: %s"
+msgstr "Impossible de récupérer les ports du nœud Ironic : %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node: %s"
+msgstr "Impossible de récupérer le nœud Ironic : %s"
+
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "Impossible de configurer l'état du provisionnement : %s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "Impossible de mettre à jour le nœud %s : %s"
+
+msgid "Update Node"
+msgstr "Mettre à jour le nœud"
 
 msgid "Updated At"
 msgstr "Mis à jour à"
+
+msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "{$ collection.addPrompt $}:"
+msgstr "{$ collection.addPrompt $}:"
+
+msgid "{$ collection.title $}"
+msgstr "{$ collection.title $}"
+
+msgid "{$ ctrl.modalTitle $}"
+msgstr "{$ ctrl.modalTitle $}"
+
+msgid "{$ ctrl.submitButtonTitle $}"
+msgstr "{$ ctrl.submitButtonTitle $}"
+
+msgid "{$ property.getDescription() $}"
+msgstr "{$ property.getDescription() $}"

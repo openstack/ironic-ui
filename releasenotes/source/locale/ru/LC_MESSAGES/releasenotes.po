@@ -1,0 +1,101 @@
+# Yulia Ryndenkova <yryndenkova@hystax.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-10-20 05:44+0000\n"
+"Last-Translator: Yulia Ryndenkova <yryndenkova@hystax.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+msgid "2.0.0"
+msgstr "2.0.0"
+
+msgid "2.1.0"
+msgstr "2.1.0"
+
+msgid "Ability to enroll a node without all required fields for other states"
+msgstr ""
+"Возможность зарегистрировать узел без обязательных полей для других состояний"
+
+msgid "Add and delete nodes"
+msgstr "Добавить и удалить узлы"
+
+msgid "Add and delete ports"
+msgstr "Добавить и удалить порты"
+
+msgid "Breadcrumbs have been added"
+msgstr "Добавлены строки навигации"
+
+msgid "Current Series Release Notes"
+msgstr "Примечания к выпуску Current Series "
+
+msgid ""
+"Currently it is not possible to edit a node via the UI once it has been "
+"enrolled. Therefore, the enrollment must be done accurately to ensure the "
+"node is enrolled accurately and can then be made available. At present, any "
+"errors made during enrollment can only be corrected by deleting the node and "
+"enrolling it again."
+msgstr ""
+"В настоящее время отсутствует возможно редактирования узла через UI после "
+"его регистрации. Поэтому регистрация должна проходить безошибочно, для того "
+"чтобы убедиться что узел корректно зарегистрирован и позже будет доступен. В "
+"настоящее время, любые  ошибки во время регистрации могут быть исправлены "
+"только посредством удаления и перерегистрации узла."
+
+msgid "Edit nodes after creation"
+msgstr "Редактирование узла после создания"
+
+msgid "Ironic UI Release Notes"
+msgstr "Примечания к выпуску Ironic UI "
+
+msgid "Known Issues"
+msgstr "Известные Проблемы"
+
+msgid "Move nodes between enroll, manageable, available and active states"
+msgstr ""
+"Перенести узел между регистрацией, управляемым, доступным и активным "
+"состояниями"
+
+msgid "New Features"
+msgstr "Новые Свойства"
+
+msgid "Newton Series Release Notes"
+msgstr "Примечания к выпуску Newton Series "
+
+msgid "Panel hidden if baremetal service or admin rights are not present"
+msgstr ""
+"Панель скрыта если baremetal сервис или права администратора отсутствуют"
+
+msgid ""
+"This release adds support for adding and deleting nodes. Support has also "
+"been added for adding and deleting ports. The panel will now be hidden if "
+"the baremetal service is not present in the scenario where the collection of "
+"running services differs between multiple keystone regions."
+msgstr ""
+"В этот релиз входит поддержка добавления и удаления узлов. Также была "
+"реализована поддержка добавления и удаления портов. Панель теперь будет "
+"скрыта в случае отсутствия baremetal сервиса в сценарии где набор запущенных "
+"сервисов  различается между различными регионами keystone. "
+
+msgid ""
+"This release adds support for editing nodes and moving those nodes between "
+"enroll, manageable, available and active states. It is now possible to "
+"enroll a node without all required fields for moving to manageable state "
+"being present due to the facility for editing the node once it has been "
+"created."
+msgstr ""
+"В релиз добавлена поддержка редактирования узлов и их перемещение между "
+"регистрацией, управляемым, доступным и активным состояниями. Теперь можно "
+"зарегистрировать узел без всех необходимых полей для перехода в управляемое "
+"состояние за счет возможности редактирования узла, как только он был создан."
+
+msgid "UX improvements across the interface"
+msgstr "UX улучшения интерфейса"

@@ -6,9 +6,9 @@
 # vuuv <froms2008@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.0.1.dev1\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-08-19 12:56+0000\n"
+"POT-Creation-Date: 2016-10-07 16:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,12 +30,6 @@ msgstr "独一无二的节点名称。可选。"
 
 msgid "Actions"
 msgstr "动作"
-
-msgid "Add Extra:"
-msgstr "增加额外信息"
-
-msgid "Add New Property:"
-msgstr "增加新的属性"
 
 #, python-format
 msgid ""
@@ -59,9 +53,6 @@ msgstr "你确认要删除端口\"%s\"吗？本操作无法恢复"
 
 msgid "Cancel"
 msgstr "取消"
-
-msgid "Capabilities"
-msgstr "能力"
 
 msgid "Chassis ID"
 msgstr "机架ID"
@@ -136,9 +127,6 @@ msgstr "删除端口\"%s\"错误"
 
 msgid "Extra"
 msgstr "额外信息"
-
-msgid "Extra Property Name"
-msgstr "额外属性名称"
 
 msgid "Extras"
 msgstr "额外信息"

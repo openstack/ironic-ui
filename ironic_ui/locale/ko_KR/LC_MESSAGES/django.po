@@ -1,0 +1,18 @@
+# Eunseop Shin <kairos9603@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-10-20 05:14+0000\n"
+"Last-Translator: Eunseop Shin <kairos9603@gmail.com>\n"
+"Language-Team: Korean (South Korea)\n"
+"Language: ko-KR\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "Ironic Bare Metal Provisioning"
+msgstr "Ironic 베어메탈 프로비저닝"
