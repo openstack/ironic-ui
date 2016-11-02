@@ -30,7 +30,7 @@
 
   maintenanceService.$inject = [
     '$modal',
-    'horizon.dashboard.admin.basePath',
+    'horizon.dashboard.admin.ironic.basePath',
     'horizon.dashboard.admin.ironic.actions'
   ];
 
@@ -54,7 +54,7 @@
     function putNodeInMaintenanceMode(node) {
       var options = {
         controller: "MaintenanceController as ctrl",
-        templateUrl: basePath + '/ironic/maintenance/maintenance.html'
+        templateUrl: basePath + '/maintenance/maintenance.html'
       };
       $modal.open(options).result.then(function(maintReason) {
         actions.putNodeInMaintenanceMode(node, maintReason);
@@ -72,7 +72,7 @@
     function putNodesInMaintenanceMode(nodes) {
       var options = {
         controller: "MaintenanceController as ctrl",
-        templateUrl: basePath + '/ironic/maintenance/maintenance.html'
+        templateUrl: basePath + '/maintenance/maintenance.html'
       };
       $modal.open(options).result.then(function(maintReason) {
         actions.putAllInMaintenanceMode(nodes, maintReason);

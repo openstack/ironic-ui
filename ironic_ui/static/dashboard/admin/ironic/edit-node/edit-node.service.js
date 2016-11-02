@@ -23,7 +23,7 @@
 
   editNodeService.$inject = [
     '$modal',
-    'horizon.dashboard.admin.basePath',
+    'horizon.dashboard.admin.ironic.basePath',
     '$log'
   ];
 
@@ -42,7 +42,7 @@
             return node;
           }
         },
-        templateUrl: basePath + '/ironic/base-node/base-node.html'
+        templateUrl: basePath + '/base-node/base-node.html'
       };
       return $modal.open(options);
     }

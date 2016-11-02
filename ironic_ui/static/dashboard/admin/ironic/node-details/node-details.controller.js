@@ -30,7 +30,7 @@
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
-    'horizon.dashboard.admin.basePath',
+    'horizon.dashboard.admin.ironic.basePath',
     'horizon.dashboard.admin.ironic.edit-node.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.validUuidPattern'
@@ -48,7 +48,7 @@
                                        maintenanceService,
                                        validUuidPattern) {
     var ctrl = this;
-    var path = basePath + 'ironic/node-details/sections/';
+    var path = basePath + '/node-details/sections/';
 
     ctrl.noPortsText = gettext('No network ports have been defined');
 

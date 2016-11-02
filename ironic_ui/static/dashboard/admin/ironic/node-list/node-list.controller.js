@@ -29,7 +29,6 @@
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
-    'horizon.dashboard.admin.basePath',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.enroll-node.service',
     'horizon.dashboard.admin.ironic.edit-node.service'
@@ -42,7 +41,6 @@
                                     ironic,
                                     ironicEvents,
                                     actions,
-                                    basePath,
                                     maintenanceService,
                                     enrollNodeService,
                                     editNodeService) {
@@ -50,7 +48,6 @@
 
     ctrl.nodes = [];
     ctrl.nodesSrc = [];
-    ctrl.basePath = basePath;
     ctrl.actions = actions;
 
     ctrl.putNodeInMaintenanceMode = putNodeInMaintenanceMode;
