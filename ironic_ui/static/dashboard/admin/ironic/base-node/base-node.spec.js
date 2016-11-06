@@ -22,8 +22,6 @@
     function() {
       var service;
 
-      beforeEach(module('horizon.dashboard.admin'));
-
       beforeEach(module('horizon.dashboard.admin.ironic'));
 
       beforeEach(module(function($provide) {

@@ -88,8 +88,7 @@
         'horizon.dashboard.admin.ironic.NodeDetailsController',
         {$scope: scope,
          $location: $location,
-         'horizon.dashboard.admin.ironic.actions': {},
-         'horizon.dashboard.admin.basePath': '/static'});
+         'horizon.dashboard.admin.ironic.actions': {}});
 
       scope.$apply();
     }));
@@ -100,7 +99,6 @@
 
     it('should have a basePath', function () {
       expect(ctrl.basePath).toBeDefined();
-      expect(ctrl.basePath).toEqual('/static');
     });
 
     it('should have a node', function () {
