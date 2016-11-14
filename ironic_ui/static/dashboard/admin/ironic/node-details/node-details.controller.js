@@ -141,10 +141,12 @@
 
         if (lastError &&
             ctrl.node.last_error !== "" &&
+            ctrl.node.last_error !== null &&
             ctrl.node.last_error !== lastError) {
-          toastService.add(
-            'error',
-            "Node " + ctrl.node.name + ". " + ctrl.node.last_error);
+          toastService.add('error',
+                           "Error detected on node " +
+                           ctrl.node.name + ". " +
+                           ctrl.node.last_error);
         }
       });
     }
