@@ -27,7 +27,7 @@
       available: 'provide'
     },
     active: {
-      manageable: 'deleted'
+      available: 'deleted'
     },
     available: {
       active: 'active',
