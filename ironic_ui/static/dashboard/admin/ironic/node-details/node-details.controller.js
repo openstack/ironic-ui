@@ -66,6 +66,7 @@
     ];
 
     ctrl.node = null;
+    ctrl.nodeValidation = {};
     ctrl.ports = [];
     ctrl.portsSrc = [];
     ctrl.basePath = basePath;
@@ -121,6 +122,9 @@
 
       retrieveNode(uuid).then(function () {
         retrievePorts(uuid);
+        ironic.validateNode(uuid).then(function(response) {
+          ctrl.nodeValidation = response.data;
+        });
       });
     }
 

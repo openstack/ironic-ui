@@ -11,8 +11,6 @@
       <dd>{$ ctrl.node.chassis_uuid | noValue $}</dd>
       <dt translate>Created At</dt>
       <dd>{$ ctrl.node.created_at | date:'medium' | noValue $}</dd>
-      <dt translate>Extra</dt>
-      <dd>{$ ctrl.node.extra | noValue $}</dd>
     </dl>
   </div>
 
@@ -67,13 +65,7 @@
             <input type="checkbox"
                    hz-select="port"
                    ng-model="tCtrl.selections[port.id].checked"/>
-          <td ng-if="vif_port_id = ctrl.getVifPortId(port)"
-              class="rsp-p1">
-            <a href="/dashboard/admin/networks/ports/{$ vif_port_id $}/detail">
-              {$ port.address $}
-            </a>
-          </td>
-          <td ng-if="!vif_port_id" class="rsp-p1">
+          <td class="rsp-p1">
             {$ port.address $}
           </td>
           <td>
@@ -81,7 +73,12 @@
               <dt style="width:auto;" ng-repeat-start="(id, value) in port.extra">
                 {$ id $}
               </dt>
-              <dd>
+              <dd ng-if="id === 'vif_port_id'">
+                <a href="/dashboard/admin/networks/ports/{$ value $}/detail">
+                  {$ value $}
+                </a>
+              </dd>
+              <dd ng-if="id !== 'vif_port_id'">
                 {$ value $}
               </dd>
               <p ng-repeat-end></p>
@@ -107,17 +104,6 @@
 </div>
 
 <div class="row">
-  <!-- Properties -->
-  <div class="col-md-6 status detail">
-    <h4 translate>Properties</h4>
-    <hr class="header_rule">
-    <dl class="dl-horizontal">
-      <dt ng-repeat-start="(propertyName, propertyValue) in ctrl.node.properties">
-        {$ propertyName $}</dt>
-      <dd ng-repeat-end>{$ propertyValue | noValue $}</dd>
-    </dl>
-  </div>
-
   <!-- Driver Info -->
   <div class="col-md-6 status detail">
     <h4 translate>Driver Info</h4>
@@ -126,13 +112,34 @@
       <dl ng-switch-when="pxe_ssh" class="dl-horizontal">
         <dt translate>Driver</dt>
         <dd>{$ ctrl.node.driver | noValue $}</dd>
+        <dt translate>SSH Address</dt>
+        <dd>{$ ctrl.node.driver_info.ssh_address | noValue $}</dd>
         <dt translate>SSH Port</dt>
         <dd>{$ ctrl.node.driver_info.ssh_port | noValue $}</dd>
         <dt translate>SSH Username</dt>
         <dd>{$ ctrl.node.driver_info.ssh_username | noValue $}</dd>
+        <dt ng-if="ssh_key_filename = ctrl.node.driver_info.ssh_key_filename"
+            translate>SSH Key File</dt>
+        <dd ng-if="ssh_key_filename">
+          {$ ssh_key_filename | noValue $}
+        </dd>
+        <dt ng-if="ssh_password = ctrl.node.driver_info.ssh_password"
+            translate>SSH Password</dt>
+        <dd ng-if="ssh_password">
+          {$ ssh_password | noValue $}
+        </dd>
+        <dt ng-if="ssh_key_contents = ctrl.node.driver_info.ssh_key_contents"
+            translate>SSH Key Contents</dt>
+        <dd ng-if="ssh_key_contents">
+          {$ ssh_key_contents | noValue $}
+        </dd>
+        <dt translate>SSH terminal port</dt>
+        <dd>{$ ctrl.node.driver_info.ssh_terminal_port | noValue $}</dd>
+        <dt translate>Virtualization Software</dt>
+        <dd>{$ ctrl.node.driver_info.ssh_virt_type | noValue $}</dd>
         <dt translate>Deploy Kernel</dt>
         <dd>
-          <a ng-if="deploy_kernel_is_uuid = ctrl.isUuid(ctrl.node.driver_info.deploy_kernel)"
+          <a ng-if="deploy_kernel_is_uuid = angular.isDefined(ctrl.node.driver_info.deploy_kernel) ? ctrl.isUuid(ctrl.node.driver_info.deploy_kernel) : false"
              href="/dashboard/admin/images/{$ ctrl.node.driver_info.deploy_kernel $}/detail">
             {$ ctrl.node.driver_info.deploy_kernel | noValue $}
           </a>
@@ -142,7 +149,7 @@
         </dd>
         <dt translate>Deploy Ramdisk</dt>
         <dd>
-          <a ng-if="deploy_ramdisk_is_uuid = ctrl.isUuid(ctrl.node.driver_info.deploy_ramdisk)"
+          <a ng-if="deploy_ramdisk_is_uuid = angular.isDefined(ctrl.node.driver_info.deploy_ramdisk) ? ctrl.isUuid(ctrl.node.driver_info.deploy_ramdisk) : false"
              href="/dashboard/admin/images/{$ ctrl.node.driver_info.deploy_ramdisk $}/detail">
             {$ ctrl.node.driver_info.deploy_ramdisk | noValue $}
           </a>
@@ -157,9 +164,60 @@
       </dl>
     </div>
   </div>
+
+  <!-- Validation -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Driver Validation</h4>
+    <hr class="header_rule">
+
+    <table hz-table ng-cloak
+           st-table="ctrl.nodeValidation"
+           st-safe-src="ctrl.nodeValidationSrc"
+           class="table table-striped table-rsp table-detail">
+      <thead>
+        <tr>
+          <th translate class="rsp-p1" style="white-space:nowrap">
+            Interface
+          </th>
+          <th translate class="rsp-p1">
+            Valid
+          </th>
+          <th translate class="rsp-p2" style="width:100%;">
+            Reason
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="(interface, status) in ctrl.nodeValidation">
+          <td class="rsp-p1">
+            {$ interface $}
+          </td>
+          <td class="rsp-p1" ng-switch="status.result">
+            <span ng-switch-when="true" class="fa fa-check text-success"></span>
+            <span ng-switch-when="false" class="fa fa-close text-danger"></span>
+            <span ng-switch-default class="fa fa-minus"></span>
+          </td>
+          <td class="rsp-p2">
+            {$ status.reason $}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="row">
+  <!-- Properties -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Properties</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt ng-repeat-start="(propertyName, propertyValue) in ctrl.node.properties">
+        {$ propertyName $}</dt>
+      <dd ng-repeat-end>{$ propertyValue | noValue $}</dd>
+    </dl>
+  </div>
+
   <!-- Instance Info -->
   <div class="col-md-6 status detail">
     <h4 translate>Instance Info</h4>
@@ -180,6 +238,14 @@
             {$ ctrl.node.instance_info.kernel | noValue $}
           </a>
         </dd>
+        <dt translate>Image Source</dt>
+        <dd>
+          <a href="/dashboard/admin/images/{$ ctrl.node.instance_info.image_source $}/detail">
+            {$ ctrl.node.instance_info.image_source | noValue $}
+          </a>
+        </dd>
+        <dt translate>Root GB</dt>
+        <dd>{$ ctrl.node.instance_info.root_gb | noValue $}</dd>
       </dl>
       <dl ng-switch-default class="dl-horizontal">
         <dt ng-repeat-start="(id, value) in ctrl.node.instance_info">{$ id $}</dt>
@@ -187,5 +253,17 @@
       </dl>
     </div>
   </div>
+</div>
 
+<div class="row">
+  <!-- Extra -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Extra</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt ng-repeat-start="(propertyName, propertyValue) in ctrl.node.extra">
+        {$ propertyName $}</dt>
+      <dd ng-repeat-end>{$ propertyValue | noValue $}</dd>
+    </dl>
+  </div>
 </div>

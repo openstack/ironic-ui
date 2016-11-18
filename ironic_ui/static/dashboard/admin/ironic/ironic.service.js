@@ -86,7 +86,8 @@
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
       removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
       setNodeProvisionState: setNodeProvisionState,
-      updateNode: updateNode
+      updateNode: updateNode,
+      validateNode: validateNode
     };
 
     return service;
@@ -334,6 +335,31 @@
         .error(function(reason) {
           var msg = gettext('Unable to update node %s: %s');
           toastService.add('error', interpolate(msg, [uuid, reason], false));
+        });
+    }
+
+    /**
+     * @description Validate the specified node
+     *
+     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
+     * validate--v1-nodes
+     *
+     * @param {string} nodeIdent – UUID or logical name of a node.
+     * @return {promise} Promise
+     */
+    function validateNode(nodeIdent) {
+      var data = {
+        node: nodeIdent
+      };
+      return apiService.get('/api/ironic/nodes/' + nodeIdent + '/validate',
+                            data)
+        .success(function() {
+        })
+        .error(function(reason) {
+          var msg = gettext('Unable to validate node %s: %s');
+          toastService.add(
+            'error',
+            interpolate(msg, [nodeIdent, reason], false));
         });
     }
 

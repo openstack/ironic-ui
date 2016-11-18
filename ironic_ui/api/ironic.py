@@ -171,6 +171,23 @@ def node_update(request, node_id, patch):
     ironicclient(request).node.update(node_id, patch)
 
 
+def node_validate(request, node_id):
+    """Validate a specified node.
+
+    :param request: HTTP request.
+    :param node_id: The id of the node.
+    :return: Dictionary of interface statuses
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.validate
+    """
+    node = ironicclient(request).node.validate(node_id)
+    result = {}
+    for interface, status in node.__dict__.iteritems():
+        if isinstance(status, dict) and 'result' in status:
+            result[interface] = status
+    return result
+
+
 def driver_list(request):
     """Retrieve a list of drivers.
 
