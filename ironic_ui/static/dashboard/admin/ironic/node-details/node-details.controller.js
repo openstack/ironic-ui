@@ -137,21 +137,9 @@
      * @return {promise} promise
      */
     function retrieveNode(uuid) {
-      var lastError = ctrl.node ? ctrl.node.last_error : null;
-
       return ironic.getNode(uuid).then(function (response) {
         ctrl.node = response.data;
         ctrl.node.id = uuid;
-
-        if (lastError &&
-            ctrl.node.last_error !== "" &&
-            ctrl.node.last_error !== null &&
-            ctrl.node.last_error !== lastError) {
-          toastService.add('error',
-                           "Error detected on node " +
-                           ctrl.node.name + ". " +
-                           ctrl.node.last_error);
-        }
       });
     }
 
