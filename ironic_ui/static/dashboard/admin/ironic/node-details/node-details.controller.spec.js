@@ -52,6 +52,10 @@
           ports.push(createPort(uuid, i));
         }
         return $q.when({data: {items: ports}});
+      },
+
+      validateNode: function() {
+        return $q.when({});
       }
     };
 

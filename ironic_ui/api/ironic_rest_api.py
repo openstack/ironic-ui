@@ -189,6 +189,22 @@ class Maintenance(generic.View):
 
 
 @urls.register
+class Validate(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/validate$'
+
+    @rest_utils.ajax()
+    def get(self, request, node_id):
+        """Validate a specified node
+
+        :param request: HTTP request.
+        :param node_id: Node name or uuid
+        :return: Dictionary of interface statuses
+        """
+        return ironic.node_validate(request, node_id)
+
+
+@urls.register
 class Drivers(generic.View):
 
     url_regex = r'ironic/drivers/$'
