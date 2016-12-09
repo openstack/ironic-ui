@@ -7,9 +7,9 @@ Team and repository tags
 
 .. Change things from this point on
 
-===============================
+=========
 Ironic UI
-===============================
+=========
 
 The Ironic UI is a Horizon plugin that will allow users to view and manage bare
 metal nodes, ports and drivers.
@@ -31,38 +31,49 @@ Installation Instructions
 
 Please note that the following instructions assume that you have an existing
 installation of the OpenStack Horizon dashboard application. For Horizon
-installation please see http://docs.openstack.org/developer/horizon/quickstart.html
+installation please see
+http://docs.openstack.org/developer/horizon/quickstart.html
 
-1. Clone Ironic UI repository:
+1. Clone the Ironic UI repository::
 
-  `git clone https://git.openstack.org/openstack/ironic-ui`
+    git clone https://git.openstack.org/openstack/ironic-ui
 
-2. Change into the root directory of your horizon installation and run the venv.
- NOTE: this has been preinstalled when horizon was setup with ./run_tests.sh -
- do not reinstall venv
+2. Change into the root directory of your horizon installation and
+   activate the python virtual environment. Example::
 
-  `source .venv/bin/activate`
+    source .venv/bin/activate
 
-3. Copy the _2200_ironic.py file from ironic_ui/enabled directory to
-horizon/openstack_dashboard/local/enabled
+   .. NOTE:: The ``.venv`` folder is preinstalled when horizon is setup with
+             ``./run_tests.sh``. Do not attempt to reinstall the virtual
+             environment.
 
-4. Change into the ironic-ui repository and package the plugin:
+3. Copy the ``_2200_ironic.py`` file from ``ironic_ui/enabled/_2200_ironic.py`` file to
+   ``horizon/openstack_dashboard/local/enabled`` directory. Example, set as if being
+   executed from the root of the ironic-ui repository::
 
-  `pip install -e .`
+    cp ./ironic_ui/enabled/_2200_ironic.py ../horizon/horizon/openstack_dashboard/local/enabled
 
-This will build and install the ironic-ui plugin into the active virtual
-environment associated with your horizon installation. The plugin is installed
-in "editable" mode as a link back to your ironic-ui plugin directory.
+4. Change into the ironic-ui repository and package the plugin::
 
-Also ensure that all packages as per requirements.txt have been installed.
+    pip install -e .
 
-5. Change back into the horizon repository and bring up your environment:
+   This will build and install the ironic-ui plugin into the active virtual
+   environment associated with your horizon installation. The plugin is installed
+   in "editable" mode as a link back to your ironic-ui plugin directory.
 
-  `./run_tests.sh --runserver`
+   Also ensure that all packages as per requirements.txt have been installed.
 
-The Ironic Bare Metal Provisioning plugin should now be visible in the Horizon
-navigation.
+5. Change back into the horizon repository and bring up your environment::
 
-To uninstall, use pip uninstall (find the name of the package to uninstall by
-running pip list from inside the horizon .venv). You will also need to remove
-the enabled file from the openstack_dashboard/enabled folder.
+    ./run_tests.sh --runserver
+
+   The Ironic Bare Metal Provisioning plugin should now be visible in the Horizon
+   navigation.
+
+Uninstallation
+--------------
+
+To uninstall, use ``pip uninstall ironic-ui`` from with-in the horizon
+virtual environment. You will also need to remove the
+``openstack_dashboard/enabled/_2200_ironic.py`` file from the horizon
+installation.

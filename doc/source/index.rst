@@ -27,7 +27,6 @@ Administrator's Guide
 .. toctree::
   :maxdepth: 1
 
-  Introduction to ironic UI <readme>
   Introduction to ironic <http://docs.openstack.org/developer/ironic/deploy/user-guide.html>
   Installing the ironic UI <installation>
   Contributing <contributing>

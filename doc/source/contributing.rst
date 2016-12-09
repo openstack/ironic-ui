@@ -42,7 +42,7 @@ Mailing list (prefix subjects with ``[ironic-ui]`` for faster responses)
     http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-dev
 
 Code Hosting
-    https://github.com/openstack/ironic-ui
+    https://git.openstack.org/cgit/openstack/ironic-ui
 
 Code Review
     https://review.openstack.org/#/q/status:open+project:openstack/ironic-ui,n,z
