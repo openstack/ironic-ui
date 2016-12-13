@@ -147,14 +147,6 @@
       angular.forEach(response.data.items, function (node) {
         node.id = node.uuid;
         promises.push(retrievePorts(node));
-
-        // Report any changes in last-error
-        if (node.last_error !== "" &&
-            angular.isDefined(ctrl.nodesSrc[node.uuid]) &&
-            node.last_error !== ctrl.nodesSrc[node.uuid].last_error) {
-          toastService.add('error',
-                           "Node " + node.name + ". " + node.last_error);
-        }
       });
       $q.all(promises).then(function() {
         ctrl.nodesSrc = response.data.items;

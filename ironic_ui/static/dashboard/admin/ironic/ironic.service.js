@@ -59,7 +59,8 @@
 
   ironicAPI.$inject = [
     'horizon.framework.util.http.service',
-    'horizon.framework.widgets.toast.service'
+    'horizon.framework.widgets.toast.service',
+    'horizon.dashboard.admin.ironic.node-error.service'
   ];
 
   /**
@@ -67,9 +68,10 @@
    *
    * @param {object} apiService - HTTP service
    * @param {object} toastService - User message service
+   * @param {object} nodeErrorService - Node error service
    * @return {object} Ironic API service
    */
-  function ironicAPI(apiService, toastService) {
+  function ironicAPI(apiService, toastService, nodeErrorService) {
     var service = {
       createNode: createNode,
       createPort: createPort,
@@ -101,7 +103,12 @@
      */
     function getNodes() {
       return apiService.get('/api/ironic/nodes/')
-        .error(function() {
+        .then(function(response) {
+          angular.forEach(response.data.items, function(node) {
+            nodeErrorService.checkNodeError(node);
+          });
+          return response;
+        }, function() {
           toastService.add('error',
                            gettext('Unable to retrieve Ironic nodes.'));
         });
@@ -118,7 +125,10 @@
      */
     function getNode(uuid) {
       return apiService.get('/api/ironic/nodes/' + uuid)
-        .error(function(reason) {
+        .then(function(response) {
+          nodeErrorService.checkNodeError(response.data);
+          return response;
+        }, function(reason) {
           var msg = gettext('Unable to retrieve the Ironic node: %s');
           toastService.add('error', interpolate(msg, [reason], false));
         });
