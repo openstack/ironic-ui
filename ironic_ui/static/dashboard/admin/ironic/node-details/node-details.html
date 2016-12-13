@@ -32,18 +32,17 @@
                 disabled="!ctrl.node.maintenance">
           {$ 'Maintenance off' | translate $}
         </action>
-        <action ng-repeat="targetState in ['manageable', 'available', 'active']"
-                button-type="menu-item"
-                callback="ctrl.actions.setProvisionState"
-                item="{node: ctrl.node,
-                      verb: ctrl.actions.getProvisionStateTransitionVerb(
-                      ctrl.node.provision_state,
-                      targetState)}"
-                disabled="ctrl.actions.getProvisionStateTransitionVerb(
-                          ctrl.node.provision_state,
-                          targetState) === null">
-          {$ ('Move to ' | translate) + targetState $}
-        </action>
+        <li role="presentation"
+            ng-repeat="transition in ctrl.nodeStateTransitions">
+          <a role="menuitem"
+             ng-click="ctrl.actions.setProvisionState({
+                       node: ctrl.node,
+                       verb: transition.verb});
+                       $event.stopPropagation();
+                       $event.preventDefault()">
+            <span>{$ transition.label $}</span>
+          </a>
+        </li>
         <action button-type="menu-item"
                 callback="ctrl.editNode">
           {$ 'Edit' | translate $}
