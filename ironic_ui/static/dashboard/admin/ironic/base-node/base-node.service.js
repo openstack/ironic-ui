@@ -63,6 +63,7 @@
                            validUuidPattern) {
     var service = {
       DriverProperty: DriverProperty,
+      PostfixExpr: PostfixExpr,
       Graph: Graph
     };
 
