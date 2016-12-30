@@ -18,41 +18,6 @@
 (function () {
   'use strict';
 
-  var provisionStateTransitionMatrix = {
-    enroll: {
-      manageable: 'manage'
-    },
-    manageable: {
-      active: 'adopt',
-      available: 'provide'
-    },
-    active: {
-      available: 'deleted'
-    },
-    available: {
-      active: 'active',
-      manageable: 'manage'
-    },
-    'adopt failed': {
-      manageable: 'manage',
-      active: 'adopt'
-    },
-    'inspect failed': {
-      manageable: 'manage'
-    },
-    'clean failed': {
-      manageable: 'manage'
-    },
-    'deploy failed': {
-      active: 'active',
-      manageable: 'deleted'
-    },
-    error: {
-      active: 'rebuild',
-      manageable: 'deleted'
-    }
-  };
-
   angular
     .module('horizon.app.core.openstack-service-api')
     .factory('horizon.app.core.openstack-service-api.ironic', ironicAPI);
@@ -82,7 +47,6 @@
       getNode: getNode,
       getNodes: getNodes,
       getPortsWithNode: getPortsWithNode,
-      getProvisionStateTransitionVerb: getProvisionStateTransitionVerb,
       powerOffNode: powerOffNode,
       powerOnNode: powerOnNode,
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
@@ -446,25 +410,6 @@
           var msg = gettext('Unable to delete port: %s');
           toastService.add('error', interpolate(msg, [reason], false));
         });
-    }
-
-    /**
-     * @description Get the verb used to transition a  node from a source
-     * provision-state to a target provision-state
-     *
-     * @param {string} sourceState – source state
-     * @param {string} targetState – target state
-     * @return {string} Verb used to transition from source to target state.
-     * null if the requested transition is not allowed.
-     */
-    function getProvisionStateTransitionVerb(sourceState, targetState) {
-      var verb = null;
-      if (angular.isDefined(provisionStateTransitionMatrix[sourceState]) &&
-          angular.isDefined(
-            provisionStateTransitionMatrix[sourceState][targetState])) {
-        verb = provisionStateTransitionMatrix[sourceState][targetState];
-      }
-      return verb;
     }
   }
 

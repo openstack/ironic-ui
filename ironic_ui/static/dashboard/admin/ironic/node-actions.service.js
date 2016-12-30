@@ -75,7 +75,6 @@
       deleteNodes: deleteNodes,
       deletePort: deletePort,
       deletePorts: deletePorts,
-      getProvisionStateTransitionVerb: getProvisionStateTransitionVerb,
       powerOn: powerOn,
       powerOff: powerOff,
       powerOnAll: powerOnNodes,
@@ -205,10 +204,6 @@
      */
     function setProvisionState(args) {
       ironic.setNodeProvisionState(args.node.uuid, args.verb);
-    }
-
-    function getProvisionStateTransitionVerb(sourceState, targetState) {
-      return ironic.getProvisionStateTransitionVerb(sourceState, targetState);
     }
 
     function createPort(node) {

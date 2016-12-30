@@ -33,6 +33,7 @@
     'horizon.dashboard.admin.ironic.basePath',
     'horizon.dashboard.admin.ironic.edit-node.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
+    'horizon.dashboard.admin.ironic.node-state-transition.service',
     'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
 
@@ -46,6 +47,7 @@
                                        basePath,
                                        editNodeService,
                                        maintenanceService,
+                                       nodeStateTransitionService,
                                        validUuidPattern) {
     var ctrl = this;
     var path = basePath + '/node-details/sections/';
@@ -67,6 +69,7 @@
 
     ctrl.node = null;
     ctrl.nodeValidation = {};
+    ctrl.nodeStateTransitions = [];
     ctrl.ports = [];
     ctrl.portsSrc = [];
     ctrl.basePath = basePath;
@@ -121,6 +124,8 @@
       var uuid = $location.absUrl().match(pattern)[2];
 
       retrieveNode(uuid).then(function () {
+        ctrl.nodeStateTransitions =
+          nodeStateTransitionService.getTransitions(ctrl.node.provision_state);
         retrievePorts(uuid);
         ironic.validateNode(uuid).then(function(response) {
           ctrl.nodeValidation = response.data;
