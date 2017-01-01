@@ -22,11 +22,11 @@
              createPortService);
 
   createPortService.$inject = [
-    '$modal',
+    '$uibModal',
     'horizon.dashboard.admin.ironic.basePath'
   ];
 
-  function createPortService($modal, basePath) {
+  function createPortService($uibModal, basePath) {
     var service = {
       modal: modal
     };
@@ -43,7 +43,7 @@
         },
         templateUrl: basePath + '/create-port/create-port.html'
       };
-      return $modal.open(options);
+      return $uibModal.open(options);
     }
   }
 })();

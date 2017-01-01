@@ -26,7 +26,7 @@
   EnrollNodeController.$inject = [
     '$rootScope',
     '$controller',
-    '$modalInstance',
+    '$uibModalInstance',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     '$log'
@@ -34,7 +34,7 @@
 
   function EnrollNodeController($rootScope,
                                 $controller,
-                                $modalInstance,
+                                $uibModalInstance,
                                 ironic,
                                 ironicEvents,
                                 $log) {
@@ -42,7 +42,7 @@
 
     $controller('BaseNodeController',
                 {ctrl: ctrl,
-                 $modalInstance: $modalInstance});
+                 $uibModalInstance: $uibModalInstance});
 
     ctrl.modalTitle = gettext("Enroll Node");
     ctrl.submitButtonTitle = ctrl.modalTitle;
@@ -74,7 +74,7 @@
       ironic.createNode(ctrl.node).then(
         function(response) {
           $log.info("create node response = " + JSON.stringify(response));
-          $modalInstance.close();
+          $uibModalInstance.close();
           $rootScope.$emit(ironicEvents.ENROLL_NODE_SUCCESS);
           if (ctrl.moveNodeToManageableState) {
             $log.info("Setting node provision state");

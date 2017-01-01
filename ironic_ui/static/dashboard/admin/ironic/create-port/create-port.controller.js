@@ -25,7 +25,7 @@
 
   CreatePortController.$inject = [
     '$rootScope',
-    '$modalInstance',
+    '$uibModalInstance',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     '$log',
@@ -33,7 +33,7 @@
   ];
 
   function CreatePortController($rootScope,
-                                $modalInstance,
+                                $uibModalInstance,
                                 ironic,
                                 ironicEvents,
                                 $log,
@@ -53,7 +53,7 @@
      * @return {void}
      */
     ctrl.cancel = function() {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
 
     /**
@@ -64,7 +64,7 @@
     ctrl.createPort = function() {
       ironic.createPort(ctrl.port).then(
         function() {
-          $modalInstance.close();
+          $uibModalInstance.close();
           $rootScope.$emit(ironicEvents.CREATE_PORT_SUCCESS);
         },
         function() {

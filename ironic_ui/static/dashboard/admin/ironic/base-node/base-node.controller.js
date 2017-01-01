@@ -24,7 +24,7 @@
     .controller('BaseNodeController', BaseNodeController);
 
   BaseNodeController.$inject = [
-    '$modalInstance',
+    '$uibModalInstance',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.app.core.openstack-service-api.glance',
     'horizon.dashboard.admin.ironic.base-node.service',
@@ -33,7 +33,7 @@
     'ctrl'
   ];
 
-  function BaseNodeController($modalInstance,
+  function BaseNodeController($uibModalInstance,
                               ironic,
                               glance,
                               baseNodeService,
@@ -260,7 +260,7 @@
      * @return {void}
      */
     ctrl.cancel = function() {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
 
     /**

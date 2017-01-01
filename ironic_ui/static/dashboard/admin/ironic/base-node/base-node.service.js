@@ -51,13 +51,13 @@
              baseNodeService);
 
   baseNodeService.$inject = [
-    '$modal',
+    '$uibModal',
     '$log',
     'horizon.dashboard.admin.ironic.validHostNamePattern',
     'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
 
-  function baseNodeService($modal,
+  function baseNodeService($uibModal,
                            $log,
                            validHostNamePattern,
                            validUuidPattern) {

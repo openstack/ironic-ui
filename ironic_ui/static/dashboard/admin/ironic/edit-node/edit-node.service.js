@@ -22,12 +22,12 @@
              editNodeService);
 
   editNodeService.$inject = [
-    '$modal',
+    '$uibModal',
     'horizon.dashboard.admin.ironic.basePath',
     '$log'
   ];
 
-  function editNodeService($modal, basePath, $log) {
+  function editNodeService($uibModal, basePath, $log) {
     var service = {
       modal: modal,
       NodeUpdatePatch: NodeUpdatePatch
@@ -44,7 +44,7 @@
         },
         templateUrl: basePath + '/base-node/base-node.html'
       };
-      return $modal.open(options);
+      return $uibModal.open(options);
     }
 
     /*

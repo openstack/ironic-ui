@@ -31,18 +31,18 @@
     .controller('MaintenanceController', MaintenanceController);
 
   MaintenanceController.$inject = [
-    '$modalInstance'
+    '$uibModalInstance'
   ];
 
-  function MaintenanceController($modalInstance) {
+  function MaintenanceController($uibModalInstance) {
     var ctrl = this;
 
     ctrl.cancel = function() {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
 
     ctrl.putInMaintenanceMode = function(maintReason) {
-      $modalInstance.close(maintReason);
+      $uibModalInstance.close(maintReason);
     };
   }
 })();

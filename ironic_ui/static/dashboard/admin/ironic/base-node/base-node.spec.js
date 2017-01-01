@@ -25,7 +25,7 @@
       beforeEach(module('horizon.dashboard.admin.ironic'));
 
       beforeEach(module(function($provide) {
-        $provide.value('$modal', jasmine.createSpy());
+        $provide.value('$uibModal', jasmine.createSpy());
       }));
 
       beforeEach(inject(function($injector) {

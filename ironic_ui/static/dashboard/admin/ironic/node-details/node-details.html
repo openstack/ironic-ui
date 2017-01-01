@@ -7,7 +7,7 @@
             ng-click="ctrl.refresh()">
       <span translate>Refresh</span>
     </button>
-    <action-list dropdown>
+    <action-list uib-dropdown>
       <action button-type="split-button"
               action-classes="'btn btn-default btn-sm'"
               callback="ctrl.actions.powerOn"
@@ -53,10 +53,10 @@
 
   <div class="clearfix"></div>
 
-  <tabset>
-    <tab ng-repeat="section in ctrl.sections"
+  <uib-tabset>
+    <uib-tab ng-repeat="section in ctrl.sections"
          heading="{$ section.heading $}">
       <ng-include src="section.templateUrl"></ng-include>
-    </tab>
-  </tabset>
+    </uib-tab>
+  </uib-tabset>
 </div>
