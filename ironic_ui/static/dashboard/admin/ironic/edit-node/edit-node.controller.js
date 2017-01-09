@@ -26,7 +26,7 @@
   EditNodeController.$inject = [
     '$rootScope',
     '$controller',
-    '$modalInstance',
+    '$uibModalInstance',
     'horizon.framework.widgets.toast.service',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
@@ -37,7 +37,7 @@
 
   function EditNodeController($rootScope,
                               $controller,
-                              $modalInstance,
+                              $uibModalInstance,
                               toastService,
                               ironic,
                               ironicEvents,
@@ -48,7 +48,7 @@
 
     $controller('BaseNodeController',
                 {ctrl: ctrl,
-                 $modalInstance: $modalInstance});
+                 $uibModalInstance: $uibModalInstance});
 
     ctrl.modalTitle = gettext("Edit Node");
     ctrl.submitButtonTitle = gettext("Update Node");
@@ -130,7 +130,7 @@
     }
 
     ctrl.submit = function() {
-      $modalInstance.close();
+      $uibModalInstance.close();
 
       angular.forEach(ctrl.driverProperties, function(property, name) {
         $log.debug(name +

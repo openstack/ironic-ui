@@ -22,11 +22,11 @@
              enrollNodeService);
 
   enrollNodeService.$inject = [
-    '$modal',
+    '$uibModal',
     'horizon.dashboard.admin.ironic.basePath'
   ];
 
-  function enrollNodeService($modal, basePath) {
+  function enrollNodeService($uibModal, basePath) {
     var service = {
       modal: modal
     };
@@ -37,7 +37,7 @@
         backdrop: 'static',
         templateUrl: basePath + '/base-node/base-node.html'
       };
-      return $modal.open(options);
+      return $uibModal.open(options);
     }
 
     return service;

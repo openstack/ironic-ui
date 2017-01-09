@@ -29,12 +29,12 @@
              maintenanceService);
 
   maintenanceService.$inject = [
-    '$modal',
+    '$uibModal',
     'horizon.dashboard.admin.ironic.basePath',
     'horizon.dashboard.admin.ironic.actions'
   ];
 
-  function maintenanceService($modal, basePath, actions) {
+  function maintenanceService($uibModal, basePath, actions) {
     var service = {
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
       putNodesInMaintenanceMode: putNodesInMaintenanceMode,
@@ -56,7 +56,7 @@
         controller: "MaintenanceController as ctrl",
         templateUrl: basePath + '/maintenance/maintenance.html'
       };
-      $modal.open(options).result.then(function(maintReason) {
+      $uibModal.open(options).result.then(function(maintReason) {
         actions.putNodeInMaintenanceMode(node, maintReason);
       });
     }
@@ -74,7 +74,7 @@
         controller: "MaintenanceController as ctrl",
         templateUrl: basePath + '/maintenance/maintenance.html'
       };
-      $modal.open(options).result.then(function(maintReason) {
+      $uibModal.open(options).result.then(function(maintReason) {
         actions.putAllInMaintenanceMode(nodes, maintReason);
       });
     }
