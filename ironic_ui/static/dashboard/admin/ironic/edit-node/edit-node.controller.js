@@ -31,6 +31,7 @@
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.edit-node.service',
+    'horizon.dashboard.admin.ironic.update-patch.service',
     '$log',
     'node'
   ];
@@ -42,6 +43,7 @@
                               ironic,
                               ironicEvents,
                               editNodeService,
+                              updatePatchService,
                               $log,
                               node) {
     var ctrl = this;
@@ -109,7 +111,7 @@
      * @return {object[]} Array of patch instructions
      */
     function buildPatch(sourceNode, targetNode) {
-      var patcher = new editNodeService.NodeUpdatePatch();
+      var patcher = new updatePatchService.UpdatePatch();
 
       patcher.buildPatch(sourceNode.name, targetNode.name, "/name");
       patcher.buildPatch(sourceNode.driver, targetNode.driver, "/driver");
@@ -152,7 +154,7 @@
 
       var patch = buildPatch(ctrl.baseNode, ctrl.node);
       $log.info("patch = " + JSON.stringify(patch.patch));
-      if (patch.status === editNodeService.NodeUpdatePatch.status.OK) {
+      if (patch.status === updatePatchService.UpdatePatch.status.OK) {
         ironic.updateNode(ctrl.baseNode.uuid, patch.patch).then(function() {
           $rootScope.$emit(ironicEvents.EDIT_NODE_SUCCESS);
         });
