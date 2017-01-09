@@ -53,6 +53,9 @@
 
     states.manageable.addTransition('active', 'adopt');
     states.manageable.addTransition('available', 'provide');
+    states.manageable.addTransition('manageable',
+                                    'inspect',
+                                    gettext('Inspect'));
 
     states.active.addTransition('available', 'deleted');
 
