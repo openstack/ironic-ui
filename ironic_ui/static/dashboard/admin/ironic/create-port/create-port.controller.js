@@ -25,36 +25,27 @@
 
   CreatePortController.$inject = [
     '$rootScope',
+    '$controller',
     '$uibModalInstance',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
-    '$log',
     'node'
   ];
 
   function CreatePortController($rootScope,
+                                $controller,
                                 $uibModalInstance,
                                 ironic,
                                 ironicEvents,
-                                $log,
                                 node) {
     var ctrl = this;
 
-    // Paramater object that defines the port to be created
-    ctrl.port = {
-      node_uuid: node.id,
-      address: null,
-      extra: {}
-    };
+    $controller('BasePortController',
+                {ctrl: ctrl,
+                 $uibModalInstance: $uibModalInstance});
 
-    /**
-     * Cancel the port creation process
-     *
-     * @return {void}
-     */
-    ctrl.cancel = function() {
-      $uibModalInstance.dismiss('cancel');
-    };
+    ctrl.modalTitle = gettext("Create Port");
+    ctrl.submitButtonTitle = ctrl.modalTtile;
 
     /**
      * Create the defined port
@@ -62,6 +53,7 @@
      * @return {void}
      */
     ctrl.createPort = function() {
+      ctrl.port.node_uuid = node.id;
       ironic.createPort(ctrl.port).then(
         function() {
           $uibModalInstance.close();
@@ -71,25 +63,8 @@
         });
     };
 
-    /**
-     * Delete a port metadata property
-     *
-     * @param {string} propertyName - Name of the property
-     * @return {void}
-     */
-    ctrl.deleteExtra = function(propertyName) {
-      delete ctrl.port.extra[propertyName];
-    };
-
-    /**
-     * Check whether the specified port metadata property already exists
-     *
-     * @param {string} propertyName - Name of the metadata property
-     * @return {boolean} True if the property already exists,
-     * otherwise false
-     */
-    ctrl.checkExtraUnique = function(propertyName) {
-      return !(propertyName in ctrl.port.extra);
+    ctrl.submit = function() {
+      ctrl.createPort();
     };
   }
 })();

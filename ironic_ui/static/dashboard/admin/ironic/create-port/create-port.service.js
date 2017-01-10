@@ -41,7 +41,7 @@
             return node;
           }
         },
-        templateUrl: basePath + '/create-port/create-port.html'
+        templateUrl: basePath + '/base-port/base-port.html'
       };
       return $uibModal.open(options);
     }
