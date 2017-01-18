@@ -1,7 +1,6 @@
+# OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
-# Frank Kloeker <eumel@arcor.de>, 2016. #zanata
-# Robert Simai <robert.simai@suse.com>, 2016. #zanata
-# Robert Simai <robert.simai@suse.com>, 2017. #zanata
+# suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui 2.1.1.dev45\n"
@@ -10,12 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-01-11 10:03+0000\n"
-"Last-Translator: Robert Simai <robert.simai@suse.com>\n"
-"Language-Team: German\n"
-"Language: de\n"
+"PO-Revision-Date: 2017-01-10 03:16+0000\n"
+"Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
 "X-Generator: Zanata 3.7.3\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
 msgstr " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
@@ -25,126 +24,124 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
-msgstr ""
-"Eine Anfrage wurde erstellt, um den Provisionierungszustand des Knotens %s "
-"zu ändern"
+msgstr "Permintaan telah dibuat untuk mengubah keadaan provisioning node %s"
 
 msgid "A unique node name. Optional."
-msgstr "Ein eindeutiger Knotenname. Optional."
+msgstr "Nama node yang unik. Pilihan."
 
 msgid "Actions"
-msgstr "Aktionen"
+msgstr "Aksi"
 
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
 msgstr ""
-"Sind Sie sicher, dass Sie den Knoten %s löschen wollen? Diese Aktion kann "
-"nicht rückgängig gemacht werden."
+"Apakah Anda yakin ingin menghapus node \"%s\"? Tindakan ini tidak bisa "
+"dibatalkan."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
 msgstr ""
-"Sind Sie sicher, dass Sie die Knoten %s löschen wollen? Diese Aktion kann "
-"nicht rückgängig gemacht werden."
+"Apakah Anda yakin ingin menghapus node \"%s\"? Tindakan ini tidak bisa "
+"dibatalkan."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
 msgstr ""
-"Sind Sie sicher, dass Sie den Port \"%s\" löschen wollen? Diese Aktion kann "
-"nicht rückgängig gemacht werden."
+"Apakah Anda yakin ingin menghapus port \"%s\"? Tindakan ini tidak bisa "
+"dibatalkan."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
 msgstr ""
-"Sind Sie sicher, dass Sie die Ports \"%s\" löschen wollen? Diese Aktion kann "
-"nicht rückgängig gemacht werden."
+"Apakah Anda yakin ingin menghapus port \"%s\"? Tindakan ini tidak bisa "
+"dibatalkan."
 
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Batal"
 
 msgid "Chassis ID"
-msgstr "Chassis-ID"
+msgstr "Chassis ID"
 
 msgid "Choose an Image"
-msgstr "Wählen Sie ein Abbild"
+msgstr "Pilih Image"
 
 msgid "Configuration"
-msgstr "Konfiguration"
+msgstr "Konfigurasi"
 
 msgid "Console Enabled"
-msgstr "Konsole aktiviert"
+msgstr "Console Enabled (konsol diaktifkan)"
 
 msgid "Create Port"
-msgstr "Port erstellen"
+msgstr "Buat Port"
 
 msgid "Create port"
-msgstr "Port erstellen"
+msgstr "Buat port"
 
 msgid "Created At"
-msgstr "Erstellt am"
+msgstr "Created At"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
-msgstr "Standard ist ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Defaults ke ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "Delete Node"
-msgstr "Knoten löschen"
+msgstr "Delete Node (hapus node)"
 
 msgid "Delete Nodes"
-msgstr "Knoten löschen"
+msgstr "Delete Nodes (hapus node)"
 
 msgid "Delete Port"
-msgstr "Port löschen"
+msgstr "Delete Port (hapus port)"
 
 msgid "Delete Ports"
-msgstr "Ports löschen"
+msgstr "Delete Port (hapus port)"
 
 msgid "Delete node"
-msgstr "Knoten löschen"
+msgstr "Hapus node"
 
 msgid "Delete nodes"
-msgstr "Knoten löschen"
+msgstr "Hapus node"
 
 msgid "Delete ports"
-msgstr "Ports löschen"
+msgstr "Hapus port"
 
 msgid "Deploy Kernel"
-msgstr "Kernel bereitstellen"
+msgstr "Deploy Kernel (mengerahkan kernel)"
 
 msgid "Deploy Ramdisk"
-msgstr "Ramdisk bereitstellen"
+msgstr "Deploy Ramdisk (mengerahkan ramdisk)"
 
 msgid "Driver"
-msgstr "Treiber"
+msgstr "Driver"
 
 msgid "Driver Details"
-msgstr "Treiberdetails"
+msgstr "Driver Details (rincian driver)"
 
 msgid "Driver Info"
-msgstr "Treiberinformationen"
+msgstr "Driver Info"
 
 msgid "Driver Validation"
-msgstr "Treibervalidierung"
+msgstr "Driver Validation (validasi driver)"
 
 msgid "Edit"
-msgstr "Bearbeiten"
+msgstr "Edit"
 
 msgid "Edit Node"
-msgstr "Knoten bearbeiten"
+msgstr "Edit Node"
 
 msgid "Enroll Node"
-msgstr "Knoten ausrollen"
+msgstr "Enroll Node"
 
 #, python-format
 msgid "Error deleting nodes \"%s\""
-msgstr "Fehler beim Löschen der Knoten \"%s\""
+msgstr "Error deleting nodes \"%s\""
 
 #, python-format
 msgid "Error deleting ports \"%s\""
-msgstr "Fehler beim Löschen der Ports \"%s\""
+msgstr "kesalahan saat menghapus port \"%s\""
 
 msgid "Extra"
 msgstr "Extra"
@@ -153,316 +150,316 @@ msgid "Extras"
 msgstr "Extras"
 
 msgid "General"
-msgstr "Allgemein"
+msgstr "General (umum)"
 
 msgid "Image Source"
-msgstr "Abbildquelle"
+msgstr "Image Source"
 
 msgid "Inspect"
-msgstr "Inspizieren"
+msgstr "Inspect (periksa)"
 
 msgid "Inspection Finished At"
-msgstr "Inspektion beenden um"
+msgstr "Inspection Finished At (pemeriksaan selesai)"
 
 msgid "Inspection Started At"
-msgstr "Inspektion gestartet um"
+msgstr "Inspection Started At (pemeriksaan dimulai)"
 
 msgid "Instance ID"
-msgstr "Instanz-ID"
+msgstr "ID Instances"
 
 msgid "Instance Info"
-msgstr "Instanzinformation"
+msgstr "Instance Info (info instance)"
 
 msgid "Instance Name"
-msgstr "Instanzname"
+msgstr "Nama Instance"
 
 msgid "Interface"
-msgstr "Interface"
+msgstr "Interface (antarmuka)"
 
 msgid "Kernel"
 msgstr "Kernel"
 
 msgid "Last Error"
-msgstr "Letzter Fehler"
+msgstr "Last Error (kesalahan terakhir)"
 
 msgid "MAC Address"
-msgstr "MAC-Adresse"
+msgstr "MAC Address"
 
 msgid "MAC address"
-msgstr "MAC-Adresse"
+msgstr "MAC address"
 
 msgid "MAC address for this port. Required."
-msgstr "MAC-Adresse für diesen Port. Erforderlich."
+msgstr "MAC address untuk port ini. Wajib."
 
 msgid "Maintenance"
-msgstr "Wartung"
+msgstr "Maintenance (pemeliharaan)"
 
 msgid "Maintenance Reason"
-msgstr "Grund der Wartung"
+msgstr "Maintenance Reason (alasan pemeliharaan)"
 
 msgid "Maintenance off"
-msgstr "Wartung ausschalten"
+msgstr "Maintenance off"
 
 msgid "Maintenance on"
-msgstr "Wartung einschalten"
+msgstr "Maintenance on"
 
 msgid "Move to"
-msgstr "Verschieben nach"
+msgstr "Move to (pindah ke)"
 
 msgid "Name"
-msgstr "Name"
+msgstr "Nama"
 
 msgid "No Instance"
-msgstr "Keine Instanz"
+msgstr "Tak ada Instance"
 
 msgid "No maintenance reason given."
-msgstr "Kein Wartungsgrund angegeben."
+msgstr "Tidak ada alasan pemeliharaan diberikan."
 
 msgid "No network ports have been defined"
-msgstr "Es wurden keine Netzwerkports definiert"
+msgstr "Tidak ada port jaringan telah didefinisikan"
 
 msgid "Node"
-msgstr "Knoten"
+msgstr "Node (simpul)"
 
 #, python-format
 msgid "Node %s is already in maintenance mode."
-msgstr "Knoten %s ist schon im Wartungsmodus."
+msgstr "Node %s sudah dalam modus pemeliharaan."
 
 #, python-format
 msgid "Node %s is not in maintenance mode."
-msgstr "Knoten %s ist nicht im Wartungsmodus"
+msgstr "Node %s tidak dalam modus pemeliharaan."
 
 #, python-format
 msgid "Node %s is not powered off."
-msgstr "Knoten %s ist nicht ausgeschaltet."
+msgstr "Node %s tidak dimatikan."
 
 #, python-format
 msgid "Node %s is not powered on."
-msgstr "Knoten %s ist nicht eingeschaltet."
+msgstr "Node %s tidak dinyalakan."
 
 msgid "Node Driver"
-msgstr "Knotentreiber"
+msgstr "Node Driver"
 
 msgid "Node ID"
-msgstr "Knoten-ID"
+msgstr "Node ID"
 
 msgid "Node Info"
-msgstr "Knoteninformation"
+msgstr "Node Info (info node)"
 
 msgid "Node Name"
-msgstr "Knotenname"
+msgstr "Node Name (nama node)"
 
 msgid "One of this, (.*) must be specified\\."
-msgstr "Einer von diesen, (.*) muss spezifiziert sein\\."
+msgstr "One of this, (.*) must be specified\\."
 
 msgid "Overview"
-msgstr "Übersicht"
+msgstr "Iktisar"
 
 msgid "Port successfully created"
-msgstr "Port erfolgreich erstellt"
+msgstr "Port berhasil dibuat"
 
 msgid "Ports"
-msgstr "Ports"
+msgstr "Port-Port"
 
 msgid "Power State"
-msgstr "Zustand"
+msgstr "Power State"
 
 msgid "Power off"
-msgstr "Ausschalten"
+msgstr "Power off"
 
 msgid "Power on"
-msgstr "Einschalten"
+msgstr "Power on"
 
 msgid "Properties"
-msgstr "Eigenschaften"
+msgstr "Property (sifat)"
 
 msgid "Property Name"
-msgstr "Eigenschaftname"
+msgstr "Property Name (nama property)"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
 "maintenance mode (optional)"
 msgstr ""
-"Geben Sie einen Grund an, warum Sie den/die ausgewählten Knoten in den "
-"Wartungsmodus setzen (optional)"
+"Berikan alasan mengapa Anda menempatkan node yang dipilih ke dalam modus "
+"pemeliharaan (opsional)"
 
 msgid "Provision State"
-msgstr "Bereitstellungszustand"
+msgstr "Provision State (keadaan penyediaan)"
 
 msgid "Provisioning State"
-msgstr "Provisionierungszustand"
+msgstr "Provisioning State"
 
 msgid "Provisioning Status"
-msgstr "Provisionierungsstatus"
+msgstr "Provisioning Status (status penyediaan)"
 
 msgid "Put Node(s) Into Maintenance Mode"
-msgstr "Knoten in Wartungsmodus setzen"
+msgstr "Letakan Node(s) dalam Maintenance Mode"
 
 msgid "Ramdisk"
 msgstr "Ramdisk"
 
 msgid "Reason"
-msgstr "Grund"
+msgstr "Reason (alasan)"
 
 msgid "Refresh"
-msgstr "Aktualisieren"
+msgstr "Refresh"
 
 msgid "Refresh page to see updated power status"
-msgstr "Aktualisiere Seite, um den Power Status zu sehen"
+msgstr "Refresh halaman untuk melihat status daya diperbarui"
 
 msgid "Required"
-msgstr "Erforderlich"
+msgstr "Wajib"
 
 msgid "Reservation"
-msgstr "Reservierung"
+msgstr "Reservation"
 
 msgid "Root GB"
 msgstr "Root GB"
 
 msgid "SSH Address"
-msgstr "SSH Adresse"
+msgstr "SSH Address"
 
 msgid "SSH Key Contents"
-msgstr "SSH Schlüsselinhalt"
+msgstr "SSH Key Contents (konten kunci SSH)"
 
 msgid "SSH Key File"
-msgstr "SSH Schlüsseldatei"
+msgstr "SSH Key File (file kunci SSH)"
 
 msgid "SSH Password"
-msgstr "SSH Passwort"
+msgstr "SSH Password (password SSH)"
 
 msgid "SSH Port"
-msgstr "SSH-Port"
+msgstr "SSH Port"
 
 msgid "SSH Username"
-msgstr "SSH-Benutzername"
+msgstr "SSH Username "
 
 msgid "SSH terminal port"
-msgstr "SSH Terminal Port"
+msgstr "SSH terminal port (port terminal SSH)"
 
 msgid "Select a Driver"
-msgstr "Wählen Sie einen Treiber"
+msgstr "Pilih Driver"
 
 msgid "Submit"
-msgstr "Abschicken"
+msgstr "Submit (menyampaikan)"
 
 #, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "Knoten \"%s\" erfolgreich gelöscht"
+msgstr "Berhasil hapus node \"%s\""
 
 #, python-format
 msgid "Successfully deleted nodes \"%s\""
-msgstr "Knoten \"%s\" erfolgreich gelöscht"
+msgstr "Berhasil hapus nodes \"%s\""
 
 #, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "Port \"%s\" erfolgreich gelöscht"
+msgstr "Berhasil hapus port \"%s\""
 
 #, python-format
 msgid "Successfully deleted ports \"%s\""
-msgstr "Ports \"%s\" erfolgreich gelöscht"
+msgstr "Berhasil hapus port \"%s\""
 
 #, python-format
 msgid "Successfully updated node %s"
-msgstr "Knoten %s erfolgreich aktualisiert"
+msgstr "Berhasil perbarui node %s"
 
 msgid "Target Power State"
-msgstr "Ziel Power-Zustand"
+msgstr "Target Power State"
 
 msgid "Target Provision State"
-msgstr "Ziel Bereitstellungszustand"
+msgstr "Target Provision State (keadaab penyediaan sasaran)"
 
 msgid "UUID"
 msgstr "UUID"
 
 msgid "Unable to create node update patch."
-msgstr "Knoten-Aktualisierungspatch kann nicht erstellt werden."
+msgstr "Tidak dapat membuat node update patch."
 
 #, python-format
 msgid "Unable to create node: %s"
-msgstr "Knoten kann nicht erstellt werden: %s"
+msgstr "Tidak dapat membuat node: %s"
 
 #, python-format
 msgid "Unable to create port: %s"
-msgstr "Port kann nicht erstellt werden: %s"
+msgstr "Tidak dapat membuat port: %s"
 
 #, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "Knoten \"%s\" kann nicht gelöscht werden"
+msgstr "Tidak dapat menghapus node \"%s\""
 
 #, python-format
 msgid "Unable to delete node %s: %s"
-msgstr "Knoten kann nicht gelöscht werden: %s: %s"
+msgstr "Tidak dapat menghapus node %s: %s"
 
 #, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "Port \"%s\" kann nicht gelöscht werden"
+msgstr "Tidak dapat hapus port \"%s\""
 
 #, python-format
 msgid "Unable to delete port: %s"
-msgstr "Port kann nicht gelöscht werden: %s"
+msgstr "Tidak dapat menghapus port: %s"
 
 #, python-format
 msgid "Unable to power off the node: %s"
-msgstr "Konnte den Knoten nicht ausschalten: %s"
+msgstr "Tidak dapat daya mati pada node: %s"
 
 #, python-format
 msgid "Unable to power on the node: %s"
-msgstr "Konnte den Knoten nicht einschalten: %s"
+msgstr "Tidak dapat daya hidup pada node: %s"
 
 #, python-format
 msgid "Unable to put the Ironic node in maintenance mode: %s"
-msgstr "Konnte den Ironic Knoten nicht in den Wartungsmodus setzen: %s"
+msgstr "Tidak dapat menempatkan Ironic node dalam modus pemeliharaan: %s"
 
 #, python-format
 msgid "Unable to remove the Ironic node from maintenance mode: %s"
-msgstr "Konnte den Wartungsmodus vom Ironic Knoten nicht löschen: %s"
+msgstr "Tidak dapat menghapus  Ironic node dari modus pemeliharaan: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
-msgstr "Ironic Treiber können nicht abgerufen werden: %s"
+msgstr "Tidak dapat mengambil Ironic driver: %s"
 
 msgid "Unable to retrieve Ironic nodes."
-msgstr "Konnte die Ironic-Knoten nicht abrufen."
+msgstr "Tidak dapat mengambil Ironic node."
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
-msgstr "Treibereigenschaften können nicht abgerufen werden: %s"
+msgstr "Tidak dapat mengambil driver property: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
-msgstr "Konnte die Ironic-Knotenports nicht abrufen: %s"
+msgstr "Tidak dapat mengambil Ironic node port: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
-msgstr "Konnte den Ironic-Knoten nicht abrufen: %s"
+msgstr "Tidak dapat mengambil Ironic node: %s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
-msgstr "Kann Provisionierungszustand nicht setzen: %s"
+msgstr "Tidak dapat mengatur keadaan provision node: %s"
 
 #, python-format
 msgid "Unable to update node %s: %s"
-msgstr "Knoten %s kann nicht aktualisiert werden: %s"
+msgstr "Tidak dapat memperbarui node %s: %s"
 
 #, python-format
 msgid "Unable to validate node %s: %s"
-msgstr "Knoten %s kann nicht  validiert werden: %s"
+msgstr "Tidak dapat memvalidasi node %s: %s"
 
 msgid "Update Node"
-msgstr "Knoten aktualisieren"
+msgstr "Update Node"
 
 msgid "Updated At"
-msgstr "Aktualisiert am"
+msgstr "Diperbarui pada"
 
 msgid "Valid"
-msgstr "Gültig"
+msgstr "Valid (sah)"
 
 msgid "Virtualization Software"
-msgstr "Virtualisierungssoftware"
+msgstr "Virtualization Software (software virtualisasi)"
 
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
-msgstr "Standard (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "{$ collection.addPrompt $}:"
 msgstr "{$ collection.addPrompt $}:"
