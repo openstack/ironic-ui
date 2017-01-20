@@ -1,18 +1,19 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
-# Eunseop Shin <kairos9603@gmail.com>, 2016. #zanata
+# Eunseop Shin <kairos9603@khu.ac.kr>, 2016. #zanata
 # HYUNGBAI PARK <openstack.make@gmail.com>, 2016. #zanata
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2016. #zanata
+# ChungYoung Cho <openstack.cho@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev45\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"POT-Creation-Date: 2017-01-17 12:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-20 05:14+0000\n"
-"Last-Translator: Eunseop Shin <kairos9603@gmail.com>\n"
+"PO-Revision-Date: 2017-01-10 08:58+0000\n"
+"Last-Translator: ChungYoung Cho <openstack.cho@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -117,6 +118,9 @@ msgstr "드라이버 세부사항"
 msgid "Driver Info"
 msgstr "드라이버 정보"
 
+msgid "Driver Validation"
+msgstr "드라이버 확인"
+
 msgid "Edit"
 msgstr "편집"
 
@@ -157,6 +161,9 @@ msgstr "인스턴스 정보"
 
 msgid "Instance Name"
 msgstr "인스턴스 이름"
+
+msgid "Interface"
+msgstr "인터페이스"
 
 msgid "Kernel"
 msgstr "커널"
@@ -275,6 +282,9 @@ msgstr "노드(들)을 유지보수 모드로 넣기"
 msgid "Ramdisk"
 msgstr "램디스크"
 
+msgid "Reason"
+msgstr "원인"
+
 msgid "Refresh"
 msgstr "갱신"
 
@@ -287,11 +297,26 @@ msgstr "필수항목"
 msgid "Reservation"
 msgstr "예약"
 
+msgid "SSH Address"
+msgstr "SSH주소"
+
+msgid "SSH Key Contents"
+msgstr "SSH 키콘텐츠"
+
+msgid "SSH Key File"
+msgstr "SSH Key File"
+
+msgid "SSH Password"
+msgstr "SSH 패스워드"
+
 msgid "SSH Port"
 msgstr "SSH 포트"
 
 msgid "SSH Username"
 msgstr "SSH Username"
+
+msgid "SSH terminal port"
+msgstr "SSH 터미널포트"
 
 msgid "Select a Driver"
 msgstr "드라이버 선택하기"
@@ -403,6 +428,12 @@ msgstr "노드 업데이트"
 
 msgid "Updated At"
 msgstr "업데이트 시점"
+
+msgid "Valid"
+msgstr "유효"
+
+msgid "Virtualization Software"
+msgstr "가상화 소프트트웨어"
 
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
