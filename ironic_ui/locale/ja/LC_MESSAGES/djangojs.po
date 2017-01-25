@@ -2,20 +2,31 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
 # Yoshiki Eguchi <yoshiki.eguchi@gmail.com>, 2016. #zanata
+# Shu Muto <shu-mutou@rf.jp.nec.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev50\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"POT-Creation-Date: 2017-01-20 10:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-08-23 07:39+0000\n"
-"Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
+"PO-Revision-Date: 2017-01-25 07:56+0000\n"
+"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "X-Generator: Zanata 3.7.3\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+
+msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+msgstr " ([^\" ]+|\"[^\"]+\") \\(デフォルト\\)"
+
+msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr "ノード %s のプロビジョニング状態を変更するための要求が作成されました。"
 
 msgid "A unique node name. Optional."
 msgstr "一意のノード名。オプション。"
@@ -67,6 +78,9 @@ msgstr "ポートの作成"
 msgid "Created At"
 msgstr "作成時刻"
 
+msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "デフォルトを ([^\"\\. ]+|\"[^\"]+\") にします"
+
 msgid "Delete Node"
 msgstr "ノードの削除"
 
@@ -103,6 +117,15 @@ msgstr "ドライバー詳細"
 msgid "Driver Info"
 msgstr "ドライバー情報"
 
+msgid "Driver Validation"
+msgstr "ドライバーの検証"
+
+msgid "Edit"
+msgstr "編集"
+
+msgid "Edit Node"
+msgstr "ノードの編集"
+
 msgid "Enroll Node"
 msgstr "ノードの登録"
 
@@ -117,8 +140,17 @@ msgstr "ポート \"%s\" の削除中にエラーが発生しました"
 msgid "Extra"
 msgstr "拡張"
 
+msgid "Extras"
+msgstr "拡張"
+
 msgid "General"
 msgstr "一般"
+
+msgid "Image Source"
+msgstr "イメージソース"
+
+msgid "Inspect"
+msgstr "検査"
 
 msgid "Inspection Finished At"
 msgstr "検査終了時刻"
@@ -134,6 +166,9 @@ msgstr "インスタンス情報"
 
 msgid "Instance Name"
 msgstr "インスタンス名"
+
+msgid "Interface"
+msgstr "インターフェース"
 
 msgid "Kernel"
 msgstr "カーネル"
@@ -162,6 +197,9 @@ msgstr "メンテナンスオフ"
 msgid "Maintenance on"
 msgstr "メンテナンスオン"
 
+msgid "Move to"
+msgstr "移動先"
+
 msgid "Name"
 msgstr "名前"
 
@@ -173,6 +211,9 @@ msgstr "メンテナンスの理由がありません。"
 
 msgid "No network ports have been defined"
 msgstr "ネットワークポートが定義されていません"
+
+msgid "Node"
+msgstr "ノード"
 
 #, python-format
 msgid "Node %s is already in maintenance mode."
@@ -201,6 +242,9 @@ msgstr "ノード情報"
 
 msgid "Node Name"
 msgstr "ノード名"
+
+msgid "One of this, (.*) must be specified\\."
+msgstr "(.*) の１つを指定する必要があります。"
 
 msgid "Overview"
 msgstr "概要"
@@ -247,6 +291,12 @@ msgstr "ノードをメンテナンスモードにします"
 msgid "Ramdisk"
 msgstr "RAM ディスク"
 
+msgid "Reason"
+msgstr "理由"
+
+msgid "Refresh"
+msgstr "最新表示"
+
 msgid "Refresh page to see updated power status"
 msgstr "電源状態を更新するにはページをリフレッシュしてください"
 
@@ -256,14 +306,35 @@ msgstr "必須"
 msgid "Reservation"
 msgstr "予約"
 
+msgid "Root GB"
+msgstr "ルートディスク (GB)"
+
+msgid "SSH Address"
+msgstr "SSH アドレス"
+
+msgid "SSH Key Contents"
+msgstr "SSH 鍵の内容"
+
+msgid "SSH Key File"
+msgstr "SSH 鍵ファイル"
+
+msgid "SSH Password"
+msgstr "SSH パスワード"
+
 msgid "SSH Port"
 msgstr "SSH ポート"
 
 msgid "SSH Username"
 msgstr "SSH ユーザー名"
 
+msgid "SSH terminal port"
+msgstr "SSH ターミナルのポート"
+
 msgid "Select a Driver"
 msgstr "ドライバーを選択してください"
+
+msgid "Submit"
+msgstr "送信"
 
 #, python-format
 msgid "Successfully deleted node \"%s\""
@@ -281,6 +352,10 @@ msgstr "ポート \"%s\" を正常に削除しました"
 msgid "Successfully deleted ports \"%s\""
 msgstr "ポート \"%s\" を正常に削除しました"
 
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "ノード %s の更新に成功しました"
+
 msgid "Target Power State"
 msgstr "ターゲット電源状態"
 
@@ -289,6 +364,9 @@ msgstr "ターゲットプロビジョニング状態"
 
 msgid "UUID"
 msgstr "UUID"
+
+msgid "Unable to create node update patch."
+msgstr "ノードを更新するパッチを作成できません。"
 
 #, python-format
 msgid "Unable to create node: %s"
@@ -349,8 +427,44 @@ msgstr "Ironic ノードのポート一覧を取得できません: %s"
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "Ironic ノードを取得できません: %s"
 
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "ノードのプロビジョニング状態を設定できませんでした: %s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "ノード %s を更新できません: %s"
+
+#, python-format
+msgid "Unable to validate node %s: %s"
+msgstr "ノード %s を検証できません: %s"
+
+msgid "Update Node"
+msgstr "ノードの更新"
+
 msgid "Updated At"
 msgstr "最終更新"
+
+msgid "Valid"
+msgstr "有効"
+
+msgid "Virtualization Software"
+msgstr "仮想化ソフトウェア"
+
+msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "(?:value )?のデフォルトは ([^\"\\. ]+|\"[^\"]+\") です"
+
+msgid "{$ collection.addPrompt $}:"
+msgstr "{$ collection.addPrompt $}:"
+
+msgid "{$ collection.title $}"
+msgstr "{$ collection.title $}"
+
+msgid "{$ ctrl.modalTitle $}"
+msgstr "{$ ctrl.modalTitle $}"
+
+msgid "{$ ctrl.submitButtonTitle $}"
+msgstr "{$ ctrl.submitButtonTitle $}"
 
 msgid "{$ property.getDescription() $}"
 msgstr "{$ property.getDescription() $}"
