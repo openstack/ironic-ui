@@ -23,6 +23,7 @@
     .factory('horizon.app.core.openstack-service-api.ironic', ironicAPI);
 
   ironicAPI.$inject = [
+    '$q',
     'horizon.framework.util.http.service',
     'horizon.framework.widgets.toast.service',
     'horizon.dashboard.admin.ironic.node-error.service'
@@ -31,12 +32,13 @@
   /**
    * @description Service that provides access to the Ironic client API
    *
+   * @param {object} $q - Promise provider
    * @param {object} apiService - HTTP service
    * @param {object} toastService - User message service
    * @param {object} nodeErrorService - Node error service
    * @return {object} Ironic API service
    */
-  function ironicAPI(apiService, toastService, nodeErrorService) {
+  function ironicAPI($q, apiService, toastService, nodeErrorService) {
     var service = {
       createNode: createNode,
       createPort: createPort,
@@ -72,9 +74,14 @@
             nodeErrorService.checkNodeError(node);
           });
           return response;
-        }, function() {
-          toastService.add('error',
-                           gettext('Unable to retrieve Ironic nodes.'));
+        })
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve Ironic nodes. %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -92,9 +99,14 @@
         .then(function(response) {
           nodeErrorService.checkNodeError(response.data);
           return response;
-        }, function(reason) {
-          var msg = gettext('Unable to retrieve the Ironic node: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        })
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve the Ironic node: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -113,10 +125,13 @@
         }
       };
       return apiService.get('/api/ironic/ports/', config)
-        .error(function(reason) {
-          var msg = gettext(
-            'Unable to retrieve the Ironic node ports: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve the Ironic node ports: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -137,10 +152,13 @@
       };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/maintenance',
                               data)
-        .error(function(reason) {
-          var msg = gettext(
-            'Unable to put the Ironic node in maintenance mode: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to put the Ironic node in maintenance mode: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -155,10 +173,14 @@
      */
     function removeNodeFromMaintenanceMode(uuid) {
       return apiService.delete('/api/ironic/nodes/' + uuid + '/maintenance')
-        .error(function(reason) {
-          var msg = gettext('Unable to remove the Ironic node ' +
-                            'from maintenance mode: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to remove the Ironic node ' +
+                    'from maintenance mode: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -177,13 +199,16 @@
       };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power',
                               data)
-        .success(function() {
+        .then(function() {
           toastService.add('success',
                            gettext('Refresh page to see updated power status'));
         })
-        .error(function(reason) {
-          var msg = gettext('Unable to power on the node: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to power on the node: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -202,13 +227,16 @@
       };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power',
                               data)
-        .success(function() {
+        .then(function() {
           toastService.add('success',
                            gettext('Refresh page to see updated power status'));
         })
-        .error(function(reason) {
-          var msg = gettext('Unable to power off the node: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to power off the node: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -229,14 +257,18 @@
       };
       return apiService.put('/api/ironic/nodes/' + uuid + '/states/provision',
                             data)
-        .success(function() {
+        .then(function() {
           var msg = gettext(
             'A request has been made to change the provisioning state of node %s');
           toastService.add('success', interpolate(msg, [uuid], false));
         })
-        .error(function(reason) {
-          var msg = gettext('Unable to set node provision state: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to set node provision state: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -254,11 +286,12 @@
         node: params
       };
       return apiService.post('/api/ironic/nodes/', data)
-        .success(function() {
-        })
-        .error(function(reason) {
-          var msg = gettext('Unable to create node: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to create node: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -276,13 +309,14 @@
         node: nodeIdent
       };
       return apiService.delete('/api/ironic/nodes/', data)
-        .success(function() {
+        .then(function() {
         })
-        .error(function(reason) {
-          var msg = gettext('Unable to delete node %s: %s');
-          toastService.add(
-            'error',
-            interpolate(msg, [nodeIdent, reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to delete node %s: %s'),
+                                [nodeId, response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -301,14 +335,17 @@
         patch: patch
       };
       return apiService.patch('/api/ironic/nodes/' + uuid, data)
-        .success(function() {
+        .then(function() {
           var msg = gettext(
             'Successfully updated node %s');
           toastService.add('success', interpolate(msg, [uuid], false));
         })
-        .error(function(reason) {
-          var msg = gettext('Unable to update node %s: %s');
-          toastService.add('error', interpolate(msg, [uuid, reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to update node %s: %s'),
+                                [uuid, response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -327,13 +364,14 @@
       };
       return apiService.get('/api/ironic/nodes/' + nodeIdent + '/validate',
                             data)
-        .success(function() {
+        .then(function() {
         })
-        .error(function(reason) {
-          var msg = gettext('Unable to validate node %s: %s');
-          toastService.add(
-            'error',
-            interpolate(msg, [nodeIdent, reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to validate node %s: %s'),
+                                [nodeId, response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -346,10 +384,15 @@
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#DriverList
      */
     function getDrivers() {
-      return apiService.get('/api/ironic/drivers/').error(function(reason) {
-        var msg = gettext('Unable to retrieve Ironic drivers: %s');
-        toastService.add('error', interpolate(msg, [reason], false));
-      });
+      return apiService.get('/api/ironic/drivers/')
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve Ironic drivers: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
     }
 
     /**
@@ -363,12 +406,15 @@
      */
     function getDriverProperties(driverName) {
       return apiService.get(
-        '/api/ironic/drivers/' + driverName + '/properties').error(
-          function(reason) {
-            var msg = gettext(
-              'Unable to retrieve driver properties: %s');
-            toastService.add('error', interpolate(msg, [reason], false));
-          });
+        '/api/ironic/drivers/' + driverName + '/properties')
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve driver properties: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
     }
 
     /**
@@ -383,13 +429,16 @@
         port: port
       };
       return apiService.post('/api/ironic/ports/', data)
-        .success(function() {
+        .then(function() {
           toastService.add('success',
                            gettext('Port successfully created'));
         })
-        .error(function(reason) {
-          var msg = gettext('Unable to create port: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to create port: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
 
@@ -404,11 +453,12 @@
         port_uuid: portUuid
       };
       return apiService.delete('/api/ironic/ports/', data)
-        .success(function() {
-        })
-        .error(function(reason) {
-          var msg = gettext('Unable to delete port: %s');
-          toastService.add('error', interpolate(msg, [reason], false));
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to delete port: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
         });
     }
   }
