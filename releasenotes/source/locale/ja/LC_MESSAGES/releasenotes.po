@@ -1,0 +1,96 @@
+# Akihiro Motoki <amotoki@gmail.com>, 2016. #zanata
+# Shu Muto <shu-mutou@rf.jp.nec.com>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-20 10:38+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-01-25 08:17+0000\n"
+"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "2.0.0"
+msgstr "2.0.0"
+
+msgid "2.1.0"
+msgstr "2.1.0"
+
+msgid "Ability to enroll a node without all required fields for other states"
+msgstr "他の状態のためのすべての必須フィールドなしでノードを登録する機能"
+
+msgid "Add and delete nodes"
+msgstr "ノードの追加と削除。"
+
+msgid "Add and delete ports"
+msgstr "ポートの追加と削除。"
+
+msgid "Breadcrumbs have been added"
+msgstr "パンくずリスト (breadcrumb) のサポートが追加されました。"
+
+msgid "Current Series Release Notes"
+msgstr "開発中バージョンのリリースノート"
+
+msgid ""
+"Currently it is not possible to edit a node via the UI once it has been "
+"enrolled. Therefore, the enrollment must be done accurately to ensure the "
+"node is enrolled accurately and can then be made available. At present, any "
+"errors made during enrollment can only be corrected by deleting the node and "
+"enrolling it again."
+msgstr ""
+"現在、UI を介して登録されたノードを編集することはできません。 したがって、"
+"ノードが正確に登録され、利用可能になるように、登録を正確に行う必要がありま"
+"す。 現在、登録中に発生したエラーは、ノードを削除して再度登録することによって"
+"のみ訂正できます。"
+
+msgid "Edit nodes after creation"
+msgstr "ノード作成後の更新"
+
+msgid "Ironic UI Release Notes"
+msgstr "Ironic UI リリースノート"
+
+msgid "Known Issues"
+msgstr "既知の問題"
+
+msgid "Move nodes between enroll, manageable, available and active states"
+msgstr "登録、管理可能、使用可能、およびアクティブ状態の間でノードを移動する。"
+
+msgid "New Features"
+msgstr "新機能"
+
+msgid "Newton Series Release Notes"
+msgstr "Newton バージョンのリリースノート"
+
+msgid "Panel hidden if baremetal service or admin rights are not present"
+msgstr "ベアメタルサービスまたは管理者権限がない場合はパネルが非表示になります"
+
+msgid ""
+"This release adds support for adding and deleting nodes. Support has also "
+"been added for adding and deleting ports. The panel will now be hidden if "
+"the baremetal service is not present in the scenario where the collection of "
+"running services differs between multiple keystone regions."
+msgstr ""
+"このリリースでは、ノードの追加と削除がサポートされています。 ポートの追加およ"
+"び削除のサポートも追加されました。 実行中のサービスのコレクションが複数の "
+"Keystone リージョンで異なるシナリオでは、ベアメタルサービスが存在しない場合、"
+"パネルは非表示になります。"
+
+msgid ""
+"This release adds support for editing nodes and moving those nodes between "
+"enroll, manageable, available and active states. It is now possible to "
+"enroll a node without all required fields for moving to manageable state "
+"being present due to the facility for editing the node once it has been "
+"created."
+msgstr ""
+"このリリースでは、ノードの編集とそのノードの登録、管理、使用可能、およびアク"
+"ティブの状態の間で移動がサポートされています。 いったん作成されたノードを編集"
+"する機能のため、管理可能な状態に移行するのに、すべての必須フィールドなしで"
+"ノードを登録することが可能になりました。"
+
+msgid "UX improvements across the interface"
+msgstr "インターフェーズ全体のユーザーエクスペリエンスの改善"
