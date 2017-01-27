@@ -67,6 +67,10 @@
 
     states['inspect failed'].addTransition('manageable', 'manage');
 
+    states['clean wait'].addTransition('clean failed',
+                                       'abort',
+                                       gettext('Abort cleaning'));
+
     states['clean failed'].addTransition('manageable', 'manage');
 
     states['deploy failed'].addTransition('active', 'active');
