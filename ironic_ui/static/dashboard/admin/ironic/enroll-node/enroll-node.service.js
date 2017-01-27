@@ -28,16 +28,16 @@
 
   function enrollNodeService($uibModal, basePath) {
     var service = {
-      modal: modal
+      enrollNode: enrollNode
     };
 
-    function modal() {
+    function enrollNode() {
       var options = {
         controller: 'EnrollNodeController as ctrl',
         backdrop: 'static',
         templateUrl: basePath + '/base-node/base-node.html'
       };
-      return $uibModal.open(options);
+      return $uibModal.open(options).result;
     }
 
     return service;

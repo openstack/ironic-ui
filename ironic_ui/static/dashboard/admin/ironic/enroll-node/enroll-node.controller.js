@@ -74,15 +74,8 @@
       ironic.createNode(ctrl.node).then(
         function(response) {
           $log.info("create node response = " + JSON.stringify(response));
-          $uibModalInstance.close();
           $rootScope.$emit(ironicEvents.ENROLL_NODE_SUCCESS);
-          if (ctrl.moveNodeToManageableState) {
-            $log.info("Setting node provision state");
-            ironic.setNodeProvisionState(response.data.uuid, 'manage');
-          }
-        },
-        function() {
-          // No additional error processing for now
+          $uibModalInstance.close(response.data);
         });
       $log.debug("<< EnrollNodeController.submit()");
     };

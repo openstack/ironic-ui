@@ -181,7 +181,7 @@
     }
 
     function enrollNode() {
-      enrollNodeService.modal();
+      enrollNodeService.enrollNode();
     }
 
     function editNode(node) {
