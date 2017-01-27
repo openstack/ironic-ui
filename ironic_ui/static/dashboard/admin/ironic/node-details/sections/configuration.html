@@ -33,7 +33,7 @@
               </action>
               <menu>
                 <action button-type="menu-item"
-                        callback="ctrl.deletePorts"
+                        callback="ctrl.deletePort"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
@@ -88,7 +88,7 @@
             <action-list>
               <action action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.deletePort"
-                      item="port">
+                      item="[port]">
                 <span class="fa fa-trash"></span>
               </action>
             </action-list>

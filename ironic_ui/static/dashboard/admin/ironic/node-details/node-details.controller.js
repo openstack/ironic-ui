@@ -81,7 +81,6 @@
     ctrl.editNode = editNode;
     ctrl.createPort = createPort;
     ctrl.deletePort = deletePort;
-    ctrl.deletePorts = deletePorts;
     ctrl.refresh = refresh;
 
     var editNodeHandler =
@@ -161,6 +160,7 @@
         ctrl.portsSrc = response.data.items;
         ctrl.portsSrc.forEach(function(port) {
           port.id = port.uuid;
+          port.name = port.address;
         });
       });
     }
@@ -216,28 +216,13 @@
 
     /**
      * @name horizon.dashboard.admin.ironic.NodeDetailsController.deletePort
-     * @description Delete a specified port
+     * @description Delete a list of ports
      *
-     * @param {port []} port – port to be deleted
+     * @param {port []} ports – ports to be deleted
      * @return {void}
      */
-    function deletePort(port) {
-      ctrl.actions.deletePort({id: port.uuid, name: port.address});
-    }
-
-    /**
-     * @name horizon.dashboard.admin.ironic.NodeDetailsController.deletePorts
-     * @description Delete a specified list of ports
-     *
-     * @param {port []} ports – list of ports to be deleted
-     * @return {void}
-     */
-    function deletePorts(ports) {
-      var selectedPorts = [];
-      angular.forEach(ports, function(port) {
-        selectedPorts.push({id: port.uuid, name: port.address});
-      });
-      ctrl.actions.deletePorts(selectedPorts);
+    function deletePort(ports) {
+      actions.deletePort(ports);
     }
 
     /**
