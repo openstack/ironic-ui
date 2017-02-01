@@ -5,13 +5,13 @@
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev50\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev57\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-01-20 10:38+0000\n"
+"POT-Creation-Date: 2017-01-27 15:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-01-25 07:56+0000\n"
+"PO-Revision-Date: 2017-02-01 04:23+0000\n"
 "Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -30,6 +30,9 @@ msgstr "ノード %s のプロビジョニング状態を変更するための�
 
 msgid "A unique node name. Optional."
 msgstr "一意のノード名。オプション。"
+
+msgid "Abort cleaning"
+msgstr "クリーニングの中止"
 
 msgid "Actions"
 msgstr "アクション"
@@ -62,6 +65,9 @@ msgstr "シャーシ ID"
 
 msgid "Choose an Image"
 msgstr "イメージの選択"
+
+msgid "Clean Step"
+msgstr "クリーニングステップ"
 
 msgid "Configuration"
 msgstr "設定"
