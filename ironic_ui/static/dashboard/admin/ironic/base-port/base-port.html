@@ -6,7 +6,7 @@
           aria-label="Close">
     <span aria-hidden="true" class="fa fa-times"></span>
   </button>
-  <h3 class="modal-title" translate>Create Port</h3>
+  <h3 class="modal-title">{$ ctrl.modalTitle $}</h3>
 </div>
 <div class="modal-body">
   <form id="CreatePortForm" name="CreatePortForm">
@@ -82,9 +82,8 @@
   </button>
   <button type="submit"
           ng-disabled="CreatePortForm.$invalid || ExtraForm.$invalid"
-          ng-click="ctrl.createPort()"
-          class="btn btn-primary"
-          translate>
-    Create Port
+          ng-click="ctrl.submit()"
+          class="btn btn-primary">
+    {$ ctrl.submitButtonTitle $}
   </button>
 </div>
