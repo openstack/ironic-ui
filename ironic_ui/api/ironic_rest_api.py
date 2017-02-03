@@ -124,6 +124,22 @@ class Ports(generic.View):
 
 
 @urls.register
+class Port(generic.View):
+
+    url_regex = r'ironic/ports/(?P<port_id>[0-9a-f-]+)$'
+
+    @rest_utils.ajax(data_required=True)
+    def patch(self, request, port_id):
+        """Update an Ironic port
+
+        :param request: HTTP request
+        :param port_id: Port id.
+        """
+        patch = request.DATA.get('patch')
+        return ironic.port_update(request, port_id, patch)
+
+
+@urls.register
 class StatesPower(generic.View):
 
     url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/states/power$'

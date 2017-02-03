@@ -17,6 +17,7 @@
 from django.conf import settings
 
 from ironicclient import client
+from ironicclient.v1 import resource_fields as res_fields
 
 from horizon.utils.memoized import memoized  # noqa
 
@@ -227,3 +228,18 @@ def port_delete(request, port_uuid):
     :return: Port
     """
     return ironicclient(request).port.delete(port_uuid)
+
+
+def port_update(request, port_id, patch):
+    """Update a specified port.
+
+    :param request: HTTP request.
+    :param node_id: The uuid of the port.
+    :param patch: Sequence of update operations
+    :return: port.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.port.html#ironicclient.v1.port.PortManager.update
+    """
+    port = ironicclient(request).port.update(port_id, patch)
+    return dict([(f, getattr(port, f, ''))
+                 for f in res_fields.PORT_DETAILED_RESOURCE.fields])

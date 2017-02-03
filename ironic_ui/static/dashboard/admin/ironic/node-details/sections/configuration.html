@@ -90,12 +90,21 @@
             </ul>
           </td>
           <td class="actions_column">
-            <action-list>
-              <action action-classes="'btn btn-default btn-sm'"
-                      callback="ctrl.deletePort"
-                      item="[port]">
-                <span class="fa fa-trash"></span>
+            <action-list uib-dropdown class="pull-right">
+              <action button-type="split-button"
+                      action-classes="'btn btn-default btn-sm'"
+                      callback="ctrl.editPort"
+                      item="port">
+                {$ ::'Edit port' | translate $}
               </action>
+              <menu>
+                <action button-type="menu-item"
+                        callback="ctrl.deletePort"
+                        item="[port]">
+                  <span class="fa fa-trash"></span>
+                  {$ ::'Delete port' | translate $}
+                </action>
+              </menu>
             </action-list>
           </td>
         </tr>

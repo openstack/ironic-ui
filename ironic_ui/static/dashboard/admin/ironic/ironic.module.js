@@ -52,7 +52,8 @@
       DELETE_NODE_SUCCESS:'horizon.dashboard.admin.ironic.DELETE_NODE_SUCCESS',
       EDIT_NODE_SUCCESS:'horizon.dashboard.admin.ironic.EDIT_NODE_SUCCESS',
       CREATE_PORT_SUCCESS:'horizon.dashboard.admin.ironic.CREATE_PORT_SUCCESS',
-      DELETE_PORT_SUCCESS:'horizon.dashboard.admin.ironic.DELETE_PORT_SUCCESS'
+      DELETE_PORT_SUCCESS:'horizon.dashboard.admin.ironic.DELETE_PORT_SUCCESS',
+      EDIT_PORT_SUCCESS:'horizon.dashboard.admin.ironic.EDIT_PORT_SUCCESS'
     };
     $provide.constant('horizon.dashboard.admin.ironic.events', events);
   }
