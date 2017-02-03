@@ -171,8 +171,8 @@
     <hr class="header_rule">
 
     <table hz-table ng-cloak
-           st-table="ctrl.nodeValidation"
-           st-safe-src="ctrl.nodeValidationSrc"
+           st-table="nodeValidation"
+           st-safe-src="ctrl.nodeValidation"
            class="table table-striped table-rsp table-detail">
       <thead>
         <tr>
@@ -188,17 +188,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="(interface, status) in ctrl.nodeValidation">
+        <tr ng-repeat="item in nodeValidation">
           <td class="rsp-p1">
-            {$ interface $}
+            {$ item.id $}
           </td>
-          <td class="rsp-p1" ng-switch="status.result">
+          <td class="rsp-p1" ng-switch="item.result">
             <span ng-switch-when="true" class="fa fa-check text-success"></span>
             <span ng-switch-when="false" class="fa fa-close text-danger"></span>
             <span ng-switch-default class="fa fa-minus"></span>
           </td>
           <td class="rsp-p2">
-            {$ status.reason $}
+            {$ item.reason $}
           </td>
         </tr>
       </tbody>

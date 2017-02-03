@@ -180,11 +180,12 @@ def node_validate(request, node_id):
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.validate
     """
-    node = ironicclient(request).node.validate(node_id)
-    result = {}
-    for interface, status in node.__dict__.iteritems():
-        if isinstance(status, dict) and 'result' in status:
-            result[interface] = status
+    ifaces = ironicclient(request).node.validate(node_id)
+    result = []
+    for interface, status in ifaces.to_dict().items():
+        data = {'interface': interface}
+        data.update(status)
+        result.append(data)
     return result
 
 

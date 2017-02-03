@@ -355,17 +355,12 @@
      * http://docs.openstack.org/developer/ironic/webapi/v1.html#
      * validate--v1-nodes
      *
-     * @param {string} nodeIdent – UUID or logical name of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Promise
      */
-    function validateNode(nodeIdent) {
-      var data = {
-        node: nodeIdent
-      };
-      return apiService.get('/api/ironic/nodes/' + nodeIdent + '/validate',
-                            data)
-        .then(function() {
-        })
+    function validateNode(nodeId) {
+      return apiService.get('/api/ironic/nodes/' + nodeId + '/validate',
+                            {node: nodeId})
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to validate node %s: %s'),
                                 [nodeId, response.data],

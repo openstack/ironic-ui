@@ -68,7 +68,7 @@
     ];
 
     ctrl.node = null;
-    ctrl.nodeValidation = {};
+    ctrl.nodeValidation = [];
     ctrl.nodeStateTransitions = [];
     ctrl.ports = [];
     ctrl.portsSrc = [];
@@ -127,7 +127,12 @@
           nodeStateTransitionService.getTransitions(ctrl.node.provision_state);
         retrievePorts(uuid);
         ironic.validateNode(uuid).then(function(response) {
-          ctrl.nodeValidation = response.data;
+          var nodeValidation = [];
+          angular.forEach(response.data, function(status) {
+            status.id = status.interface;
+            nodeValidation.push(status);
+          });
+          ctrl.nodeValidation = nodeValidation;
         });
       });
     }
