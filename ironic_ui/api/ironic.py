@@ -23,7 +23,7 @@ from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
 
 
-DEFAULT_IRONIC_API_VERSION = '1.13'
+DEFAULT_IRONIC_API_VERSION = '1.19'
 DEFAULT_INSECURE = False
 DEFAULT_CACERT = None
 

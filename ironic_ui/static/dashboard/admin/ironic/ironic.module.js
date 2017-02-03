@@ -38,6 +38,12 @@
     $provide.constant('horizon.dashboard.admin.ironic.validUuidPattern',
                       '^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$'); // eslint-disable-line max-len
 
+    $provide.constant('horizon.dashboard.admin.ironic.validMacAddressPattern',
+                      '^[0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5}$'); // eslint-disable-line max-len
+
+    $provide.constant('horizon.dashboard.admin.ironic.validDatapathIdPattern',
+                      '^[0-9A-Fa-f]{16}$'); // eslint-disable-line max-len
+
     var path = $windowProvider.$get().STATIC_URL + 'dashboard/admin/ironic/';
     $provide.constant('horizon.dashboard.admin.ironic.basePath', path);
 

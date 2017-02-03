@@ -52,7 +52,7 @@
             MAC Address
           </th>
           <th translate class="rsp-p2" style="width:100%;">
-            Extra
+            Properties
           </th>
           <th translate class="actions_column">
             Actions
@@ -69,20 +69,25 @@
             {$ port.address $}
           </td>
           <td>
-            <dl class="dl-horizontal">
-              <dt style="width:auto;" ng-repeat-start="(id, value) in port.extra">
-                {$ id $}
-              </dt>
-              <dd ng-if="id === 'vif_port_id'">
-                <a href="/dashboard/admin/networks/ports/{$ value $}/detail">
-                  {$ value $}
-                </a>
-              </dd>
-              <dd ng-if="id !== 'vif_port_id'">
-                {$ value $}
-              </dd>
-              <p ng-repeat-end></p>
-            </dl>
+            <ul style="list-style:none;padding-left:0;">
+              <li><strong>pxe_enabled</strong>: {$ port.pxe_enabled $}</li>
+              <li ng-repeat="propertyObject in
+                             ['local_link_connection',
+                             'extra']"
+                  ng-if="!emptyObject(port[propertyObject])">
+                <strong>{$ propertyObject $}</strong>:
+                <ul style="list-style:none;padding-left:10px;">
+                  <li ng-repeat="(id, value) in port[propertyObject]">
+                    <strong>{$ id $}</strong>:
+                    <span ng-switch="id">
+                      <a ng-switch-when="vif_port_id"
+                         href="/dashboard/admin/networks/ports/{$ value $}/detail">{$ value $}</a>
+                      <span ng-switch-default>{$ value $}</span>
+                    </span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </td>
           <td class="actions_column">
             <action-list>
