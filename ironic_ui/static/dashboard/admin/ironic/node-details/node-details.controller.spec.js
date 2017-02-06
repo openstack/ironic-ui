@@ -18,7 +18,7 @@
   'use strict';
 
   describe('horizon.dashboard.admin.ironic.node-details', function () {
-    var ctrl, $q;
+    var ctrl, $q, nodeStateTransitionService;
     var nodeUuid = "0123abcd-0123-4567-abcd-0123456789ab";
     var nodeName = "herp";
     var numPorts = 2;
@@ -27,9 +27,17 @@
       return '' + index + index + nodeUuid.substring(2);
     }
 
+    function portMacAddr(index) {
+      var mac = '' + index + index;
+      for (var i = 0; i < 5; i++) {
+        mac += ':' + index + index;
+      }
+      return mac;
+    }
+
     function createPort(nodeUuid, index, extra) {
-      var uuid = portUuid(nodeUuid, index);
-      var port = {uuid: uuid, id: uuid};
+      var port = {uuid: portUuid(nodeUuid, index),
+                  address: portMacAddr(index)};
       if (angular.isDefined(extra)) {
         port.extra = extra;
       }
@@ -37,7 +45,9 @@
     }
 
     function createNode(name, uuid) {
-      return {name: name, uuid: uuid, id: uuid};
+      return {name: name,
+              uuid: uuid,
+              provision_state: 'enroll'};
     }
 
     var ironicAPI = {
@@ -88,16 +98,20 @@
       var $location = _$location_;
       $location.path('/admin/ironic/' + nodeUuid + '/');
 
+      nodeStateTransitionService = $injector.get(
+        'horizon.dashboard.admin.ironic.node-state-transition.service');
+
       ctrl = controller(
         'horizon.dashboard.admin.ironic.NodeDetailsController',
         {$scope: scope,
          $location: $location,
+         'horizon.dashboard.admin.ironic.edit-port.service': {},
          'horizon.dashboard.admin.ironic.actions': {}});
 
       scope.$apply();
     }));
 
-    it('should be defined', function () {
+    it('controller should be defined', function () {
       expect(ctrl).toBeDefined();
     });
 
@@ -107,7 +121,9 @@
 
     it('should have a node', function () {
       expect(ctrl.node).toBeDefined();
-      expect(ctrl.node).toEqual(createNode(nodeName, nodeUuid));
+      var node = createNode(nodeName, nodeUuid);
+      node.id = node.uuid;
+      expect(ctrl.node).toEqual(node);
     });
 
     it('should have ports', function () {
@@ -116,7 +132,10 @@
 
       var ports = [];
       for (var i = 0; i < numPorts; i++) {
-        ports.push(createPort(ctrl.node.uuid, i));
+        var port = createPort(ctrl.node.uuid, i);
+        port.id = port.uuid;
+        port.name = port.address;
+        ports.push(port);
       }
       expect(ctrl.portsSrc).toEqual(ports);
     });
@@ -137,6 +156,17 @@
       var extra = {vif_port_id: "port_uuid"};
       expect(ctrl.getVifPortId(createPort(ctrl.node.uuid, 1, extra))).
         toEqual("port_uuid");
+    });
+
+    it('should have node-state-transitions', function () {
+      expect(ctrl.nodeStateTransitions).toBeDefined();
+      expect(ctrl.nodeStateTransitions).toEqual(
+        nodeStateTransitionService.getTransitions(ctrl.node.provision_state));
+    });
+
+    it('should have node-validation', function () {
+      expect(ctrl.nodeValidation).toBeDefined();
+      expect(ctrl.nodeValidation).toEqual([]);
     });
   });
 })();

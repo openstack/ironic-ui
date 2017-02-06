@@ -32,6 +32,7 @@
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.ironic.basePath',
     'horizon.dashboard.admin.ironic.edit-node.service',
+    'horizon.dashboard.admin.ironic.edit-port.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.node-state-transition.service',
     'horizon.dashboard.admin.ironic.validUuidPattern'
@@ -46,6 +47,7 @@
                                        actions,
                                        basePath,
                                        editNodeService,
+                                       editPortService,
                                        maintenanceService,
                                        nodeStateTransitionService,
                                        validUuidPattern) {
@@ -81,6 +83,7 @@
     ctrl.editNode = editNode;
     ctrl.createPort = createPort;
     ctrl.deletePort = deletePort;
+    ctrl.editPort = editPort;
     ctrl.refresh = refresh;
 
     $scope.emptyObject = function(obj) {
@@ -221,6 +224,18 @@
      */
     function createPort() {
       ctrl.actions.createPort(ctrl.node);
+    }
+
+    /**
+     * @description: Edit a specified port
+     *
+     * @param {port} port - Port to be edited
+     * @return {void}
+     */
+    function editPort(port) {
+      editPortService.modal(port, ctrl.node).then(function() {
+        ctrl.refresh();
+      });
     }
 
     /**

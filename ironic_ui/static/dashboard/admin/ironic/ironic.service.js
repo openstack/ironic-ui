@@ -55,6 +55,7 @@
       removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
       setNodeProvisionState: setNodeProvisionState,
       updateNode: updateNode,
+      updatePort: updatePort,
       validateNode: validateNode
     };
 
@@ -451,6 +452,32 @@
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to delete port: %s'),
                                 [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Update the definition of a specified port.
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#update-a-port
+     *
+     * @param {string} portUuid – UUID of a port.
+     * @param {object[]} patch – Sequence of update operations
+     * @return {promise} Promise
+     */
+    function updatePort(portUuid, patch) {
+      return apiService.patch('/api/ironic/ports/' + portUuid,
+                              {patch: patch})
+        .then(function(response) {
+          var msg = gettext('Successfully updated port %s');
+          toastService.add('success', interpolate(msg, [portUuid], false));
+          return response.data; // The updated port
+        })
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to update port %s: %s'),
+                                [portUuid, response.data],
                                 false);
           toastService.add('error', msg);
           return $q.reject(msg);
