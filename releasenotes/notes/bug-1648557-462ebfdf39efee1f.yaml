@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    The user is now able to abort a node cleaning operation. When
+    cleaning is aborted the node is moved from the ``CLEAN WAIT`` state
+    to the ``CLEAN FAIL`` state. When appropriate an "Abort cleaning"
+    action will be present in individual node action menu.
