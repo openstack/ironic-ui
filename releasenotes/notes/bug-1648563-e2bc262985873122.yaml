@@ -1,0 +1,8 @@
+---
+features:
+  - |
+    The node-details/configuration page has been extended to enable the
+    user to edit ports after initial creation.
+  - |
+    The user is now able to specify the pxe_enabled and
+    local-link-connection attributes as part of defining/editing ports.

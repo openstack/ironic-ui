@@ -1,0 +1,5 @@
+---
+features:
+  - |
+    The current cleaning step is displayed in the Provisioning Status
+    section of the node-details/overview page

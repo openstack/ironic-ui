@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    Support has been added for inspecting nodes. For a node that is in the
+    ``manageable`` state, its action menu will include an ``Inspect`` button.
+    Node action menus are located in the node-list and node-detail pages.
