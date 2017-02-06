@@ -5,14 +5,14 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev57\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-01-27 15:01+0000\n"
+"POT-Creation-Date: 2017-02-03 15:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-01-29 06:55+0000\n"
-"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
+"PO-Revision-Date: 2017-02-03 11:21+0000\n"
+"Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -42,28 +42,24 @@ msgstr "Aktionen"
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
-msgstr ""
-"Sind Sie sicher, dass Sie den Knoten %s löschen wollen? Diese Aktion kann "
-"nicht rückgängig gemacht werden."
-
-#, python-format
-msgid ""
+msgid_plural ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr ""
-"Sind Sie sicher, dass Sie die Knoten %s löschen wollen? Diese Aktion kann "
-"nicht rückgängig gemacht werden."
+msgstr[0] ""
+"Sind Sie sicher, dass Sie den Knoten \"%s\" löschen wollen? Diese Aktion "
+"kann nicht rückgängig gemacht werden."
+msgstr[1] ""
+"Sind Sie sicher, dass Sie die Knoten \"%s\" löschen wollen? Diese Aktion "
+"kann nicht rückgängig gemacht werden."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
-msgstr ""
+msgid_plural ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr[0] ""
 "Sind Sie sicher, dass Sie den Port \"%s\" löschen wollen? Diese Aktion kann "
 "nicht rückgängig gemacht werden."
-
-#, python-format
-msgid ""
-"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr ""
+msgstr[1] ""
 "Sind Sie sicher, dass Sie die Ports \"%s\" löschen wollen? Diese Aktion kann "
 "nicht rückgängig gemacht werden."
 
@@ -98,16 +94,14 @@ msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "Standard ist ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "Delete Node"
-msgstr "Knoten löschen"
-
-msgid "Delete Nodes"
-msgstr "Knoten löschen"
+msgid_plural "Delete Nodes"
+msgstr[0] "Knoten löschen"
+msgstr[1] "Knoten löschen"
 
 msgid "Delete Port"
-msgstr "Port löschen"
-
-msgid "Delete Ports"
-msgstr "Ports löschen"
+msgid_plural "Delete Ports"
+msgstr[0] "Port löschen"
+msgstr[1] "Ports löschen"
 
 msgid "Delete node"
 msgstr "Knoten löschen"
@@ -144,14 +138,6 @@ msgstr "Knoten bearbeiten"
 
 msgid "Enroll Node"
 msgstr "Knoten ausrollen"
-
-#, python-format
-msgid "Error deleting nodes \"%s\""
-msgstr "Fehler beim Löschen der Knoten \"%s\""
-
-#, python-format
-msgid "Error deleting ports \"%s\""
-msgstr "Fehler beim Löschen der Ports \"%s\""
 
 msgid "Extra"
 msgstr "Extra"
@@ -355,19 +341,15 @@ msgstr "Abschicken"
 
 #, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "Knoten \"%s\" erfolgreich gelöscht"
-
-#, python-format
-msgid "Successfully deleted nodes \"%s\""
-msgstr "Knoten \"%s\" erfolgreich gelöscht"
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "Knoten \"%s\" erfolgreich gelöscht"
+msgstr[1] "Knoten \"%s\" erfolgreich gelöscht"
 
 #, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "Port \"%s\" erfolgreich gelöscht"
-
-#, python-format
-msgid "Successfully deleted ports \"%s\""
-msgstr "Ports \"%s\" erfolgreich gelöscht"
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "Port \"%s\" erfolgreich gelöscht"
+msgstr[1] "Port \"%s\" erfolgreich gelöscht"
 
 #, python-format
 msgid "Successfully updated node %s"
@@ -395,7 +377,9 @@ msgstr "Port kann nicht erstellt werden: %s"
 
 #, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "Knoten \"%s\" kann nicht gelöscht werden"
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "Knoten \"%s\" kann nicht gelöscht werden"
+msgstr[1] "Knoten \"%s\" können nicht gelöscht werden"
 
 #, python-format
 msgid "Unable to delete node %s: %s"
@@ -403,7 +387,9 @@ msgstr "Knoten kann nicht gelöscht werden: %s: %s"
 
 #, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "Port \"%s\" kann nicht gelöscht werden"
+msgid_plural "Unable to delete portss \"%s\""
+msgstr[0] "Port \"%s\" kann nicht gelöscht werden"
+msgstr[1] "Ports \"%s\" können nicht gelöscht werden"
 
 #, python-format
 msgid "Unable to delete port: %s"
@@ -429,8 +415,9 @@ msgstr "Konnte den Wartungsmodus vom Ironic Knoten nicht löschen: %s"
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Ironic Treiber können nicht abgerufen werden: %s"
 
-msgid "Unable to retrieve Ironic nodes."
-msgstr "Konnte die Ironic-Knoten nicht abrufen."
+#, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Konnte die Ironic Knoten nicht abrufen: %s"
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"

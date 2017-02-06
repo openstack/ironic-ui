@@ -4,16 +4,18 @@
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2016. #zanata
 # ChungYoung Cho <openstack.cho@gmail.com>, 2017. #zanata
+# Ian Y. Choi <ianyrchoi@gmail.com>, 2017. #zanata
+# Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev45\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-01-17 12:34+0000\n"
+"POT-Creation-Date: 2017-02-03 15:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-01-10 08:58+0000\n"
-"Last-Translator: ChungYoung Cho <openstack.cho@gmail.com>\n"
+"PO-Revision-Date: 2017-02-03 06:04+0000\n"
+"Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -32,28 +34,25 @@ msgstr "노드 %s의 프로비저닝 상태 변경을 위한 요청이 처리되
 msgid "A unique node name. Optional."
 msgstr "단일한 노드 명칭. 선택사항."
 
+msgid "Abort cleaning"
+msgstr "클린업 취소"
+
 msgid "Actions"
 msgstr "작업"
 
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
-msgstr "노드 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
-
-#, python-format
-msgid ""
+msgid_plural ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr "노드들 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+msgstr[0] "노드 \"%s\" 를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
-msgstr "포트 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
-
-#, python-format
-msgid ""
+msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr "포트들 \"%s\"를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+msgstr[0] "포트 \"%s\" 를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
 msgid "Cancel"
 msgstr "취소하기"
@@ -63,6 +62,9 @@ msgstr "Chassis ID"
 
 msgid "Choose an Image"
 msgstr "이미지 선택하기"
+
+msgid "Clean Step"
+msgstr "클린업 단계"
 
 msgid "Configuration"
 msgstr "구성"
@@ -83,16 +85,12 @@ msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "Delete Node"
-msgstr "노드 삭제하기"
-
-msgid "Delete Nodes"
-msgstr "노드들 삭제하기"
+msgid_plural "Delete Nodes"
+msgstr[0] "노드 삭제"
 
 msgid "Delete Port"
-msgstr "포트 삭제하기"
-
-msgid "Delete Ports"
-msgstr "포트 삭제하기"
+msgid_plural "Delete Ports"
+msgstr[0] "포트 삭제"
 
 msgid "Delete node"
 msgstr "노드 삭제하기"
@@ -130,14 +128,6 @@ msgstr "노드 편집"
 msgid "Enroll Node"
 msgstr "노드 등록하기"
 
-#, python-format
-msgid "Error deleting nodes \"%s\""
-msgstr "노드들 \"%s\" 삭제 중 에러가 발생했습니다"
-
-#, python-format
-msgid "Error deleting ports \"%s\""
-msgstr "포트들 \"%s\" 삭제 중 에러가 발생했습니다"
-
 msgid "Extra"
 msgstr "Extra"
 
@@ -146,6 +136,12 @@ msgstr "Extra"
 
 msgid "General"
 msgstr "일반"
+
+msgid "Image Source"
+msgstr "이미지 소스"
+
+msgid "Inspect"
+msgstr "검사"
 
 msgid "Inspection Finished At"
 msgstr "점검 종료시점"
@@ -192,6 +188,9 @@ msgstr "유지보수 꺼짐"
 msgid "Maintenance on"
 msgstr "유지보수 켜짐"
 
+msgid "Move to"
+msgstr "이동"
+
 msgid "Name"
 msgstr "이름"
 
@@ -199,7 +198,7 @@ msgid "No Instance"
 msgstr "인스턴스 없음"
 
 msgid "No maintenance reason given."
-msgstr "유지보수 사유 없습니다."
+msgstr "유지보수 이유가 주어지지 않았습니다."
 
 msgid "No network ports have been defined"
 msgstr "네트워크 포트가 정의되지 않았습니다"
@@ -297,6 +296,9 @@ msgstr "필수항목"
 msgid "Reservation"
 msgstr "예약"
 
+msgid "Root GB"
+msgstr "루트 GB"
+
 msgid "SSH Address"
 msgstr "SSH주소"
 
@@ -326,19 +328,13 @@ msgstr "제출"
 
 #, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "노드 \"%s\"를 성공적으로 삭제했습니다"
-
-#, python-format
-msgid "Successfully deleted nodes \"%s\""
-msgstr "노드들 \"%s\"를 성공적으로 삭제했습니다"
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "노드 \"%s\" 를 성공적으로 삭제했습니다"
 
 #, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "포트 \"%s\"를 성공적으로 삭제했습니다"
-
-#, python-format
-msgid "Successfully deleted ports \"%s\""
-msgstr "포트들 \"%s\"를 성공적으로 삭제했습니다"
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "포트 \"%s\" 를 성공적으로 삭제했습니다"
 
 #, python-format
 msgid "Successfully updated node %s"
@@ -366,7 +362,8 @@ msgstr "포트를 생성할 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "노드 \"%s\"를 삭제할 수 없습니다"
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "노드 \"%s\" 를 삭제할 수 없습니다"
 
 #, python-format
 msgid "Unable to delete node %s: %s"
@@ -374,7 +371,8 @@ msgstr "노드 %s를 삭제할 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "포트를 삭제할 수 없습니다: %s"
+msgid_plural "Unable to delete portss \"%s\""
+msgstr[0] "포트를 삭제할 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to delete port: %s"
@@ -390,18 +388,19 @@ msgstr "노드의 전원을 켤 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to put the Ironic node in maintenance mode: %s"
-msgstr "유지보수 모드에서 아이러닉 노드를  넣을 수 없습니다: %s"
+msgstr "유지보수 모드에서 Ironic 노드를  넣을 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to remove the Ironic node from maintenance mode: %s"
-msgstr "유지보수 모드에서 아이러닉 노드를 삭제할 수 없습니다: %s"
+msgstr "유지보수 모드에서 Ironic 노드를 삭제할 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
-msgstr "아이러닉 드라이버를 되찾을 수 없습니다: %s"
+msgstr "Ironic 드라이버를 되찾을 수 없습니다: %s"
 
-msgid "Unable to retrieve Ironic nodes."
-msgstr "아이러닉 노드네트워크를 되찾을 수 없습니다."
+#, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Ironic 노드를 가져올 수 없습니다: %s "
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
@@ -409,11 +408,11 @@ msgstr "드라이버 속성을 되찾을 수 없습니다 : %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
-msgstr "아이러닉 노드 포트를 되찾을 수 없습니다: %s"
+msgstr "Ironic 노드 포트를 가져올 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
-msgstr "아이러닉 노드를 되찾을 수 없습니다: %s "
+msgstr "해당 Ironic 노드를 가져올 수 없습니다: %s "
 
 #, python-format
 msgid "Unable to set node provision state: %s"
@@ -422,6 +421,10 @@ msgstr "노드 공급 상태를 설정 할 수 없습니다: %s"
 #, python-format
 msgid "Unable to update node %s: %s"
 msgstr "노드 %s를 업데이트 할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to validate node %s: %s"
+msgstr "노드 %s를 검증할수 없습니다: %s"
 
 msgid "Update Node"
 msgstr "노드 업데이트"

@@ -4,15 +4,16 @@
 # Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
 # sunanchen <KF.sunanchen@h3c.com>, 2016. #zanata
 # vuuv <froms2008@gmail.com>, 2016. #zanata
+# sunanchen <KF.sunanchen@h3c.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"POT-Creation-Date: 2017-02-03 15:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-08-23 03:05+0000\n"
+"PO-Revision-Date: 2017-02-03 10:49+0000\n"
 "Last-Translator: sunanchen <KF.sunanchen@h3c.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
@@ -31,25 +32,19 @@ msgstr "独一无二的节点名称。可选。"
 msgid "Actions"
 msgstr "动作"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
-msgstr "你确认要删除节点\"%s\"嘛？此操作将不可恢复"
-
-#, python-format
-msgid ""
+msgid_plural ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr "你确认要删除节点\"%s\"嘛？此操作将不可恢复"
+msgstr[0] "你确认要删除节点\"%s\"嘛？此操作将不可恢复"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
-msgstr "你确认要删除端口\"%s\"吗？本操作无法恢复"
-
-#, python-format
-msgid ""
+msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr "你确认要删除端口\"%s\"吗？本操作无法恢复"
+msgstr[0] "你确认要删除端口\"%s\"吗？本操作无法恢复"
 
 msgid "Cancel"
 msgstr "取消"
@@ -78,17 +73,15 @@ msgstr "创建于"
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "默认为 ([^\"\\. ]+|\"[^\"]+\")"
 
+#, fuzzy
 msgid "Delete Node"
-msgstr "删除节点"
+msgid_plural "Delete Nodes"
+msgstr[0] "删除节点"
 
-msgid "Delete Nodes"
-msgstr "删除多个节点"
-
+#, fuzzy
 msgid "Delete Port"
-msgstr "删除端口"
-
-msgid "Delete Ports"
-msgstr "删除端口"
+msgid_plural "Delete Ports"
+msgstr[0] "删除端口"
 
 msgid "Delete node"
 msgstr "删除节点"
@@ -116,14 +109,6 @@ msgstr "驱动信息"
 
 msgid "Enroll Node"
 msgstr "注册节点"
-
-#, python-format
-msgid "Error deleting nodes \"%s\""
-msgstr "删除多个节点\"%s\"错误"
-
-#, python-format
-msgid "Error deleting ports \"%s\""
-msgstr "删除端口\"%s\"错误"
 
 msgid "Extra"
 msgstr "额外信息"
@@ -281,21 +266,15 @@ msgstr "SSH用户名"
 msgid "Select a Driver"
 msgstr "选择一种驱动"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "成功删除节点\"%s\""
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "成功删除节点\"%s\""
 
-#, python-format
-msgid "Successfully deleted nodes \"%s\""
-msgstr "成功删除多个节点\"%s\""
-
-#, python-format
+#, fuzzy, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "删除端口\"%s\"成功"
-
-#, python-format
-msgid "Successfully deleted ports \"%s\""
-msgstr "成功删除端口\"%s\""
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "删除端口\"%s\"成功"
 
 msgid "Target Power State"
 msgstr "标记电源状态"
@@ -314,17 +293,19 @@ msgstr "无法创建Ironic节点: %s"
 msgid "Unable to create port: %s"
 msgstr "无法创建端口: %s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "无法删除节点\"%s\""
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "无法删除节点\"%s\""
 
 #, python-format
 msgid "Unable to delete node %s: %s"
 msgstr "无法删除Ironic节点\"%s\": %s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "无法删除端口\"%s\""
+msgid_plural "Unable to delete portss \"%s\""
+msgstr[0] "无法删除端口\"%s\""
 
 #, python-format
 msgid "Unable to delete port: %s"
@@ -349,9 +330,6 @@ msgstr "无法将Ironic节点退出维护模式: %s"
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "无法获取Ironic驱动: %s"
-
-msgid "Unable to retrieve Ironic nodes."
-msgstr "无法获取Ironic节点信息"
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"

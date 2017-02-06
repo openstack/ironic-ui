@@ -4,15 +4,16 @@
 # Gérald LONLAS <g.lonlas@gmail.com>, 2016. #zanata
 # Martine Marin <mmarin@fr.ibm.com>, 2016. #zanata
 # Nicolas Fournier <nicolas.fournier3@gmail.com>, 2016. #zanata
+# Gérald LONLAS <g.lonlas@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"POT-Creation-Date: 2017-02-03 15:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-24 09:14+0000\n"
+"PO-Revision-Date: 2017-02-03 10:49+0000\n"
 "Last-Translator: Gérald LONLAS <g.lonlas@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -36,33 +37,25 @@ msgstr "Un nom de nœud unique. Optionnel."
 msgid "Actions"
 msgstr "Actions"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
-msgstr ""
+msgid_plural ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr[0] ""
 "Etes-vous certain de vouloir supprimer le nœud \"%s\" ? Cette action est "
 "irréversible."
+msgstr[1] ""
 
-#, python-format
-msgid ""
-"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr ""
-"Etes-vous certain de vouloir supprimer les nœuds \"%s\" ? Cette action est "
-"irréversible."
-
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
-msgstr ""
+msgid_plural ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr[0] ""
 "Etes-vous certain de vouloir supprimer le port \"%s\" ? Cette action est "
 "irréversible."
-
-#, python-format
-msgid ""
-"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr ""
-"Etes-vous certain de vouloir supprimer les ports \"%s\" ? Cette action est "
-"irréversible."
+msgstr[1] ""
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -91,17 +84,17 @@ msgstr "Créé le"
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "Par défaut ([^\"\\. ]+|\"[^\"]+\")"
 
+#, fuzzy
 msgid "Delete Node"
-msgstr "Supprimer le nœud"
+msgid_plural "Delete Nodes"
+msgstr[0] "Supprimer le nœud"
+msgstr[1] ""
 
-msgid "Delete Nodes"
-msgstr "Supprimer les nœuds"
-
+#, fuzzy
 msgid "Delete Port"
-msgstr "Supprimer le port"
-
-msgid "Delete Ports"
-msgstr "Supprimer les ports"
+msgid_plural "Delete Ports"
+msgstr[0] "Supprimer le port"
+msgstr[1] ""
 
 msgid "Delete node"
 msgstr "Supprimer le nœud"
@@ -135,14 +128,6 @@ msgstr "Editer le nœud"
 
 msgid "Enroll Node"
 msgstr "Enroller le nœud"
-
-#, python-format
-msgid "Error deleting nodes \"%s\""
-msgstr "Erreur lors de la suppression des nœuds \"%s\""
-
-#, python-format
-msgid "Error deleting ports \"%s\""
-msgstr "Erreur lors de la suppression des ports \"%s\""
 
 msgid "Extra"
 msgstr "Extra"
@@ -311,21 +296,17 @@ msgstr "Sélectionner un pilote"
 msgid "Submit"
 msgstr "Envoyer"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "Suppression avec succès du nœud \"%s\" "
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "Suppression avec succès du nœud \"%s\" "
+msgstr[1] ""
 
-#, python-format
-msgid "Successfully deleted nodes \"%s\""
-msgstr "Suppression avec succès des nœuds \"%s\" "
-
-#, python-format
+#, fuzzy, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "Suppression avec succès du port \"%s\" "
-
-#, python-format
-msgid "Successfully deleted ports \"%s\""
-msgstr "Suppression avec succès des ports \"%s\" "
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "Suppression avec succès du port \"%s\" "
+msgstr[1] ""
 
 #, python-format
 msgid "Successfully updated node %s"
@@ -351,17 +332,21 @@ msgstr "Impossible de créer le nœud : %s"
 msgid "Unable to create port: %s"
 msgstr "Impossible de créer le port : %s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "Impossible de supprimer le nœud \"%s\""
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "Impossible de supprimer le nœud \"%s\""
+msgstr[1] ""
 
 #, python-format
 msgid "Unable to delete node %s: %s"
 msgstr "Impossible de supprimer le nœud %s : %s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "Impossible de supprimer le port \"%s\""
+msgid_plural "Unable to delete portss \"%s\""
+msgstr[0] "Impossible de supprimer le port \"%s\""
+msgstr[1] ""
 
 #, python-format
 msgid "Unable to delete port: %s"
@@ -386,9 +371,6 @@ msgstr "Impossible d'enlever le nœud Ironic de la maintenance : %s"
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Impossible de récupérer les pilotes Ironic : %s"
-
-msgid "Unable to retrieve Ironic nodes."
-msgstr "Impossible de récupérer les nœuds Ironic."
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"

@@ -3,15 +3,16 @@
 # Alexander <ainikitenkov@gmail.com>, 2016. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Fedor Tarasenko <feodor.tarasenko@gmail.com>, 2016. #zanata
+# Alexander <ainikitenkov@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev9\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"POT-Creation-Date: 2017-02-03 15:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-19 02:13+0000\n"
+"PO-Revision-Date: 2017-02-03 10:49+0000\n"
 "Last-Translator: Alexander <ainikitenkov@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -35,33 +36,27 @@ msgstr "Уникальное имя узла. Необязательный па�
 msgid "Actions"
 msgstr "Действия"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
-msgstr ""
+msgid_plural ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr[0] ""
 "Вы действительно хотите удалить узел \"%s\"? Это действие не может быть "
 "отменено."
+msgstr[1] ""
+msgstr[2] ""
 
-#, python-format
-msgid ""
-"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr ""
-"Вы действительно хотите удалить узлы \"%s\"? Это действие не может быть "
-"отменено."
-
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
-msgstr ""
+msgid_plural ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr[0] ""
 "Вы действительно хотите удалить порт \"%s\"? Это действие не может быть "
 "отменено."
-
-#, python-format
-msgid ""
-"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr ""
-"Вы действительно хотите удалить порты \"%s\"? Это действие не может быть "
-"отменено."
+msgstr[1] ""
+msgstr[2] ""
 
 msgid "Cancel"
 msgstr "Отмена"
@@ -90,17 +85,19 @@ msgstr "Создано"
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "По умолчанию ([^\"\\. ]+|\"[^\"]+\")"
 
+#, fuzzy
 msgid "Delete Node"
-msgstr "Удалить узел"
+msgid_plural "Delete Nodes"
+msgstr[0] "Удалить узел"
+msgstr[1] ""
+msgstr[2] ""
 
-msgid "Delete Nodes"
-msgstr "Удалить узлы"
-
+#, fuzzy
 msgid "Delete Port"
-msgstr "Удалить порт"
-
-msgid "Delete Ports"
-msgstr "Удалить порты"
+msgid_plural "Delete Ports"
+msgstr[0] "Удалить порт"
+msgstr[1] ""
+msgstr[2] ""
 
 msgid "Delete node"
 msgstr "Удалить узел"
@@ -134,14 +131,6 @@ msgstr "Редактировать узел"
 
 msgid "Enroll Node"
 msgstr "Зарегистрировать узел"
-
-#, python-format
-msgid "Error deleting nodes \"%s\""
-msgstr "Ошибка при удалении узлов \"%s\""
-
-#, python-format
-msgid "Error deleting ports \"%s\""
-msgstr "Ошибка при удалении портов \"%s\""
 
 msgid "Extra"
 msgstr "Дополнительно"
@@ -310,21 +299,19 @@ msgstr "Выберите драйвер"
 msgid "Submit"
 msgstr "Отправить"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "Узел \"%s\" успешно удален"
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "Узел \"%s\" успешно удален"
+msgstr[1] ""
+msgstr[2] ""
 
-#, python-format
-msgid "Successfully deleted nodes \"%s\""
-msgstr "Узлы \"%s\" успешно удалены"
-
-#, python-format
+#, fuzzy, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "Порт \"%s\" успешно удален"
-
-#, python-format
-msgid "Successfully deleted ports \"%s\""
-msgstr "Порты \"%s\" успешно удалены"
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "Порт \"%s\" успешно удален"
+msgstr[1] ""
+msgstr[2] ""
 
 #, python-format
 msgid "Successfully updated node %s"
@@ -350,17 +337,23 @@ msgstr "Невозможно создать узел: %s"
 msgid "Unable to create port: %s"
 msgstr "Невозможно создать порт: %s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "Невозможно удалить узел \"%s\""
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "Невозможно удалить узел \"%s\""
+msgstr[1] ""
+msgstr[2] ""
 
 #, python-format
 msgid "Unable to delete node %s: %s"
 msgstr "Невозможно удалить узел %s: %s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "Невозможно удалить порт \"%s\""
+msgid_plural "Unable to delete portss \"%s\""
+msgstr[0] "Невозможно удалить порт \"%s\""
+msgstr[1] ""
+msgstr[2] ""
 
 #, python-format
 msgid "Unable to delete port: %s"
@@ -385,9 +378,6 @@ msgstr "Невозможно вывести узел Ironic из режима о
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Невозможно получить драйвера Ironic: %s"
-
-msgid "Unable to retrieve Ironic nodes."
-msgstr "Невозможно получить узлы Ironic."
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"

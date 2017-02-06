@@ -3,13 +3,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev57\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-01-27 15:01+0000\n"
+"POT-Creation-Date: 2017-02-03 15:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-01-31 02:43+0000\n"
+"PO-Revision-Date: 2017-02-06 07:25+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -38,28 +38,18 @@ msgstr "Aksi"
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
-msgstr ""
-"Apakah Anda yakin ingin menghapus node \"%s\"? Tindakan ini tidak bisa "
-"dibatalkan."
-
-#, python-format
-msgid ""
+msgid_plural ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr ""
+msgstr[0] ""
 "Apakah Anda yakin ingin menghapus node \"%s\"? Tindakan ini tidak bisa "
 "dibatalkan."
 
 #, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
-msgstr ""
-"Apakah Anda yakin ingin menghapus port \"%s\"? Tindakan ini tidak bisa "
-"dibatalkan."
-
-#, python-format
-msgid ""
+msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr ""
+msgstr[0] ""
 "Apakah Anda yakin ingin menghapus port \"%s\"? Tindakan ini tidak bisa "
 "dibatalkan."
 
@@ -94,16 +84,12 @@ msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "Defaults ke ([^\"\\. ]+|\"[^\"]+\")"
 
 msgid "Delete Node"
-msgstr "Delete Node (hapus node)"
-
-msgid "Delete Nodes"
-msgstr "Delete Nodes (hapus node)"
+msgid_plural "Delete Nodes"
+msgstr[0] "Delete Node (hapus node)"
 
 msgid "Delete Port"
-msgstr "Delete Port (hapus port)"
-
-msgid "Delete Ports"
-msgstr "Delete Port (hapus port)"
+msgid_plural "Delete Ports"
+msgstr[0] "Delete Port (hapus port)"
 
 msgid "Delete node"
 msgstr "Hapus node"
@@ -140,14 +126,6 @@ msgstr "Edit Node"
 
 msgid "Enroll Node"
 msgstr "Enroll Node"
-
-#, python-format
-msgid "Error deleting nodes \"%s\""
-msgstr "Error deleting nodes \"%s\""
-
-#, python-format
-msgid "Error deleting ports \"%s\""
-msgstr "kesalahan saat menghapus port \"%s\""
 
 msgid "Extra"
 msgstr "Extra"
@@ -351,19 +329,13 @@ msgstr "Submit (menyampaikan)"
 
 #, python-format
 msgid "Successfully deleted node \"%s\""
-msgstr "Berhasil hapus node \"%s\""
-
-#, python-format
-msgid "Successfully deleted nodes \"%s\""
-msgstr "Berhasil hapus nodes \"%s\""
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "Berhasil hapus node \"%s\""
 
 #, python-format
 msgid "Successfully deleted port \"%s\""
-msgstr "Berhasil hapus port \"%s\""
-
-#, python-format
-msgid "Successfully deleted ports \"%s\""
-msgstr "Berhasil hapus port \"%s\""
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "Berhasil hapus port \"%s\""
 
 #, python-format
 msgid "Successfully updated node %s"
@@ -391,7 +363,8 @@ msgstr "Tidak dapat membuat port: %s"
 
 #, python-format
 msgid "Unable to delete node \"%s\""
-msgstr "Tidak dapat menghapus node \"%s\""
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "Tidak dapat menghapus node \"%s\""
 
 #, python-format
 msgid "Unable to delete node %s: %s"
@@ -399,7 +372,8 @@ msgstr "Tidak dapat menghapus node %s: %s"
 
 #, python-format
 msgid "Unable to delete port \"%s\""
-msgstr "Tidak dapat hapus port \"%s\""
+msgid_plural "Unable to delete portss \"%s\""
+msgstr[0] "Tidak dapat hapus port \"%s\""
 
 #, python-format
 msgid "Unable to delete port: %s"
@@ -425,8 +399,9 @@ msgstr "Tidak dapat menghapus  Ironic node dari modus pemeliharaan: %s"
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Tidak dapat mengambil Ironic driver: %s"
 
-msgid "Unable to retrieve Ironic nodes."
-msgstr "Tidak dapat mengambil Ironic node."
+#, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Tidak dapat mengambil node Ironis. %s"
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
