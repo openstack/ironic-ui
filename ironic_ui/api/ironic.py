@@ -195,6 +195,8 @@ def driver_list(request):
 
     :param request: HTTP request.
     :return: A list of drivers.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.driver.html#ironicclient.v1.driver.DriverManager.list
     """
     return ironicclient(request).driver.list()
 
@@ -205,6 +207,8 @@ def driver_properties(request, driver_name):
     :param request: HTTP request
     :param driver_name: Name of the driver
     :return: Property list
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.driver.html#ironicclient.v1.driver.DriverManager.properties
     """
     return ironicclient(request).driver.properties(driver_name)
 
@@ -215,6 +219,8 @@ def port_create(request, params):
     :param request: HTTP request
     :param params: Port creation parameters
     :return: Port
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.port.html#ironicclient.v1.port.PortManager.create
     """
     port_manager = ironicclient(request).port
     return port_manager.create(**params)
@@ -226,6 +232,8 @@ def port_delete(request, port_uuid):
     :param request: HTTP request
     :param port_uuid: Port uuid
     :return: Port
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.port.html#ironicclient.v1.port.PortManager.delete
     """
     return ironicclient(request).port.delete(port_uuid)
 

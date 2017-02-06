@@ -63,10 +63,10 @@
 
     /**
      * @description Retrieve a list of nodes
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-nodes
+     * http://developer.openstack.org/api-ref/baremetal/?
+     * expanded=create-node-detail#list-nodes-detailed
      *
      * @return {promise} Node collection in JSON
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#NodeCollection
      */
     function getNodes() {
       return apiService.get('/api/ironic/nodes/')
@@ -89,8 +89,8 @@
     /**
      * @description Retrieve information about the given node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-
-     * nodes-(node_ident)
+     * http://developer.openstack.org/api-ref/baremetal/?
+     * expanded=create-node-detail#list-nodes-detailed
      *
      * @param {string} uuid – UUID or logical name of a node.
      * @return {promise} Node
@@ -114,7 +114,7 @@
     /**
      * @description Retrieve a list of ports associated with a node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-ports
+     * http://developer.openstack.org/api-ref/baremetal/#list-detailed-ports
      *
      * @param {string} uuid – UUID or logical name of a node.
      * @return {promise} List of ports
@@ -139,8 +139,7 @@
     /**
      * @description Put the node in maintenance mode.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * put--v1-nodes-(node_ident)-maintenance
+     * http://developer.openstack.org/api-ref/baremetal/#set-maintenance-flag
      *
      * @param {string} uuid – UUID or logical name of a node.
      * @param {string} reason – Reason for why node is being put into
@@ -166,8 +165,7 @@
     /**
      * @description Remove the node from maintenance mode.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * delete--v1-nodes-(node_ident)-maintenance
+     * http://developer.openstack.org/api-ref/baremetal/#clear-maintenance-flag
      *
      * @param {string} uuid – UUID or logical name of a node.
      * @return {promise} Promise
@@ -188,8 +186,7 @@
     /**
      * @description Set the power state of the node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * put--v1-nodes-(node_ident)-states-power
+     * http://developer.openstack.org/api-ref/baremetal/#change-node-power-state
      *
      * @param {string} uuid – UUID or logical name of a node.
      * @return {promise} Promise
@@ -216,8 +213,7 @@
     /**
      * @description Set the power state of the node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * put--v1-nodes-(node_ident)-states-power
+     * http://developer.openstack.org/api-ref/baremetal/#change-node-power-state
      *
      * @param {string} uuid – UUID or logical name of a node.
      * @return {promise} Promise
@@ -244,8 +240,7 @@
     /**
      * @description Set the target provision state of the node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * put--v1-nodes-(node_ident)-states-provision
+     * http://developer.openstack.org/api-ref/baremetal/#change-node-provision-state
      *
      * @param {string} uuid – UUID of a node.
      * @param {string} verb – Provisioning verb used to move node to desired
@@ -276,7 +271,7 @@
     /**
      * @description Create an Ironic node
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#post--v1-nodes
+     * http://developer.openstack.org/api-ref/baremetal/#create-node
      *
      * @param {object} params – Object containing parameters that define
      * the node to be created
@@ -299,8 +294,7 @@
     /**
      * @description Delete the specified node from inventory
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * delete--v1-nodes
+     * http://developer.openstack.org/api-ref/baremetal/#delete-node
      *
      * @param {string} nodeIdent – UUID or logical name of a node.
      * @return {promise} Promise
@@ -324,8 +318,7 @@
     /**
      * @description Update the definition of a specified node.
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * patch--v1-nodes-(node_ident)
+     * http://developer.openstack.org/api-ref/baremetal/#update-node
      *
      * @param {string} uuid – UUID of a node.
      * @param {object[]} patch – Sequence of update operations
@@ -353,11 +346,11 @@
     /**
      * @description Validate the specified node
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * validate--v1-nodes
+     * http://developer.openstack.org/api-ref/baremetal/#validate-node
      *
      * @param {string} nodeId – UUID or logical name of a node.
-     * @return {promise} Promise
+     * @return {promise} Promise. success: list of interface validation
+     * records, error: failure response
      */
     function validateNode(nodeId) {
       return apiService.get('/api/ironic/nodes/' + nodeId + '/validate',
@@ -374,10 +367,9 @@
     /**
      * @description Retrieve the list of Ironic drivers
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#get--v1-drivers
+     * http://developer.openstack.org/api-ref/baremetal/#list-drivers
      *
      * @return {promise} Driver collection in JSON
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#DriverList
      */
     function getDrivers() {
       return apiService.get('/api/ironic/drivers/')
@@ -394,8 +386,7 @@
     /**
      * @description Retrieve properities of a specified driver
      *
-     * http://docs.openstack.org/developer/ironic/webapi/v1.html#
-     * get--v1-drivers-properties
+     * http://developer.openstack.org/api-ref/baremetal/#show-driver-properties
      *
      * @param {string} driverName - Driver name
      * @returns {promise} Property list
@@ -415,6 +406,8 @@
 
     /**
      * @description Create a network port
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#create-port
      *
      * @param {object} port – Object containing parameters that define
      * the port to be created
@@ -440,6 +433,8 @@
 
     /**
      * @description Delete a network port
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#delete-port
      *
      * @param {string} portUuid – UUID of the port to be deleted
      * @return {promise} Promise
