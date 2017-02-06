@@ -45,7 +45,7 @@
                  $uibModalInstance: $uibModalInstance});
 
     ctrl.modalTitle = gettext("Create Port");
-    ctrl.submitButtonTitle = ctrl.modalTtile;
+    ctrl.submitButtonTitle = ctrl.modalTitle;
 
     /**
      * Create the defined port
@@ -53,13 +53,22 @@
      * @return {void}
      */
     ctrl.createPort = function() {
-      ctrl.port.node_uuid = node.id;
-      ironic.createPort(ctrl.port).then(
-        function() {
-          $uibModalInstance.close();
+      var port = angular.copy(ctrl.port);
+      port.node_uuid = node.id;
+
+      var attr = ctrl.localLinkConnection.$toPortAttr();
+      if (attr) {
+        port.local_link_connection = attr;
+      }
+
+      if (ctrl.pxeEnabled.value !== 'True') {
+        port.pxe_enabled = ctrl.pxeEnabled.value;
+      }
+
+      ironic.createPort(port).then(
+        function(createdPort) {
           $rootScope.$emit(ironicEvents.CREATE_PORT_SUCCESS);
-        },
-        function() {
+          $uibModalInstance.close(createdPort);
         });
     };
 

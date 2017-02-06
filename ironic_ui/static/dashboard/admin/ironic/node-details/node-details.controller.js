@@ -83,6 +83,10 @@
     ctrl.deletePort = deletePort;
     ctrl.refresh = refresh;
 
+    $scope.emptyObject = function(obj) {
+      return angular.isUndefined(obj) || Object.keys(obj).length === 0;
+    };
+
     var editNodeHandler =
         $rootScope.$on(ironicEvents.EDIT_NODE_SUCCESS,
                        function() {

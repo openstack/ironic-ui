@@ -16,6 +16,7 @@
       <label for="macAddress"
              class="control-label"
              translate>MAC address</label>
+      <span class="hz-icon-required fa fa-asterisk"></span>
       <div>
         <input type="text"
                class="form-control"
@@ -27,6 +28,66 @@
                auto-focus
                placeholder="{$ 'MAC address for this port. Required.' | translate $}"/>
       </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="pxeEnabled"
+               class="control-label"
+               translate>
+          PXE enabled
+          <span ng-if="ctrl.pxeEnabled.hasHelpText()"
+                class="help-icon"
+                data-container="body"
+                data-html="true"
+                title=""
+                data-toggle="tooltip"
+                data-original-title="{$ ctrl.pxeEnabled.getHelpText() $}">
+            <span class="fa fa-question-circle"></span>
+          </span>
+        </label>
+      </div>
+      <div class="btn-group" id="pxeEnabled">
+        <label class="btn btn-default"
+               ng-model="ctrl.pxeEnabled.value"
+               ng-repeat="opt in ['True', 'False']"
+               ng-disabled="ctrl.pxeEnabled.disabled"
+               uib-btn-radio="opt">{$ opt $}</label>
+      </div>
+    </div>
+  </form>
+
+  <form id="LocalLinkConnectionForm"
+        name="LocalLinkConnectionForm"
+        class="well well-sm">
+    <h4 translate>Local link connection</h4>
+    <div class="form-group"
+         ng-repeat="(propertyName, propertyObj) in ctrl.localLinkConnection"
+         ng-class="{'has-error': LocalLinkConnectionForm.{$ propertyName $}.$invalid &&
+                   LocalLinkConnectionForm.{$ propertyName $}.$dirty}">
+      <label class="control-label"
+             for="{$ propertyName $}">{$ propertyName $}
+        <span ng-if="propertyObj.required"
+              class="hz-icon-required fa fa-asterisk"></span>
+        <span ng-if="propertyObj.hasHelpText()"
+              class="help-icon"
+              data-container="body"
+              title=""
+              data-toggle="tooltip"
+              data-html="true"
+              data-original-title="{$ propertyObj.getHelpText() $}">
+          <span class="fa fa-question-circle"></span>
+        </span>
+      </label>
+      <input class="form-control"
+             type="text"
+             id="{$ propertyName $}"
+             name="{$ propertyName $}"
+             ng-model="propertyObj.value"
+             ng-required="propertyObj.required"
+             placeholder="{$ propertyObj.desc $}"
+             ng-pattern="propertyObj.pattern"
+             ng-disabled="propertyObj.disabled"
+             ng-change="ctrl.localLinkConnection.$update()"/>
     </div>
   </form>
 
@@ -81,7 +142,9 @@
     <span class="ng-scope" translate>Cancel</span>
   </button>
   <button type="submit"
-          ng-disabled="CreatePortForm.$invalid || ExtraForm.$invalid"
+          ng-disabled="CreatePortForm.$invalid ||
+                       LocalLinkConnectionForm.$invalid ||
+                       ExtraForm.$invalid"
           ng-click="ctrl.submit()"
           class="btn btn-primary">
     {$ ctrl.submitButtonTitle $}

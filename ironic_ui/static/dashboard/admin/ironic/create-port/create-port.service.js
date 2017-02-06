@@ -43,7 +43,7 @@
         },
         templateUrl: basePath + '/base-port/base-port.html'
       };
-      return $uibModal.open(options);
+      return $uibModal.open(options).result;
     }
   }
 })();
