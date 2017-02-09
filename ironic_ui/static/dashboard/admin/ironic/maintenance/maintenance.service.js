@@ -34,73 +34,37 @@
     'horizon.dashboard.admin.ironic.actions'
   ];
 
-  function maintenanceService($uibModal, basePath, actions) {
+  function maintenanceService($uibModal, basePath, nodeActions) {
     var service = {
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
-      putNodesInMaintenanceMode: putNodesInMaintenanceMode,
-      removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
-      removeNodesFromMaintenanceMode: removeNodesFromMaintenanceMode
+      removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode
     };
     return service;
 
     /*
-     * @name horizon.dashboard.admin.ironic.maintenance.service.
-     * putNodeInMaintenanceMode
-     * @description Put a specified node in maintenance mode
-     * @param {object} - Node
+     * @description Put a specified list of nodes into mainenance
      *
-     * @return {void}
+     * @param {object[]} nodes - List of node objects
+     * @return {promise}
      */
-    function putNodeInMaintenanceMode(node) {
+    function putNodeInMaintenanceMode(nodes) {
       var options = {
         controller: "MaintenanceController as ctrl",
         templateUrl: basePath + '/maintenance/maintenance.html'
       };
-      $uibModal.open(options).result.then(function(maintReason) {
-        actions.putNodeInMaintenanceMode(node, maintReason);
+      return $uibModal.open(options).result.then(function(reason) {
+        return nodeActions.putNodeInMaintenanceMode(nodes, reason);
       });
     }
 
     /*
-     * @name horizon.dashboard.admin.ironic.maintenance.service.
-     * putNodesInMaintenanceMode
-     * @description Put the specified nodes in maintenance mode
-     * @param {Array<object>} - Nodes
+     * @description Take a specified list of nodes out of mainenance
      *
-     * @return {void}
+     * @param {object[]} nodes - List of node objects
+     * @return {promise}
      */
-    function putNodesInMaintenanceMode(nodes) {
-      var options = {
-        controller: "MaintenanceController as ctrl",
-        templateUrl: basePath + '/maintenance/maintenance.html'
-      };
-      $uibModal.open(options).result.then(function(maintReason) {
-        actions.putAllInMaintenanceMode(nodes, maintReason);
-      });
-    }
-
-    /*
-     * @name horizon.dashboard.admin.ironic.maintenance.service.
-     * removeNodeInMaintenanceMode
-     * @description Remove a specified node from maintenance mode
-     * @param {object} - Node
-     *
-     * @return {void}
-     */
-    function removeNodeFromMaintenanceMode(node) {
-      actions.removeNodeFromMaintenanceMode(node);
-    }
-
-    /*
-     * @name horizon.dashboard.admin.ironic.maintenance.service.
-     * removeNodesFromMaintenanceMode
-     * @description Remove the specified nodes from maintenance mode
-     * @param {Array<object>} - Nodes
-     *
-     * @return {void}
-     */
-    function removeNodesFromMaintenanceMode(nodes) {
-      actions.removeAllFromMaintenanceMode(nodes);
+    function removeNodeFromMaintenanceMode(nodes) {
+      return nodeActions.removeNodeFromMaintenanceMode(nodes);
     }
   }
 })();

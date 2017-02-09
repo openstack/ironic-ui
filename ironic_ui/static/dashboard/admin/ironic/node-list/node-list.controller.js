@@ -51,11 +51,8 @@
     ctrl.nodes = [];
     ctrl.nodesSrc = [];
     ctrl.actions = actions;
+    ctrl.maintenanceService = maintenanceService;
 
-    ctrl.putNodeInMaintenanceMode = putNodeInMaintenanceMode;
-    ctrl.putNodesInMaintenanceMode = putNodesInMaintenanceMode;
-    ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
-    ctrl.removeNodesFromMaintenanceMode = removeNodesFromMaintenanceMode;
     ctrl.enrollNode = enrollNode;
     ctrl.editNode = editNode;
     ctrl.refresh = refresh;
@@ -162,22 +159,6 @@
           node.ports = response.data.items;
         }
       );
-    }
-
-    function putNodeInMaintenanceMode(node) {
-      maintenanceService.putNodeInMaintenanceMode(node);
-    }
-
-    function putNodesInMaintenanceMode(nodes) {
-      maintenanceService.putNodesInMaintenanceMode(nodes);
-    }
-
-    function removeNodeFromMaintenanceMode(node) {
-      maintenanceService.removeNodeFromMaintenanceMode(node);
-    }
-
-    function removeNodesFromMaintenanceMode(nodes) {
-      maintenanceService.removeNodesFromMaintenanceMode(nodes);
     }
 
     function enrollNode() {

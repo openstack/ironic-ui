@@ -45,13 +45,13 @@
                   {$ 'Power off' | translate $}
                 </action>
                 <action button-type="menu-item"
-                        callback="table.putNodesInMaintenanceMode"
+                        callback="table.maintenanceService.putNodeInMaintenanceMode"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   {$ 'Maintenance on' | translate $}
                 </action>
                 <action button-type="menu-item"
-                        callback="table.removeNodesFromMaintenanceMode"
+                        callback="table.maintenanceService.removeNodeFromMaintenanceMode"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   {$ 'Maintenance off' | translate $}
@@ -149,15 +149,15 @@
                   {$ 'Power off' | translate $}
                 </action>
                 <action button-type="menu-item"
-                        callback="table.putNodeInMaintenanceMode"
-                        disabled="node.maintenance"
-                        item="node">
+                        callback="table.maintenanceService.putNodeInMaintenanceMode"
+                        item="[node]"
+                        disabled="node.maintenance">
                   {$ 'Maintenance on' | translate $}
                 </action>
                 <action button-type="menu-item"
-                        callback="table.removeNodeFromMaintenanceMode"
-                        disabled="!node.maintenance"
-                        item="node">
+                        callback="table.maintenanceService.removeNodeFromMaintenanceMode"
+                        item="[node]"
+                        disabled="!node.maintenance">
                   {$ 'Maintenance off' | translate $}
                 </action>
                 <action button-type="menu-item"

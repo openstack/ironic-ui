@@ -23,12 +23,14 @@
           {$ 'Power off' | translate $}
         </action>
         <action button-type="menu-item"
-                callback="ctrl.putNodeInMaintenanceMode"
+                callback="ctrl.maintenanceService.putNodeInMaintenanceMode"
+                item="[ctrl.node]"
                 disabled="ctrl.node.maintenance">
           {$ 'Maintenance on' | translate $}
         </action>
         <action button-type="menu-item"
-                callback="ctrl.removeNodeFromMaintenanceMode"
+                callback="ctrl.maintenanceService.removeNodeFromMaintenanceMode"
+                item="[ctrl.node]"
                 disabled="!ctrl.node.maintenance">
           {$ 'Maintenance off' | translate $}
         </action>
