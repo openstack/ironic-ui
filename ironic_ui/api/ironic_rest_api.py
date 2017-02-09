@@ -170,7 +170,11 @@ class StatesProvision(generic.View):
         :return: Return code
         """
         verb = request.DATA.get('verb')
-        return ironic.node_set_provision_state(request, node_uuid, verb)
+        clean_steps = request.DATA.get('clean_steps')
+        return ironic.node_set_provision_state(request,
+                                               node_uuid,
+                                               verb,
+                                               clean_steps)
 
 
 @urls.register
