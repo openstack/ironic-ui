@@ -25,7 +25,7 @@ installation please see http://docs.openstack.org/developer/horizon/quickstart.h
    file to ``horizon/openstack_dashboard/local/enabled`` directory. Example,
    set as if being executed from the root of the ironic-ui repository::
 
-    cp ./ironic_ui/enabled/_2200_ironic.py ../horizon/horizon/openstack_dashboard/local/enabled
+    cp ./ironic_ui/enabled/_2200_ironic.py ../horizon/openstack_dashboard/local/enabled
 
 4. Change into the ironic-ui repository and package the plugin::
 
