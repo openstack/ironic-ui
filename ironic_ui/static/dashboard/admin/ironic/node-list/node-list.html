@@ -35,33 +35,33 @@
                       callback="table.actions.powerOnAll"
                       item="tCtrl.selected"
                       disabled="tCtrl.selected.length === 0">
-                {$ 'Power on' | translate $}
+                {$ ::'Power on' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
                         callback="table.actions.powerOffAll"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
-                  {$ 'Power off' | translate $}
+                  {$ ::'Power off' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.maintenanceService.putNodeInMaintenanceMode"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
-                  {$ 'Maintenance on' | translate $}
+                  {$ ::'Maintenance on' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.maintenanceService.removeNodeFromMaintenanceMode"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
-                  {$ 'Maintenance off' | translate $}
+                  {$ ::'Maintenance off' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.actions.deleteNode"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
-                  {$ 'Delete nodes' | translate $}
+                  {$ ::'Delete nodes' | translate $}
                 </action>
               </menu>
             </action-list>
@@ -139,38 +139,38 @@
                       callback="table.actions.powerOn"
                       disabled="node.power_state !== 'power off'"
                       item="node">
-                {$ 'Power on' | translate $}
+                {$ ::'Power on' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
                         callback="table.actions.powerOff"
                         disabled="node.power_state !== 'power on'"
                         item="node">
-                  {$ 'Power off' | translate $}
+                  {$ ::'Power off' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.maintenanceService.putNodeInMaintenanceMode"
                         item="[node]"
                         disabled="node.maintenance">
-                  {$ 'Maintenance on' | translate $}
+                  {$ ::'Maintenance on' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.maintenanceService.removeNodeFromMaintenanceMode"
                         item="[node]"
                         disabled="!node.maintenance">
-                  {$ 'Maintenance off' | translate $}
+                  {$ ::'Maintenance off' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.actions.deleteNode"
                         disabled="!(node.provision_state === 'available' || node.provision_state === 'nostate' || node.provision_state === 'manageable' || node.provision_state === 'enroll')"
                         item="[node]">
                   <span class="fa fa-trash"></span>
-                  {$ 'Delete node' | translate $}
+                  {$ ::'Delete node' | translate $}
                 </action>
                 <action button-type="menu-item"
                         callback="table.actions.createPort"
                         item="node">
-                  {$ 'Create port' | translate $}
+                  {$ ::'Create port' | translate $}
                 </action>
                 <li role="presentation"
                     ng-repeat="transition in table.getNodeStateTransitions(node)">
@@ -186,7 +186,7 @@
                 <action button-type="menu-item"
                         callback="table.editNode"
                         item="node">
-                  {$ 'Edit' | translate $}
+                  {$ ::'Edit' | translate $}
                 </action>
               </menu>
             </action-list>
