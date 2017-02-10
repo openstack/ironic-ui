@@ -71,10 +71,10 @@
     function getNodes() {
       return apiService.get('/api/ironic/nodes/')
         .then(function(response) {
-          angular.forEach(response.data.items, function(node) {
+          angular.forEach(response.data.nodes, function(node) {
             nodeErrorService.checkNodeError(node);
           });
-          return response;
+          return response.data.nodes;
         })
         .catch(function(response) {
           var msg = interpolate(
@@ -99,7 +99,7 @@
       return apiService.get('/api/ironic/nodes/' + uuid)
         .then(function(response) {
           nodeErrorService.checkNodeError(response.data);
-          return response;
+          return response.data; // The node
         })
         .catch(function(response) {
           var msg = interpolate(
@@ -126,6 +126,15 @@
         }
       };
       return apiService.get('/api/ironic/ports/', config)
+        .then(function(response) {
+          // Add id and name properties to support delete operations
+          // using the deleteModalService
+          angular.forEach(response.data.ports, function(port) {
+            port.id = port.uuid;
+            port.name = port.address;
+          });
+          return response.data.ports;
+        })
         .catch(function(response) {
           var msg = interpolate(
             gettext('Unable to retrieve the Ironic node ports: %s'),
@@ -303,11 +312,9 @@
         node: nodeIdent
       };
       return apiService.delete('/api/ironic/nodes/', data)
-        .then(function() {
-        })
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to delete node %s: %s'),
-                                [nodeId, response.data],
+                                [nodeIdent, response.data],
                                 false);
           toastService.add('error', msg);
           return $q.reject(msg);
@@ -328,10 +335,10 @@
         patch: patch
       };
       return apiService.patch('/api/ironic/nodes/' + uuid, data)
-        .then(function() {
-          var msg = gettext(
-            'Successfully updated node %s');
+        .then(function(response) {
+          var msg = gettext('Successfully updated node %s');
           toastService.add('success', interpolate(msg, [uuid], false));
+          return response.data; // The updated node
         })
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to update node %s: %s'),
@@ -372,6 +379,9 @@
      */
     function getDrivers() {
       return apiService.get('/api/ironic/drivers/')
+        .then(function(response) {
+          return response.data.drivers;
+        })
         .catch(function(response) {
           var msg = interpolate(
             gettext('Unable to retrieve Ironic drivers: %s'),
@@ -393,6 +403,9 @@
     function getDriverProperties(driverName) {
       return apiService.get(
         '/api/ironic/drivers/' + driverName + '/properties')
+        .then(function(response) {
+          return response.data; // Driver properties
+        })
         .catch(function(response) {
           var msg = interpolate(
             gettext('Unable to retrieve driver properties: %s'),
@@ -417,9 +430,10 @@
         port: port
       };
       return apiService.post('/api/ironic/ports/', data)
-        .then(function() {
+        .then(function(response) {
           toastService.add('success',
                            gettext('Port successfully created'));
+          return response.data; // The newly created port
         })
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to create port: %s'),

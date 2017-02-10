@@ -85,8 +85,8 @@
      * @return {void}
      */
     ctrl._loadDrivers = function() {
-      return ironic.getDrivers().then(function(response) {
-        ctrl.drivers = response.data.items;
+      return ironic.getDrivers().then(function(drivers) {
+        ctrl.drivers = drivers;
       });
     };
 
@@ -241,9 +241,9 @@
       ctrl.driverProperties = null;
       ctrl.driverPropertyGroups = null;
 
-      return ironic.getDriverProperties(driverName).then(function(response) {
+      return ironic.getDriverProperties(driverName).then(function(properties) {
         ctrl.driverProperties = {};
-        angular.forEach(response.data, function(desc, property) {
+        angular.forEach(properties, function(desc, property) {
           ctrl.driverProperties[property] =
             new baseNodeService.DriverProperty(property,
                                                desc,

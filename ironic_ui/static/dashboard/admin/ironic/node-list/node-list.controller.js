@@ -142,21 +142,21 @@
       ironic.getNodes().then(onGetNodes);
     }
 
-    function onGetNodes(response) {
+    function onGetNodes(nodes) {
       var promises = [];
-      angular.forEach(response.data.items, function (node) {
+      angular.forEach(nodes, function (node) {
         node.id = node.uuid;
         promises.push(retrievePorts(node));
       });
       $q.all(promises).then(function() {
-        ctrl.nodesSrc = response.data.items;
+        ctrl.nodesSrc = nodes;
       });
     }
 
     function retrievePorts(node) {
       return ironic.getPortsWithNode(node.uuid).then(
-        function (response) {
-          node.ports = response.data.items;
+        function (ports) {
+          node.ports = ports;
         }
       );
     }

@@ -90,7 +90,7 @@
     function powerOn(node) {
       if (node.power_state !== POWER_STATE_OFF) {
         var msg = gettext("Node %s is not powered off.");
-        return $q.reject(interpolate(msg, [node], false));
+        return $q.reject(interpolate(msg, [node.uuid], false));
       }
       return ironic.powerOnNode(node.uuid).then(
         function() {
@@ -103,7 +103,7 @@
     function powerOff(node) {
       if (node.power_state !== POWER_STATE_ON) {
         var msg = gettext("Node %s is not powered on.");
-        return $q.reject(interpolate(msg, [node], false));
+        return $q.reject(interpolate(msg, [node.uuid], false));
       }
       return ironic.powerOffNode(node.uuid).then(
         function() {

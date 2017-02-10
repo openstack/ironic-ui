@@ -74,9 +74,7 @@
     }
 
     function _loadNodeData(nodeId) {
-      ironic.getNode(nodeId).then(function(response) {
-        var node = response.data;
-
+      ironic.getNode(nodeId).then(function(node) {
         ctrl.baseNode = node;
 
         ctrl.node.name = node.name;
@@ -132,8 +130,6 @@
     }
 
     ctrl.submit = function() {
-      $uibModalInstance.close();
-
       angular.forEach(ctrl.driverProperties, function(property, name) {
         $log.debug(name +
                    ", required = " + property.isRequired() +
@@ -155,13 +151,13 @@
       var patch = buildPatch(ctrl.baseNode, ctrl.node);
       $log.info("patch = " + JSON.stringify(patch.patch));
       if (patch.status === updatePatchService.UpdatePatch.status.OK) {
-        ironic.updateNode(ctrl.baseNode.uuid, patch.patch).then(function() {
+        ironic.updateNode(ctrl.baseNode.uuid, patch.patch).then(function(node) {
           $rootScope.$emit(ironicEvents.EDIT_NODE_SUCCESS);
+          $uibModalInstance.close(node);
         });
       } else {
         toastService.add('error',
                          gettext('Unable to create node update patch.'));
-
       }
     };
   }

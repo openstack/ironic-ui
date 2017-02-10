@@ -131,15 +131,8 @@
       retrieveNode(uuid).then(function () {
         ctrl.nodeStateTransitions =
           nodeStateTransitionService.getTransitions(ctrl.node.provision_state);
-        retrievePorts(uuid);
-        ironic.validateNode(uuid).then(function(response) {
-          var nodeValidation = [];
-          angular.forEach(response.data, function(status) {
-            status.id = status.interface;
-            nodeValidation.push(status);
-          });
-          ctrl.nodeValidation = nodeValidation;
-        });
+        retrievePorts();
+        validateNode();
       });
     }
 
@@ -152,27 +145,40 @@
      * @return {promise} promise
      */
     function retrieveNode(uuid) {
-      return ironic.getNode(uuid).then(function (response) {
-        ctrl.node = response.data;
-        ctrl.node.id = uuid;
+      return ironic.getNode(uuid).then(function (node) {
+        ctrl.node = node;
+        ctrl.node.id = ctrl.node.uuid;
       });
     }
 
     /**
      * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrievePorts
-     * @description Retrieve the ports associated with a specified node,
+     * @description Retrieve the ports associated with the current node,
      * and store them in the controller instance.
      *
-     * @param {string} nodeId – Node name or UUID
      * @return {void}
      */
-    function retrievePorts(nodeId) {
-      ironic.getPortsWithNode(nodeId).then(function (response) {
-        ctrl.portsSrc = response.data.items;
-        ctrl.portsSrc.forEach(function(port) {
-          port.id = port.uuid;
-          port.name = port.address;
+    function retrievePorts() {
+      ironic.getPortsWithNode(ctrl.node.uuid).then(function (ports) {
+        ctrl.portsSrc = ports;
+      });
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.validateNode
+     * @description Retrieve the ports associated with the current node,
+     * and store them in the controller instance.
+     *
+     * @return {void}
+     */
+    function validateNode() {
+      ironic.validateNode(ctrl.node.uuid).then(function(response) {
+        var nodeValidation = [];
+        angular.forEach(response.data, function(status) {
+          status.id = status.interface;
+          nodeValidation.push(status);
         });
+        ctrl.nodeValidation = nodeValidation;
       });
     }
 
@@ -202,6 +208,11 @@
              ? port.extra.vif_port_id : "";
     }
 
+    /**
+     * @description: Edit the current node
+     *
+     * @return {void}
+     */
     function editNode() {
       editNodeService.modal(ctrl.node);
     }
