@@ -24,7 +24,7 @@ from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
 
 
-DEFAULT_IRONIC_API_VERSION = '1.19'
+DEFAULT_IRONIC_API_VERSION = '1.20'
 DEFAULT_INSECURE = False
 DEFAULT_CACERT = None
 
@@ -141,14 +141,8 @@ def node_create(request, params):
     """
     node_manager = ironicclient(request).node
     node = node_manager.create(**params)
-    field_list = ['chassis_uuid',
-                  'driver',
-                  'driver_info',
-                  'properties',
-                  'extra',
-                  'uuid',
-                  'name']
-    return dict([(f, getattr(node, f, '')) for f in field_list])
+    return dict([(f, getattr(node, f, ''))
+                 for f in res_fields.NODE_DETAILED_RESOURCE.fields])
 
 
 def node_delete(request, node_id):
@@ -173,7 +167,9 @@ def node_update(request, node_id, patch):
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.update
     """
-    ironicclient(request).node.update(node_id, patch)
+    node = ironicclient(request).node.update(node_id, patch)
+    return dict([(f, getattr(node, f, ''))
+                 for f in res_fields.NODE_DETAILED_RESOURCE.fields])
 
 
 def node_validate(request, node_id):

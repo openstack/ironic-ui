@@ -78,6 +78,7 @@
         ctrl.baseNode = node;
 
         ctrl.node.name = node.name;
+        ctrl.node.network_interface = node.network_interface;
         for (var i = 0; i < ctrl.drivers.length; i++) {
           if (ctrl.drivers[i].name === node.driver) {
             ctrl.selectedDriver = ctrl.drivers[i];
@@ -110,21 +111,22 @@
      */
     function buildPatch(sourceNode, targetNode) {
       var patcher = new updatePatchService.UpdatePatch();
-
-      patcher.buildPatch(sourceNode.name, targetNode.name, "/name");
-      patcher.buildPatch(sourceNode.driver, targetNode.driver, "/driver");
-      patcher.buildPatch(sourceNode.properties,
-                         targetNode.properties,
-                         "/properties");
-      patcher.buildPatch(sourceNode.extra,
-                         targetNode.extra,
-                         "/extra");
-      patcher.buildPatch(sourceNode.driver_info,
-                         targetNode.driver_info,
-                         "/driver_info");
-      patcher.buildPatch(sourceNode.instance_info,
-                         targetNode.instance_info,
-                         "/instance_info");
+      var PatchItem = function PatchItem(id, path) {
+        this.id = id;
+        this.path = path;
+      };
+      angular.forEach([new PatchItem("name", "/name"),
+                       new PatchItem("network_interface", "/network_interface"),
+                       new PatchItem("driver", "/driver"),
+                       new PatchItem("properties", "/properties"),
+                       new PatchItem("extra", "/extra"),
+                       new PatchItem("driver_info", "/driver_info"),
+                       new PatchItem("instance_info", "/instance_info")],
+                      function(item) {
+                        patcher.buildPatch(sourceNode[item.id],
+                                           targetNode[item.id],
+                                           item.path);
+                      });
 
       return patcher.getPatch();
     }
