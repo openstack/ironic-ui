@@ -5,13 +5,13 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
+"Project-Id-Version: ironic-ui 2.1.1.dev75\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-02-03 15:06+0000\n"
+"POT-Creation-Date: 2017-02-06 20:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-03 11:21+0000\n"
+"PO-Revision-Date: 2017-02-07 08:52+0000\n"
 "Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -136,6 +136,9 @@ msgstr "Bearbeiten"
 msgid "Edit Node"
 msgstr "Knoten bearbeiten"
 
+msgid "Edit Port"
+msgstr "Port bearbeiten"
+
 msgid "Enroll Node"
 msgstr "Knoten ausrollen"
 
@@ -178,6 +181,9 @@ msgstr "Kernel"
 msgid "Last Error"
 msgstr "Letzter Fehler"
 
+msgid "Local link connection"
+msgstr "Local Link Verbindung"
+
 msgid "MAC Address"
 msgstr "MAC-Adresse"
 
@@ -186,6 +192,9 @@ msgstr "MAC-Adresse"
 
 msgid "MAC address for this port. Required."
 msgstr "MAC-Adresse für diesen Port. Erforderlich."
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "MAC Adresse oder OpenFlow datapath ID"
 
 msgid "Maintenance"
 msgstr "Wartung"
@@ -250,6 +259,21 @@ msgstr "Einer von diesen, (.*) muss spezifiziert sein\\."
 
 msgid "Overview"
 msgstr "Übersicht"
+
+msgid ""
+"PXE enabled\n"
+"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
+"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
+"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
+"            <span class=\"fa fa-question-circle\"></span>\n"
+"          </span>"
+msgstr ""
+"PXE aktiviert\n"
+"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
+"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
+"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
+"            <span class=\"fa fa-question-circle\"></span>\n"
+"          </span>"
 
 msgid "Port successfully created"
 msgstr "Port erfolgreich erstellt"
@@ -355,11 +379,26 @@ msgstr[1] "Port \"%s\" erfolgreich gelöscht"
 msgid "Successfully updated node %s"
 msgstr "Knoten %s erfolgreich aktualisiert"
 
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "Port %s erfolgreich aktualisiert"
+
 msgid "Target Power State"
 msgstr "Ziel Power-Zustand"
 
 msgid "Target Provision State"
 msgstr "Ziel Bereitstellungszustand"
+
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"Dieses Feld ist deaktiviert, denn bei einem Port können Verbindungsattribute "
+"(pxe_enabled, local_link_connection, portgroup_id) nur aktualisiert werden, "
+"wenn der zugewiesene Knoten im Enroll, Inspecting oder Manageable Status "
+"oder im Wartungsmodus ist."
 
 msgid "UUID"
 msgstr "UUID"
@@ -370,6 +409,9 @@ msgstr "Knoten-Aktualisierungspatch kann nicht erstellt werden."
 #, python-format
 msgid "Unable to create node: %s"
 msgstr "Knoten kann nicht erstellt werden: %s"
+
+msgid "Unable to create port update patch."
+msgstr "Port Update Patch kann nicht erstellt werden."
 
 #, python-format
 msgid "Unable to create port: %s"
@@ -440,11 +482,18 @@ msgid "Unable to update node %s: %s"
 msgstr "Knoten %s kann nicht aktualisiert werden: %s"
 
 #, python-format
+msgid "Unable to update port %s: %s"
+msgstr "Port %s kann nicht aktualisiert werden: %s"
+
+#, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "Knoten %s kann nicht  validiert werden: %s"
 
 msgid "Update Node"
 msgstr "Knoten aktualisieren"
+
+msgid "Update Port"
+msgstr "Port aktualisieren"
 
 msgid "Updated At"
 msgstr "Aktualisiert am"
