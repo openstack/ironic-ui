@@ -13,7 +13,7 @@ Contributor License Agreement
 .. index::
    single: license; agreement
 
-In order to contribute to the Ironic project, you need to have
+In order to contribute to the Ironic UI project, you need to have
 signed OpenStack's contributor's agreement.
 
 .. seealso::
@@ -30,7 +30,7 @@ authentication.
 .. seealso::
 
    * https://launchpad.net
-   * https://launchpad.net/ironic
+   * https://launchpad.net/ironic-ui
 
 Project Hosting Details
 -------------------------
