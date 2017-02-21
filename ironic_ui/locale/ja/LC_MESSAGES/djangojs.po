@@ -6,13 +6,13 @@
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
+"Project-Id-Version: ironic-ui 2.2.1.dev8\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-02-03 15:06+0000\n"
+"POT-Creation-Date: 2017-02-13 18:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-03 10:49+0000\n"
+"PO-Revision-Date: 2017-02-10 05:26+0000\n"
 "Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -125,6 +125,9 @@ msgstr "編集"
 msgid "Edit Node"
 msgstr "ノードの編集"
 
+msgid "Edit Port"
+msgstr "ポートの編集"
+
 msgid "Enroll Node"
 msgstr "ノードの登録"
 
@@ -167,6 +170,9 @@ msgstr "カーネル"
 msgid "Last Error"
 msgstr "最後のエラー"
 
+msgid "Local link connection"
+msgstr "ローカルリンク接続"
+
 msgid "MAC Address"
 msgstr "MAC アドレス"
 
@@ -175,6 +181,9 @@ msgstr "MAC アドレス"
 
 msgid "MAC address for this port. Required."
 msgstr "このポートの MAC アドレス。必須。"
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "MAC アドレスあるいは OpenFlow データパス ID"
 
 msgid "Maintenance"
 msgstr "メンテナンス"
@@ -341,11 +350,25 @@ msgstr[0] "ポート \"%s\" を正常に削除しました"
 msgid "Successfully updated node %s"
 msgstr "ノード %s の更新に成功しました"
 
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "ポート %s の更新に成功しました"
+
 msgid "Target Power State"
 msgstr "ターゲット電源状態"
 
 msgid "Target Provision State"
 msgstr "ターゲットプロビジョニング状態"
+
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"ポートが接続のための属性 (PXE 有効、ローカルリンク接続、ポートグループ ID) の"
+"いずれも持たないため、関連付けられたノードが登録、検査、管理可能な状態に更新"
+"されるまで、あるいはメンテナンスモードになるまで、この項目は無効です。"
 
 msgid "UUID"
 msgstr "UUID"
@@ -356,6 +379,9 @@ msgstr "ノードを更新するパッチを作成できません。"
 #, python-format
 msgid "Unable to create node: %s"
 msgstr "ノードを作成できません: %s"
+
+msgid "Unable to create port update patch."
+msgstr "ポートを更新するパッチを作成できません。"
 
 #, python-format
 msgid "Unable to create port: %s"
@@ -400,6 +426,10 @@ msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Ironic ドライバーの一覧を取得できません: %s"
 
 #, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Ironic ノードの一覧を取得できません: %s"
+
+#, python-format
 msgid "Unable to retrieve driver properties: %s"
 msgstr "ドライバープロパティーの一覧を取得できません: %s"
 
@@ -420,11 +450,18 @@ msgid "Unable to update node %s: %s"
 msgstr "ノード %s を更新できません: %s"
 
 #, python-format
+msgid "Unable to update port %s: %s"
+msgstr "ポート %s の更新に失敗しました: %s"
+
+#, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "ノード %s を検証できません: %s"
 
 msgid "Update Node"
 msgstr "ノードの更新"
+
+msgid "Update Port"
+msgstr "ポートの更新"
 
 msgid "Updated At"
 msgstr "最終更新"

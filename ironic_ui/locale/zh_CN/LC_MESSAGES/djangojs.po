@@ -4,17 +4,18 @@
 # Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
 # sunanchen <KF.sunanchen@h3c.com>, 2016. #zanata
 # vuuv <froms2008@gmail.com>, 2016. #zanata
-# sunanchen <KF.sunanchen@h3c.com>, 2017. #zanata
+# Gaoxiao Zhu <zhu.gaoxiao@h3c.com>, 2017. #zanata
+# liujunpeng <liujunpeng@inspur.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
+"Project-Id-Version: ironic-ui 2.2.1.dev8\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-02-03 15:06+0000\n"
+"POT-Creation-Date: 2017-02-13 18:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-03 10:49+0000\n"
-"Last-Translator: sunanchen <KF.sunanchen@h3c.com>\n"
+"PO-Revision-Date: 2017-02-10 01:46+0000\n"
+"Last-Translator: Gaoxiao Zhu <zhu.gaoxiao@h3c.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -26,25 +27,32 @@ msgstr "([^\" ]+|\"[^\"]+\") \\(Default标签\\)"
 msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr "更改节点 \"%s\" 服务状态的请求已提交。"
+
 msgid "A unique node name. Optional."
 msgstr "独一无二的节点名称。可选。"
+
+msgid "Abort cleaning"
+msgstr "放弃清理"
 
 msgid "Actions"
 msgstr "动作"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
 msgid_plural ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
 msgstr[0] "你确认要删除节点\"%s\"嘛？此操作将不可恢复"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
 msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
-msgstr[0] "你确认要删除端口\"%s\"吗？本操作无法恢复"
+msgstr[0] "你确认要删除端口\"%s\"吗？本操作无法恢复。"
 
 msgid "Cancel"
 msgstr "取消"
@@ -54,6 +62,9 @@ msgstr "机架ID"
 
 msgid "Choose an Image"
 msgstr "选择一个镜像"
+
+msgid "Clean Step"
+msgstr "清理步骤"
 
 msgid "Configuration"
 msgstr "配置"
@@ -73,12 +84,10 @@ msgstr "创建于"
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "默认为 ([^\"\\. ]+|\"[^\"]+\")"
 
-#, fuzzy
 msgid "Delete Node"
 msgid_plural "Delete Nodes"
 msgstr[0] "删除节点"
 
-#, fuzzy
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "删除端口"
@@ -107,6 +116,18 @@ msgstr "驱动详情"
 msgid "Driver Info"
 msgstr "驱动信息"
 
+msgid "Driver Validation"
+msgstr "驱动验证"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Edit Node"
+msgstr "编辑节点"
+
+msgid "Edit Port"
+msgstr "编辑端口"
+
 msgid "Enroll Node"
 msgstr "注册节点"
 
@@ -118,6 +139,12 @@ msgstr "额外信息"
 
 msgid "General"
 msgstr "概要信息"
+
+msgid "Image Source"
+msgstr "镜像源"
+
+msgid "Inspect"
+msgstr "检查"
 
 msgid "Inspection Finished At"
 msgstr "检查结束于"
@@ -134,11 +161,17 @@ msgstr "实例信息"
 msgid "Instance Name"
 msgstr "实例名字"
 
+msgid "Interface"
+msgstr "接口"
+
 msgid "Kernel"
 msgstr "内核"
 
 msgid "Last Error"
 msgstr "最近的一次错误"
+
+msgid "Local link connection"
+msgstr "本地链接连接"
 
 msgid "MAC Address"
 msgstr "MAC地址"
@@ -148,6 +181,9 @@ msgstr "MAC地址"
 
 msgid "MAC address for this port. Required."
 msgstr "需要该端口的MAC地址"
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "MAC地址或OpenFlow datapath ID"
 
 msgid "Maintenance"
 msgstr "维护"
@@ -161,6 +197,9 @@ msgstr "退出维护模式"
 msgid "Maintenance on"
 msgstr "处于维护状态"
 
+msgid "Move to"
+msgstr "移动"
+
 msgid "Name"
 msgstr "名称"
 
@@ -172,6 +211,9 @@ msgstr "缺少提供维护原因"
 
 msgid "No network ports have been defined"
 msgstr "未定义网络端口"
+
+msgid "Node"
+msgstr "节点"
 
 #, python-format
 msgid "Node %s is already in maintenance mode."
@@ -206,6 +248,21 @@ msgstr "必须指定其中的一个 (.*)"
 
 msgid "Overview"
 msgstr "概览"
+
+msgid ""
+"PXE enabled\n"
+"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
+"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
+"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
+"            <span class=\"fa fa-question-circle\"></span>\n"
+"          </span>"
+msgstr ""
+"启用PXE\n"
+"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
+"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
+"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
+"            <span class=\"fa fa-question-circle\"></span>\n"
+"          </span>"
 
 msgid "Port successfully created"
 msgstr "端口创建成功"
@@ -248,6 +305,12 @@ msgstr "将节点置于维护模式"
 msgid "Ramdisk"
 msgstr "内存盘"
 
+msgid "Reason"
+msgstr "原因"
+
+msgid "Refresh"
+msgstr "刷新"
+
 msgid "Refresh page to see updated power status"
 msgstr "刷新页面来确认电源状态是否更新"
 
@@ -257,24 +320,53 @@ msgstr "必需的"
 msgid "Reservation"
 msgstr "预留"
 
+msgid "Root GB"
+msgstr "根磁盘 GB"
+
+msgid "SSH Address"
+msgstr "SSH 地址"
+
+msgid "SSH Key Contents"
+msgstr "SSH 密钥内容"
+
+msgid "SSH Key File"
+msgstr "SSH 密钥文件"
+
+msgid "SSH Password"
+msgstr "SSH 密码"
+
 msgid "SSH Port"
 msgstr "SSH端口"
 
 msgid "SSH Username"
 msgstr "SSH用户名"
 
+msgid "SSH terminal port"
+msgstr "SSH 终端端口"
+
 msgid "Select a Driver"
 msgstr "选择一种驱动"
 
-#, fuzzy, python-format
+msgid "Submit"
+msgstr "提交"
+
+#, python-format
 msgid "Successfully deleted node \"%s\""
 msgid_plural "Successfully deleted nodes \"%s\""
 msgstr[0] "成功删除节点\"%s\""
 
-#, fuzzy, python-format
+#, python-format
 msgid "Successfully deleted port \"%s\""
 msgid_plural "Successfully deleted ports \"%s\""
 msgstr[0] "删除端口\"%s\"成功"
+
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "成功更新节点：“%s”。"
+
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "成功更新端口：“%s”。"
 
 msgid "Target Power State"
 msgstr "标记电源状态"
@@ -282,18 +374,34 @@ msgstr "标记电源状态"
 msgid "Target Provision State"
 msgstr "标记配置状态"
 
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"这些域被禁用了，因为端口不能有任何已更新的连接属性((pxe_enabled, "
+"local_link_connection, portgroup_id)，除非节点处于注册，检查，可管理状态或处"
+"于维护模式。"
+
 msgid "UUID"
 msgstr "UUID"
+
+msgid "Unable to create node update patch."
+msgstr "不能创建节点更新补丁"
 
 #, python-format
 msgid "Unable to create node: %s"
 msgstr "无法创建Ironic节点: %s"
 
+msgid "Unable to create port update patch."
+msgstr "不能创建端口更新补丁"
+
 #, python-format
 msgid "Unable to create port: %s"
 msgstr "无法创建端口: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete node \"%s\""
 msgid_plural "Unable to delete nodes \"%s\""
 msgstr[0] "无法删除节点\"%s\""
@@ -302,7 +410,7 @@ msgstr[0] "无法删除节点\"%s\""
 msgid "Unable to delete node %s: %s"
 msgstr "无法删除Ironic节点\"%s\": %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete portss \"%s\""
 msgstr[0] "无法删除端口\"%s\""
@@ -332,6 +440,10 @@ msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "无法获取Ironic驱动: %s"
 
 #, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "无法获取Ironic节点信息: %s"
+
+#, python-format
 msgid "Unable to retrieve driver properties: %s"
 msgstr "无法获取驱动属性: %s"
 
@@ -343,11 +455,51 @@ msgstr "无法获取Ironic节点端口信息: %s"
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "无法获取Ironic节点信息: %s"
 
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "不能设置节点提供状态：%s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "无法更新节点%s：%s"
+
+#, python-format
+msgid "Unable to update port %s: %s"
+msgstr "无法更新端口%s：%s"
+
+#, python-format
+msgid "Unable to validate node %s: %s"
+msgstr "无法验证节点%s：%s"
+
+msgid "Update Node"
+msgstr "更新节点"
+
+msgid "Update Port"
+msgstr "更新端口"
+
 msgid "Updated At"
 msgstr "已更新于"
 
+msgid "Valid"
+msgstr "有效"
+
+msgid "Virtualization Software"
+msgstr "虚拟化软件"
+
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "默认值 (?:value )?是 ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "{$ collection.addPrompt $}:"
+msgstr "{$ collection.addPrompt $}:"
+
+msgid "{$ collection.title $}"
+msgstr "{$ collection.title $}"
+
+msgid "{$ ctrl.modalTitle $}"
+msgstr "{$ ctrl.modalTitle $}"
+
+msgid "{$ ctrl.submitButtonTitle $}"
+msgstr "{$ ctrl.submitButtonTitle $}"
 
 msgid "{$ property.getDescription() $}"
 msgstr "{$ property.getDescription() $}"

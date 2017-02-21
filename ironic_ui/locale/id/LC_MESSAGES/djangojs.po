@@ -3,13 +3,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev66\n"
+"Project-Id-Version: ironic-ui 2.2.1.dev8\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-02-03 15:06+0000\n"
+"POT-Creation-Date: 2017-02-13 18:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-06 07:25+0000\n"
+"PO-Revision-Date: 2017-02-10 12:18+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -124,6 +124,9 @@ msgstr "Edit"
 msgid "Edit Node"
 msgstr "Edit Node"
 
+msgid "Edit Port"
+msgstr "Edit Port"
+
 msgid "Enroll Node"
 msgstr "Enroll Node"
 
@@ -166,6 +169,9 @@ msgstr "Kernel"
 msgid "Last Error"
 msgstr "Last Error (kesalahan terakhir)"
 
+msgid "Local link connection"
+msgstr "Koneksi link lokal"
+
 msgid "MAC Address"
 msgstr "MAC Address"
 
@@ -174,6 +180,9 @@ msgstr "MAC address"
 
 msgid "MAC address for this port. Required."
 msgstr "MAC address untuk port ini. Wajib."
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "Alamat MAC atau OpenFlow datapath ID"
 
 msgid "Maintenance"
 msgstr "Maintenance (pemeliharaan)"
@@ -238,6 +247,21 @@ msgstr "One of this, (.*) must be specified\\."
 
 msgid "Overview"
 msgstr "Iktisar"
+
+msgid ""
+"PXE enabled\n"
+"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
+"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
+"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
+"            <span class=\"fa fa-question-circle\"></span>\n"
+"          </span>"
+msgstr ""
+"PXE enabled\n"
+"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
+"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
+"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
+"            <span class=\"fa fa-question-circle\"></span>\n"
+"          </span>"
 
 msgid "Port successfully created"
 msgstr "Port berhasil dibuat"
@@ -341,11 +365,26 @@ msgstr[0] "Berhasil hapus port \"%s\""
 msgid "Successfully updated node %s"
 msgstr "Berhasil perbarui node %s"
 
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "Port berhasil diperbarui %s"
+
 msgid "Target Power State"
 msgstr "Target Power State"
 
 msgid "Target Provision State"
 msgstr "Target Provision State (keadaab penyediaan sasaran)"
+
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"Field ini dinonaktifkan karena port tidak dapat memiliki atribut "
+"konektivitas (pxe_enabled, local_link_connection, portgroup_id) yang "
+"diperbarui kecuali node yang terkait adalah dalam keadaan enroll, "
+"inspecting, mangeable; atau dalam modus pemeliharaan."
 
 msgid "UUID"
 msgstr "UUID"
@@ -356,6 +395,9 @@ msgstr "Tidak dapat membuat node update patch."
 #, python-format
 msgid "Unable to create node: %s"
 msgstr "Tidak dapat membuat node: %s"
+
+msgid "Unable to create port update patch."
+msgstr "Tidak dapat membuat port update patch."
 
 #, python-format
 msgid "Unable to create port: %s"
@@ -424,11 +466,18 @@ msgid "Unable to update node %s: %s"
 msgstr "Tidak dapat memperbarui node %s: %s"
 
 #, python-format
+msgid "Unable to update port %s: %s"
+msgstr "Tidak dapat memperbarui port %s: %s"
+
+#, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "Tidak dapat memvalidasi node %s: %s"
 
 msgid "Update Node"
 msgstr "Update Node"
+
+msgid "Update Port"
+msgstr "Update Port"
 
 msgid "Updated At"
 msgstr "Diperbarui pada"
