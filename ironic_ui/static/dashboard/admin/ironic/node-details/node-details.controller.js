@@ -72,6 +72,7 @@
 
     ctrl.node = null;
     ctrl.nodeValidation = [];
+    ctrl.nodeValidationMap = {}; // Indexed by interface
     ctrl.nodeStateTransitions = [];
     ctrl.ports = [];
     ctrl.portsSrc = [];
@@ -84,10 +85,13 @@
     ctrl.deletePort = deletePort;
     ctrl.editPort = editPort;
     ctrl.refresh = refresh;
+    ctrl.toggleConsoleMode = toggleConsoleMode;
 
     $scope.emptyObject = function(obj) {
       return angular.isUndefined(obj) || Object.keys(obj).length === 0;
     };
+
+    $scope.isDefined = angular.isDefined;
 
     var editNodeHandler =
         $rootScope.$on(ironicEvents.EDIT_NODE_SUCCESS,
@@ -149,6 +153,10 @@
       return ironic.getNode(uuid).then(function (node) {
         ctrl.node = node;
         ctrl.node.id = ctrl.node.uuid;
+        ironic.nodeGetConsole(uuid).then(function(consoleData) {
+          ctrl.node.console_enabled = consoleData.console_enabled;
+          ctrl.node.console_info = consoleData.console_info;
+        });
       });
     }
 
@@ -188,9 +196,11 @@
     function validateNode() {
       ironic.validateNode(ctrl.node.uuid).then(function(response) {
         var nodeValidation = [];
+        ctrl.nodeValidationMap = {};
         angular.forEach(response.data, function(status) {
           status.id = status.interface;
           nodeValidation.push(status);
+          ctrl.nodeValidationMap[status.interface] = status;
         });
         ctrl.nodeValidation = nodeValidation;
       });
@@ -273,6 +283,16 @@
      */
     function refresh() {
       init();
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.toggleConsoleMode
+     * @description Toggle the state of the console for the current node
+     *
+     * @return {void}
+     */
+    function toggleConsoleMode() {
+      ironic.nodeSetConsoleMode(ctrl.node.uuid, !ctrl.node.console_enabled);
     }
   }
 })();

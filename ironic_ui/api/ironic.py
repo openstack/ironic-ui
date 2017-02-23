@@ -27,7 +27,6 @@ from openstack_dashboard.api import base
 DEFAULT_IRONIC_API_VERSION = '1.20'
 DEFAULT_INSECURE = False
 DEFAULT_CACERT = None
-
 IRONIC_CLIENT_CLASS_NAME = 'baremetal'
 
 
@@ -117,6 +116,31 @@ def node_set_provision_state(request, node_id, state, cleansteps=None):
                                             cleansteps=cleansteps)
 
 
+def node_set_console_mode(request, node_id, enabled):
+    """Start or stop the serial console for a given node.
+
+    :param request: HTTP request.
+    :param node_id: The UUID or name of the node.
+    :param enabled: True to start the console, False to stop it
+    :return: node.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_console_mode
+    """
+    return ironicclient(request).node.set_console_mode(node_id, enabled)
+
+
+def node_get_console(request, node_id):
+    """Get connection information for a node's console.
+
+    :param request: HTTP request.
+    :param node_id: The UUID or name of the node.
+    :return: Console connection information
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.get_console
+    """
+    return ironicclient(request).node.get_console(node_id)
+
+
 def node_set_maintenance(request, node_id, state, maint_reason=None):
     """Set the maintenance mode on a given node.
 
@@ -194,7 +218,7 @@ def node_get_boot_device(request, node_id):
     """Get the boot device for a specified node.
 
     :param request: HTTP request.
-    :param node_id: The id of the node.
+    :param node_id: The UUID or name of the node.
     :return: Dictionary with keys "boot_device" and "persistent"
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.get_boot_device
@@ -250,16 +274,16 @@ def port_delete(request, port_uuid):
     return ironicclient(request).port.delete(port_uuid)
 
 
-def port_update(request, port_id, patch):
+def port_update(request, port_uuid, patch):
     """Update a specified port.
 
     :param request: HTTP request.
-    :param node_id: The uuid of the port.
+    :param port_id: The UUID of the port.
     :param patch: Sequence of update operations
-    :return: port.
+    :return: Port.
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.port.html#ironicclient.v1.port.PortManager.update
     """
-    port = ironicclient(request).port.update(port_id, patch)
+    port = ironicclient(request).port.update(port_uuid, patch)
     return dict([(f, getattr(port, f, ''))
                  for f in res_fields.PORT_DETAILED_RESOURCE.fields])
