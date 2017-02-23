@@ -45,7 +45,6 @@
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
     'horizon.framework.widgets.modal.deleteModalService',
-    'horizon.dashboard.admin.ironic.create-port.service',
     'horizon.dashboard.admin.ironic.clean-node.service',
     '$q',
     '$rootScope'
@@ -54,12 +53,10 @@
   function actions(ironic,
                    ironicEvents,
                    deleteModalService,
-                   createPortService,
                    cleanNodeService,
                    $q,
                    $rootScope) {
     var service = {
-      createPort: createPort,
       deleteNode: deleteNode,
       deletePort: deletePort,
       setPowerState: setPowerState,
@@ -176,10 +173,6 @@
       } else {
         ironic.setNodeProvisionState(args.node.uuid, args.verb);
       }
-    }
-
-    function createPort(node) {
-      return createPortService.modal(node);
     }
 
     function deletePort(ports) {

@@ -55,12 +55,6 @@
                 callback="ctrl.toggleConsoleMode">
           {$ ctrl.node.console_enabled ? 'Disable console' : 'Enable console' | translate $}
         </action>
-        <action button-type="menu-item"
-                disabled="isDefined(ctrl.nodeValidationMap.console)
-                          && ctrl.nodeValidationMap.console.result===false"
-                callback="ctrl.toggleConsoleMode">
-          {$ ctrl.node.console_enabled ? 'Disable console' : 'Enable console' | translate $}
-        </action>
       </menu>
     </action-list>
   </div>

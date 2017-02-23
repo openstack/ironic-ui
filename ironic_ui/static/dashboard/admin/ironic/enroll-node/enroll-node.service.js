@@ -31,6 +31,12 @@
       enrollNode: enrollNode
     };
 
+    /**
+     * @description Launch a modal dialog that will guide the user
+     * in enrolling a new node
+     *
+     * @return {promise} Object describing the enrolled node
+     */
     function enrollNode() {
       var options = {
         controller: 'EnrollNodeController as ctrl',
