@@ -1,14 +1,14 @@
-# Eunseop Shin <kairos9603@gmail.com>, 2016. #zanata
+# Eunseop Shin <kairos9603@khu.ac.kr>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-07 16:48+0000\n"
+"POT-Creation-Date: 2017-02-13 18:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2016-10-20 07:55+0000\n"
-"Last-Translator: Eunseop Shin <kairos9603@gmail.com>\n"
+"Last-Translator: Eunseop Shin <kairos9603@khu.ac.kr>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -63,9 +63,6 @@ msgstr ""
 
 msgid "New Features"
 msgstr "새로운 기능"
-
-msgid "Newton Series Release Notes"
-msgstr "Newton 시리즈에 대한 릴리즈 노트"
 
 msgid "Panel hidden if baremetal service or admin rights are not present"
 msgstr "패널은 베어메탈 서비스 이거나 관지자의 권한이 없을때 숨겨집니다."
