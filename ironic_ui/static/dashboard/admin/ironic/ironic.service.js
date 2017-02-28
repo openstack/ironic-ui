@@ -147,15 +147,14 @@
      * @return {promise} Promise
      */
     function putNodeInMaintenanceMode(uuid, reason) {
-      var data = {
-        maint_reason: reason ? reason : gettext("No maintenance reason given.")
-      };
       return apiService.patch('/api/ironic/nodes/' + uuid + '/maintenance',
-                              data)
+                              {maint_reason: reason
+                               ? reason
+                               : gettext("No reason given.")})
         .catch(function(response) {
           var msg = interpolate(
-            gettext('Unable to put the Ironic node in maintenance mode: %s'),
-            [response.data],
+            gettext('Unable to put the Ironic node %s in maintenance mode: %s'),
+            [uuid, response.data],
             false);
           toastService.add('error', msg);
           return $q.reject(msg);
@@ -174,9 +173,9 @@
       return apiService.delete('/api/ironic/nodes/' + uuid + '/maintenance')
         .catch(function(response) {
           var msg = interpolate(
-            gettext('Unable to remove the Ironic node ' +
-                    'from maintenance mode: %s'),
-            [response.data],
+            gettext(
+              'Unable to remove the Ironic node %s from maintenance mode: %s'),
+            [uuid, response.data],
             false);
           toastService.add('error', msg);
           return $q.reject(msg);

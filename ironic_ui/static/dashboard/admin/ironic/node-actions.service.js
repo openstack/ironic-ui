@@ -49,10 +49,8 @@
       powerOff: powerOff,
       powerOnAll: powerOnNodes,
       powerOffAll: powerOffNodes,
-      putNodeInMaintenanceMode: putInMaintenanceMode,
-      removeNodeFromMaintenanceMode: removeFromMaintenanceMode,
-      putAllInMaintenanceMode: putNodesInMaintenanceMode,
-      removeAllFromMaintenanceMode: removeNodesFromMaintenanceMode,
+      putNodeInMaintenanceMode: putNodeInMaintenanceMode,
+      removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
       setProvisionState: setProvisionState
     };
 
@@ -123,38 +121,41 @@
 
     // maintenance
 
-    function putInMaintenanceMode(node, maintReason) {
-      if (node.maintenance !== false) {
-        var msg = gettext("Node %s is already in maintenance mode.");
-        return $q.reject(interpolate(msg, [node], false));
-      }
-      return ironic.putNodeInMaintenanceMode(node.uuid, maintReason).then(
-        function () {
-          node.maintenance = true;
-          node.maintenance_reason = maintReason;
-        }
-      );
+    function putNodeInMaintenanceMode(nodes, reason) {
+      return applyFuncToNodes(
+        function(node, reason) {
+          if (node.maintenance !== false) {
+            var msg = gettext("Node %s is already in maintenance mode.");
+            return $q.reject(interpolate(msg, [node.uuid], false));
+          }
+          return ironic.putNodeInMaintenanceMode(node.uuid, reason).then(
+            function (result) {
+              node.maintenance = true;
+              node.maintenance_reason = reason;
+              return result;
+            }
+          );
+        },
+        nodes,
+        reason);
     }
 
-    function removeFromMaintenanceMode(node) {
-      if (node.maintenance !== true) {
-        var msg = gettext("Node %s is not in maintenance mode.");
-        return $q.reject(interpolate(msg, [node], false));
-      }
-      return ironic.removeNodeFromMaintenanceMode(node.uuid).then(
-        function () {
-          node.maintenance = false;
-          node.maintenance_reason = "";
-        }
-      );
-    }
-
-    function putNodesInMaintenanceMode(nodes, maintReason) {
-      return applyFuncToNodes(putInMaintenanceMode, nodes, maintReason);
-    }
-
-    function removeNodesFromMaintenanceMode(nodes) {
-      return applyFuncToNodes(removeFromMaintenanceMode, nodes);
+    function removeNodeFromMaintenanceMode(nodes) {
+      return applyFuncToNodes(
+        function(node) {
+          if (node.maintenance !== true) {
+            var msg = gettext("Node %s is not in maintenance mode.");
+            return $q.reject(interpolate(msg, [node.uuid], false));
+          }
+          return ironic.removeNodeFromMaintenanceMode(node.uuid).then(
+            function (result) {
+              node.maintenance = false;
+              node.maintenance_reason = "";
+              return result;
+            }
+          );
+        },
+        nodes);
     }
 
     /*
@@ -210,6 +211,7 @@
      * @param {function} fn – Function to be applied.
      * The function should accept a node as the first argument. An optional
      * second argument can be used to provide additional information.
+     * The function should return a promise.
      * @param {Array<node>} nodes - Collection of nodes
      * @param {object} extra - Additional argument passed to the function
      * @return {promise} - Single promise that represents the combined

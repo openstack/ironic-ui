@@ -57,6 +57,7 @@
     ctrl.noPortsText = gettext('No network ports have been defined');
 
     ctrl.actions = actions;
+    ctrl.maintenanceService = maintenanceService;
 
     ctrl.sections = [
       {
@@ -78,8 +79,6 @@
     ctrl.re_uuid = new RegExp(validUuidPattern);
     ctrl.isUuid = isUuid;
     ctrl.getVifPortId = getVifPortId;
-    ctrl.putNodeInMaintenanceMode = putNodeInMaintenanceMode;
-    ctrl.removeNodeFromMaintenanceMode = removeNodeFromMaintenanceMode;
     ctrl.editNode = editNode;
     ctrl.createPort = createPort;
     ctrl.deletePort = deletePort;
@@ -201,14 +200,6 @@
       return angular.isDefined(port.extra) &&
              angular.isDefined(port.extra.vif_port_id)
              ? port.extra.vif_port_id : "";
-    }
-
-    function putNodeInMaintenanceMode() {
-      maintenanceService.putNodeInMaintenanceMode(ctrl.node);
-    }
-
-    function removeNodeFromMaintenanceMode() {
-      maintenanceService.removeNodeFromMaintenanceMode(ctrl.node);
     }
 
     function editNode() {
