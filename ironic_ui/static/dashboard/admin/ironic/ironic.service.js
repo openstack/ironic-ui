@@ -244,14 +244,14 @@
      * @param {string} uuid – UUID of a node.
      * @param {string} verb – Provisioning verb used to move node to desired
      *                        target state
+     * @param {object []} cleanSteps - List of cleaning steps. Only used
+     * when the value of verb is 'clean'
      * @return {promise} Promise
      */
-    function setNodeProvisionState(uuid, verb) {
-      var data = {
-        verb: verb
-      };
+    function setNodeProvisionState(uuid, verb, cleanSteps) {
       return apiService.put('/api/ironic/nodes/' + uuid + '/states/provision',
-                            data)
+                            {verb: verb,
+                             clean_steps: cleanSteps})
         .then(function() {
           var msg = gettext(
             'A request has been made to change the provisioning state of node %s');

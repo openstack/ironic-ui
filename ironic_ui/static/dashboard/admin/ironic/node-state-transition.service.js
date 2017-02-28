@@ -56,6 +56,9 @@
     states.manageable.addTransition('manageable',
                                     'inspect',
                                     gettext('Inspect'));
+    states.manageable.addTransition('manageable',
+                                    'clean',
+                                    gettext('Clean'));
 
     states.active.addTransition('available', 'deleted');
 
@@ -99,7 +102,7 @@
        * @return {void}
        */
       this.addTransition = function(target, verb, label) {
-        this.transitions[target] =
+        this.transitions[verb] =
           {source: this.name,
            target: target,
            verb: verb,

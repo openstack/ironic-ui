@@ -100,17 +100,21 @@ def node_set_power_state(request, node_id, state):
     return ironicclient(request).node.set_power_state(node_id, state)
 
 
-def node_set_provision_state(request, node_uuid, state):
+def node_set_provision_state(request, node_uuid, state, cleansteps=None):
     """Set the target provision state for a given node.
 
     :param request: HTTP request.
     :param node_uuid: The UUID of the node.
     :param state: the target provision state to set.
+    :param cleansteps: Optional list of cleaning steps
     :return: node.
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_provision_state
     """
-    return ironicclient(request).node.set_provision_state(node_uuid, state)
+    node_manager = ironicclient(request).node
+    return node_manager.set_provision_state(node_uuid,
+                                            state,
+                                            cleansteps=cleansteps)
 
 
 def node_set_maintenance(request, node_id, state, maint_reason=None):

@@ -30,6 +30,7 @@
     'horizon.dashboard.admin.ironic.events',
     'horizon.framework.widgets.modal.deleteModalService',
     'horizon.dashboard.admin.ironic.create-port.service',
+    'horizon.dashboard.admin.ironic.clean-node.service',
     '$q',
     '$rootScope'
   ];
@@ -39,6 +40,7 @@
                    ironicEvents,
                    deleteModalService,
                    createPortService,
+                   cleanNodeService,
                    $q,
                    $rootScope) {
     var service = {
@@ -169,7 +171,11 @@
      *  the node to the desired target state for the node.
      */
     function setProvisionState(args) {
-      ironic.setNodeProvisionState(args.node.uuid, args.verb);
+      if (args.verb === 'clean') {
+        cleanNodeService.clean(args.node);
+      } else {
+        ironic.setNodeProvisionState(args.node.uuid, args.verb);
+      }
     }
 
     function createPort(node) {
