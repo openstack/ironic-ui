@@ -29,7 +29,7 @@
               <action button-type="split-button"
                       action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.createPort">
-                {$ 'Create port' | translate $}
+                {$ ::'Create port' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
@@ -37,7 +37,7 @@
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
-                  {$ 'Delete ports' | translate $}
+                  {$ ::'Delete ports' | translate $}
                 </action>
               </menu>
             </action-list>

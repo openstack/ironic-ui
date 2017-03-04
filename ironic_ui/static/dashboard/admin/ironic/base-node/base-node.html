@@ -6,7 +6,7 @@
           aria-label="Close">
     <span aria-hidden="true" class="fa fa-times"></span>
   </button>
-  <h3 class="modal-title" translate>{$ ctrl.modalTitle $}</h3>
+  <h3 class="modal-title" translate>{$ ::ctrl.modalTitle $}</h3>
 </div>
 <!-- begin general node info modal -->
 <div class="modal-body">
@@ -50,7 +50,7 @@
                      id="name"
                      name="name"
                      ng-pattern="ctrl.validHostNameRegex"
-                     placeholder="{$ 'A unique node name. Optional.' | translate $}"/>
+                     placeholder="{$ ::'A unique node name. Optional.' | translate $}"/>
             </div>
           </div>
           <!--node driver-->
@@ -238,6 +238,6 @@
           ng-click="ctrl.submit()"
           class="btn btn-primary"
           translate>
-    {$ ctrl.submitButtonTitle $}
+    {$ ::ctrl.submitButtonTitle $}
   </button>
 </div>

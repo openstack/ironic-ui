@@ -6,7 +6,7 @@
           aria-label="Close">
     <span aria-hidden="true" class="fa fa-times"></span>
   </button>
-  <h3 class="modal-title">{$ ctrl.modalTitle $}</h3>
+  <h3 class="modal-title">{$ ::ctrl.modalTitle $}</h3>
 </div>
 <div class="modal-body">
   <form id="CreatePortForm" name="CreatePortForm">
@@ -26,7 +26,7 @@
                ng-required="true"
                ng-pattern="'([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})'"
                auto-focus
-               placeholder="{$ 'MAC address for this port. Required.' | translate $}"/>
+               placeholder="{$ ::'MAC address for this port. Required.' | translate $}"/>
       </div>
     </div>
     <div class="form-group">
@@ -101,7 +101,7 @@
              type="text"
              ng-model="extraName"
              validate-unique="ctrl.checkExtraUnique"
-             placeholder="{$ 'Property Name' | translate $}"/>
+             placeholder="{$ ::'Property Name' | translate $}"/>
       <span class="input-group-btn">
         <button class="btn btn-primary"
                 type="button"
@@ -147,6 +147,6 @@
                        ExtraForm.$invalid"
           ng-click="ctrl.submit()"
           class="btn btn-primary">
-    {$ ctrl.submitButtonTitle $}
+    {$ ::ctrl.submitButtonTitle $}
   </button>
 </div>
