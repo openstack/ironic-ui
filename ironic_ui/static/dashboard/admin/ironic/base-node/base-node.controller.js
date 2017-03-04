@@ -76,7 +76,8 @@
       driver: null,
       driver_info: {},
       properties: {},
-      extra: {}
+      extra: {},
+      network_interface: null
     };
 
     /**

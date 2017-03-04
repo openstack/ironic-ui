@@ -53,6 +53,29 @@
                      placeholder="{$ ::'A unique node name. Optional.' | translate $}"/>
             </div>
           </div>
+          <!--network interface-->
+          <div class="form-group">
+            <label for="network_interface"
+                   class="control-label"
+                   translate>
+              Network Interface
+              <span class="help-icon"
+                    data-container="body"
+                    title=""
+                    data-toggle="tooltip"
+                    data-original-title="{$ ::'Network interface used for switching between provisioning, tenant, and cleaning networks.' | translate $}">
+                <span class="fa fa-question-circle"></span>
+              </span>
+            </label>
+            <div>
+              <div class="btn-group">
+                <label class="btn btn-default"
+                       ng-repeat="opt in ['noop', 'flat', 'neutron']"
+                       ng-model="ctrl.node.network_interface"
+                       uib-btn-radio="opt">{$ opt $}</label>
+              </div>
+            </div>
+          </div>
           <!--node driver-->
           <div class="form-group required">
             <label for="driver"
