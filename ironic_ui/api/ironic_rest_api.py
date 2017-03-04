@@ -35,9 +35,9 @@ class Nodes(generic.View):
         :param request: HTTP request.
         :return: nodes.
         """
-        items = ironic.node_list(request)
+        nodes = ironic.node_list(request)
         return {
-            'items': [i.to_dict() for i in items],
+            'nodes': [i.to_dict() for i in nodes]
         }
 
     @rest_utils.ajax(data_required=True)
@@ -98,9 +98,9 @@ class Ports(generic.View):
         :return: List of ports.
         """
         node_id = request.GET.get('node_id')
-        items = ironic.node_list_ports(request, node_id)
+        ports = ironic.node_list_ports(request, node_id)
         return {
-            'items': [i.to_dict() for i in items],
+            'ports': [i.to_dict() for i in ports]
         }
 
     @rest_utils.ajax(data_required=True)
@@ -236,9 +236,9 @@ class Drivers(generic.View):
         :param request: HTTP request
         :return: drivers
         """
-        items = ironic.driver_list(request)
+        drivers = ironic.driver_list(request)
         return {
-            'items': [i.to_dict() for i in items]
+            'drivers': [i.to_dict() for i in drivers]
         }
 
 
