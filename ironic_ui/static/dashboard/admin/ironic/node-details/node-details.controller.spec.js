@@ -22,6 +22,7 @@
     var nodeUuid = "0123abcd-0123-4567-abcd-0123456789ab";
     var nodeName = "herp";
     var numPorts = 2;
+    var bootDevice = {boot_device: 'pxe', persistent: true};
 
     function portUuid(nodeUuid, index) {
       return '' + index + index + nodeUuid.substring(2);
@@ -64,6 +65,10 @@
           ports.push(createPort(uuid, i));
         }
         return $q.when(ports);
+      },
+
+      getBootDevice: function () {
+        return $q.when(bootDevice);
       },
 
       validateNode: function() {
@@ -125,6 +130,7 @@
       expect(ctrl.node).toBeDefined();
       var node = createNode(nodeName, nodeUuid);
       node.id = node.uuid;
+      node.bootDevice = bootDevice;
       expect(ctrl.node).toEqual(node);
     });
 
@@ -169,6 +175,11 @@
     it('should have node-validation', function () {
       expect(ctrl.nodeValidation).toBeDefined();
       expect(ctrl.nodeValidation).toEqual([]);
+    });
+
+    it('should have a boot device', function () {
+      expect(ctrl.node.bootDevice).toBeDefined();
+      expect(ctrl.node.bootDevice).toEqual(bootDevice);
     });
   });
 })();

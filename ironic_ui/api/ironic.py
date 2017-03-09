@@ -190,6 +190,18 @@ def node_validate(request, node_id):
     return result
 
 
+def node_get_boot_device(request, node_id):
+    """Get the boot device for a specified node.
+
+    :param request: HTTP request.
+    :param node_id: The id of the node.
+    :return: Dictionary with keys "boot_device" and "persistent"
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.get_boot_device
+    """
+    return ironicclient(request).node.get_boot_device(node_id)
+
+
 def driver_list(request):
     """Retrieve a list of drivers.
 

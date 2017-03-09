@@ -225,6 +225,22 @@ class Validate(generic.View):
 
 
 @urls.register
+class BootDevice(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/boot_device$'
+
+    @rest_utils.ajax()
+    def get(self, request, node_id):
+        """Get the boot device for a specified node
+
+        :param request: HTTP request.
+        :param node_id: Node name or uuid
+        :return: Dictionary with keys "boot_device" and "persistent"
+        """
+        return ironic.node_get_boot_device(request, node_id)
+
+
+@urls.register
 class Drivers(generic.View):
 
     url_regex = r'ironic/drivers/$'

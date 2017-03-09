@@ -49,6 +49,7 @@
       getNode: getNode,
       getNodes: getNodes,
       getPortsWithNode: getPortsWithNode,
+      getBootDevice: getBootDevice,
       powerOffNode: powerOffNode,
       powerOnNode: powerOnNode,
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
@@ -104,6 +105,28 @@
         .catch(function(response) {
           var msg = interpolate(
             gettext('Unable to retrieve the Ironic node: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Retrieve the boot device for a node
+     * https://developer.openstack.org/api-ref/baremetal/#get-boot-device
+     *
+     * @param {string} uuid – UUID or logical name of a node.
+     * @return {promise} Dictionary describing the current boot device
+     */
+    function getBootDevice(uuid) {
+      return apiService.get('/api/ironic/nodes/' + uuid + '/boot_device')
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve boot device for Ironic node. %s'),
             [response.data],
             false);
           toastService.add('error', msg);
