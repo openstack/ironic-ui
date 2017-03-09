@@ -184,7 +184,7 @@ class Maintenance(generic.View):
 
     @rest_utils.ajax()
     def patch(self, request, node_id):
-        """Put a specified node into maintetance state
+        """Put a specified node into maintenance state
 
         :param request: HTTP request.
         :param node_id: Node name or uuid
@@ -199,7 +199,7 @@ class Maintenance(generic.View):
 
     @rest_utils.ajax()
     def delete(self, request, node_id):
-        """Take a specified node out of the maintetance state
+        """Take a specified node out of the maintenance state
 
         :param request: HTTP request.
         :param node_id: Node name or uuid
