@@ -177,7 +177,7 @@ def node_validate(request, node_id):
 
     :param request: HTTP request.
     :param node_id: The id of the node.
-    :return: Dictionary of interface statuses
+    :return: List of dictionaries, each containing an interface status
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.validate
     """

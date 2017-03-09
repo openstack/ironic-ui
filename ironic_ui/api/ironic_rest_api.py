@@ -219,7 +219,7 @@ class Validate(generic.View):
 
         :param request: HTTP request.
         :param node_id: Node name or uuid
-        :return: Dictionary of interface statuses
+        :return: List of dictionaries of interface statuses
         """
         return ironic.node_validate(request, node_id)
 
