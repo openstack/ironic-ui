@@ -123,7 +123,7 @@
        assumed to accept Glance image uuids as valid values.
 
        2. Property names ending in _port are assumed to only accept
-       postive integer values
+       positive integer values
 
        3. Property names ending in _address are assumed to only accept
        valid IPv4 and IPv6 addresses; and hostnames
