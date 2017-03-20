@@ -70,6 +70,10 @@ http://docs.openstack.org/developer/horizon/quickstart.html
    The Ironic Bare Metal Provisioning plugin should now be visible in the Horizon
    navigation.
 
+6. Run JavaScript unit tests by visiting
+   http://localhost:8000/jasmine/?spec=horizon.dashboard.admin.ironic in your
+   browser.
+
 Uninstallation
 --------------
 
