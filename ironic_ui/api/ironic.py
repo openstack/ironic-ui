@@ -67,7 +67,7 @@ def node_get(request, node_id):
     """Retrieve a node.
 
     :param request: HTTP request.
-    :param node_id: The UUID of the node.
+    :param node_id: The UUID or name of the node.
     :return: node.
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.get
@@ -79,7 +79,7 @@ def node_list_ports(request, node_id):
     """List all the ports on a given node.
 
     :param request: HTTP request.
-    :param node_id: The UUID of the node.
+    :param node_id: The UUID or name of the node.
     :return: A full list of ports. (limit=0)
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.list_ports
@@ -91,7 +91,7 @@ def node_set_power_state(request, node_id, state):
     """Set power state for a given node.
 
     :param request: HTTP request.
-    :param node_id: The UUID of the node.
+    :param node_id: The UUID or name of the node.
     :param state: the power state to set.
     :return: node.
 
@@ -100,11 +100,11 @@ def node_set_power_state(request, node_id, state):
     return ironicclient(request).node.set_power_state(node_id, state)
 
 
-def node_set_provision_state(request, node_uuid, state, cleansteps=None):
+def node_set_provision_state(request, node_id, state, cleansteps=None):
     """Set the target provision state for a given node.
 
     :param request: HTTP request.
-    :param node_uuid: The UUID of the node.
+    :param node_id: The UUID or name of the node.
     :param state: the target provision state to set.
     :param cleansteps: Optional list of cleaning steps
     :return: node.
@@ -112,7 +112,7 @@ def node_set_provision_state(request, node_uuid, state, cleansteps=None):
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_provision_state
     """
     node_manager = ironicclient(request).node
-    return node_manager.set_provision_state(node_uuid,
+    return node_manager.set_provision_state(node_id,
                                             state,
                                             cleansteps=cleansteps)
 
@@ -121,7 +121,7 @@ def node_set_maintenance(request, node_id, state, maint_reason=None):
     """Set the maintenance mode on a given node.
 
     :param request: HTTP request.
-    :param node_id: The UUID of the node.
+    :param node_id: The UUID or name of the node.
     :param state: The maintenance state to set.
     :return: node.
 
@@ -149,7 +149,7 @@ def node_delete(request, node_id):
     """Delete a node from inventory.
 
     :param request: HTTP request.
-    :param node_id: The UUID of the node.
+    :param node_id: The UUID or name of the node.
     :return: node.
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.delete
@@ -161,7 +161,7 @@ def node_update(request, node_id, patch):
     """Update a specified node.
 
     :param request: HTTP request.
-    :param node_id: The UUID of the node.
+    :param node_id: The UUID or name of the node.
     :param patch: Sequence of update operations
     :return: node.
 
@@ -176,7 +176,7 @@ def node_validate(request, node_id):
     """Validate a specified node.
 
     :param request: HTTP request.
-    :param node_id: The id of the node.
+    :param node_id: The UUID or name of the node.
     :return: List of dictionaries, each containing an interface status
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.validate
