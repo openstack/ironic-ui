@@ -67,6 +67,24 @@ http://docs.openstack.org/developer/horizon/quickstart.html
 
     ./run_tests.sh --runserver
 
+
+   The Ironic Bare Metal Provisioning plugin should now be visible in the Horizon
+   navigation.
+
+
+Installation Instructions with devstack
+---------------------------------------
+
+In order to use the Ironic UI with devstack, you will need to enable the UI plugin separately.
+This is done in a similar fashion to enabling Ironic for devstack.
+Make sure you have horizon enabled (enabled by default in devstack).
+Then, enable the Ironic UI plugin appending the following line to the end of the local.conf file,
+just after Ironic plugin enablement:
+
+    enable_plugin ironic-ui https://github.com/openstack/ironic-ui
+
+After this, you can run ./stack.sh from the devstack directory.
+
    The Ironic Bare Metal Provisioning plugin should now be visible in the Horizon
    navigation.
 

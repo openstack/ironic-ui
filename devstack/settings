@@ -1,0 +1,5 @@
+# settings file for ironic-ui plugin
+enable_service ironic-ui
+
+# set up default directories
+IRONIC_UI_DIR=${IRONIC_UI_DIR:=$DEST/ironic-ui}
