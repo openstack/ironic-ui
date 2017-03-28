@@ -5,17 +5,17 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev75\n"
+"Project-Id-Version: ironic-ui 2.2.1.dev39\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-02-06 20:16+0000\n"
+"POT-Creation-Date: 2017-03-27 18:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-07 08:52+0000\n"
+"PO-Revision-Date: 2017-03-28 08:47+0000\n"
 "Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
-"X-Generator: Zanata 3.7.3\n"
+"X-Generator: Zanata 3.9.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
@@ -29,9 +29,6 @@ msgid "A request has been made to change the provisioning state of node %s"
 msgstr ""
 "Eine Anfrage wurde erstellt, um den Provisionierungszustand des Knotens %s "
 "zu ändern"
-
-msgid "A unique node name. Optional."
-msgstr "Ein eindeutiger Knotenname. Optional."
 
 msgid "Abort cleaning"
 msgstr "Bereinigung abbrechen"
@@ -84,9 +81,6 @@ msgstr "Konsole aktiviert"
 msgid "Create Port"
 msgstr "Port erstellen"
 
-msgid "Create port"
-msgstr "Port erstellen"
-
 msgid "Created At"
 msgstr "Erstellt am"
 
@@ -102,15 +96,6 @@ msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "Port löschen"
 msgstr[1] "Ports löschen"
-
-msgid "Delete node"
-msgstr "Knoten löschen"
-
-msgid "Delete nodes"
-msgstr "Knoten löschen"
-
-msgid "Delete ports"
-msgstr "Ports löschen"
 
 msgid "Deploy Kernel"
 msgstr "Kernel bereitstellen"
@@ -129,9 +114,6 @@ msgstr "Treiberinformationen"
 
 msgid "Driver Validation"
 msgstr "Treibervalidierung"
-
-msgid "Edit"
-msgstr "Bearbeiten"
 
 msgid "Edit Node"
 msgstr "Knoten bearbeiten"
@@ -190,9 +172,6 @@ msgstr "MAC-Adresse"
 msgid "MAC address"
 msgstr "MAC-Adresse"
 
-msgid "MAC address for this port. Required."
-msgstr "MAC-Adresse für diesen Port. Erforderlich."
-
 msgid "MAC address or OpenFlow datapath ID"
 msgstr "MAC Adresse oder OpenFlow datapath ID"
 
@@ -202,26 +181,23 @@ msgstr "Wartung"
 msgid "Maintenance Reason"
 msgstr "Grund der Wartung"
 
-msgid "Maintenance off"
-msgstr "Wartung ausschalten"
-
-msgid "Maintenance on"
-msgstr "Wartung einschalten"
-
 msgid "Move to"
 msgstr "Verschieben nach"
 
 msgid "Name"
 msgstr "Name"
 
+msgid "Network Interface"
+msgstr "Netzwerk Schnittstelle"
+
 msgid "No Instance"
 msgstr "Keine Instanz"
 
-msgid "No maintenance reason given."
-msgstr "Kein Wartungsgrund angegeben."
-
 msgid "No network ports have been defined"
 msgstr "Es wurden keine Netzwerkports definiert"
+
+msgid "No reason given."
+msgstr "Kein Grund angegeben."
 
 msgid "Node"
 msgstr "Knoten"
@@ -284,17 +260,8 @@ msgstr "Ports"
 msgid "Power State"
 msgstr "Zustand"
 
-msgid "Power off"
-msgstr "Ausschalten"
-
-msgid "Power on"
-msgstr "Einschalten"
-
 msgid "Properties"
 msgstr "Eigenschaften"
-
-msgid "Property Name"
-msgstr "Eigenschaftname"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
@@ -446,12 +413,8 @@ msgid "Unable to power on the node: %s"
 msgstr "Konnte den Knoten nicht einschalten: %s"
 
 #, python-format
-msgid "Unable to put the Ironic node in maintenance mode: %s"
-msgstr "Konnte den Ironic Knoten nicht in den Wartungsmodus setzen: %s"
-
-#, python-format
-msgid "Unable to remove the Ironic node from maintenance mode: %s"
-msgstr "Konnte den Wartungsmodus vom Ironic Knoten nicht löschen: %s"
+msgid "Unable to put the Ironic node %s in maintenance mode: %s"
+msgstr "Konnte den Ironic Knoten %s nicht in den Wartungsmodus setzen: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
@@ -489,6 +452,9 @@ msgstr "Port %s kann nicht aktualisiert werden: %s"
 msgid "Unable to validate node %s: %s"
 msgstr "Knoten %s kann nicht  validiert werden: %s"
 
+msgid "Unable to validate the JSON input"
+msgstr "JSON-Eingabe kann nicht validiert werden"
+
 msgid "Update Node"
 msgstr "Knoten aktualisieren"
 
@@ -507,17 +473,17 @@ msgstr "Virtualisierungssoftware"
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "Standard (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 
+msgid "{$ ::ctrl.modalTitle $}"
+msgstr "{$ ::ctrl.modalTitle $}"
+
+msgid "{$ ::ctrl.submitButtonTitle $}"
+msgstr "{$ ::ctrl.submitButtonTitle $}"
+
 msgid "{$ collection.addPrompt $}:"
 msgstr "{$ collection.addPrompt $}:"
 
 msgid "{$ collection.title $}"
 msgstr "{$ collection.title $}"
-
-msgid "{$ ctrl.modalTitle $}"
-msgstr "{$ ctrl.modalTitle $}"
-
-msgid "{$ ctrl.submitButtonTitle $}"
-msgstr "{$ ctrl.submitButtonTitle $}"
 
 msgid "{$ property.getDescription() $}"
 msgstr "{$ property.getDescription() $}"

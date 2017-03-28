@@ -3,9 +3,9 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev75\n"
+"Project-Id-Version: ironic-ui 2.2.1.dev39\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-02-06 20:16+0000\n"
+"POT-Creation-Date: 2017-03-27 18:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
-"X-Generator: Zanata 3.7.3\n"
+"X-Generator: Zanata 3.9.6\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
@@ -25,9 +25,6 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
 msgstr "Permintaan telah dibuat untuk mengubah keadaan provisioning node %s"
-
-msgid "A unique node name. Optional."
-msgstr "Nama node yang unik. Pilihan."
 
 msgid "Abort cleaning"
 msgstr "Membatalkan pembersihan"
@@ -74,9 +71,6 @@ msgstr "Console Enabled (konsol diaktifkan)"
 msgid "Create Port"
 msgstr "Buat Port"
 
-msgid "Create port"
-msgstr "Buat port"
-
 msgid "Created At"
 msgstr "Created At"
 
@@ -90,15 +84,6 @@ msgstr[0] "Delete Node (hapus node)"
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "Delete Port (hapus port)"
-
-msgid "Delete node"
-msgstr "Hapus node"
-
-msgid "Delete nodes"
-msgstr "Hapus node"
-
-msgid "Delete ports"
-msgstr "Hapus port"
 
 msgid "Deploy Kernel"
 msgstr "Deploy Kernel (mengerahkan kernel)"
@@ -117,9 +102,6 @@ msgstr "Driver Info"
 
 msgid "Driver Validation"
 msgstr "Driver Validation (validasi driver)"
-
-msgid "Edit"
-msgstr "Edit"
 
 msgid "Edit Node"
 msgstr "Edit Node"
@@ -178,9 +160,6 @@ msgstr "MAC Address"
 msgid "MAC address"
 msgstr "MAC address"
 
-msgid "MAC address for this port. Required."
-msgstr "MAC address untuk port ini. Wajib."
-
 msgid "MAC address or OpenFlow datapath ID"
 msgstr "Alamat MAC atau OpenFlow datapath ID"
 
@@ -190,12 +169,6 @@ msgstr "Maintenance (pemeliharaan)"
 msgid "Maintenance Reason"
 msgstr "Maintenance Reason (alasan pemeliharaan)"
 
-msgid "Maintenance off"
-msgstr "Maintenance off"
-
-msgid "Maintenance on"
-msgstr "Maintenance on"
-
 msgid "Move to"
 msgstr "Move to (pindah ke)"
 
@@ -204,9 +177,6 @@ msgstr "Nama"
 
 msgid "No Instance"
 msgstr "Tak ada Instance"
-
-msgid "No maintenance reason given."
-msgstr "Tidak ada alasan pemeliharaan diberikan."
 
 msgid "No network ports have been defined"
 msgstr "Tidak ada port jaringan telah didefinisikan"
@@ -272,17 +242,8 @@ msgstr "Port-Port"
 msgid "Power State"
 msgstr "Power State"
 
-msgid "Power off"
-msgstr "Power off"
-
-msgid "Power on"
-msgstr "Power on"
-
 msgid "Properties"
 msgstr "Property (sifat)"
-
-msgid "Property Name"
-msgstr "Property Name (nama property)"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
@@ -430,14 +391,6 @@ msgid "Unable to power on the node: %s"
 msgstr "Tidak dapat daya hidup pada node: %s"
 
 #, python-format
-msgid "Unable to put the Ironic node in maintenance mode: %s"
-msgstr "Tidak dapat menempatkan Ironic node dalam modus pemeliharaan: %s"
-
-#, python-format
-msgid "Unable to remove the Ironic node from maintenance mode: %s"
-msgstr "Tidak dapat menghapus  Ironic node dari modus pemeliharaan: %s"
-
-#, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Tidak dapat mengambil Ironic driver: %s"
 
@@ -496,12 +449,6 @@ msgstr "{$ collection.addPrompt $}:"
 
 msgid "{$ collection.title $}"
 msgstr "{$ collection.title $}"
-
-msgid "{$ ctrl.modalTitle $}"
-msgstr "{$ ctrl.modalTitle $}"
-
-msgid "{$ ctrl.submitButtonTitle $}"
-msgstr "{$ ctrl.submitButtonTitle $}"
 
 msgid "{$ property.getDescription() $}"
 msgstr "{$ property.getDescription() $}"

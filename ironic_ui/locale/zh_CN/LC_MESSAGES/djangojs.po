@@ -8,9 +8,9 @@
 # liujunpeng <liujunpeng@inspur.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.1.1.dev75\n"
+"Project-Id-Version: ironic-ui 2.2.1.dev39\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-02-06 20:16+0000\n"
+"POT-Creation-Date: 2017-03-27 18:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Last-Translator: Gaoxiao Zhu <zhu.gaoxiao@h3c.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
-"X-Generator: Zanata 3.7.3\n"
+"X-Generator: Zanata 3.9.6\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
@@ -30,9 +30,6 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
 msgstr "更改节点 \"%s\" 服务状态的请求已提交。"
-
-msgid "A unique node name. Optional."
-msgstr "独一无二的节点名称。可选。"
 
 msgid "Abort cleaning"
 msgstr "放弃清理"
@@ -75,9 +72,6 @@ msgstr "允许控制台"
 msgid "Create Port"
 msgstr "创建端口"
 
-msgid "Create port"
-msgstr "创建端口"
-
 msgid "Created At"
 msgstr "创建于"
 
@@ -91,15 +85,6 @@ msgstr[0] "删除节点"
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "删除端口"
-
-msgid "Delete node"
-msgstr "删除节点"
-
-msgid "Delete nodes"
-msgstr "删除多个节点"
-
-msgid "Delete ports"
-msgstr "删除端口"
 
 msgid "Deploy Kernel"
 msgstr "部署内核"
@@ -118,9 +103,6 @@ msgstr "驱动信息"
 
 msgid "Driver Validation"
 msgstr "驱动验证"
-
-msgid "Edit"
-msgstr "编辑"
 
 msgid "Edit Node"
 msgstr "编辑节点"
@@ -179,9 +161,6 @@ msgstr "MAC地址"
 msgid "MAC address"
 msgstr "MAC地址"
 
-msgid "MAC address for this port. Required."
-msgstr "需要该端口的MAC地址"
-
 msgid "MAC address or OpenFlow datapath ID"
 msgstr "MAC地址或OpenFlow datapath ID"
 
@@ -191,12 +170,6 @@ msgstr "维护"
 msgid "Maintenance Reason"
 msgstr "维护原因"
 
-msgid "Maintenance off"
-msgstr "退出维护模式"
-
-msgid "Maintenance on"
-msgstr "处于维护状态"
-
 msgid "Move to"
 msgstr "移动"
 
@@ -205,9 +178,6 @@ msgstr "名称"
 
 msgid "No Instance"
 msgstr "没有实例"
-
-msgid "No maintenance reason given."
-msgstr "缺少提供维护原因"
 
 msgid "No network ports have been defined"
 msgstr "未定义网络端口"
@@ -273,17 +243,8 @@ msgstr "端口"
 msgid "Power State"
 msgstr "电源状态"
 
-msgid "Power off"
-msgstr "关闭电源"
-
-msgid "Power on"
-msgstr "打开电源"
-
 msgid "Properties"
 msgstr "属性"
-
-msgid "Property Name"
-msgstr "属性名称"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
@@ -428,14 +389,6 @@ msgid "Unable to power on the node: %s"
 msgstr "无法启动节点电源: %s"
 
 #, python-format
-msgid "Unable to put the Ironic node in maintenance mode: %s"
-msgstr "无法将Ironic节点置于维护模式: %s"
-
-#, python-format
-msgid "Unable to remove the Ironic node from maintenance mode: %s"
-msgstr "无法将Ironic节点退出维护模式: %s"
-
-#, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "无法获取Ironic驱动: %s"
 
@@ -494,12 +447,6 @@ msgstr "{$ collection.addPrompt $}:"
 
 msgid "{$ collection.title $}"
 msgstr "{$ collection.title $}"
-
-msgid "{$ ctrl.modalTitle $}"
-msgstr "{$ ctrl.modalTitle $}"
-
-msgid "{$ ctrl.submitButtonTitle $}"
-msgstr "{$ ctrl.submitButtonTitle $}"
 
 msgid "{$ property.getDescription() $}"
 msgstr "{$ property.getDescription() $}"
