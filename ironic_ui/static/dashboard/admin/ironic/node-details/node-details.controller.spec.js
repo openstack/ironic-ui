@@ -38,6 +38,8 @@
     function createPort(nodeUuid, index, extra) {
       var port = {uuid: portUuid(nodeUuid, index),
                   address: portMacAddr(index)};
+      port.id = port.uuid;
+      port.name = port.address;
       if (angular.isDefined(extra)) {
         port.extra = extra;
       }
@@ -53,7 +55,7 @@
     var ironicAPI = {
       getNode: function (uuid) {
         var node = createNode(nodeName, uuid);
-        return $q.when({data: node});
+        return $q.when(node);
       },
 
       getPortsWithNode: function (uuid) {
@@ -61,7 +63,7 @@
         for (var i = 0; i < numPorts; i++) {
           ports.push(createPort(uuid, i));
         }
-        return $q.when({data: {items: ports}});
+        return $q.when(ports);
       },
 
       validateNode: function() {
