@@ -1,0 +1,4 @@
+---
+features:
+  - |
+    The Node Details/Configuration tab now shows the node's boot device.

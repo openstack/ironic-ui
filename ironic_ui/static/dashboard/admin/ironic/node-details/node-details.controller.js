@@ -132,6 +132,7 @@
         ctrl.nodeStateTransitions =
           nodeStateTransitionService.getTransitions(ctrl.node.provision_state);
         retrievePorts();
+        retrieveBootDevice();
         validateNode();
       });
     }
@@ -161,6 +162,19 @@
     function retrievePorts() {
       ironic.getPortsWithNode(ctrl.node.uuid).then(function (ports) {
         ctrl.portsSrc = ports;
+      });
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrieveBootDevice
+     * @description Retrieve the boot device associated with the current node,
+     * and store it in the controller instance.
+     *
+     * @return {void}
+     */
+    function retrieveBootDevice() {
+      ironic.getBootDevice(ctrl.node.uuid).then(function (bootDevice) {
+        ctrl.node.bootDevice = bootDevice;
       });
     }
 
