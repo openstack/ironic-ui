@@ -5,13 +5,13 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.2.1.dev39\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev4\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-03-27 18:54+0000\n"
+"POT-Creation-Date: 2017-03-30 12:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-03-28 08:47+0000\n"
+"PO-Revision-Date: 2017-04-10 09:43+0000\n"
 "Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -60,6 +60,9 @@ msgstr[1] ""
 "Sind Sie sicher, dass Sie die Ports \"%s\" löschen wollen? Diese Aktion kann "
 "nicht rückgängig gemacht werden."
 
+msgid "Boot Device"
+msgstr "Boot-Gerät"
+
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -69,8 +72,20 @@ msgstr "Chassis-ID"
 msgid "Choose an Image"
 msgstr "Wählen Sie ein Abbild"
 
+msgid "Clean"
+msgstr "Bereinigen"
+
+msgid "Clean Node"
+msgstr "Knoten bereinigen"
+
 msgid "Clean Step"
 msgstr "Bereinigungsschritt"
+
+msgid "Clean node"
+msgstr "Knoten bereinigen"
+
+msgid "Clean steps should be an non-empty array"
+msgstr "Reinigungsschritte sollten ein nicht-leeres Array sein"
 
 msgid "Configuration"
 msgstr "Konfiguration"
@@ -103,6 +118,9 @@ msgstr "Kernel bereitstellen"
 msgid "Deploy Ramdisk"
 msgstr "Ramdisk bereitstellen"
 
+msgid "Device"
+msgstr "Gerät"
+
 msgid "Driver"
 msgstr "Treiber"
 
@@ -114,6 +132,13 @@ msgstr "Treiberinformationen"
 
 msgid "Driver Validation"
 msgstr "Treibervalidierung"
+
+msgid ""
+"Each cleaning step must be an object that contains \"interface\" and \"step"
+"\" properties"
+msgstr ""
+"Jeder Reinigunsschritt muss ein Objekt sein, das \"interface\" und \"step\" "
+"Eigenschaften enthält"
 
 msgid "Edit Node"
 msgstr "Knoten bearbeiten"
@@ -251,6 +276,9 @@ msgstr ""
 "            <span class=\"fa fa-question-circle\"></span>\n"
 "          </span>"
 
+msgid "Persistent"
+msgstr "Persistent"
+
 msgid "Port successfully created"
 msgstr "Port erfolgreich erstellt"
 
@@ -262,6 +290,9 @@ msgstr "Zustand"
 
 msgid "Properties"
 msgstr "Eigenschaften"
+
+msgid "Provide a list of cleaning steps in JSON format"
+msgstr "Eine Liste der Reinigungsschritte im JSON-Format angeben"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
@@ -417,12 +448,20 @@ msgid "Unable to put the Ironic node %s in maintenance mode: %s"
 msgstr "Konnte den Ironic Knoten %s nicht in den Wartungsmodus setzen: %s"
 
 #, python-format
+msgid "Unable to remove the Ironic node %s from maintenance mode: %s"
+msgstr "Wartungsmodus des Ironic Knotens %s kann nicht gelöscht werden: %s"
+
+#, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Ironic Treiber können nicht abgerufen werden: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic nodes. %s"
 msgstr "Konnte die Ironic Knoten nicht abrufen: %s"
+
+#, python-format
+msgid "Unable to retrieve boot device for Ironic node. %s"
+msgstr "Boot-Gerät für den Ironic-Knoten kann nicht abgerufen werden. %s"
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
