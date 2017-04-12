@@ -88,6 +88,10 @@ After this, you can run ./stack.sh from the devstack directory.
    The Ironic Bare Metal Provisioning plugin should now be visible in the Horizon
    navigation.
 
+6. Run JavaScript unit tests by visiting
+   http://localhost:8000/jasmine/?spec=horizon.dashboard.admin.ironic in your
+   browser.
+
 Uninstallation
 --------------
 
