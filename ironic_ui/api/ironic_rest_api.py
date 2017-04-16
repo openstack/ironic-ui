@@ -152,8 +152,10 @@ class StatesPower(generic.View):
         :param node_id: Node name or uuid
         :return: Return code
         """
-        state = request.DATA.get('state')
-        return ironic.node_set_power_state(request, node_id, state)
+        return ironic.node_set_power_state(request,
+                                           node_id,
+                                           request.DATA.get('state'),
+                                           request.DATA.get('soft'))
 
 
 @urls.register

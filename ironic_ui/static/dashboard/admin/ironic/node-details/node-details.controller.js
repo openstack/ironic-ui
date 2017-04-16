@@ -74,6 +74,7 @@
     ctrl.nodeValidation = [];
     ctrl.nodeValidationMap = {}; // Indexed by interface
     ctrl.nodeStateTransitions = [];
+    ctrl.nodePowerTransitions = [];
     ctrl.ports = [];
     ctrl.portsSrc = [];
     ctrl.basePath = basePath;
@@ -135,6 +136,7 @@
       retrieveNode(uuid).then(function () {
         ctrl.nodeStateTransitions =
           nodeStateTransitionService.getTransitions(ctrl.node.provision_state);
+        ctrl.nodePowerTransitions = actions.getPowerTransitions(ctrl.node);
         retrievePorts();
         retrieveBootDevice();
         validateNode();
