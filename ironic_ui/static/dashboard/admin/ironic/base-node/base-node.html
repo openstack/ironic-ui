@@ -6,7 +6,7 @@
           aria-label="Close">
     <span aria-hidden="true" class="fa fa-times"></span>
   </button>
-  <h3 class="modal-title" translate>{$ ::ctrl.modalTitle $}</h3>
+  <h3 class="modal-title">{$ ::ctrl.modalTitle $}</h3>
 </div>
 <!-- begin general node info modal -->
 <div class="modal-body">
@@ -59,14 +59,14 @@
                    class="control-label"
                    translate>
               Network Interface
-              <span class="help-icon"
-                    data-container="body"
-                    title=""
-                    data-toggle="tooltip"
-                    data-original-title="{$ ::'Network interface used for switching between provisioning, tenant, and cleaning networks.' | translate $}">
-                <span class="fa fa-question-circle"></span>
-              </span>
             </label>
+            <span class="help-icon"
+                  data-container="body"
+                  title=""
+                  data-toggle="tooltip"
+                  data-original-title="{$ ::'Network interface used for switching between provisioning, tenant, and cleaning networks.' | translate $}">
+              <span class="fa fa-question-circle"></span>
+            </span>
             <div>
               <div class="btn-group">
                 <label class="btn btn-default"
@@ -99,18 +99,17 @@
                name="add-{$ collection.id $}-form">
               <div class="form-group">
                 <label for="add-{$ collection.id $}-input"
-                       class="control-label"
-                       translate>{$ collection.title $}</label>
+                       class="control-label">
+                  {$ collection.title $}</label>
                 <div class="input-group input-group-sm">
                   <span class="input-group-addon"
-                        style="width:25%;text-align:right"
-                        translate>
+                        style="width:25%;text-align:right">
                     {$ collection.addPrompt $}:</span>
                   <input class="form-control"
                          id="add-{$ collection.id $}-input"
                          type="text"
                          ng-model="ctrl[collection.id]"
-                         placeholder="{$ collection.placeholder | translate $}"/>
+                         placeholder="{$ collection.placeholder $}"/>
                   <span class="input-group-btn">
                     <button class="btn btn-primary"
                             type="button"
@@ -177,7 +176,7 @@
                     data-container="body"
                     title=""
                     data-toggle="tooltip"
-                    data-original-title="{$ property.getDescription() | translate $}">
+                    data-original-title="{$ property.getDescription() $}">
                 <span class="fa fa-question-circle"></span>
               </span>
             </label>
@@ -224,8 +223,8 @@
                 <option ng-if="property.defaultValue === undefined"
                         value=""
                         disabled
-                        selected
-                        translate>{$ property.getDescription() $}</option>
+                        selected>
+                  {$ property.getDescription() $}</option>
               </select>
               <div ng-if="selectOptions.length <= 4"
                    class="btn-group">
@@ -259,8 +258,7 @@
                         extraForm.$invalid ||
                         instanceInfoForm.$invalid"
           ng-click="ctrl.submit()"
-          class="btn btn-primary"
-          translate>
+          class="btn btn-primary">
     {$ ::ctrl.submitButtonTitle $}
   </button>
 </div>
