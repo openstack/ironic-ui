@@ -80,7 +80,8 @@
         driver_info: {},
         properties: {},
         extra: {},
-        network_interface: null});
+        network_interface: null,
+        resource_class: null});
       expect(Object.getOwnPropertyNames(ctrl).sort()).toEqual(
         BASE_NODE_CONTROLLER_PROPERTIES.sort());
     });

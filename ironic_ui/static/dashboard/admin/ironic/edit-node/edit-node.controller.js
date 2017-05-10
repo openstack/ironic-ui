@@ -83,6 +83,7 @@
         ctrl.baseNode = node;
 
         ctrl.node.name = node.name;
+        ctrl.node.resource_class = node.resource_class;
         ctrl.node.network_interface = node.network_interface;
         for (var i = 0; i < ctrl.drivers.length; i++) {
           if (ctrl.drivers[i].name === node.driver) {
@@ -121,6 +122,7 @@
         this.path = path;
       };
       angular.forEach([new PatchItem("name", "/name"),
+                       new PatchItem("resource_class", "/resource_class"),
                        new PatchItem("network_interface", "/network_interface"),
                        new PatchItem("driver", "/driver"),
                        new PatchItem("properties", "/properties"),

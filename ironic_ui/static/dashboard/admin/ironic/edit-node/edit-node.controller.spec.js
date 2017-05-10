@@ -77,6 +77,7 @@
           PROPERTY_COLLECTION_PROPERTIES.sort());
       });
       expect(ctrl.node.name).toEqual(editNode.name);
+      expect(ctrl.node.resource_class).toEqual(editNode.resource_class);
       expect(ctrl.node.network_interface).toEqual(editNode.network_interface);
       expect(ctrl.node.properties).toEqual(editNode.properties);
       expect(ctrl.node.extra).toEqual(editNode.extra);

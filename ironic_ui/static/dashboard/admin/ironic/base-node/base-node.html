@@ -31,7 +31,6 @@
     <!--base node form-->
     <form id="baseNodeForm"
           name="baseNodeForm">
-
       <!--tabbed content-->
       <div class="tab-content">
         <!-- node info tab-->
@@ -51,6 +50,22 @@
                      name="name"
                      ng-pattern="ctrl.validHostNameRegex"
                      placeholder="{$ ::'A unique node name. Optional.' | translate $}"/>
+            </div>
+          </div>
+          <!--resource class-->
+          <div class="form-group"
+               ng-class="{'has-error': baseNodeForm.resource_class.$invalid &&
+                         baseNodeForm.resource_class.$dirty}">
+            <label for="resource_class"
+                   class="control-label"
+                   translate>Resource Class</label>
+            <div>
+              <input type="text maxlength=80"
+                     class="form-control"
+                     ng-model="ctrl.node.resource_class"
+                     id="resource_class"
+                     name="resource_class"
+                     placeholder="{$ ::'A resource class name for future nova scheduling, in stand-alone usage only. Optional.' | translate $}"/>
             </div>
           </div>
           <!--network interface-->
