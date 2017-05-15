@@ -60,14 +60,14 @@
     */
     ctrl.propertyCollections = [
       {id: "properties",
-       title: "Properties",
-       addPrompt: "Add Property",
-       placeholder: "Property Name"
+       title: gettext("Properties"),
+       addPrompt: gettext("Add Property"),
+       placeholder: gettext("Property Name")
       },
       {id: "extra",
-       title: "Extras",
-       addPrompt: "Add Extra",
-       placeholder: "Extra Property Name"
+       title: gettext("Extras"),
+       addPrompt: gettext("Add Extra"),
+       placeholder: gettext("Extra Property Name")
       }];
 
     // Node object suitable for Ironic api

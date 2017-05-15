@@ -59,10 +59,11 @@
 
     ctrl.baseNode = null;
 
-    ctrl.propertyCollections.push({id: "instance_info",
-                                   title: "Instance Info",
-                                   addPrompt: "Add Instance Property",
-                                   placeholder: "Instance Property Name"});
+    ctrl.propertyCollections.push(
+      {id: "instance_info",
+       title: gettext("Instance Info"),
+       addPrompt: gettext("Add Instance Property"),
+       placeholder: gettext("Instance Property Name")});
 
     init(node);
 
