@@ -3,9 +3,9 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev8\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev13\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-04-12 12:57+0000\n"
+"POT-Creation-Date: 2017-05-15 14:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -203,23 +203,6 @@ msgstr "Nama"
 msgid "Network Interface"
 msgstr "Network Interface"
 
-msgid ""
-"Network Interface\n"
-"              <span class=\"help-icon\" data-container=\"body\" title=\"\" "
-"data-toggle=\"tooltip\" data-original-title=\"{$ ::'Network interface used "
-"for switching between provisioning, tenant, and cleaning networks.' | "
-"translate $}\">\n"
-"                <span class=\"fa fa-question-circle\"></span>\n"
-"              </span>"
-msgstr ""
-"Network Interface\n"
-"              <span class=\"help-icon\" data-container=\"body\" title=\"\" "
-"data-toggle=\"tooltip\" data-original-title=\"{$ ::'Network interface used "
-"for switching between provisioning, tenant, and cleaning networks.' | "
-"translate $}\">\n"
-"                <span class=\"fa fa-question-circle\"></span>\n"
-"              </span>"
-
 msgid "No Instance"
 msgstr "Tak ada Instance"
 
@@ -266,21 +249,6 @@ msgstr "One of this, (.*) must be specified\\."
 msgid "Overview"
 msgstr "Iktisar"
 
-msgid ""
-"PXE enabled\n"
-"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
-"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
-"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
-"            <span class=\"fa fa-question-circle\"></span>\n"
-"          </span>"
-msgstr ""
-"PXE enabled\n"
-"          <span ng-if=\"ctrl.pxeEnabled.hasHelpText()\" class=\"help-icon\" "
-"data-container=\"body\" data-html=\"true\" title=\"\" data-toggle=\"tooltip"
-"\" data-original-title=\"{$ ctrl.pxeEnabled.getHelpText() $}\">\n"
-"            <span class=\"fa fa-question-circle\"></span>\n"
-"          </span>"
-
 msgid "Persistent"
 msgstr "Persistent"
 
@@ -295,6 +263,9 @@ msgstr "Power State"
 
 msgid "Properties"
 msgstr "Property (sifat)"
+
+msgid "Property Name"
+msgstr "Property Name (nama property)"
 
 msgid "Provide a list of cleaning steps in JSON format"
 msgstr "Berikan daftar langkah-langkah pembersihan dalam format JSON"
@@ -512,18 +483,3 @@ msgstr "Virtualization Software (software virtualisasi)"
 
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
-
-msgid "{$ ::ctrl.modalTitle $}"
-msgstr "{$ ::ctrl.modalTitle $}"
-
-msgid "{$ ::ctrl.submitButtonTitle $}"
-msgstr "{$ ::ctrl.submitButtonTitle $}"
-
-msgid "{$ collection.addPrompt $}:"
-msgstr "{$ collection.addPrompt $}:"
-
-msgid "{$ collection.title $}"
-msgstr "{$ collection.title $}"
-
-msgid "{$ property.getDescription() $}"
-msgstr "{$ property.getDescription() $}"
