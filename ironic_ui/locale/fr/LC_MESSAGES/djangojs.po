@@ -7,9 +7,9 @@
 # Gérald LONLAS <g.lonlas@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev13\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev20\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-05-15 14:59+0000\n"
+"POT-Creation-Date: 2017-05-17 01:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -173,14 +173,6 @@ msgstr "Le nœud %s est déjà en mode maintenance."
 msgid "Node %s is not in maintenance mode."
 msgstr "Le nœud %s n'est pas en mode maintenance."
 
-#, python-format
-msgid "Node %s is not powered off."
-msgstr "Le nœud %s n'est pas éteint."
-
-#, python-format
-msgid "Node %s is not powered on."
-msgstr "Le nœud %s n'est pas allumé."
-
 msgid "Node Driver"
 msgstr "Pilote du nœud"
 
@@ -207,6 +199,12 @@ msgstr "Ports"
 
 msgid "Power State"
 msgstr "État de l'alimentation"
+
+msgid "Power off"
+msgstr "Éteindre"
+
+msgid "Power on"
+msgstr "Allumer"
 
 msgid "Properties"
 msgstr "Propriétés"
@@ -319,10 +317,6 @@ msgstr "Impossible de supprimer le port : %s"
 #, python-format
 msgid "Unable to power off the node: %s"
 msgstr "Impossible d'éteindre le nœud : %s"
-
-#, python-format
-msgid "Unable to power on the node: %s"
-msgstr "Impossible d'allumer le nœud : %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
