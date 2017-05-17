@@ -57,14 +57,26 @@
        - adding new properties
        - displaying the list of properties in the set
        - changing the value of properties
+
+       Collection attributes:
+                  id: Name of the property inside the node object that is used
+                      to store the collection.
+              formId: Name of the controller variable that can be used to
+                      access the property collection form.
+              prompt: Label used to prompt the user to add properties
+                      to the collection.
+         placeholder: Label used to guide the user in providiing property
+                      values.
     */
     ctrl.propertyCollections = [
       {id: "properties",
+       formId: "properties_form",
        title: gettext("Properties"),
        addPrompt: gettext("Add Property"),
        placeholder: gettext("Property Name")
       },
       {id: "extra",
+       formId: "extra_form",
        title: gettext("Extras"),
        addPrompt: gettext("Add Extra"),
        placeholder: gettext("Extra Property Name")
@@ -75,10 +87,12 @@
       name: null,
       driver: null,
       driver_info: {},
-      properties: {},
-      extra: {},
       network_interface: null
     };
+
+    angular.forEach(ctrl.propertyCollections, function(collection) {
+      ctrl.node[collection.id] = {};
+    });
 
     /**
      * @description Get the list of currently active Ironic drivers
@@ -296,6 +310,29 @@
      */
     ctrl.isDriverPropertyActive = function(property) {
       return property.isActive();
+    };
+
+    /**
+     * @description Check whether the node definition form is ready for
+     *              to be submitted.
+     *
+     * @return {boolean} True if the form is ready to be submitted,
+     *                   otherwise false.
+     */
+    ctrl.readyToSubmit = function() {
+      var ready = true;
+      if (ctrl.driverProperties) {
+        for (var i = 0; i < ctrl.propertyCollections.length; i++) {
+          var collection = ctrl.propertyCollections[i];
+          if (ctrl[collection.formId].$invalid) {
+            ready = false;
+            break;
+          }
+        }
+      } else {
+        ready = false;
+      }
+      return ready;
     };
   }
 })();
