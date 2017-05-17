@@ -22,29 +22,25 @@
       .controller('IronicNodeListController', IronicNodeListController);
 
   IronicNodeListController.$inject = [
-    '$scope',
-    '$rootScope',
     '$q',
     'horizon.framework.widgets.toast.service',
     'horizon.app.core.openstack-service-api.ironic',
-    'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.enroll-node.service',
     'horizon.dashboard.admin.ironic.edit-node.service',
+    'horizon.dashboard.admin.ironic.create-port.service',
     'horizon.dashboard.admin.ironic.node-state-transition.service'
   ];
 
-  function IronicNodeListController($scope,
-                                    $rootScope,
-                                    $q,
+  function IronicNodeListController($q,
                                     toastService,
                                     ironic,
-                                    ironicEvents,
                                     actions,
                                     maintenanceService,
                                     enrollNodeService,
                                     editNodeService,
+                                    createPortService,
                                     nodeStateTransitionService) {
     var ctrl = this;
 
@@ -55,6 +51,8 @@
 
     ctrl.enrollNode = enrollNode;
     ctrl.editNode = editNode;
+    ctrl.deleteNode = deleteNode;
+    ctrl.createPort = createPort;
     ctrl.refresh = refresh;
     ctrl.getNodeStateTransitions = getNodeStateTransitions;
 
@@ -95,41 +93,6 @@
       }
     ];
 
-    // Listen for the creation of new nodes, and update the node list
-    var enrollNodeHandler =
-        $rootScope.$on(ironicEvents.ENROLL_NODE_SUCCESS,
-                       function() {
-                         init();
-                       });
-
-    var deleteNodeHandler = $rootScope.$on(ironicEvents.DELETE_NODE_SUCCESS,
-                                           function() {
-                                             init();
-                                           });
-
-    var editNodeHandler = $rootScope.$on(ironicEvents.EDIT_NODE_SUCCESS,
-                                         function() {
-                                           init();
-                                         });
-
-    var createPortHandler = $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS,
-                                           function() {
-                                             init();
-                                           });
-
-    var deletePortHandler = $rootScope.$on(ironicEvents.DELETE_PORT_SUCCESS,
-                                           function() {
-                                             init();
-                                           });
-
-    $scope.$on('destroy', function() {
-      enrollNodeHandler();
-      deleteNodeHandler();
-      editNodeHandler();
-      createPortHandler();
-      deletePortHandler();
-    });
-
     init();
 
     // RETRIVE NODES AND PORTS
@@ -162,11 +125,29 @@
     }
 
     function enrollNode() {
-      enrollNodeService.enrollNode();
+      enrollNodeService.enrollNode().then(function() {
+        ctrl.refresh();
+      });
     }
 
     function editNode(node) {
-      editNodeService.modal(node);
+      editNodeService.editNode(node).then(function() {
+        ctrl.refresh();
+      });
+    }
+
+    function deleteNode(nodes) {
+      actions.deleteNode(nodes).then(
+        function() {
+          ctrl.refresh();
+        }
+      );
+    }
+
+    function createPort(node) {
+      createPortService.createPort(node).then(function() {
+        ctrl.refresh();
+      });
     }
 
     function refresh() {

@@ -28,10 +28,10 @@
 
   function editNodeService($uibModal, basePath) {
     var service = {
-      modal: modal
+      editNode: editNode
     };
 
-    function modal(node) {
+    function editNode(node) {
       var options = {
         controller: 'EditNodeController as ctrl',
         backdrop: 'static',
@@ -42,7 +42,7 @@
         },
         templateUrl: basePath + '/base-node/base-node.html'
       };
-      return $uibModal.open(options);
+      return $uibModal.open(options).result;
     }
 
     return service;

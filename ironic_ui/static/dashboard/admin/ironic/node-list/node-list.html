@@ -29,7 +29,7 @@
               <action-list uib-dropdown class="pull-right">
                 <action button-type="split-button"
                         action-classes="'btn btn-default btn-sm'"
-                        callback="table.actions.deleteNode"
+                        callback="table.deleteNode"
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
@@ -165,14 +165,14 @@
                   {$ ::'Maintenance off' | translate $}
                 </action>
                 <action button-type="menu-item"
-                        callback="table.actions.deleteNode"
+                        callback="table.deleteNode"
                         disabled="!(node.provision_state === 'available' || node.provision_state === 'nostate' || node.provision_state === 'manageable' || node.provision_state === 'enroll')"
                         item="[node]">
                   <span class="fa fa-trash"></span>
                   {$ ::'Delete node' | translate $}
                 </action>
                 <action button-type="menu-item"
-                        callback="table.actions.createPort"
+                        callback="table.createPort"
                         item="node">
                   {$ ::'Create port' | translate $}
                 </action>

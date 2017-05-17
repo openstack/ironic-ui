@@ -28,10 +28,17 @@
 
   function editPortService($uibModal, basePath) {
     var service = {
-      modal: modal
+      editPort: editPort
     };
 
-    function modal(port, node) {
+    /**
+     * @description: Edit a specified port
+     *
+     * @param {object} port - Port to be edited
+     * @param {object} node - Node to which the port is attached
+     * @return {promise} Promise containing the updated port
+     */
+    function editPort(port, node) {
       var options = {
         controller: 'EditPortController as ctrl',
         backdrop: 'static',

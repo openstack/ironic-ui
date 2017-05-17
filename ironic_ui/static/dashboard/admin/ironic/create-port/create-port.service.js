@@ -28,11 +28,18 @@
 
   function createPortService($uibModal, basePath) {
     var service = {
-      modal: modal
+      createPort: createPort
     };
     return service;
 
-    function modal(node) {
+    /**
+     * @description Launch a modal dialog that will guide the user
+     * in creating a new port
+     *
+     * @param {object} node - Node to which the port will be associated
+     * @return {promise} Object describing the created port
+     */
+    function createPort(node) {
       var options = {
         controller: 'CreatePortController as ctrl',
         backdrop: 'static',

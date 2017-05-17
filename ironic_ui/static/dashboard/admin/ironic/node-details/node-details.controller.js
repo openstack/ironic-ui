@@ -24,14 +24,13 @@
 
   IronicNodeDetailsController.$inject = [
     '$scope',
-    '$rootScope',
     '$location',
     'horizon.framework.widgets.toast.service',
     'horizon.app.core.openstack-service-api.ironic',
-    'horizon.dashboard.admin.ironic.events',
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.ironic.basePath',
     'horizon.dashboard.admin.ironic.edit-node.service',
+    'horizon.dashboard.admin.ironic.create-port.service',
     'horizon.dashboard.admin.ironic.edit-port.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.node-state-transition.service',
@@ -39,14 +38,13 @@
   ];
 
   function IronicNodeDetailsController($scope,
-                                       $rootScope,
                                        $location,
                                        toastService,
                                        ironic,
-                                       ironicEvents,
                                        actions,
                                        basePath,
                                        editNodeService,
+                                       createPortService,
                                        editPortService,
                                        maintenanceService,
                                        nodeStateTransitionService,
@@ -93,31 +91,6 @@
     };
 
     $scope.isDefined = angular.isDefined;
-
-    var editNodeHandler =
-        $rootScope.$on(ironicEvents.EDIT_NODE_SUCCESS,
-                       function() {
-                         init();
-                       });
-
-    var createPortHandler =
-        $rootScope.$on(ironicEvents.CREATE_PORT_SUCCESS,
-                       function() {
-                         init();
-                       });
-
-    var deletePortHandler =
-        $rootScope.$on(ironicEvents.DELETE_PORT_SUCCESS,
-                       function() {
-                         init();
-                         $scope.$broadcast('hzTable:clearSelected');
-                       });
-
-    $scope.$on('$destroy', function() {
-      editNodeHandler();
-      createPortHandler();
-      deletePortHandler();
-    });
 
     init();
 
@@ -240,7 +213,9 @@
      * @return {void}
      */
     function editNode() {
-      editNodeService.modal(ctrl.node);
+      editNodeService.editNode(ctrl.node).then(function() {
+        ctrl.refresh();
+      });
     }
 
     /**
@@ -251,7 +226,9 @@
      * @return {void}
      */
     function createPort() {
-      ctrl.actions.createPort(ctrl.node);
+      createPortService.createPort(ctrl.node).then(function() {
+        ctrl.refresh();
+      });
     }
 
     /**
@@ -261,7 +238,7 @@
      * @return {void}
      */
     function editPort(port) {
-      editPortService.modal(port, ctrl.node).then(function() {
+      editPortService.editPort(port, ctrl.node).then(function() {
         ctrl.refresh();
       });
     }
@@ -274,7 +251,9 @@
      * @return {void}
      */
     function deletePort(ports) {
-      actions.deletePort(ports);
+      actions.deletePort(ports).then(function() {
+        ctrl.refresh();
+      });
     }
 
     /**
