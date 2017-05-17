@@ -3,9 +3,9 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev13\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev20\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-05-15 14:59+0000\n"
+"POT-Creation-Date: 2017-05-17 01:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -223,14 +223,6 @@ msgstr "Node %s sudah dalam modus pemeliharaan."
 msgid "Node %s is not in maintenance mode."
 msgstr "Node %s tidak dalam modus pemeliharaan."
 
-#, python-format
-msgid "Node %s is not powered off."
-msgstr "Node %s tidak dimatikan."
-
-#, python-format
-msgid "Node %s is not powered on."
-msgstr "Node %s tidak dinyalakan."
-
 msgid "Node Driver"
 msgstr "Node Driver"
 
@@ -260,6 +252,12 @@ msgstr "Port-Port"
 
 msgid "Power State"
 msgstr "Power State"
+
+msgid "Power off"
+msgstr "Power off"
+
+msgid "Power on"
+msgstr "Power on"
 
 msgid "Properties"
 msgstr "Property (sifat)"
@@ -410,10 +408,6 @@ msgstr "Tidak dapat menghapus port: %s"
 #, python-format
 msgid "Unable to power off the node: %s"
 msgstr "Tidak dapat daya mati pada node: %s"
-
-#, python-format
-msgid "Unable to power on the node: %s"
-msgstr "Tidak dapat daya hidup pada node: %s"
 
 #, python-format
 msgid "Unable to put the Ironic node %s in maintenance mode: %s"
