@@ -52,8 +52,7 @@
       getBootDevice: getBootDevice,
       nodeGetConsole: nodeGetConsole,
       nodeSetConsoleMode: nodeSetConsoleMode,
-      powerOffNode: powerOffNode,
-      powerOnNode: powerOnNode,
+      nodeSetPowerState: nodeSetPowerState,
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
       removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
       setNodeProvisionState: setNodeProvisionState,
@@ -222,39 +221,17 @@
      * http://developer.openstack.org/api-ref/baremetal/#change-node-power-state
      *
      * @param {string} uuid – UUID or logical name of a node.
+     * @param {string} state - Target power state ['on', 'off', 'reboot']
+     * @param {boolean} soft - Flag for graceful power 'off' or reboot
      * @return {promise} Promise
      */
-    function powerOnNode(uuid) {
+    function nodeSetPowerState(uuid, state, soft) {
       var data = {
-        state: 'on'
+        state: state
       };
-      return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power',
-                              data)
-        .then(function() {
-          toastService.add('success',
-                           gettext('Refresh page to see updated power status'));
-        })
-        .catch(function(response) {
-          var msg = interpolate(gettext('Unable to power on the node: %s'),
-                                [response.data],
-                                false);
-          toastService.add('error', msg);
-          return $q.reject(msg);
-        });
-    }
-
-    /**
-     * @description Set the power state of the node.
-     *
-     * http://developer.openstack.org/api-ref/baremetal/#change-node-power-state
-     *
-     * @param {string} uuid – UUID or logical name of a node.
-     * @return {promise} Promise
-     */
-    function powerOffNode(uuid) {
-      var data = {
-        state: 'off'
-      };
+      if (angular.isDefined(soft)) {
+        data.soft = soft;
+      }
       return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power',
                               data)
         .then(function() {

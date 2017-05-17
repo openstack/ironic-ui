@@ -24,7 +24,7 @@ from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
 
 
-DEFAULT_IRONIC_API_VERSION = '1.20'
+DEFAULT_IRONIC_API_VERSION = '1.27'
 DEFAULT_INSECURE = False
 DEFAULT_CACERT = None
 IRONIC_CLIENT_CLASS_NAME = 'baremetal'
@@ -86,17 +86,20 @@ def node_list_ports(request, node_id):
     return ironicclient(request).node.list_ports(node_id, limit=0, detail=True)
 
 
-def node_set_power_state(request, node_id, state):
+def node_set_power_state(request, node_id, state, soft=False):
     """Set power state for a given node.
 
     :param request: HTTP request.
     :param node_id: The UUID or name of the node.
-    :param state: the power state to set.
+    :param state: the power state to set ['on', 'off', 'reboot'].
+    :param soft: flag for graceful power 'off' or reboot
     :return: node.
 
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_power_state
     """
-    return ironicclient(request).node.set_power_state(node_id, state)
+    return ironicclient(request).node.set_power_state(node_id,
+                                                      state,
+                                                      soft)
 
 
 def node_set_provision_state(request, node_id, state, cleansteps=None):

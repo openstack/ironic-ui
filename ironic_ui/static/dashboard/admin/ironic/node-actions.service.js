@@ -17,8 +17,25 @@
 (function () {
   'use strict';
 
-  var POWER_STATE_ON = 'power on';
-  var POWER_STATE_OFF = 'power off';
+  function PowerTransition(label, state, soft) {
+    this.label = label;
+    this.state = state;
+    this.soft = soft;
+  }
+
+  var POWER_ON_TRANSITIONS = [
+    new PowerTransition(gettext('Power on'), 'on', false)
+  ];
+
+  var POWER_OFF_TRANSITIONS = [
+    new PowerTransition(gettext('Power off'), 'off', false),
+    new PowerTransition(gettext('Soft power off'), 'off', true),
+    new PowerTransition(gettext('Reboot'), 'reboot', false),
+    new PowerTransition(gettext('Soft reboot'), 'reboot', true)
+  ];
+
+  var ALL_POWER_TRANSITIONS =
+    POWER_ON_TRANSITIONS.concat(POWER_OFF_TRANSITIONS);
 
   angular
     .module('horizon.dashboard.admin.ironic')
@@ -26,7 +43,6 @@
 
   actions.$inject = [
     'horizon.app.core.openstack-service-api.ironic',
-    'horizon.framework.widgets.toast.service',
     'horizon.dashboard.admin.ironic.events',
     'horizon.framework.widgets.modal.deleteModalService',
     'horizon.dashboard.admin.ironic.create-port.service',
@@ -36,7 +52,6 @@
   ];
 
   function actions(ironic,
-                   toastService,
                    ironicEvents,
                    deleteModalService,
                    createPortService,
@@ -47,13 +62,11 @@
       createPort: createPort,
       deleteNode: deleteNode,
       deletePort: deletePort,
-      powerOn: powerOn,
-      powerOff: powerOff,
-      powerOnAll: powerOnNodes,
-      powerOffAll: powerOffNodes,
+      setPowerState: setPowerState,
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
       removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
-      setProvisionState: setProvisionState
+      setProvisionState: setProvisionState,
+      getPowerTransitions : getPowerTransitions
     };
 
     return service;
@@ -87,38 +100,25 @@
 
     // power state
 
-    function powerOn(node) {
-      if (node.power_state !== POWER_STATE_OFF) {
-        var msg = gettext("Node %s is not powered off.");
-        return $q.reject(interpolate(msg, [node.uuid], false));
-      }
-      return ironic.powerOnNode(node.uuid).then(
-        function() {
-          // Set power state to be indeterminate
-          node.power_state = null;
-        }
-      );
-    }
-
-    function powerOff(node) {
-      if (node.power_state !== POWER_STATE_ON) {
-        var msg = gettext("Node %s is not powered on.");
-        return $q.reject(interpolate(msg, [node.uuid], false));
-      }
-      return ironic.powerOffNode(node.uuid).then(
-        function() {
-          // Set power state to be indeterminate
-          node.power_state = null;
-        }
-      );
-    }
-
-    function powerOnNodes(nodes) {
-      return applyFuncToNodes(powerOn, nodes);
-    }
-
-    function powerOffNodes(nodes) {
-      return applyFuncToNodes(powerOff, nodes);
+    /**
+     * @description Set the power state of a list of nodes
+     *
+     * @param {object[]} nodes - List of node objects
+     * @param {string} state - Target power state
+     * @param {boolean} [soft] - Flag for graceful power 'off' or reboot
+     * @return {promise} promise
+     */
+    function setPowerState(nodes, state, soft) {
+      var promises = [];
+      angular.forEach(nodes,
+                      function(node) {
+                        promises.push(
+                          ironic.nodeSetPowerState(node.uuid,
+                                                   state,
+                                                   soft)
+                        );
+                      });
+      return $q.all(promises);
     }
 
     // maintenance
@@ -231,6 +231,22 @@
                         promises.push(fn(node, extra));
                       });
       return $q.all(promises);
+    }
+
+    /*
+     * @name horizon.dashboard.admin.ironic.actions.getPowerTransitions
+     * @description Get the list of power transitions for a specified
+     * node, or all power transitions if the node is not specified.
+     *
+     * @param {object} node – Node object for which power transitions
+     * are requested. If node is undefined all possible power transitions
+     * are returned.
+     * @return {object[]} - List of PowerTransition objects
+     */
+    function getPowerTransitions(node) {
+      return angular.isUndefined(node) ? ALL_POWER_TRANSITIONS
+        : node.power_state === 'power on'
+        ? POWER_OFF_TRANSITIONS : POWER_ON_TRANSITIONS;
     }
   }
 
