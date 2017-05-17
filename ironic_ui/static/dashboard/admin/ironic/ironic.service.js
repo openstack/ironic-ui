@@ -50,6 +50,8 @@
       getNodes: getNodes,
       getPortsWithNode: getPortsWithNode,
       getBootDevice: getBootDevice,
+      nodeGetConsole: nodeGetConsole,
+      nodeSetConsoleMode: nodeSetConsoleMode,
       powerOffNode: powerOffNode,
       powerOnNode: powerOnNode,
       putNodeInMaintenanceMode: putNodeInMaintenanceMode,
@@ -511,6 +513,44 @@
                                 [portUuid, response.data],
                                 false);
           toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Set the console mode of the node.
+     *
+     * http://developer.openstack.org/api-ref/baremetal/?
+     * expanded=start-stop-console-detail#start-stop-console
+     *
+     * @param {string} uuid – UUID of a node.
+     * @param {boolean} enabled – true to start the console, false to stop it
+     * @return {promise} Promise
+     */
+    function nodeSetConsoleMode(uuid, enabled) {
+      return apiService.put('/api/ironic/nodes/' + uuid + '/states/console',
+                            {enabled: enabled})
+        .then(function(response) {
+          var msg = gettext('Refresh page to see updated console details');
+          toastService.add('success', interpolate(msg, [uuid], false));
+          return response.data;
+        })
+        .catch(function(response) {
+          var msg = gettext('Unable to set console mode: %s');
+          toastService.add('error', interpolate(msg, [response.data], false));
+          return $q.reject(msg);
+        });
+    }
+
+    function nodeGetConsole(uuid) {
+      return apiService.get('/api/ironic/nodes/' + uuid + '/states/console')
+        .then(function(response) {
+          return response.data; // Object containing console information
+        })
+        .catch(function(response) {
+          var msg = gettext('Unable to get console for node %s: %s');
+          toastService.add('error',
+                           interpolate(msg, [uuid, response.data], false));
           return $q.reject(msg);
         });
     }

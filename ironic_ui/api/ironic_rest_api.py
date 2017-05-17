@@ -178,6 +178,34 @@ class StatesProvision(generic.View):
 
 
 @urls.register
+class StatesConsole(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_uuid>[0-9a-f-]+)/states/console$'
+
+    @rest_utils.ajax()
+    def get(self, request, node_uuid):
+        """Get connection information for the node's console
+
+        :param request: HTTP request.
+        :param node_id: Node uuid
+        :return: Connection information
+        """
+        return ironic.node_get_console(request, node_uuid)
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, node_uuid):
+        """Start or stop the serial console.
+
+        :param request: HTTP request.
+        :param node_id: Node uuid
+        :return: Return code
+        """
+        return ironic.node_set_console_mode(request,
+                                            node_uuid,
+                                            request.DATA.get('enabled'))
+
+
+@urls.register
 class Maintenance(generic.View):
 
     url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/maintenance$'

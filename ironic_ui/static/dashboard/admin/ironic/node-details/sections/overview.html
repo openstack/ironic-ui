@@ -21,6 +21,16 @@
       <dd>{$ ctrl.node.reservation | noValue $}</dd>
       <dt translate>Console Enabled</dt>
       <dd>{$ ctrl.node.console_enabled | yesno $}</dd>
+      <dt translate>Console Info</dt>
+      <dd ng-if="ctrl.node.console_info.type==='shellinabox'">
+        <a href="{$ ctrl.node.console_info.url $}"
+           title="{$ 'Click link to view console' | translate $}">
+          shellinabox
+        </a>
+      </dd>
+      <dd ng-if="ctrl.node.console_info.type!=='shellinabox'">
+        {$ ctrl.node.console_info | noValue $}
+      </dd>
     </dl>
   </div>
 

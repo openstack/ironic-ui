@@ -1,0 +1,15 @@
+---
+features:
+  - |
+    Support has been added for starting, stopping, and accessing the
+    console associated with a node.
+  - |
+    The action dropdown menu in the node-details panel has a new item
+    ``Enable|Disable console``.
+  - |
+    The node-details/overview panel has a new ``Console info`` item in the
+    ``General`` section. The value of this field is dependent on the console
+    type. For ``shellinabox`` the value is an anchor with the URL required
+    to access the web console and title ``shellinabox``. For others, the
+    value is a string representation of the console_info object returned
+    by the get_console api call.
