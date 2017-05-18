@@ -52,9 +52,8 @@
       getBootDevice: getBootDevice,
       nodeGetConsole: nodeGetConsole,
       nodeSetConsoleMode: nodeSetConsoleMode,
+      nodeSetMaintenance: nodeSetMaintenance,
       nodeSetPowerState: nodeSetPowerState,
-      putNodeInMaintenanceMode: putNodeInMaintenanceMode,
-      removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
       setNodeProvisionState: setNodeProvisionState,
       updateNode: updateNode,
       updatePort: updatePort,
@@ -170,49 +169,32 @@
     }
 
     /**
-     * @description Put the node in maintenance mode.
+     * @description Set the maintenance state of a node
      *
      * http://developer.openstack.org/api-ref/baremetal/#set-maintenance-flag
      *
-     * @param {string} uuid – UUID or logical name of a node.
-     * @param {string} reason – Reason for why node is being put into
-     * maintenance mode
+     * @param {string} nodeId – UUID or logical name of a node.
+     * @param {boolean} mode - True to put the node in maintenance mode,
+     *   false to remove it from maintenance mode.
+     * @param {string} reason - Reason for putting the node in maintenance.
      * @return {promise} Promise
      */
-    function putNodeInMaintenanceMode(uuid, reason) {
-      return apiService.patch('/api/ironic/nodes/' + uuid + '/maintenance',
-                              {maint_reason: reason
-                               ? reason
-                               : gettext("No reason given.")})
-        .catch(function(response) {
-          var msg = interpolate(
-            gettext('Unable to put the Ironic node %s in maintenance mode: %s'),
-            [uuid, response.data],
-            false);
-          toastService.add('error', msg);
-          return $q.reject(msg);
-        });
-    }
+    function nodeSetMaintenance(nodeId, mode, reason) {
+      var url = '/api/ironic/nodes/' + nodeId + '/maintenance';
+      var promise = mode
+        ? apiService.patch(url,
+                           {maint_reason: reason ? reason
+                            : gettext("No reason given.")})
+        : apiService.delete(url);
 
-    /**
-     * @description Remove the node from maintenance mode.
-     *
-     * http://developer.openstack.org/api-ref/baremetal/#clear-maintenance-flag
-     *
-     * @param {string} uuid – UUID or logical name of a node.
-     * @return {promise} Promise
-     */
-    function removeNodeFromMaintenanceMode(uuid) {
-      return apiService.delete('/api/ironic/nodes/' + uuid + '/maintenance')
-        .catch(function(response) {
-          var msg = interpolate(
-            gettext(
-              'Unable to remove the Ironic node %s from maintenance mode: %s'),
-            [uuid, response.data],
-            false);
-          toastService.add('error', msg);
-          return $q.reject(msg);
-        });
+      return promise.catch(function(response) {
+        var msg = interpolate(
+          gettext('Unable to set Ironic node %s maintenance state: %s'),
+          [nodeId, response.data],
+          false);
+        toastService.add('error', msg);
+        return $q.reject(msg);
+      });
     }
 
     /**

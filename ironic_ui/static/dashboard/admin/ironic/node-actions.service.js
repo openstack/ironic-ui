@@ -60,8 +60,7 @@
       deleteNode: deleteNode,
       deletePort: deletePort,
       setPowerState: setPowerState,
-      putNodeInMaintenanceMode: putNodeInMaintenanceMode,
-      removeNodeFromMaintenanceMode: removeNodeFromMaintenanceMode,
+      setMaintenance: setMaintenance,
       setProvisionState: setProvisionState,
       getPowerTransitions : getPowerTransitions
     };
@@ -120,41 +119,37 @@
 
     // maintenance
 
-    function putNodeInMaintenanceMode(nodes, reason) {
-      return applyFuncToNodes(
-        function(node, reason) {
-          if (node.maintenance !== false) {
-            var msg = gettext("Node %s is already in maintenance mode.");
-            return $q.reject(interpolate(msg, [node.uuid], false));
-          }
-          return ironic.putNodeInMaintenanceMode(node.uuid, reason).then(
+    /**
+     * @description Set the maintenance state of a list of nodes
+     *
+     * @param {object[]} nodes - List of node objects
+     * @param {boolean} mode - True if the nodes are to be put in
+     *   maintenance mode, otherwise false.
+     * @param {string} [reason] - Optional reason for putting nodes in
+     *   maintenance mode.
+     * @return {promise} promise
+     */
+    function setMaintenance(nodes, mode, reason) {
+      var promises = [];
+      angular.forEach(nodes, function(node) {
+        var promise;
+        if (node.maintenance === mode) {
+          var msg = gettext(
+            "Node %s is already in target maintenance state.");
+          promise = $q.reject(interpolate(msg, [node.uuid], false));
+        } else {
+          promise = ironic.nodeSetMaintenance(node.uuid, mode, reason).then(
             function (result) {
-              node.maintenance = true;
-              node.maintenance_reason = reason;
+              node.maintenance = mode;
+              node.maintenance_reason =
+                mode && angular.isDefined(reason) ? reason : "";
               return result;
             }
           );
-        },
-        nodes,
-        reason);
-    }
-
-    function removeNodeFromMaintenanceMode(nodes) {
-      return applyFuncToNodes(
-        function(node) {
-          if (node.maintenance !== true) {
-            var msg = gettext("Node %s is not in maintenance mode.");
-            return $q.reject(interpolate(msg, [node.uuid], false));
-          }
-          return ironic.removeNodeFromMaintenanceMode(node.uuid).then(
-            function (result) {
-              node.maintenance = false;
-              node.maintenance_reason = "";
-              return result;
-            }
-          );
-        },
-        nodes);
+        }
+        promises.push(promise);
+      });
+      return $q.all(promises);
     }
 
     /*
@@ -200,30 +195,6 @@
         successEvent: ironicEvents.DELETE_PORT_SUCCESS
       };
       return deleteModalService.open($rootScope, ports, context);
-    }
-
-    /*
-     * @name horizon.dashboard.admin.ironic.actions.applyFuncToNodes
-     * @description Apply a specified function to each member of a
-     * collection of nodes
-     *
-     * @param {function} fn – Function to be applied.
-     * The function should accept a node as the first argument. An optional
-     * second argument can be used to provide additional information.
-     * The function should return a promise.
-     * @param {Array<node>} nodes - Collection of nodes
-     * @param {object} extra - Additional argument passed to the function
-     * @return {promise} - Single promise that represents the combined
-     * return status from all function invocations. The promise is rejected
-     * if any individual call fails.
-     */
-    function applyFuncToNodes(fn, nodes, extra) {
-      var promises = [];
-      angular.forEach(nodes,
-                      function(node) {
-                        promises.push(fn(node, extra));
-                      });
-      return $q.all(promises);
     }
 
     /*
