@@ -23,6 +23,8 @@
     var nodeName = "herp";
     var numPorts = 2;
     var bootDevice = {boot_device: 'pxe', persistent: true};
+    var consoleEnabled = true;
+    var consoleInfo = "console-info";
 
     function portUuid(nodeUuid, index) {
       return '' + index + index + nodeUuid.substring(2);
@@ -73,8 +75,23 @@
 
       validateNode: function() {
         return $q.when({});
+      },
+
+      nodeGetConsole: function() {
+        return $q.when({console_enabled: consoleEnabled,
+                        console_info: consoleInfo});
       }
     };
+
+    var nodeActions = {
+      getPowerTransitions: function() {
+        return [];
+      }
+    };
+
+    beforeEach(module(function($provide) {
+      $provide.value('$uibModal', jasmine.createSpy());
+    }));
 
     beforeEach(module('horizon.dashboard.admin.ironic'));
 
@@ -113,7 +130,7 @@
         {$scope: scope,
          $location: $location,
          'horizon.dashboard.admin.ironic.edit-port.service': {},
-         'horizon.dashboard.admin.ironic.actions': {}});
+         'horizon.dashboard.admin.ironic.actions': nodeActions});
 
       scope.$apply();
     }));
@@ -131,6 +148,8 @@
       var node = createNode(nodeName, nodeUuid);
       node.id = node.uuid;
       node.bootDevice = bootDevice;
+      node.console_enabled = consoleEnabled;
+      node.console_info = consoleInfo;
       expect(ctrl.node).toEqual(node);
     });
 
