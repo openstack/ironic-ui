@@ -8,6 +8,7 @@
 *.egg-info
 dist
 build
+cover
 .eggs
 eggs
 parts
