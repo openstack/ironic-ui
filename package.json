@@ -1,6 +1,6 @@
 {
   "name": "ironic-ui",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Horizon plugin for OpenStack Ironic.",
   "scripts": {
     "lint": "eslint ./"
