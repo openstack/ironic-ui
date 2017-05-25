@@ -98,12 +98,15 @@
                 {$ ::'Edit port' | translate $}
               </action>
               <menu>
-                <action button-type="menu-item"
-                        callback="ctrl.deletePort"
-                        item="[port]">
-                  <span class="fa fa-trash"></span>
-                  {$ ::'Delete port' | translate $}
-                </action>
+                <li role="presentation">
+                  <a role="menuitem"
+                     ng-click="ctrl.deletePort([port]);
+                               $event.stopPropagation();
+                               $event.preventDefault()">
+                    <span class="fa fa-trash"></span>
+                    <span>{$ :: 'Delete port' | translate $}</span>
+                  </a>
+                </li>
               </menu>
             </action-list>
           </td>
