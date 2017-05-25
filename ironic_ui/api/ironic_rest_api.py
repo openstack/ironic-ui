@@ -22,6 +22,8 @@ from openstack_dashboard.api.rest import urls
 
 from openstack_dashboard.api.rest import utils as rest_utils
 
+LOGICAL_NAME_PATTERN = '[a-zA-Z0-9-._~]+'
+
 
 @urls.register
 class Nodes(generic.View):
@@ -62,7 +64,7 @@ class Nodes(generic.View):
 @urls.register
 class Node(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)$'
+    url_regex = r'ironic/nodes/(?P<node_id>{})$'.format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax()
     def get(self, request, node_id):
@@ -142,7 +144,8 @@ class Port(generic.View):
 @urls.register
 class StatesPower(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/states/power$'
+    url_regex = r'ironic/nodes/(?P<node_id>{})/states/power$'. \
+                format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax(data_required=True)
     def patch(self, request, node_id):
@@ -161,7 +164,8 @@ class StatesPower(generic.View):
 @urls.register
 class StatesProvision(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_uuid>[0-9a-f-]+)/states/provision$'
+    url_regex = r'ironic/nodes/(?P<node_uuid>{})/states/provision$'. \
+                format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax(data_required=True)
     def put(self, request, node_uuid):
@@ -182,7 +186,8 @@ class StatesProvision(generic.View):
 @urls.register
 class StatesConsole(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_uuid>[0-9a-f-]+)/states/console$'
+    url_regex = r'ironic/nodes/(?P<node_uuid>{})/states/console$'. \
+                format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax()
     def get(self, request, node_uuid):
@@ -210,7 +215,8 @@ class StatesConsole(generic.View):
 @urls.register
 class Maintenance(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/maintenance$'
+    url_regex = r'ironic/nodes/(?P<node_id>{})/maintenance$'. \
+                format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax()
     def patch(self, request, node_id):
@@ -241,7 +247,8 @@ class Maintenance(generic.View):
 @urls.register
 class Validate(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/validate$'
+    url_regex = r'ironic/nodes/(?P<node_id>{})/validate$'. \
+                format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax()
     def get(self, request, node_id):
@@ -257,7 +264,8 @@ class Validate(generic.View):
 @urls.register
 class BootDevice(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_id>[0-9a-f-]+)/boot_device$'
+    url_regex = r'ironic/nodes/(?P<node_id>{})/boot_device$'. \
+                format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax()
     def get(self, request, node_id):
