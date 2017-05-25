@@ -147,6 +147,19 @@
     }
 
     /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.nodeGetInterface
+     * @description Retrieve the current underlying interface for specified interface
+     * type.
+     *
+     * @param {string} interfacename - Name of interface, e.g. power, boot, etc.
+     * @return {string} current name of interface for the requested interface type.
+    */
+    function nodeGetInterface(interfacename) {
+      return ctrl.node[interfacename + '_interface'] === null ? 'None'
+      : ctrl.node[interfacename + '_interface'];
+    }
+
+    /**
      * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrievePorts
      * @description Retrieve the ports associated with the current node,
      * and store them in the controller instance.
@@ -202,10 +215,11 @@
       ironic.validateNode(ctrl.node.uuid).then(function(response) {
         var nodeValidation = [];
         ctrl.nodeValidationMap = {};
-        angular.forEach(response.data, function(status) {
-          status.id = status.interface;
-          nodeValidation.push(status);
-          ctrl.nodeValidationMap[status.interface] = status;
+        angular.forEach(response.data, function(interfaceStatus) {
+          interfaceStatus.id = interfaceStatus.interface;
+          ctrl.nodeValidationMap[interfaceStatus.interface] = interfaceStatus;
+          interfaceStatus.hw_interface = nodeGetInterface(interfaceStatus.interface);
+          nodeValidation.push(interfaceStatus);
         });
         ctrl.nodeValidation = nodeValidation;
       });

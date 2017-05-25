@@ -319,6 +319,9 @@
           <th translate class="rsp-p1">
             Valid
           </th>
+          <th translate class="rsp-p1" style="white-space:nowrap">
+            Current Interface
+          </th>
           <th translate class="rsp-p2" style="width:100%;">
             Reason
           </th>
@@ -333,6 +336,10 @@
             <span ng-switch-when="true" class="fa fa-check text-success"></span>
             <span ng-switch-when="false" class="fa fa-close text-danger"></span>
             <span ng-switch-default class="fa fa-minus"></span>
+          </td>
+          <td class="rsp-p1">
+            <span ng-if="item.result">
+              {$ item.hw_interface $}</span>
           </td>
           <td class="rsp-p2">
             {$ item.reason $}
