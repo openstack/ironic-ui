@@ -58,6 +58,7 @@
         toxPath + 'xstatic/pkg/rickshaw/data/rickshaw.js',
         toxPath + 'xstatic/pkg/angular_smart_table/data/smart-table.js',
         toxPath + 'xstatic/pkg/angular_lrdragndrop/data/lrdragndrop.js',
+        toxPath + 'xstatic/pkg/angular_fileupload/data/ng-file-upload-all.js',
         toxPath + 'xstatic/pkg/spin/data/spin.js',
         toxPath + 'xstatic/pkg/spin/data/spin.jquery.js',
         toxPath + 'xstatic/pkg/tv4/data/tv4.js',

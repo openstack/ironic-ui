@@ -125,8 +125,8 @@
                 </div>
               </div>
             </form>
-            <form id="{$ collection.id $}-form"
-                  name="{$ collection.id $}-form">
+            <form id="ctrl.{$ collection.formId $}"
+                  name="ctrl.{$ collection.formId $}">
               <div class="form-group">
                 <div class="input-group input-group-sm"
                      ng-repeat="(propertyName, propertyValue) in ctrl.node[collection.id]">
@@ -253,10 +253,7 @@
   </button>
 
   <button type="submit"
-          ng-disabled="!ctrl.driverProperties ||
-                        propertiesForm.$invalid ||
-                        extraForm.$invalid ||
-                        instanceInfoForm.$invalid"
+          ng-disabled="!ctrl.readyToSubmit()"
           ng-click="ctrl.submit()"
           class="btn btn-primary">
     {$ ::ctrl.submitButtonTitle $}

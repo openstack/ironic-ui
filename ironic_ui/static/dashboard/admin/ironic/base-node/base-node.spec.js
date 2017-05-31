@@ -224,5 +224,47 @@
           expect(ret[1]).toBe(false);
         });
       });
+
+      describe('DriverPropertyGroup', function() {
+        it('driverPropertyGroupHasRequired', function () {
+          var dp1 = new service.DriverProperty("dp-1", " Required.", []);
+          var dp2 = new service.DriverProperty("dp-2", " ", []);
+
+          expect(service.driverPropertyGroupHasRequired).toBeDefined();
+          expect(service.driverPropertyGroupHasRequired([])).toBe(false);
+          expect(service.driverPropertyGroupHasRequired([dp1])).toBe(true);
+          expect(service.driverPropertyGroupHasRequired([dp2])).toBe(false);
+          expect(service.driverPropertyGroupHasRequired([dp1, dp2])).toBe(true);
+        });
+
+        it('driverPropertyGroupsToString', function () {
+          var dp1 = new service.DriverProperty("dp-1", " Required.", []);
+          var dp2 = new service.DriverProperty("dp-2", " ", []);
+
+          expect(service.driverPropertyGroupsToString).toBeDefined();
+          expect(service.driverPropertyGroupsToString([])).toBe("[]");
+          expect(service.driverPropertyGroupsToString([[dp1]]))
+            .toBe("[[dp-1]]");
+          expect(service.driverPropertyGroupsToString([[dp1], [dp2]]))
+            .toBe("[[dp-1], [dp-2]]");
+        });
+
+        it('compareDriverPropertyGroups', function () {
+          var dp1 = new service.DriverProperty("dp-1", " Required.", []);
+          var dp2 = new service.DriverProperty("dp-2", " ", []);
+
+          expect(service.compareDriverPropertyGroups).toBeDefined();
+          expect(service.compareDriverPropertyGroups([dp1], [dp1])).toBe(0);
+          expect(service.compareDriverPropertyGroups([dp1], [dp2])).toBe(-1);
+          expect(service.compareDriverPropertyGroups([dp2], [dp1])).toBe(1);
+          // smaller group precedes larger group
+          expect(service.compareDriverPropertyGroups([dp1], [dp1, dp2]))
+            .toBe(-1);
+          // group order decided on lexographic comparison of names of first
+          // property
+          expect(service.compareDriverPropertyGroups([dp2, dp1], [dp1, dp2]))
+            .toBe(1);
+        });
+      });
     });
 })();
