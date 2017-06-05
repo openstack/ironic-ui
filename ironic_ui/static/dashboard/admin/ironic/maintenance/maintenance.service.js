@@ -41,45 +41,31 @@
     return service;
 
     /*
-     * @description Put a specified list of nodes into mainenance.
-     * A modal dialog is used to prompt the user for a reason for
-     * putting the nodes in maintenance mode.
-     *
-     * @param {object[]} nodes - List of node objects
-     * @return {promise}
-     */
-    function putNodeInMaintenanceMode(nodes) {
-      var options = {
-        controller: "MaintenanceController as ctrl",
-        templateUrl: basePath + '/maintenance/maintenance.html'
-      };
-      return $uibModal.open(options).result.then(function(reason) {
-        return nodeActions.putNodeInMaintenanceMode(nodes, reason);
-      });
-    }
-
-    /*
-     * @description Take a specified list of nodes out of mainenance
-     *
-     * @param {object[]} nodes - List of node objects
-     * @return {promise}
-     */
-    function removeNodeFromMaintenanceMode(nodes) {
-      return nodeActions.removeNodeFromMaintenanceMode(nodes);
-    }
-
-    /*
      * @description Set the maintenance mode of a specified list of nodes
+     *
+     * If nodes are being put into maintenance mode a modal dialog is used
+     * to prompt the user for a reason.
      *
      * @param {object[]} nodes - List of node objects
      * @param {boolean} mode - Desired maintenance state.
      *  'true' -> Node is in maintenance mode
      *  'false' -> Node is not in maintenance mode
      * @return {promise}
-    */
+     */
     function setMaintenance(nodes, mode) {
-      return mode ? putNodeInMaintenanceMode(nodes)
-        : removeNodeFromMaintenanceMode(nodes);
+      var promise;
+      if (mode) {
+        var options = {
+          controller: "MaintenanceController as ctrl",
+          templateUrl: basePath + '/maintenance/maintenance.html'
+        };
+        promise = $uibModal.open(options).result.then(function(reason) {
+          return nodeActions.setMaintenance(nodes, true, reason);
+        });
+      } else {
+        promise = nodeActions.setMaintenance(nodes, false);
+      }
+      return promise;
     }
   }
 })();
