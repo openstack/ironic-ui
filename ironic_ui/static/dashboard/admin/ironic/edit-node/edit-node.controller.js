@@ -55,15 +55,17 @@
     ctrl.modalTitle = gettext("Edit Node");
     ctrl.submitButtonTitle = gettext("Update Node");
 
-    ctrl.node.instance_info = {};
-
     ctrl.baseNode = null;
 
+    var instanceInfoId = "instance_info";
     ctrl.propertyCollections.push(
-      {id: "instance_info",
+      {id: instanceInfoId,
+       formId: "instance_info_form",
        title: gettext("Instance Info"),
        addPrompt: gettext("Add Instance Property"),
        placeholder: gettext("Instance Property Name")});
+
+    ctrl.node[instanceInfoId] = {};
 
     init(node);
 
