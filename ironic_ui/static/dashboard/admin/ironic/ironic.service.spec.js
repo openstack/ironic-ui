@@ -161,7 +161,7 @@
             })
             .then(function(node) {
               expect(
-                ironicBackendMockService.getNode(node.uuid)).toBe(undefined);
+                ironicBackendMockService.getNode(node.uuid)).toBeNull();
             })
             .catch(failTest);
 
@@ -314,6 +314,91 @@
               expect(bootDevice).toEqual(
                 ironicBackendMockService.params.bootDevice);
             });
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPort', function() {
+          var macAddr = '00:00:00:00:00:00';
+          var node;
+          createNode({driver: defaultDriver})
+            .then(function(createNode) {
+              node = createNode;
+              return ironicAPI.createPort({address: macAddr,
+                                           node_uuid: node.uuid});
+            })
+            .then(function(port) {
+              expect(port.address).toBe(macAddr);
+              expect(port.node_uuid).toBe(node.uuid);
+              expect(port)
+                .toEqual(ironicBackendMockService.getPort(port.uuid));
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPort - missing input data', function() {
+          ironicAPI.createPort({})
+            .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPort - bad input data', function() {
+          ironicAPI.createPort({address: "", node_uuid: ""})
+            .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPort - duplicate mac address', function() {
+          var macAddr = '00:00:00:00:00:00';
+          var node;
+          createNode({driver: defaultDriver})
+            .then(function(createNode) {
+              node = createNode;
+              return ironicAPI.createPort({address: macAddr,
+                                           node_uuid: node.uuid});
+            })
+            .then(function(port) {
+              expect(port.address).toBe(macAddr);
+              expect(port.node_uuid).toBe(node.uuid);
+              expect(port)
+                .toEqual(ironicBackendMockService.getPort(port.uuid));
+
+              return ironicAPI.createPort({address: macAddr,
+                                           node_uuid: node.uuid});
+            })
+            .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('deletePort', function() {
+          var macAddr = '00:00:00:00:00:00';
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.createPort({address: macAddr,
+                                           node_uuid: node.uuid});
+            })
+            .then(function(port) {
+              expect(port).toBeDefined();
+              expect(port)
+                .toEqual(ironicBackendMockService.getPort(port.uuid));
+              ironicAPI.deletePort(port.uuid).then(function() {
+                expect(ironicBackendMockService.getPort(port.uuid))
+                  .toBeNull();
+              });
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('deletePort - nonexistent port', function() {
+          ironicAPI.deletePort(0)
+            .then(failTest);
 
           ironicBackendMockService.flush();
         });

@@ -29,10 +29,13 @@
 
   ironicBackendMockService.$inject = [
     '$httpBackend',
-    'horizon.framework.util.uuid.service'
+    'horizon.framework.util.uuid.service',
+    'horizon.dashboard.admin.ironic.validMacAddressPattern'
   ];
 
-  function ironicBackendMockService($httpBackend, uuidService) {
+  function ironicBackendMockService($httpBackend,
+                                    uuidService,
+                                    validMacAddressPattern) {
     // Default node object.
     var defaultNode = {
       chassis_uuid: null,
@@ -65,6 +68,20 @@
       uuid: undefined
     };
 
+    // Default port object.
+    var defaultPort = {
+      address: undefined,
+      created_at: null,
+      extra: {},
+      internal_info: {},
+      local_link_connection: {},
+      node_uuid: undefined,
+      portgroup_uuid: null,
+      pxe_enabled: true,
+      updated_at: null,
+      uuid: undefined
+    };
+
     // Value of the next available system port
     var nextAvailableSystemPort = 1024;
 
@@ -92,11 +109,23 @@
       getNode: getNode,
       nodeGetConsoleUrl: nodeGetConsoleUrl,
       getDrivers: getDrivers,
-      getImages: getImages
+      getImages: getImages,
+      getPort: getPort
+    };
+
+    var responseCode = {
+      SUCCESS: 200,
+      EMPTY_RESPONSE: 204,
+      BAD_QUERY: 400,
+      RESOURCE_NOT_FOUND: 404,
+      RESOURCE_CONFLICT: 409
     };
 
     // Dictionary of active nodes indexed by node-id (uuid and name)
     var nodes = {};
+
+    // Dictionary of active ports indexed by port-uuid
+    var ports = {};
 
     return service;
 
@@ -114,7 +143,7 @@
      *
      * @param {object} params - Dictionary of parameters that define
      *   the node to be created.
-     * @return {object | null} Node object, or null if the nde could
+     * @return {object|null} Node object, or null if the node could
      *   not be created.
      */
     function createNode(params) {
@@ -132,7 +161,8 @@
 
         var backendNode = {
           base: node,
-          consolePort: getNextAvailableSystemPort()
+          consolePort: getNextAvailableSystemPort(),
+          ports: {} // Indexed by port-uuid
         };
 
         nodes[node.uuid] = backendNode;
@@ -148,22 +178,93 @@
      * description Get a specified node.
      *
      * @param {string} nodeId - Uuid or name of the requested node.
-     * @return {object} Base node object.
+     * @return {object|null} Base node object, or null if the node
+     *   does not exist.
      */
     function getNode(nodeId) {
-      return angular.isDefined(nodes[nodeId]) ? nodes[nodeId].base : undefined;
+      return angular.isDefined(nodes[nodeId]) ? nodes[nodeId].base : null;
     }
 
-    /*
+    /**
      * @description Get the console-url for a specified node.
      *
      * @param {string} nodeId - Uuid or name of the node.
-     * @return {string} Console url if the console is enabled, null otherwise.
+     * @return {string|null} Console url if the console is enabled,
+     *   null otherwise.
      */
     function nodeGetConsoleUrl(nodeId) {
       return nodes[nodeId].base.console_enabled
         ? service.params.consoleUrl + nodes[nodeId].consolePort
-        : undefined;
+        : null;
+    }
+
+    /**
+     * @description Test whether a mac address is being used by an
+     *  existing port.
+     *
+     * @param {string} address - Mac address.
+     * @return {boolean} True if the mac address is being used by
+     *  another port, otherwise false.
+     */
+    function macAddressInUse(address) {
+      for (var uuid in ports) {
+        if (ports.hasOwnProperty(uuid) &&
+            angular.isDefined(ports[uuid].address)) {
+          if (ports[uuid].address === address) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    /**
+     * @description Create a backend managed port.
+     *
+     * @param {object} params - Dictionary of parameters that define
+     *   the port to be created.
+     * @return {object|null} Port object, or null if the port could
+     *   not be created.
+     */
+    function createPort(params) {
+      var port = null;
+      var status = responseCode.BAD_QUERY;
+      if (angular.isDefined(params.address) &&
+          angular.isDefined(params.node_uuid) &&
+          params.address.match(validMacAddressPattern) &&
+          angular.isDefined(nodes[params.node_uuid])) {
+        if (macAddressInUse(params.address)) {
+          status = responseCode.RESOURCE_CONFLICT;
+        } else {
+          port = angular.copy(defaultPort);
+          angular.forEach(params, function(value, key) {
+            port[key] = value;
+          });
+
+          if (angular.isUndefined(port.uuid)) {
+            port.uuid = uuidService.generate();
+          }
+
+          ports[port.uuid] = port;
+
+          nodes[port.node_uuid].ports[port.uuid] = port;
+
+          status = responseCode.SUCCESS;
+        }
+      }
+
+      return [status, port];
+    }
+
+    /**
+     * description Get a specified port.
+     *
+     * @param {string} portUuid - Uuid of the requested port.
+     * @return {object|null} Port object, or null if the port
+     *   does not exist.
+     */
+    function getPort(portUuid) {
+      return angular.isDefined(ports[portUuid]) ? ports[portUuid] : null;
     }
 
     /**
@@ -177,14 +278,14 @@
       $httpBackend.whenPOST(/\/api\/ironic\/nodes\/$/)
         .respond(function(method, url, data) {
           var node = createNode(JSON.parse(data).node);
-          return [node ? 200 : 400, node];
+          return [node ? responseCode.SUCCESS : responseCode.BAD_QUERY, node];
         });
 
       // Delete node
       $httpBackend.whenDELETE(/\/api\/ironic\/nodes\/$/)
         .respond(function(method, url, data) {
           var nodeId = JSON.parse(data).node;
-          var status = 400;
+          var status = responseCode.RESOURCE_NOT_FOUND;
           if (angular.isDefined(nodes[nodeId])) {
             var node = nodes[nodeId].base;
             if (node.name !== null) {
@@ -193,7 +294,7 @@
             } else {
               delete nodes[nodeId];
             }
-            status = 204;
+            status = responseCode.EMPTY_RESPONSE;
           }
           return [status, ""];
         });
@@ -225,7 +326,7 @@
       function _replaceItem(node, path, value) {
         if (path === "/name" &&
             node.name !== null) {
-          delete nodes[name];
+          delete nodes[node.name];
           if (value !== null) {
             nodes[value] = node;
           }
@@ -246,7 +347,7 @@
                              undefined,
                              ['nodeId'])
         .respond(function(method, url, data, headers, params) {
-          var status = 400;
+          var status = responseCode.RESOURCE_NOT_FOUND;
           var node = service.getNode(params.nodeId);
           if (angular.isDefined(node)) {
             var patch = JSON.parse(data).patch;
@@ -264,7 +365,7 @@
                 default:
               }
             });
-            status = 200;
+            status = responseCode.SUCCESS;
           }
           return [status, node];
         });
@@ -275,9 +376,9 @@
                            ['nodeId'])
         .respond(function(method, url, data, headers, params) {
           if (angular.isDefined(nodes[params.nodeId])) {
-            return [200, nodes[params.nodeId].base];
+            return [responseCode.SUCCESS, nodes[params.nodeId].base];
           } else {
-            return [400, null];
+            return [responseCode.RESOURCE_NOT_FOUND, null];
           }
         });
 
@@ -296,7 +397,7 @@
           var info = {
             console_enabled: consoleEnabled,
             console_info: consoleInfo};
-          return [200, info];
+          return [responseCode.SUCCESS, info];
         });
 
       // Set console
@@ -307,38 +408,71 @@
         .respond(function(method, url, data, headers, params) {
           data = JSON.parse(data);
           nodes[params.nodeId].base.console_enabled = data.enabled;
-          return [200, {}];
+          return [responseCode.SUCCESS, {}];
         });
 
       // Get the ports belonging to a specified node
       $httpBackend.whenGET(/\/api\/ironic\/ports/)
-        .respond(200, []);
+        .respond(responseCode.SUCCESS, []);
 
       // Get boot device
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/boot_device$/,
                            undefined,
                            ['nodeId'])
-        .respond(200, service.params.bootDevice);
+        .respond(responseCode.SUCCESS, service.params.bootDevice);
 
       // Validate the interfaces associated with a specified node
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/validate$/,
                            undefined,
                            ['nodeId'])
-        .respond(200, []);
+        .respond(responseCode.SUCCESS, []);
 
       // Get the currently available drivers
       $httpBackend.whenGET(/\/api\/ironic\/drivers\/$/)
-        .respond(200, {drivers: drivers});
+        .respond(responseCode.SUCCESS, {drivers: drivers});
 
       // Get driver properties
       $httpBackend.whenGET(/\/api\/ironic\/drivers\/([^\/]+)\/properties$/,
                            undefined,
                            ['driverName'])
-        .respond(200, []);
+        .respond(responseCode.SUCCESS, []);
 
       // Get glance images
       $httpBackend.whenGET(/\/api\/glance\/images/)
-        .respond(200, {items: images});
+        .respond(responseCode.SUCCESS, {items: images});
+
+      // Create port
+      $httpBackend.whenPOST(/\/api\/ironic\/ports\/$/)
+        .respond(function(method, url, data) {
+          return createPort(JSON.parse(data).port);
+        });
+
+      // Delete port
+      $httpBackend.whenDELETE(/\/api\/ironic\/ports\/$/)
+        .respond(function(method, url, data) {
+          var portUuid = JSON.parse(data).port_uuid;
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          if (angular.isDefined(ports[portUuid])) {
+            delete ports[portUuid];
+            status = responseCode.EMPTY_RESPONSE;
+          }
+          return [status, ""];
+        });
+
+      // Get ports
+      $httpBackend.whenGET(/\/api\/ironic\/ports\/$/)
+        .respond(function(method, url, data) {
+          var nodeId = JSON.parse(data).node_id;
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          var ports = [];
+          if (angular.isDefined(nodes[nodeId])) {
+            angular.forEach(nodes[nodeId].ports, function(port) {
+              ports.push(port);
+            });
+            status = responseCode.SUCCESS;
+          }
+          return [status, {ports: ports}];
+        });
     }
 
     /**
