@@ -44,6 +44,7 @@
          * Django or via jasmine template.
          */
         '../test-shim.js',
+        '../node_modules/string.prototype.endswith/*.js',
 
         // from jasmine.html
         toxPath + 'xstatic/pkg/jquery/data/jquery.js',
@@ -113,9 +114,9 @@
 
       autoWatch: true,
 
-      frameworks: ['jasmine'],
+      frameworks: ['jasmine', 'jasmine-matchers'],
 
-      browsers: ['Chrome'],
+      browsers: ['Chrome', 'PhantomJS'],
 
       browserNoActivityTimeout: 60000,
 
@@ -129,7 +130,9 @@
 
       plugins: [
         'karma-chrome-launcher',
+        'karma-phantomjs-launcher',
         'karma-jasmine',
+        'karma-jasmine-matchers',
         'karma-ng-html2js-preprocessor',
         'karma-coverage',
         'karma-threshold-reporter'

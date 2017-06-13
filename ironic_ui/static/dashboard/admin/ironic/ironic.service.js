@@ -46,6 +46,7 @@
       deleteNode: deleteNode,
       deletePort: deletePort,
       getDrivers: getDrivers,
+      getDriverDetails: getDriverDetails,
       getDriverProperties: getDriverProperties,
       getNode: getNode,
       getNodes: getNodes,
@@ -70,6 +71,19 @@
     };
 
     return service;
+
+    /**
+     * @description Get details of a specified driver
+     *
+     * @param {string} driverName - Name of the driver.
+     * @return {promise} Promise containing driver details.
+     */
+    function getDriverDetails(driverName) {
+      return apiService.get('/api/ironic/drivers/' + driverName)
+        .then(function(response) {
+          return response.data;
+        });
+    }
 
     /**
      * @description Retrieve a list of nodes

@@ -56,5 +56,17 @@
       EDIT_PORT_SUCCESS:'horizon.dashboard.admin.ironic.EDIT_PORT_SUCCESS'
     };
     $provide.constant('horizon.dashboard.admin.ironic.events', events);
+
+    $provide.constant('horizon.dashboard.admin.ironic.driverInterfaces',
+                      ['boot',
+                       'console',
+                       'deploy',
+                       'inspect',
+                       'management',
+                       'network',
+                       'power',
+                       'raid',
+                       'storage',
+                       'vendor']);
   }
 })();

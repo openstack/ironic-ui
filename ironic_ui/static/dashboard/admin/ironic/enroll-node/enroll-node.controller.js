@@ -71,6 +71,10 @@
         }
       });
 
+      angular.forEach(ctrl.driverInterfaceFields, function(field, interfaceName) {
+        ctrl.node[interfaceName + '_interface'] = field.value;
+      });
+
       ironic.createNode(ctrl.node).then(
         function(response) {
           $log.info("create node response = " + JSON.stringify(response));

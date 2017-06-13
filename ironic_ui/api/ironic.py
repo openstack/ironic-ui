@@ -25,7 +25,7 @@ from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
 
 
-DEFAULT_IRONIC_API_VERSION = '1.31'
+DEFAULT_IRONIC_API_VERSION = '1.34'
 DEFAULT_INSECURE = False
 DEFAULT_CACERT = None
 IRONIC_CLIENT_CLASS_NAME = 'baremetal'
@@ -280,6 +280,19 @@ def driver_properties(request, driver_name):
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.driver.html#ironicclient.v1.driver.DriverManager.properties
     """
     return ironicclient(request).driver.properties(driver_name)
+
+
+def driver_details(request, driver_name):
+    """Retrieve the details of a specified driver
+
+    :param request: HTTP request
+    :param driver_name: Name of the driver
+    :return: dictionary of driver details
+
+    https://docs.openstack.org/python-ironicclient/latest/cli/osc/v1/index.html#baremetal-driver-show
+    """
+    details = ironicclient(request).driver.get(driver_name)
+    return details.to_dict()
 
 
 def port_create(request, params):

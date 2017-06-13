@@ -17,7 +17,7 @@
   'use strict';
 
   describe('horizon.dashboard.admin.ironic.base-node', function () {
-    var ironicBackendMockService, uibModalInstance;
+    var ironicBackendMockService, uibModalInstance, driverInterfaces;
     var ctrl = {};
 
     beforeEach(module('horizon.dashboard.admin.ironic'));
@@ -51,6 +51,11 @@
       controller('BaseNodeController', {ctrl: ctrl});
     }));
 
+    beforeEach(inject(function($injector) {
+      driverInterfaces =
+        $injector.get('horizon.dashboard.admin.ironic.driverInterfaces');
+    }));
+
     afterEach(function() {
       ironicBackendMockService.postTest();
     });
@@ -64,6 +69,7 @@
       expect(ctrl.images).toBeNull();
       expect(ctrl.loadingDriverProperties).toBe(false);
       expect(ctrl.driverProperties).toBeNull();
+      expect(ctrl.driverInterfaceFields).toEqual({});
       expect(ctrl.driverPropertyGroups).toBeNull();
       expect(ctrl.modalTitle).toBeDefined();
       angular.forEach(ctrl.propertyCollections, function(collection) {
@@ -74,14 +80,17 @@
         .toContain(jasmine.objectContaining({id: "properties"}));
       expect(ctrl.propertyCollections)
         .toContain(jasmine.objectContaining({id: "extra"}));
-      expect(ctrl.node).toEqual({
+      var node = {
         name: null,
         driver: null,
         driver_info: {},
         properties: {},
         extra: {},
-        network_interface: null,
-        resource_class: null});
+        resource_class: null};
+      angular.forEach(driverInterfaces, function(interfaceName) {
+        node[interfaceName + '_interface'] = null;
+      });
+      expect(ctrl.node).toEqual(node);
       expect(Object.getOwnPropertyNames(ctrl).sort()).toEqual(
         BASE_NODE_CONTROLLER_PROPERTIES.sort());
     });
@@ -89,7 +98,7 @@
     it('_loadDrivers', function () {
       ctrl._loadDrivers();
       ironicBackendMockService.flush();
-      expect(ctrl.drivers).toEqual(ironicBackendMockService.getDrivers());
+      expect(ctrl.drivers).toEqual(ironicBackendMockService.getBaseDrivers());
     });
 
     it('_getImages', function () {
@@ -103,5 +112,24 @@
       expect(uibModalInstance.dismiss).toHaveBeenCalledWith('cancel');
     });
 
+    it('_loadDriverProperties', function() {
+      var driverName = "ipmi";
+      ctrl._loadDriverProperties(driverName);
+      var drivers = ironicBackendMockService.getDrivers();
+      ironicBackendMockService.flush();
+
+      expect(ctrl.node.driver).toEqual(driverName);
+      expect(ctrl.node.driver).toEqual(drivers[driverName].details.name);
+      expect(ctrl.node.driver_info).toEqual({});
+      expect(ctrl.driverPropertyGroups).toBeNonEmptyArray();
+    });
+
+    it('_loadDriverDetails', function() {
+      var driverName = "ipmi";
+      ctrl._loadDriverDetails(driverName);
+      ironicBackendMockService.flush();
+      var drivers = ironicBackendMockService.getDrivers();
+      expect(ctrl.driverType).toEqual(drivers[driverName].details.type);
+    });
   });
 })();

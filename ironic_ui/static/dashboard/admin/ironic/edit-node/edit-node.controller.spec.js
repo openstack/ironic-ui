@@ -78,7 +78,11 @@
       });
       expect(ctrl.node.name).toEqual(editNode.name);
       expect(ctrl.node.resource_class).toEqual(editNode.resource_class);
-      expect(ctrl.node.network_interface).toEqual(editNode.network_interface);
+      if (ctrl.driverType === 'classic') {
+        expect(ctrl.node.network_interface).toEqual(editNode.network_interface);
+      } else {
+        expect(ctrl.node.network_interface).toBeNull();
+      }
       expect(ctrl.node.properties).toEqual(editNode.properties);
       expect(ctrl.node.extra).toEqual(editNode.extra);
       expect(ctrl.node.instance_info).toEqual(editNode.instance_info);

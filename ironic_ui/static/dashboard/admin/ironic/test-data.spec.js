@@ -27,19 +27,23 @@ var BASE_NODE_CONTROLLER_PROPERTIES = [
   'cancel',
   'collectionCheckPropertyUnique',
   'collectionDeleteProperty',
+  'driverInterfaceFields',
   'driverProperties',
   'driverPropertyGroups',
   'drivers',
   'images',
   'isDriverPropertyActive',
-  'loadDriverProperties',
+  'loadDriver',
+  '_loadDriverDetails',
+  '_loadDriverProperties',
   'loadingDriverProperties',
   'modalTitle',
   'node',
   'propertyCollections',
   'readyToSubmit',
   'submitButtonTitle',
-  'validHostNameRegex'];
+  'validHostNameRegex',
+  'driverType'];
 
 /* exported BASE_PORT_CONTROLLER_PROPERTIES */
 
