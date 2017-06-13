@@ -1,6 +1,7 @@
 /*
  * © Copyright 2015,2016 Hewlett Packard Enterprise Development Company LP
  * © Copyright 2016 Cray Inc.
+ * Copyright 2017 Intel Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,9 +51,11 @@
       getNodes: getNodes,
       getPortsWithNode: getPortsWithNode,
       getBootDevice: getBootDevice,
+      getSupportedBootDevices: getSupportedBootDevices,
       nodeGetConsole: nodeGetConsole,
       nodeSetConsoleMode: nodeSetConsoleMode,
       nodeSetMaintenance: nodeSetMaintenance,
+      nodeSetBootDevice: nodeSetBootDevice,
       nodeSetPowerState: nodeSetPowerState,
       setNodeProvisionState: setNodeProvisionState,
       updateNode: updateNode,
@@ -119,17 +122,41 @@
      * @description Retrieve the boot device for a node
      * https://developer.openstack.org/api-ref/baremetal/#get-boot-device
      *
-     * @param {string} uuid – UUID or logical name of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Dictionary describing the current boot device
      */
-    function getBootDevice(uuid) {
-      return apiService.get('/api/ironic/nodes/' + uuid + '/boot_device')
+    function getBootDevice(nodeId) {
+      return apiService.get('/api/ironic/nodes/' + nodeId + '/boot_device')
         .then(function(response) {
           return response.data;
         })
         .catch(function(response) {
           var msg = interpolate(
             gettext('Unable to retrieve boot device for Ironic node. %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Retrieve the supported boot devices for a node
+     * https://developer.openstack.org/api-ref/baremetal/#get-supported-boot-devices
+     *
+     * @param {string} nodeId – UUID or logical name of a node.
+     * @return {promise} List of supported boot devices
+     */
+    function getSupportedBootDevices(nodeId) {
+      return apiService.get('/api/ironic/nodes/' + nodeId +
+                            '/boot_device/supported')
+        .then(function(response) {
+          return response.data; // List of supported boot devices
+        })
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext(
+              'Unable to retrieve supported boot devices for Ironic node. %s'),
             [response.data],
             false);
           toastService.add('error', msg);
@@ -198,6 +225,33 @@
         toastService.add('error', msg);
         return $q.reject(msg);
       });
+    }
+
+    /**
+     * @description Set the boot device of a node
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#set-boot-device
+     *
+     * @param {string} nodeId – UUID or logical name of a node.
+     * @param {string} bootDevice - Selected boot device.
+     * @param {Boolean} persistent - True or False.
+     * @return {promise} Promise
+     */
+    function nodeSetBootDevice(nodeId, bootDevice, persistent) {
+      return apiService.put('/api/ironic/nodes/' + nodeId + '/boot_device',
+                            {boot_device: bootDevice,
+                             persistent: persistent})
+        .then(function() {
+          toastService.add('success',
+                           gettext('Refresh page to see set boot device'));
+        })
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to set boot device: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
     }
 
     /**

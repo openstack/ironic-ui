@@ -382,18 +382,6 @@
       </dl>
     </div>
   </div>
-
-  <!-- Boot Device -->
-  <div class="col-md-6 status detail">
-    <h4 translate>Boot Device</h4>
-    <hr class="header_rule">
-    <dl class="dl-horizontal">
-      <dt translate>Device</dt>
-      <dd>{$ ctrl.node.bootDevice.boot_device | noValue $}</dd>
-      <dt translate>Persistent</dt>
-      <dd>{$ ctrl.node.bootDevice.persistent | noValue $}</dd>
-    </dl>
-  </div>
 </div>
 
 <div class="row">
@@ -405,6 +393,18 @@
       <dt ng-repeat-start="(propertyName, propertyValue) in ctrl.node.extra">
         {$ propertyName $}</dt>
       <dd ng-repeat-end>{$ propertyValue | noValue $}</dd>
+    </dl>
+  </div>
+
+  <!-- Boot Device -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Boot Device</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dt translate>Device</dt>
+      <dd>{$ ctrl.node.bootDevice.boot_device | noValue $}</dd>
+      <dt translate>Persistent</dt>
+      <dd>{$ ctrl.node.bootDevice.persistent | noValue $}</dd>
     </dl>
   </div>
 </div>

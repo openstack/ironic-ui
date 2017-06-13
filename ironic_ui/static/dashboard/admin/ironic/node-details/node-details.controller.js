@@ -33,6 +33,7 @@
     'horizon.dashboard.admin.ironic.create-port.service',
     'horizon.dashboard.admin.ironic.edit-port.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
+    'horizon.dashboard.admin.ironic.bootdevice.service',
     'horizon.dashboard.admin.ironic.node-state-transition.service',
     'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
@@ -47,6 +48,7 @@
                                        createPortService,
                                        editPortService,
                                        maintenanceService,
+                                       bootDeviceService,
                                        nodeStateTransitionService,
                                        validUuidPattern) {
     var ctrl = this;
@@ -57,6 +59,7 @@
 
     ctrl.actions = actions;
     ctrl.maintenanceService = maintenanceService;
+    ctrl.bootDeviceService = bootDeviceService;
 
     ctrl.sections = [
       {

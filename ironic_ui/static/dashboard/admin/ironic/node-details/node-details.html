@@ -37,6 +37,14 @@
               "Maintenance off" : "Maintenance on" | translate $}</span>
           </a>
         </li>
+        <li role="presentation">
+          <a role="menuitem"
+             ng-click="ctrl.bootDeviceService.setBootDevice(ctrl.node);
+                       $event.stopPropagation();
+                       $event.preventDefault()">
+            <span>{$ "Set boot device" | translate $}</span>
+          </a>
+        </li>
         <li role="presentation"
             ng-repeat="transition in ctrl.nodeStateTransitions">
           <a role="menuitem"

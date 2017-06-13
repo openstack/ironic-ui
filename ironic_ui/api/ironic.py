@@ -1,6 +1,7 @@
 #
 #  Copyright 2015, 2016 Hewlett Packard Enterprise Development Company LP
 #  Copyright 2016 Cray Inc.
+#  Copyright 2017 Intel Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -227,6 +228,35 @@ def node_get_boot_device(request, node_id):
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.get_boot_device
     """
     return ironicclient(request).node.get_boot_device(node_id)
+
+
+def node_set_boot_device(request, node_id, device, persistent):
+    """Set the boot device for a specified node.
+
+    :param request: HTTP request.
+    :param node_id: The UUID or name of the node.
+    :param device: boot device.
+    :param persistent: True or False.
+    :return: null.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_boot_device
+    """
+    return ironicclient(request).node.set_boot_device(node_id,
+                                                      device,
+                                                      persistent)
+
+
+def node_get_supported_boot_devices(request, node_id):
+    """Get the list of supported boot devices for a specified node.
+
+    :param request: HTTP request.
+    :param node_id: The UUID or name of the node.
+    :return: List of supported boot devices (strings)
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.get_boot_device
+    """
+    result = ironicclient(request).node.get_supported_boot_devices(node_id)
+    return result.get('supported_boot_devices', [])
 
 
 def driver_list(request):

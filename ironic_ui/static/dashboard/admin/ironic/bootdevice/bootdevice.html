@@ -1,0 +1,58 @@
+<div class="modal-header" modal-draggable>
+  <button type="button"
+          class="close"
+          ng-click="$dismiss()"
+          aria-hidden="true"
+          aria-label="Close">
+    <span aria-hidden="true" class="fa fa-times"></span>
+  </button>
+  <h3 class="modal-title">{$ ::ctrl.modalTitle $}</h3>
+</div>
+<div class="modal-body">
+  <form id="SetBootDeviceForm" name="SetBootDeviceForm">
+    <!--boot device-->
+    <div class="form-group required">
+      <label for="bootDevice"
+             class="control-label"
+             translate>Boot Device</label>
+        <span class="hz-icon-required fa fa-asterisk"></span>
+          <div>
+            <select id="bootDevice"
+                    class="form-control"
+                    ng-options="device as device for device in ctrl.supportedBootDevices"
+                    ng-model="ctrl.bootDevice">
+                    <option value="" disabled selected translate>Select a boot device</option>
+            </select>
+          </div>
+        </div>
+    <div class="form-group">
+      <div>
+        <label for="persistent"
+               class="control-label"
+               translate>Persistent</label>
+      </div>
+      <div class="btn-group" id="persistent">
+        <label class="btn btn-default"
+               ng-model="ctrl.persistent"
+               ng-repeat="opt in ['True', 'False']"
+               uib-btn-radio="opt">{$ opt $}</label>
+      </div>
+    </div>
+  </form>
+</div>
+<!--modal footer-->
+<div class="modal-footer">
+  <button class="btn btn-default secondary"
+          type="button"
+          ng-click="ctrl.cancel()"
+          translate>
+    Cancel
+  </button>
+  <button class="btn btn-primary"
+          type="button"
+          ng-click="ctrl.setSelectedBootDevice()"
+          ng-disabled="ctrl.bootDevice === null"
+          translate>
+    Set Boot Device
+  </button>
+</div>
