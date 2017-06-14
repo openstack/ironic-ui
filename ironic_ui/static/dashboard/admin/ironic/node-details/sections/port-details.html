@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-4">
+    <h6 class="text-center" translate>Attributes</h6>
+    <hr style="margin:0;">
+    <dl class="dl-horizontal">
+      <dt>UUID</dt>
+      <dd>{$ port.uuid $}
+    </dl>
+  </div>
+  <div class="col-md-4">
+    <h6 class="text-center" translate>Local Link Connection</h6>
+    <hr style="margin:0;">
+    <dl class="dl-horizontal">
+      <dt ng-repeat-start="(id, value) in port.local_link_connection">{$ id $}</dt>
+      <dd ng-repeat-end>{$ value $}</dd>
+    </dl>
+  </div>
+  <div class="col-md-4">
+    <h6 class="text-center" translate>Extra</h6>
+    <hr style="margin:0;">
+    <dl class="dl-horizontal">
+      <dt ng-repeat-start="(id, value) in port.extra">{$ id $}</dt>
+      <dd ng-repeat-end>
+        <span ng-switch="id">
+          <a ng-switch-when="vif_port_id"
+             href="/dashboard/admin/networks/ports/{$ value $}/detail">{$ value $}</a>
+          <span ng-switch-default>{$ value $}</span>
+        </span>
+      </dd>
+    </dl>
+  </div>
+</div>

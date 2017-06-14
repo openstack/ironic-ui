@@ -57,7 +57,10 @@
       setNodeProvisionState: setNodeProvisionState,
       updateNode: updateNode,
       updatePort: updatePort,
-      validateNode: validateNode
+      validateNode: validateNode,
+      createPortgroup: createPortgroup,
+      getPortgroups: getPortgroups,
+      deletePortgroup: deletePortgroup
     };
 
     return service;
@@ -513,6 +516,79 @@
           return $q.reject(msg);
         });
     }
-  }
 
+    /**
+     * @description Retrieve a list of portgroups associated with a node.
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#list-detailed-portgroups
+     *
+     * @param {string} nodeId – UUID or logical name of a node.
+     * @return {promise} List of portgroups.
+     */
+    function getPortgroups(nodeId) {
+      return apiService.get('/api/ironic/portgroups/',
+                            {params: {node_id: nodeId}})
+        .then(function(response) {
+          // Add id property to support delete operations
+          // using the deleteModalService
+          angular.forEach(response.data.portgroups, function(portgroup) {
+            portgroup.id = portgroup.uuid;
+          });
+          return response.data.portgroups;
+        })
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve Ironic node portgroups: %s'),
+            [response.data],
+            false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Create a protgroup.
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#create-portgroup
+     *
+     * @param {object} params – Object containing parameters that define
+     *   the portgroup to be created.
+     * @return {promise} Promise containing the portgroup.
+     */
+    function createPortgroup(params) {
+      return apiService.post('/api/ironic/portgroups/', params)
+        .then(function(response) {
+          toastService.add('success',
+                           gettext('Portgroup successfully created'));
+          return response.data; // The newly created portgroup
+        })
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to create portgroup: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Delete a portgroup.
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#delete-portgroup
+     *
+     * @param {string} portgroupId – UUID or name of the portgroup to be deleted.
+     * @return {promise} Promise.
+     */
+    function deletePortgroup(portgroupId) {
+      return apiService.delete('/api/ironic/portgroups/',
+                               {portgroup_id: portgroupId})
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to delete portgroup: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+  }
 }());

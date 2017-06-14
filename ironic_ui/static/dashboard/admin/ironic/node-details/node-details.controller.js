@@ -53,6 +53,7 @@
     var path = basePath + '/node-details/sections/';
 
     ctrl.noPortsText = gettext('No network ports have been defined');
+    ctrl.noPortgroupsText = gettext('No portgroups have been defined');
 
     ctrl.actions = actions;
     ctrl.maintenanceService = maintenanceService;
@@ -68,6 +69,9 @@
       }
     ];
 
+    ctrl.portDetailsTemplateUrl = path + "port-details.html";
+    ctrl.portgroupDetailsTemplateUrl = path + "portgroup-details.html";
+
     ctrl.node = null;
     ctrl.nodeValidation = [];
     ctrl.nodeValidationMap = {}; // Indexed by interface
@@ -75,6 +79,8 @@
     ctrl.nodePowerTransitions = [];
     ctrl.ports = [];
     ctrl.portsSrc = [];
+    ctrl.portgroups = [];
+    ctrl.portgroupsSrc = [];
     ctrl.basePath = basePath;
     ctrl.re_uuid = new RegExp(validUuidPattern);
     ctrl.isUuid = isUuid;
@@ -85,6 +91,7 @@
     ctrl.editPort = editPort;
     ctrl.refresh = refresh;
     ctrl.toggleConsoleMode = toggleConsoleMode;
+    ctrl.deletePortgroups = deletePortgroups;
 
     $scope.emptyObject = function(obj) {
       return angular.isUndefined(obj) || Object.keys(obj).length === 0;
@@ -112,6 +119,7 @@
         ctrl.nodePowerTransitions = actions.getPowerTransitions(ctrl.node);
         retrievePorts();
         retrieveBootDevice();
+        retrievePortgroups();
         validateNode();
       });
     }
@@ -158,6 +166,19 @@
     function retrieveBootDevice() {
       ironic.getBootDevice(ctrl.node.uuid).then(function (bootDevice) {
         ctrl.node.bootDevice = bootDevice;
+      });
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrievePortgroups
+     * @description Retrieve the port groups associated with the current node,
+     *   and store them in the controller instance.
+     *
+     * @return {void}
+     */
+    function retrievePortgroups() {
+      ironic.getPortgroups(ctrl.node.uuid).then(function(portgroups) {
+        ctrl.portgroupsSrc = portgroups;
       });
     }
 
@@ -252,6 +273,19 @@
      */
     function deletePort(ports) {
       actions.deletePort(ports).then(function() {
+        ctrl.refresh();
+      });
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.portgroupDelete
+     * @description Delete a list of portgroups.
+     *
+     * @param {port []} portgroups – portgroups to be deleted.
+     * @return {void}
+     */
+    function deletePortgroups(portgroups) {
+      actions.deletePortgroups(portgroups).then(function() {
         ctrl.refresh();
       });
     }

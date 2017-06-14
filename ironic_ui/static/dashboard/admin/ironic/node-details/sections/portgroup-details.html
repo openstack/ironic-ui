@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-4">
+    <h6 class="text-center" translate>Attributes</h6>
+    <hr style="margin:0;">
+    <dl class="dl-horizontal">
+      <dt>Mode</dt>
+      <dd>{$ portgroup.mode $}</dd>
+      <dt><abbr title="Standalone">SA</abbr> ports</dt>
+      <dd>{$ portgroup.standalone_ports_supported $}</dd>
+    </dl>
+  </div>
+  <div class="col-md-4">
+    <h6 class="text-center" translate>Properties</h6>
+    <hr style="margin:0;">
+    <dl class="dl-horizontal">
+      <dt ng-repeat-start="(id, value) in portgroup.properties">{$ id $}</dt>
+      <dd ng-repeat-end>{$ value $}</dd>
+    </dl>
+  </div>
+  <div class="col-md-4">
+    <h6 class="text-center" translate>Extra</h6>
+    <hr style="margin:0;">
+    <dl class="dl-horizontal">
+      <dt ng-repeat-start="(id, value) in portgroup.extra">{$ id $}</dt>
+      <dd ng-repeat-end>{$ value $}</dd>
+    </dl>
+  </div>
+</div>

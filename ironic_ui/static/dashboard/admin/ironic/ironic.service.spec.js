@@ -20,12 +20,15 @@
   var IRONIC_API_PROPERTIES = [
     'createNode',
     'createPort',
+    'createPortgroup',
     'deleteNode',
     'deletePort',
+    'deletePortgroup',
     'getDrivers',
     'getDriverProperties',
     'getNode',
     'getNodes',
+    'getPortgroups',
     'getPortsWithNode',
     'getBootDevice',
     'nodeGetConsole',
@@ -398,6 +401,112 @@
 
         it('deletePort - nonexistent port', function() {
           ironicAPI.deletePort(0)
+            .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPortgroup', function() {
+          var node;
+          createNode({driver: defaultDriver})
+            .then(function(createNode) {
+              node = createNode;
+              return ironicAPI.createPortgroup({node_uuid: node.uuid});
+            })
+            .then(function(portgroup) {
+              expect(portgroup.node_uuid).toBe(node.uuid);
+              expect(portgroup)
+                .toEqual(ironicBackendMockService.getPortgroup(portgroup.uuid));
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPortgroup - specify portgroup name', function() {
+          var node;
+          var portgroupName = "test-portgroup";
+
+          createNode({driver: defaultDriver})
+            .then(function(createNode) {
+              node = createNode;
+              return ironicAPI.createPortgroup({node_uuid: node.uuid,
+                                                name: portgroupName});
+            })
+            .then(function(portgroup) {
+              expect(portgroup.node_uuid).toBe(node.uuid);
+              expect(portgroup.name).toBe(portgroupName);
+              expect(portgroup)
+                .toEqual(ironicBackendMockService.getPortgroup(portgroup.uuid));
+              expect(portgroup)
+                .toEqual(ironicBackendMockService.getPortgroup(portgroup.name));
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPortgroup - missing input data', function() {
+          ironicAPI.createPortgroup({})
+            .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('createPort - bad input data', function() {
+          ironicAPI.createPort({node_uuid: ""})
+            .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('deletePortgroup', function() {
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.createPortgroup({node_uuid: node.uuid});
+            })
+            .then(function(portgroup) {
+              expect(portgroup).toBeDefined();
+              expect(portgroup)
+                .toEqual(ironicBackendMockService.getPortgroup(portgroup.uuid));
+              ironicAPI.deletePortgroup(portgroup.uuid).then(function() {
+                expect(ironicBackendMockService.getPortgroup(portgroup.uuid))
+                  .toBeNull();
+              });
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('deletePortgroup - by name', function() {
+          var portgroupName = "delete-portgroup";
+
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.createPortgroup({node_uuid: node.uuid,
+                                                name: portgroupName});
+            })
+            .then(function(portgroup) {
+              expect(portgroup).toBeDefined();
+              expect(portgroup)
+                .toEqual(ironicBackendMockService.getPortgroup(portgroup.uuid));
+              expect(portgroup)
+                .toEqual(ironicBackendMockService.getPortgroup(portgroup.name));
+              ironicAPI.deletePortgroup(portgroup.name).then(function() {
+                expect(ironicBackendMockService.getPortgroup(portgroup.name))
+                  .toBeNull();
+                expect(ironicBackendMockService.getPortgroup(portgroup.uuid))
+                  .toBeNull();
+              });
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('deletePortgroup - nonexistent portgroup', function() {
+          ironicAPI.deletePortgroup(0)
             .then(failTest);
 
           ironicBackendMockService.flush();

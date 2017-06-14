@@ -1,0 +1,27 @@
+---
+features:
+  - |
+    Support has been added for viewing and managing the portgroups
+    associated with an Ironic node.
+  - |
+    A portgroup table has been added to the node-details/configuration tab.
+  - |
+    Each row in the table displays a single portgroup, and has column entries
+    for its UUID, MAC address, name, and number of ports. A dropdown menu
+    is also provided that contains actions that can be applied to the
+    portgroup.
+  - |
+    Detailed information for a portgroup is obtained by clicking the
+    detail-toggle-selector (right-chevron) located in its table row.
+    The additional information is displayed in a row expansion.
+  - |
+    The port table in node-details/configuration tab has been modified
+    as follows:
+
+    * A column has been added that displays the UUID of the portgroup
+      to which the port belongs.
+    * The ``Properties`` column has been replaced with a column that
+      displays only the pxe_enabled property.
+    * Additional properties are displayed by clicking the
+      detail-toggle-selector for that port in a similar manner to the
+      portgroup table.

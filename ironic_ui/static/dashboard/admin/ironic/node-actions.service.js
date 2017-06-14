@@ -59,6 +59,7 @@
     var service = {
       deleteNode: deleteNode,
       deletePort: deletePort,
+      deletePortgroups: deletePortgroups,
       setPowerState: setPowerState,
       setMaintenance: setMaintenance,
       setProvisionState: setProvisionState,
@@ -188,13 +189,39 @@
                             'Successfully deleted ports "%s"',
                             ports.length),
           error: ngettext('Unable to delete port "%s"',
-                          'Unable to delete portss "%s"',
+                          'Unable to delete ports "%s"',
                           ports.length)
         },
         deleteEntity: ironic.deletePort,
         successEvent: ironicEvents.DELETE_PORT_SUCCESS
       };
       return deleteModalService.open($rootScope, ports, context);
+    }
+
+    function deletePortgroups(portgroups) {
+      var context = {
+        labels: {
+          title: ngettext("Delete Portgroup",
+                          "Delete Portgroups",
+                          portgroups.length),
+          message: ngettext('Are you sure you want to delete portgroup "%s"? ' +
+                            'This action cannot be undone.',
+                            'Are you sure you want to delete portgroups "%s"? ' +
+                            'This action cannot be undone.',
+                            portgroups.length),
+          submit: ngettext("Delete Portgroup",
+                           "Delete Portgroups",
+                           portgroups.length),
+          success: ngettext('Successfully deleted portgroup "%s"',
+                            'Successfully deleted portgroups "%s"',
+                            portgroups.length),
+          error: ngettext('Unable to delete portgroup "%s"',
+                          'Unable to delete portgroups "%s"',
+                          portgroups.length)
+        },
+        deleteEntity: ironic.deletePortgroup
+      };
+      return deleteModalService.open($rootScope, portgroups, context);
     }
 
     /*

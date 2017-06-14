@@ -1,7 +1,7 @@
 <div class="row">
 
   <!-- General -->
-  <div class="col-md-6 status detail">
+  <div class="col-md-12 status detail">
     <h4 translate>General</h4>
     <hr class="header_rule">
     <dl class="dl-horizontal">
@@ -15,7 +15,9 @@
       <dd>{$ ctrl.node.created_at | date:'medium' | noValue $}</dd>
     </dl>
   </div>
+</div>
 
+<div class="row">
   <!-- Ports -->
   <div class="col-md-6 status detail">
     <h4 translate>Ports</h4>
@@ -26,7 +28,7 @@
            class="table table-striped table-rsp table-detail">
       <thead>
         <tr>
-          <th colspan="4" class="action-col">
+          <th colspan="100" class="action-col">
             <action-list uib-dropdown class="pull-right">
               <action button-type="split-button"
                       action-classes="'btn btn-default btn-sm'"
@@ -50,11 +52,15 @@
             <input type="checkbox"
                    hz-select-all="ctrl.ports"/>
           </th>
+          <th>&nbsp;</th>
           <th translate class="rsp-p1" style="white-space:nowrap">
             MAC Address
           </th>
-          <th translate class="rsp-p2" style="width:100%;">
-            Properties
+          <th translate class="rsp-p2" style="white-space:nowrap;">
+            PXE Enabled
+          </th>
+          <th translate class="rsp-p2" style="white-space:nowrap;">
+            Portgroup
           </th>
           <th translate class="actions_column">
             Actions
@@ -62,34 +68,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="port in ctrl.ports">
+        <tr ng-repeat-start="port in ctrl.ports">
           <td class="multi_select_column">
             <input type="checkbox"
                    hz-select="port"
                    ng-model="tCtrl.selections[port.id].checked"/>
+          <td>
+            <i class="fa fa-chevron-right"
+               hz-expand-detail="fa-chevron-right fa-chevron-down"
+               duration="200"
+               item="port"></i>
+          </td>
           <td class="rsp-p1">
             {$ port.address $}
           </td>
           <td>
-            <ul style="list-style:none;padding-left:0;">
-              <li><strong>pxe_enabled</strong>: {$ port.pxe_enabled $}</li>
-              <li ng-repeat="propertyObject in
-                             ['local_link_connection',
-                             'extra']"
-                  ng-if="!emptyObject(port[propertyObject])">
-                <strong>{$ propertyObject $}</strong>:
-                <ul style="list-style:none;padding-left:10px;">
-                  <li ng-repeat="(id, value) in port[propertyObject]">
-                    <strong>{$ id $}</strong>:
-                    <span ng-switch="id">
-                      <a ng-switch-when="vif_port_id"
-                         href="/dashboard/admin/networks/ports/{$ value $}/detail">{$ value $}</a>
-                      <span ng-switch-default>{$ value $}</span>
-                    </span>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            {$ port.pxe_enabled $}
+          <td>
+            {$ port.portgroup_uuid | noValue $}
           </td>
           <td class="actions_column">
             <action-list uib-dropdown class="pull-right">
@@ -113,9 +109,123 @@
             </action-list>
           </td>
         </tr>
+        <tr ng-repeat-end class="detail-row">
+          <td class="detail" colspan="100">
+            <hz-detail-row
+               template-url="ctrl.portDetailsTemplateUrl">
+            </hz-detail-row>
+          </td>
+        </tr>
         <tr hz-no-items
             items="ctrl.ports"
             message="ctrl.noPortsText">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <!-- Portgroups -->
+  <div class="col-md-6 status detail">
+    <h4 translate>Portgroups</h4>
+    <hr class="header_rule">
+    <table hz-table ng-cloak
+           st-table="ctrl.portgroups"
+           st-safe-src="ctrl.portgroupsSrc"
+           class="table table-striped table-rsp table-detail">
+      <thead>
+        <tr>
+          <th colspan="100" class="action-col">
+            <action-list uib-dropdown class="pull-right">
+              <action button-type="split-button"
+                      action-classes="'btn btn-default btn-sm'"
+                      callback="">
+                {$ ::'Create portgroup' | translate $}
+              </action>
+              <menu>
+                <action button-type="menu-item"
+                        callback="ctrl.deletePortgroups"
+                        item="tCtrl.selected"
+                        disabled="tCtrl.selected.length === 0">
+                  <span class="fa fa-trash"></span>
+                  {$ ::'Delete portgroups' | translate $}
+                </action>
+              </menu>
+            </action-list>
+          </th>
+        </tr>
+        <tr>
+          <th class="multi_select_column">
+            <input type="checkbox"
+                   hz-select-all="ctrl.portgroups"/>
+          </th>
+          <th>&nbsp;</th>
+          <th translate class="rsp-p1" style="width:100%;">
+            UUID
+          </th>
+          <th translate class="rsp-p2" style="white-space:nowrap;">
+            MAC Address
+          </th>
+          <th translate class="rsp-p2" style="width:white-space:nowrap;">
+            Name
+          </th>
+          <th translate class="actions_column">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat-start="portgroup in ctrl.portgroups">
+          <td class="multi_select_column">
+            <input type="checkbox"
+                   hz-select="portgroup"
+                   ng-model="tCtrl.selections[portgroup.id].checked"/>
+          <td>
+            <i class="fa fa-chevron-right"
+               hz-expand-detail="fa-chevron-right fa-chevron-down"
+               duration="200"
+               item="portgroup"></i>
+          </td>
+          <td class="rsp-p1">
+            {$ portgroup.uuid $}
+          </td>
+          <td class="rsp-p1">
+            {$ portgroup.address | noValue $}
+          </td>
+          <td class="rsp-p1">
+            {$ portgroup.name | noValue $}
+          </td>
+          <td class="actions_column">
+            <action-list uib-dropdown class="pull-right">
+              <action button-type="split-button"
+                      action-classes="'btn btn-default btn-sm'"
+                      callback=""
+                      item="port">
+                {$ ::'Edit portgroup' | translate $}
+              </action>
+              <menu>
+                <li role="presentation">
+                  <a role="menuitem"
+                     ng-click="ctrl.deletePortgroups([portgroup]);
+                               $event.stopPropagation();
+                               $event.preventDefault()">
+                    <span class="fa fa-trash"></span>
+                    <span>{$ :: 'Delete portgroup' | translate $}</span>
+                  </a>
+                </li>
+              </menu>
+            </action-list>
+          </td>
+        </tr>
+        <tr ng-repeat-end class="detail-row">
+          <td class="detail" colspan="100">
+            <hz-detail-row
+               template-url="ctrl.portgroupDetailsTemplateUrl">
+            </hz-detail-row>
+          </td>
+        </tr>
+        <tr hz-no-items
+            items="ctrl.portgroups"
+            message="ctrl.noPortgroupsText">
         </tr>
       </tbody>
     </table>
