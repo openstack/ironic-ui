@@ -31,7 +31,7 @@
   ];
 
   /**
-   * Utility class for managing form fields
+   * @description Utility class for managing form fields
    *
    * @param {object} args - Valid properties are:
    *   value - Initial value of the field
@@ -92,6 +92,83 @@
     };
   }
 
+  /**
+   * @description Utility class used to manage local-link-connection
+   *   form fields.
+   *
+   * @param {string} validMacAddressPattern - Regular expression
+   *   pattern used to test for valid mac addresses.
+   * @param {string} validDatapathIdPattern - Regular expression
+   *   pattern used to test for valid datapath ids.
+   * @return {void}
+   */
+  function LocalLinkConnectionMgr(validMacAddressPattern,
+                                  validDatapathIdPattern) {
+    this.port_id = new Field({});
+
+    this.switch_id = new Field({
+      desc: gettext("MAC address or OpenFlow datapath ID"),
+      pattern: validMacAddressPattern + '|' + validDatapathIdPattern});
+
+    this.switch_info = new Field({});
+
+    this.fields = {
+      port_id: this.port_id,
+      switch_id: this.switch_id,
+      switch_info: this.switch_info
+    };
+
+    /**
+     * Update the required property of each field based on current values
+     *
+     * @return {void}
+     */
+    this.update = function() {
+      var required = this.port_id.hasValue() || this.switch_id.hasValue();
+
+      this.port_id.required = required;
+      this.switch_id.required = required;
+    };
+
+    /**
+     * Generate an attribute object that conforms to the format
+     * required for port creation using the Ironic client
+     *
+     * @return {object|null} local_link_connection attribute object.
+     * A value of null is returned if the local-link-connection
+     * information is incomplete.
+     */
+    this.toPortAttr = function() {
+      var attr = null;
+      if (this.port_id.hasValue() &&
+          this.switch_id.hasValue()) {
+        attr = {};
+        attr.port_id = this.port_id.value;
+        attr.switch_id = this.switch_id.value;
+
+        if (this.switch_info.hasValue()) {
+          attr.switch_info = this.switch_info.value;
+        }
+      }
+      return attr;
+    };
+
+    /**
+     * dis/enable the local-link-connection form fields
+     *
+     * @param {boolean} disabled - True if the local-link-connection form
+     * fields should be disabled
+     * @param {string} reason - Optional reason for the state change
+     * @return {void}
+     */
+    this.setDisabled = function(disabled, reason) {
+      angular.forEach(this.fields, function(field) {
+        field.disabled = disabled;
+        field.info = reason;
+      });
+    };
+  }
+
   function BasePortController($uibModalInstance,
                               validMacAddressPattern,
                               validDatapathIdPattern,
@@ -104,64 +181,9 @@
     ctrl.pxeEnabled = new Field({value: 'True'});
 
     // Object used to manage local-link-connection form fields
-    ctrl.localLinkConnection = {
-      port_id: new Field({}),
-      switch_id: new Field({
-        desc: gettext("MAC address or OpenFlow datapath ID"),
-        pattern: validMacAddressPattern + '|' + validDatapathIdPattern}),
-      switch_info: new Field({}),
-
-      /**
-       * Update the required property of each field based on current values
-       *
-       * @return {void}
-       */
-      $update: function() {
-        var required = this.port_id.hasValue() || this.switch_id.hasValue();
-
-        this.port_id.required = required;
-        this.switch_id.required = required;
-      },
-
-      /**
-       * Generate an attribute object that conforms to the format
-       * required for port creation using the Ironic client
-       *
-       * @return {object} local_link_connection attribute object.
-       * A value of null is returned if the local-link-connection
-       * information is incomplete.
-       */
-      $toPortAttr: function() {
-        var attr = {};
-        if (this.port_id.hasValue() &&
-            this.switch_id.hasValue()) {
-          attr.port_id = this.port_id.value;
-          attr.switch_id = this.switch_id.value;
-
-          if (this.switch_info.hasValue()) {
-            attr.switch_info = this.switch_info.value;
-          }
-        }
-        return attr;
-      },
-
-      /**
-       * dis/enable the local-link-connection form fields
-       *
-       * @param {boolean} disabled - True if the local-link-connection form
-       * fields should be disabled
-       * @param {string} reason - Optional reason for the state change
-       * @return {void}
-       */
-      $setDisabled: function(disabled, reason) {
-        angular.forEach(this, function(item) {
-          if (item instanceof Field) {
-            item.disabled = disabled;
-            item.info = reason;
-          }
-        });
-      }
-    };
+    ctrl.localLinkConnection =
+      new LocalLinkConnectionMgr(validMacAddressPattern,
+                                 validDatapathIdPattern);
 
     /**
      * Cancel the modal

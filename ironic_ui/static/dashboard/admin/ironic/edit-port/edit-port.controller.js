@@ -80,7 +80,7 @@
       });
 
     if (cannotEditConnectivityAttr) {
-      ctrl.localLinkConnection.$setDisabled(
+      ctrl.localLinkConnection.setDisabled(
         true,
         UNABLE_TO_UPDATE_CONNECTIVITY_ATTR_MSG);
     }
@@ -102,7 +102,7 @@
                          ctrl.pxeEnabled.value,
                          "/pxe_enabled");
       patcher.buildPatch(port.local_link_connection,
-                         ctrl.localLinkConnection.$toPortAttr(),
+                         ctrl.localLinkConnection.toPortAttr(),
                          "/local_link_connection");
       patcher.buildPatch(port.extra, ctrl.port.extra, "/extra");
 
