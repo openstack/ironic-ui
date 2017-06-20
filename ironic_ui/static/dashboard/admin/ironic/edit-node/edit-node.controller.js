@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Cray Inc.
+ * Copyright 2017 Cray Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,6 +67,8 @@
 
     ctrl.node[instanceInfoId] = {};
 
+    ctrl.node[instanceInfoId] = {};
+
     init(node);
 
     function init(node) {
@@ -112,7 +114,7 @@
      * @param {object} targetNode - Target node
      * @return {object[]} Array of patch instructions
      */
-    function buildPatch(sourceNode, targetNode) {
+    ctrl.buildPatch = function(sourceNode, targetNode) {
       var patcher = new updatePatchService.UpdatePatch();
       var PatchItem = function PatchItem(id, path) {
         this.id = id;
@@ -132,7 +134,7 @@
                       });
 
       return patcher.getPatch();
-    }
+    };
 
     ctrl.submit = function() {
       angular.forEach(ctrl.driverProperties, function(property, name) {
@@ -153,7 +155,7 @@
       $log.info("Updating node " + JSON.stringify(ctrl.baseNode));
       $log.info("to " + JSON.stringify(ctrl.node));
 
-      var patch = buildPatch(ctrl.baseNode, ctrl.node);
+      var patch = ctrl.buildPatch(ctrl.baseNode, ctrl.node);
       $log.info("patch = " + JSON.stringify(patch.patch));
       if (patch.status === updatePatchService.UpdatePatch.status.OK) {
         ironic.updateNode(ctrl.baseNode.uuid, patch.patch).then(function(node) {

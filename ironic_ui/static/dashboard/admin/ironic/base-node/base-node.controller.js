@@ -117,70 +117,6 @@
     };
 
     /**
-     * @description Check whether a group contains required properties
-     *
-     * @param {DriverProperty[]} group - Property group
-     * @return {boolean} Return true if the group contains required
-     * properties, false otherwise
-     */
-    function driverPropertyGroupHasRequired(group) {
-      var hasRequired = false;
-      for (var i = 0; i < group.length; i++) {
-        if (group[i].required) {
-          hasRequired = true;
-          break;
-        }
-      }
-      return hasRequired;
-    }
-
-    /**
-     * @description Convert array of driver property groups to a string
-     *
-     * @param {array[]} groups - Array for driver property groups
-     * @return {string} Output string
-     */
-    function driverPropertyGroupsToString(groups) {
-      var output = [];
-      angular.forEach(groups, function(group) {
-        var groupStr = [];
-        angular.forEach(group, function(property) {
-          groupStr.push(property.name);
-        });
-        groupStr = groupStr.join(", ");
-        output.push(['[', groupStr, ']'].join(""));
-      });
-      output = output.join(", ");
-      return ['[', output, ']'].join("");
-    }
-
-    /**
-     * @description Comaprison function used to sort driver property groups
-     *
-     * @param {DriverProperty[]} group1 - First group
-     * @param {DriverProperty[]} group2 - Second group
-     * @return {integer} Return:
-     * < 0 if group1 should precede group2 in an ascending ordering
-     * > 0 if group2 should precede group1
-     * 0 if group1 and group2 are considered equal from ordering perpsective
-     */
-    function compareDriverPropertyGroups(group1, group2) {
-      var group1HasRequired = driverPropertyGroupHasRequired(group1);
-      var group2HasRequired = driverPropertyGroupHasRequired(group2);
-
-      if (group1HasRequired === group2HasRequired) {
-        if (group1.length === group2.length) {
-          return group1[0].name.localeCompare(group2[0].name);
-        } else {
-          return group1.length - group2.length;
-        }
-      } else {
-        return group1HasRequired ? -1 : 1;
-      }
-      return 0;
-    }
-
-    /**
      * @description Order driver properties in the form using the following
      * rules:
      *
@@ -190,7 +126,7 @@
      * (2) Required properties with no dependents should be located at the
      * top of the form
      *
-     * @return {void}
+     * @return {[]} Ordered list of groups of strongly related properties
      */
     ctrl._sortDriverProperties = function() {
       // Build dependency graph between driver properties
@@ -235,10 +171,10 @@
           components.push(component);
         },
         groups);
-      groups.sort(compareDriverPropertyGroups);
+      groups.sort(baseNodeService.compareDriverPropertyGroups);
 
       $log.debug("Found the following property groups: " +
-                 driverPropertyGroupsToString(groups));
+                 baseNodeService.driverPropertyGroupsToString(groups));
       return groups;
     };
 
