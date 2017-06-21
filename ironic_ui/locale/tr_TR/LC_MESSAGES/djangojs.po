@@ -1,0 +1,516 @@
+# Mücahit Büyükyılmaz <mucahit@deltanoc.com>, 2015. #zanata
+# OpenStack Infra <zanata@openstack.org>, 2015. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Mücahit Büyükyılmaz <mucahit@deltanoc.com>, 2016. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2017. #zanata
+# işbaran akçayır <isbaran@gmail.com>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 2.3.1.dev39\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2017-06-20 18:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-06-19 11:56+0000\n"
+"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
+"Language-Team: Turkish (Turkey)\n"
+"Language: tr-TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Zanata 3.9.6\n"
+"X-POOTLE-MTIME: 1495454551.000000\n"
+
+msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+msgstr " ([^\" ]+|\"[^\"]+\") \\(Öntanımlı\\)"
+
+msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+msgid "Abort cleaning"
+msgstr "Temizliği iptal et"
+
+msgid "Actions"
+msgstr "İşlemler"
+
+msgid "Add Extra"
+msgstr "Ek Ekle"
+
+msgid "Add Instance Property"
+msgstr "Sunucu Özelliği Ekle"
+
+msgid "Add Property"
+msgstr "Özellik Ekle"
+
+#, python-format
+msgid ""
+"Are you sure you want to delete node \"%s\"? This action cannot be undone."
+msgid_plural ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr[0] ""
+"\"%s\" düğümünü silmek istediğinize emin misiniz? Bu eylem geri alınamaz."
+msgstr[1] ""
+"\"%s\" düğümlerini silmek istediğinize emin misiniz? Bu eylem geri alınamaz."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete port \"%s\"? This action cannot be undone."
+msgid_plural ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr[0] ""
+"\"%s\" bağlantı noktasını silmek istediğinize emin misiniz? Bu eylem geri "
+"alınamaz."
+msgstr[1] ""
+"\"%s\" bağlantı noktalarını silmek istediğinize emin misiniz? Bu eylem geri "
+"alınamaz."
+
+msgid "Boot Device"
+msgstr "Önyükleme Aygıtı"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Chassis ID"
+msgstr "Şasi ID'si"
+
+msgid "Choose an Image"
+msgstr "Bir İmaj seçin"
+
+msgid "Clean"
+msgstr "Temizle"
+
+msgid "Clean Node"
+msgstr "Düğümü Temizle"
+
+msgid "Clean Step"
+msgstr "Temizlik Adımı"
+
+msgid "Clean node"
+msgstr "Düğümü sil"
+
+msgid "Clean steps should be an non-empty array"
+msgstr "Temizlik adımları boş-olmayan bir dizi olmalı"
+
+msgid "Click link to view console"
+msgstr "Konsolu görüntülemek için bağlantıya tıklayın"
+
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+msgid "Console Enabled"
+msgstr "Konsol Etkin"
+
+msgid "Console Info."
+msgstr "Konsol Bilgisi."
+
+msgid "Create Port"
+msgstr "Bağlantı Noktası Oluştur"
+
+msgid "Created At"
+msgstr "Oluşturulduğu zaman"
+
+msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Öntanımlı olarak ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "Düğümü Sil"
+msgstr[1] "Düğümleri Sil"
+
+msgid "Delete Port"
+msgid_plural "Delete Ports"
+msgstr[0] "Bağlantı Noktasını Sil"
+msgstr[1] "Bağlantı Noktalarını Sil"
+
+msgid "Deploy Kernel"
+msgstr "Çekirdeği Yerleştir"
+
+msgid "Deploy Ramdisk"
+msgstr "Ramdisk'i Yerleştir"
+
+msgid "Device"
+msgstr "Aygıt"
+
+msgid "Driver"
+msgstr "Sürücü"
+
+msgid "Driver Details"
+msgstr "Sürücü Ayrıntıları"
+
+msgid "Driver Info"
+msgstr "Sürücü Bilgisi"
+
+msgid "Driver Validation"
+msgstr "Sürücü Onaylama"
+
+msgid ""
+"Each cleaning step must be an object that contains \"interface\" and \"step"
+"\" properties"
+msgstr ""
+"Her temizlik adımı \"arayüz\" ve \"adım\" özelliklerinden birini içeren "
+"nesne olmalı"
+
+msgid "Edit Node"
+msgstr "Düğümü Düzenle"
+
+msgid "Edit Port"
+msgstr "Bağlantı Noktasını Düzenle"
+
+msgid "Enroll Node"
+msgstr "Düğümü Kaydet"
+
+msgid "Extra"
+msgstr "Ek"
+
+msgid "Extra Property Name"
+msgstr "Ek Özellik İsmi"
+
+msgid "Extras"
+msgstr "Ekler"
+
+msgid "General"
+msgstr "Genel"
+
+msgid "Image Source"
+msgstr "İmaj Kaynağı"
+
+msgid "Inspect"
+msgstr "İncele"
+
+msgid "Inspection Finished At"
+msgstr "İnceleme Şu Anda Bitti"
+
+msgid "Inspection Started At"
+msgstr "İnceleme Şu Anda Başlatıldı"
+
+msgid "Instance ID"
+msgstr "Instance ID"
+
+msgid "Instance Info"
+msgstr "Sunucu Bilgisi"
+
+msgid "Instance Name"
+msgstr "Instance Adı"
+
+msgid "Instance Property Name"
+msgstr "Sunucu Özellik İsmi"
+
+msgid "Interface"
+msgstr "Arayüz"
+
+msgid "Kernel"
+msgstr "Çekirdek"
+
+msgid "Last Error"
+msgstr "Son Hata"
+
+msgid "Local link connection"
+msgstr "Yerel bağlantı"
+
+msgid "MAC Address"
+msgstr "MAC Adresi"
+
+msgid "MAC address"
+msgstr "MAC adresi"
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "MAC adresi veya OpenFlow veriyolu ID'si"
+
+msgid "Maintenance"
+msgstr "Bakım"
+
+msgid "Maintenance Reason"
+msgstr "Bakım Sebebi"
+
+msgid "Move to"
+msgstr "Taşı"
+
+msgid "Name"
+msgstr "İsim"
+
+msgid "Network Interface"
+msgstr "Ağ Arayüzü"
+
+msgid "No Instance"
+msgstr "Sunucu Yok"
+
+msgid "No network ports have been defined"
+msgstr "Hiçbir ağ bağlantı noktası tanımlanmamış"
+
+msgid "No reason given."
+msgstr "Sebep verilmemiş."
+
+msgid "Node"
+msgstr "Düğüm"
+
+msgid "Node Driver"
+msgstr "Düğüm Sürücüsü"
+
+msgid "Node ID"
+msgstr "Düğüm Kimliği"
+
+msgid "Node Info"
+msgstr "Düğüm Bilgisi"
+
+msgid "Node Name"
+msgstr "Düğüm İsmi"
+
+msgid "One of this, (.*) must be specified\\."
+msgstr "Bunlardan biri, (.*) belirtilmeli\\."
+
+msgid "Overview"
+msgstr "Önizleme"
+
+msgid "PXE enabled"
+msgstr "PXE etkin"
+
+msgid "Persistent"
+msgstr "Kalıcı"
+
+msgid "Port successfully created"
+msgstr "Bağlantı noktası başarıyla oluşturuldu"
+
+msgid "Ports"
+msgstr "Portlar"
+
+msgid "Power State"
+msgstr "Güç Durumu"
+
+msgid "Power off"
+msgstr "Güç kapa"
+
+msgid "Power on"
+msgstr "Güç aç"
+
+msgid "Properties"
+msgstr "Özellikler"
+
+msgid "Property Name"
+msgstr "Özellik İsmi"
+
+msgid "Provide a list of cleaning steps in JSON format"
+msgstr "JSON biçiminde temizlik adımları listesi sağlayın"
+
+msgid ""
+"Provide a reason for why you are putting the selected node(s) into "
+"maintenance mode (optional)"
+msgstr ""
+"Seçili düğüm(ler)i neden bakım kipine soktuğunuzla ilgili bir sebep verin "
+"(isteğe bağlı)"
+
+msgid "Provision State"
+msgstr "Hazırlık Durumu"
+
+msgid "Provisioning State"
+msgstr "Hazırlık Durumu"
+
+msgid "Provisioning Status"
+msgstr "Hazırlık Durumu"
+
+msgid "Put Node(s) Into Maintenance Mode"
+msgstr "Düğüm(ler)i Bakım Kipine Sok"
+
+msgid "Ramdisk"
+msgstr "Ramdisk"
+
+msgid "Reason"
+msgstr "Sebep"
+
+msgid "Reboot"
+msgstr "Yeniden başlat"
+
+msgid "Refresh"
+msgstr "Tazele"
+
+msgid "Refresh page to see updated console details"
+msgstr "Güncel konsol ayrıntılarını görmek için sayfayı tazeleyin"
+
+msgid "Refresh page to see updated power status"
+msgstr "Güncel güç durumunu görmek için sayfayı tazeleyin"
+
+msgid "Required"
+msgstr "Gerekli"
+
+msgid "Reservation"
+msgstr "Yer ayırmalar"
+
+msgid "Root GB"
+msgstr "Kök GB"
+
+msgid "SSH Address"
+msgstr "SSH Adresi"
+
+msgid "SSH Key Contents"
+msgstr "SSH Anahtar İçeriği"
+
+msgid "SSH Key File"
+msgstr "SSH Anahtar Dosyası"
+
+msgid "SSH Password"
+msgstr "SSH Parolası"
+
+msgid "SSH Port"
+msgstr "SSH Bağlantı Noktası"
+
+msgid "SSH Username"
+msgstr "SSH Kullanıcı adı"
+
+msgid "SSH terminal port"
+msgstr "SSH terminal bağlantı noktası"
+
+msgid "Select a Driver"
+msgstr "Bir Sürücü Seçin"
+
+msgid "Soft power off"
+msgstr "Yumuşak güç kapa"
+
+msgid "Soft reboot"
+msgstr "Yumuşak yeniden başlatma"
+
+msgid "Submit"
+msgstr "Gönder"
+
+#, python-format
+msgid "Successfully deleted node \"%s\""
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "\"%s\" düğümü başarıyla silindi."
+msgstr[1] "\"%s\" düğümleri başarıyla silindi."
+
+#, python-format
+msgid "Successfully deleted port \"%s\""
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "\"%s\" bağlantı noktası başarıyla silindi"
+msgstr[1] "\"%s\" bağlantı noktaları başarıyla silindi"
+
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "Düğüm %s başarıyla güncellendi"
+
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "Bağlantı noktası %s başarıyla güncellendi"
+
+msgid "Target Power State"
+msgstr "Hedef Güç Durumu"
+
+msgid "Target Provision State"
+msgstr "Hedef Hazırlık Durumu"
+
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"Bu alan kapalı çünkü bağlantı noktası bağlanırlık öznitelikleri "
+"(pxe_enabled, local_link_connection, portgroup_id), ilişkili düğümü kayıt, "
+"inceleme, yönetilir durum; veya bakım kipinde olmadan güncellenemez."
+
+msgid "UUID"
+msgstr "UUID"
+
+msgid "Unable to create node update patch."
+msgstr "Düğüm güncelleme yaması oluşturulamadı."
+
+#, python-format
+msgid "Unable to create node: %s"
+msgstr "Düğüm oluşturulamıyor: %s"
+
+msgid "Unable to create port update patch."
+msgstr "Bağlantı noktası güncelleme yaması oluşturulamadı."
+
+#, python-format
+msgid "Unable to create port: %s"
+msgstr "Bağlantı noktası oluşturulamıyor: %s"
+
+#, python-format
+msgid "Unable to delete node \"%s\""
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "\"%s\" düğümü silinemedi"
+msgstr[1] "\"%s\" düğümleri silinemedi"
+
+#, python-format
+msgid "Unable to delete node %s: %s"
+msgstr "Düğüm %s silinemiyor: %s"
+
+#, python-format
+msgid "Unable to delete port \"%s\""
+msgid_plural "Unable to delete portss \"%s\""
+msgstr[0] "\"%s\" bağlantı noktası silinemiyor"
+msgstr[1] "\"%s\" bağlantı noktaları silinemiyor"
+
+#, python-format
+msgid "Unable to delete port: %s"
+msgstr "Bağlantı noktası silinemiyor: %s"
+
+#, python-format
+msgid "Unable to get console for node %s: %s"
+msgstr "Düğüm %s için konsol alınamadı: %s"
+
+#, python-format
+msgid "Unable to power off the node: %s"
+msgstr "Düğümün gücü kesilemiyor: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic drivers: %s"
+msgstr "Ironic sürücüleri alınamıyor: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Ironic düğümler alınamadı. %s"
+
+#, python-format
+msgid "Unable to retrieve boot device for Ironic node. %s"
+msgstr "Ironic düğüm için ön yükleme aygıtı alınamadı. %s"
+
+#, python-format
+msgid "Unable to retrieve driver properties: %s"
+msgstr "Sürücü özellikleri alınamıyor: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node ports: %s"
+msgstr "Ironic düğümü bağlantı noktaları alınamadı: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node: %s"
+msgstr "Ironic düğümü alınamadı: %s"
+
+#, python-format
+msgid "Unable to set console mode: %s"
+msgstr "Konsol kipi ayarlanamıyor: %s"
+
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "Düğüm hazırlık durumu ayarlanamıyor: %s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "Düğüm %s güncellenemedi: %s"
+
+#, python-format
+msgid "Unable to update port %s: %s"
+msgstr "Bağlantı noktası %s güncellenemiyor: %s"
+
+#, python-format
+msgid "Unable to validate node %s: %s"
+msgstr "Düğüm %s onaylanamıyor: %s"
+
+msgid "Unable to validate the JSON input"
+msgstr "JSON girdisi onaylanamadı"
+
+msgid "Update Node"
+msgstr "Düğümü Güncelle"
+
+msgid "Update Port"
+msgstr "Bağlantı Noktasını Güncelle"
+
+msgid "Updated At"
+msgstr "Güncelleme saati"
+
+msgid "Valid"
+msgstr "Geçerli"
+
+msgid "Virtualization Software"
+msgstr "Sanallaştırma Yazılımı"
+
+msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "öntanımlı (?:değer )? ([^\"\\. ]+|\"[^\"]+\")"

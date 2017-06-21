@@ -5,13 +5,13 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev20\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev39\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-05-17 01:15+0000\n"
+"POT-Creation-Date: 2017-06-20 18:25+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-04-10 09:43+0000\n"
+"PO-Revision-Date: 2017-06-21 10:12+0000\n"
 "Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -35,6 +35,15 @@ msgstr "Bereinigung abbrechen"
 
 msgid "Actions"
 msgstr "Aktionen"
+
+msgid "Add Extra"
+msgstr "Extra hinzufügen"
+
+msgid "Add Instance Property"
+msgstr "Instanz-Eigenschaft hinzufügen"
+
+msgid "Add Property"
+msgstr "Eigenschaft hinzufügen"
 
 #, python-format
 msgid ""
@@ -87,11 +96,17 @@ msgstr "Knoten bereinigen"
 msgid "Clean steps should be an non-empty array"
 msgstr "Reinigungsschritte sollten ein nicht-leeres Array sein"
 
+msgid "Click link to view console"
+msgstr "Klicken Sie auf den Link, um nur die Konsole anzuzeigen."
+
 msgid "Configuration"
 msgstr "Konfiguration"
 
 msgid "Console Enabled"
 msgstr "Konsole aktiviert"
+
+msgid "Console Info."
+msgstr "Konsoleninformation."
 
 msgid "Create Port"
 msgstr "Port erstellen"
@@ -152,6 +167,9 @@ msgstr "Knoten ausrollen"
 msgid "Extra"
 msgstr "Extra"
 
+msgid "Extra Property Name"
+msgstr "Extra Eigenschaftname"
+
 msgid "Extras"
 msgstr "Extras"
 
@@ -178,6 +196,9 @@ msgstr "Instanzinformation"
 
 msgid "Instance Name"
 msgstr "Instanzname"
+
+msgid "Instance Property Name"
+msgstr "Instanzeigenschaftname"
 
 msgid "Interface"
 msgstr "Interface"
@@ -228,12 +249,8 @@ msgid "Node"
 msgstr "Knoten"
 
 #, python-format
-msgid "Node %s is already in maintenance mode."
-msgstr "Knoten %s ist schon im Wartungsmodus."
-
-#, python-format
-msgid "Node %s is not in maintenance mode."
-msgstr "Knoten %s ist nicht im Wartungsmodus"
+msgid "Node %s is already in target maintenance state."
+msgstr "Knoten %s ist bereits im beabsichtigten Wartungszustand."
 
 msgid "Node Driver"
 msgstr "Knotentreiber"
@@ -252,6 +269,9 @@ msgstr "Einer von diesen, (.*) muss spezifiziert sein\\."
 
 msgid "Overview"
 msgstr "Übersicht"
+
+msgid "PXE enabled"
+msgstr "PXE aktiviert"
 
 msgid "Persistent"
 msgstr "Persistent"
@@ -305,8 +325,14 @@ msgstr "Ramdisk"
 msgid "Reason"
 msgstr "Grund"
 
+msgid "Reboot"
+msgstr "Neustart"
+
 msgid "Refresh"
 msgstr "Aktualisieren"
+
+msgid "Refresh page to see updated console details"
+msgstr "Seite neu laden, um aktualisierte Konsolendetails anzuzeigen"
 
 msgid "Refresh page to see updated power status"
 msgstr "Aktualisiere Seite, um den Power Status zu sehen"
@@ -343,6 +369,12 @@ msgstr "SSH Terminal Port"
 
 msgid "Select a Driver"
 msgstr "Wählen Sie einen Treiber"
+
+msgid "Soft power off"
+msgstr "Sanftes Ausschalten"
+
+msgid "Soft reboot"
+msgstr "Sanfter Neustart"
 
 msgid "Submit"
 msgstr "Abschicken"
@@ -422,16 +454,12 @@ msgid "Unable to delete port: %s"
 msgstr "Port kann nicht gelöscht werden: %s"
 
 #, python-format
+msgid "Unable to get console for node %s: %s"
+msgstr "Konsole für Node %s kann nicht abgerufen werden: %s"
+
+#, python-format
 msgid "Unable to power off the node: %s"
 msgstr "Konnte den Knoten nicht ausschalten: %s"
-
-#, python-format
-msgid "Unable to put the Ironic node %s in maintenance mode: %s"
-msgstr "Konnte den Ironic Knoten %s nicht in den Wartungsmodus setzen: %s"
-
-#, python-format
-msgid "Unable to remove the Ironic node %s from maintenance mode: %s"
-msgstr "Wartungsmodus des Ironic Knotens %s kann nicht gelöscht werden: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
@@ -456,6 +484,14 @@ msgstr "Konnte die Ironic-Knotenports nicht abrufen: %s"
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "Konnte den Ironic-Knoten nicht abrufen: %s"
+
+#, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "Konnte den Ironic Knoten %s nicht in den Wartungszustand setzen: %s"
+
+#, python-format
+msgid "Unable to set console mode: %s"
+msgstr "Konsolenmodus kann nicht gesetzt werden: %s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
