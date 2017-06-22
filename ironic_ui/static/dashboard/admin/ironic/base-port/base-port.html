@@ -61,7 +61,8 @@
         class="well well-sm">
     <h4 translate>Local link connection</h4>
     <div class="form-group"
-         ng-repeat="(propertyName, propertyObj) in ctrl.localLinkConnection"
+         ng-repeat="(propertyName, propertyObj) in
+                    ctrl.localLinkConnection.fields"
          ng-class="{'has-error': LocalLinkConnectionForm.{$ propertyName $}.$invalid &&
                    LocalLinkConnectionForm.{$ propertyName $}.$dirty}">
       <label class="control-label"
@@ -87,7 +88,7 @@
              placeholder="{$ propertyObj.desc $}"
              ng-pattern="propertyObj.pattern"
              ng-disabled="propertyObj.disabled"
-             ng-change="ctrl.localLinkConnection.$update()"/>
+             ng-change="ctrl.localLinkConnection.update()"/>
     </div>
   </form>
 
