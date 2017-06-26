@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    The node-details/configuration page shows the node's ``resource_class``.
+  - |
+    The user is now able to edit/update the ``resource_class`` field
+    when enrolling/updating a node.

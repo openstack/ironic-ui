@@ -87,7 +87,8 @@
       name: null,
       driver: null,
       driver_info: {},
-      network_interface: null
+      network_interface: null,
+      resource_class: null
     };
 
     angular.forEach(ctrl.propertyCollections, function(collection) {
