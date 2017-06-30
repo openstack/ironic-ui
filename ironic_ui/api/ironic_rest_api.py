@@ -310,3 +310,40 @@ class DriverProperties(generic.View):
         :return: Dictionary of properties
         """
         return ironic.driver_properties(request, driver_name)
+
+
+@urls.register
+class Portgroups(generic.View):
+
+    url_regex = r'ironic/portgroups/$'
+
+    @rest_utils.ajax()
+    def get(self, request):
+        """Get the list of portgroups associated with a specified node.
+
+        :param request: HTTP request.
+        :return: List of portgroups.
+        """
+        portgroups = ironic.portgroup_list(request,
+                                           request.GET.get('node_id'))
+        return {
+            'portgroups': [i.to_dict() for i in portgroups]
+        }
+
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create a portgroup.
+
+        :param request: HTTP request.
+        :return: Portgroup.
+        """
+        return ironic.portgroup_create(request, request.DATA).to_dict()
+
+    @rest_utils.ajax(data_required=True)
+    def delete(self, request):
+        """Delete a portgroup.
+
+        :param request: HTTP request.
+        """
+        return ironic.portgroup_delete(request,
+                                       request.DATA.get('portgroup_id'))

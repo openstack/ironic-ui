@@ -82,6 +82,22 @@
       uuid: undefined
     };
 
+    // Default portgroup object.
+    var defaultPortgroup = {
+      address: null,
+      created_at: null,
+      extra: {},
+      internal_info: {},
+      mode: "active-backup",
+      name: null,
+      node_uuid: undefined,
+      ports: [],
+      properties: {},
+      standalone_ports_supported: true,
+      updated_at: null,
+      uuid: undefined
+    };
+
     // Value of the next available system port
     var nextAvailableSystemPort = 1024;
 
@@ -110,7 +126,8 @@
       nodeGetConsoleUrl: nodeGetConsoleUrl,
       getDrivers: getDrivers,
       getImages: getImages,
-      getPort: getPort
+      getPort: getPort,
+      getPortgroup: getPortgroup
     };
 
     var responseCode = {
@@ -126,6 +143,9 @@
 
     // Dictionary of active ports indexed by port-uuid
     var ports = {};
+
+    // Dictionary of active portgroups indexed by portgroup-uuid
+    var portgroups = {};
 
     return service;
 
@@ -162,7 +182,8 @@
         var backendNode = {
           base: node,
           consolePort: getNextAvailableSystemPort(),
-          ports: {} // Indexed by port-uuid
+          ports: {}, // Indexed by port-uuid
+          portgroups: {} // Indexed by portgroup-uuid
         };
 
         nodes[node.uuid] = backendNode;
@@ -257,6 +278,47 @@
     }
 
     /**
+     * @description Create a portgroup.
+     *   This function is not yet fully implemented.
+     *
+     * @param {object} params - Dictionary of parameters that define
+     *   the portgroup to be created.
+     * @return {object|null} Portgroup object, or null if the port could
+     *   not be created.
+     */
+    function createPortgroup(params) {
+      var portgroup = null;
+      var status = responseCode.BAD_QUERY;
+      if (angular.isDefined(nodes[params.node_uuid])) {
+        if (angular.isDefined(params.name) &&
+            params.name !== null &&
+            angular.isDefined(portgroups[params.name])) {
+          status = responseCode.RESOURCE_CONFLICT;
+        } else {
+          portgroup = angular.copy(defaultPortgroup);
+          angular.forEach(params, function(value, key) {
+            portgroup[key] = value;
+          });
+
+          if (angular.isUndefined(portgroup.uuid)) {
+            portgroup.uuid = uuidService.generate();
+          }
+
+          portgroups[portgroup.uuid] = portgroup;
+          if (portgroup.name !== null) {
+            portgroups[portgroup.name] = portgroup;
+          }
+
+          nodes[portgroup.node_uuid].portgroups[portgroup.uuid] = portgroup;
+        }
+
+        status = responseCode.SUCCESS;
+      }
+
+      return [status, portgroup];
+    }
+
+    /**
      * description Get a specified port.
      *
      * @param {string} portUuid - Uuid of the requested port.
@@ -265,6 +327,18 @@
      */
     function getPort(portUuid) {
       return angular.isDefined(ports[portUuid]) ? ports[portUuid] : null;
+    }
+
+    /**
+     * description Get a specified portgroup.
+     *
+     * @param {string} portgroupId - Uuid or name of the requested portgroup.
+     * @return {object|null} Portgroup object, or null if the portgroup
+     *   does not exist.
+     */
+    function getPortgroup(portgroupId) {
+      return angular.isDefined(portgroups[portgroupId])
+        ? portgroups[portgroupId] : null;
     }
 
     /**
@@ -472,6 +546,45 @@
             status = responseCode.SUCCESS;
           }
           return [status, {ports: ports}];
+        });
+
+      // Create portgroup
+      $httpBackend.whenPOST(/\/api\/ironic\/portgroups\/$/)
+        .respond(function(method, url, data) {
+          return createPortgroup(JSON.parse(data));
+        });
+
+      // Get portgroups. This function is not fully implemented.
+      $httpBackend.whenGET(/\/api\/ironic\/ports\/$/)
+        .respond(function(method, url, data) {
+          var nodeId = JSON.parse(data).node_id;
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          var portgroups = [];
+          if (angular.isDefined(nodes[nodeId])) {
+            angular.forEach(nodes[nodeId].portgroups, function(portgroup) {
+              portgroups.push(portgroup);
+            });
+            status = responseCode.SUCCESS;
+          }
+          return [status, {portgroups: portgroups}];
+        });
+
+      // Delete portgroup. This function is not yet implemented.
+      $httpBackend.whenDELETE(/\/api\/ironic\/portgroups\/$/)
+        .respond(function(method, url, data) {
+          var portgroupId = JSON.parse(data).portgroup_id;
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          if (angular.isDefined(portgroups[portgroupId])) {
+            var portgroup = portgroups[portgroupId];
+            if (portgroup.name !== null) {
+              delete portgroups[portgroup.name];
+              delete portgroups[portgroup.uuid];
+            } else {
+              delete portgroups[portgroupId];
+            }
+            status = responseCode.EMPTY_RESPONSE;
+          }
+          return [status, ""];
         });
     }
 

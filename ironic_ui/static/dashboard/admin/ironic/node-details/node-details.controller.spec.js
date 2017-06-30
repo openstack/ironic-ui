@@ -69,6 +69,10 @@
         return $q.when(ports);
       },
 
+      getPortgroups: function() {
+        return $q.when([]);
+      },
+
       getBootDevice: function () {
         return $q.when(bootDevice);
       },
