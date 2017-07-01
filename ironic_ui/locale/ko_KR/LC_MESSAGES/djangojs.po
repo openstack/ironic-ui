@@ -9,14 +9,14 @@
 # Wonil Choi <wonil22.choi@samsung.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev39\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev53\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-06-20 18:25+0000\n"
+"POT-Creation-Date: 2017-06-30 15:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-01 06:27+0000\n"
-"Last-Translator: Wonil Choi <wonil22.choi@samsung.com>\n"
+"PO-Revision-Date: 2017-06-30 03:16+0000\n"
+"Last-Translator: Sungjin Kang <gang.sungjin@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -327,9 +327,9 @@ msgstr[0] "노드 \"%s\" 를 삭제할 수 없습니다"
 msgid "Unable to delete node %s: %s"
 msgstr "노드 %s를 삭제할 수 없습니다: %s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Unable to delete port \"%s\""
-msgid_plural "Unable to delete portss \"%s\""
+msgid_plural "Unable to delete ports \"%s\""
 msgstr[0] "포트를 삭제할 수 없습니다: %s"
 
 #, python-format
