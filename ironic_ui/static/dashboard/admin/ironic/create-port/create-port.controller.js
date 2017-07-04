@@ -56,6 +56,8 @@
       var port = angular.copy(ctrl.port);
       port.node_uuid = node.id;
 
+      port.address = ctrl.address.value;
+
       var attr = ctrl.localLinkConnection.toPortAttr();
       if (attr) {
         port.local_link_connection = attr;
