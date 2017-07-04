@@ -1,0 +1,11 @@
+=========================
+Contributing to Ironic UI
+=========================
+
+If you're interested in contributing to the Ironic UI project,
+the following will help get you started.
+
+.. toctree::
+   :maxdepth: 1
+
+   contributing
