@@ -44,6 +44,7 @@ output/*/index.html
 
 # Sphinx
 doc/build
+doc/contributor/api/*
 
 # pbr generates these
 AUTHORS
