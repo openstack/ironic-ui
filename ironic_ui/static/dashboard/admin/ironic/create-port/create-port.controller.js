@@ -42,6 +42,7 @@
 
     $controller('BasePortController',
                 {ctrl: ctrl,
+                 node: node,
                  $uibModalInstance: $uibModalInstance});
 
     ctrl.modalTitle = gettext("Create Port");
@@ -54,7 +55,6 @@
      */
     ctrl.createPort = function() {
       var port = angular.copy(ctrl.port);
-      port.node_uuid = node.id;
 
       port.address = ctrl.address.value;
 
@@ -65,6 +65,10 @@
 
       if (ctrl.pxeEnabled.value !== 'True') {
         port.pxe_enabled = ctrl.pxeEnabled.value;
+      }
+
+      if (ctrl.portgroup_uuid.value !== null) {
+        port.portgroup_uuid = ctrl.portgroup_uuid.value;
       }
 
       ironic.createPort(port).then(

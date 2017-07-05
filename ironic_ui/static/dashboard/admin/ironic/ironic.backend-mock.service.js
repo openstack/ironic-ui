@@ -655,7 +655,27 @@
           }
           return [status, ""];
         });
-    }
+
+      // Get portgroup ports
+      $httpBackend.whenGET(/\/api\/ironic\/portgroups\/([^\/]+)\/ports$/,
+                           undefined,
+                           ['portgroupId'])
+        .respond(function(method, url, data, headers, params) {
+          var ports = [];
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          if (angular.isDefined(portgroups[params.portgroupId])) {
+            var portgroup = portgroups[params.portgroupId];
+            var node = nodes[portgroup.node_uuid];
+            angular.forEach(node.ports, function(port) {
+              if (port.portgroup_uuid === portgroup.uuid) {
+                ports.push(port);
+              }
+            });
+            status = responseCode.SUCCESS;
+          }
+          return [status, {ports: ports}];
+        });
+    } // init()
 
     /**
      * @description Get the list of supported drivers
@@ -694,6 +714,5 @@
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
     }
-  }
-
-}());
+  } // ironicBackendMockService()
+})();

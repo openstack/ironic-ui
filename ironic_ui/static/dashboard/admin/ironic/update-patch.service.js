@@ -140,7 +140,11 @@
 
       if (isProperty(source) && isProperty(target)) {
         if (source !== target) {
-          patcher.patch.push({op: "replace", path: path, value: target});
+          if (target === null) {
+            patcher.patch.push({op: "remove", path: path});
+          } else {
+            patcher.patch.push({op: "replace", path: path, value: target});
+          }
         }
       } else if (isCollection(source) && isCollection(target)) {
         angular.forEach(source, function(sourceItem, sourceItemName) {

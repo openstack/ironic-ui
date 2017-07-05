@@ -63,7 +63,8 @@
       validateNode: validateNode,
       createPortgroup: createPortgroup,
       getPortgroups: getPortgroups,
-      deletePortgroup: deletePortgroup
+      deletePortgroup: deletePortgroup,
+      getPortgroupPorts: getPortgroupPorts
     };
 
     return service;
@@ -640,6 +641,30 @@
           var msg = interpolate(gettext('Unable to delete portgroup: %s'),
                                 [response.data],
                                 false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Get the ports associated with a specified portgroup.
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#list-ports-by-portgroup
+     *
+     * @param {string} portgroupId – UUID or name of the portgroup.
+     * @return {promise} Promise containing a list of ports.
+     */
+    function getPortgroupPorts(portgroupId) {
+      return apiService.get(
+        '/api/ironic/portgroups/' + portgroupId + '/ports')
+        .then(function(response) {
+          return response.data.ports; // List of ports
+        })
+        .catch(function(response) {
+          var msg = interpolate(
+            gettext('Unable to retrieve portgroup ports: %s'),
+            [response.data],
+            false);
           toastService.add('error', msg);
           return $q.reject(msg);
         });

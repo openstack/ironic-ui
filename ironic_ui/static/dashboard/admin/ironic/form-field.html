@@ -3,14 +3,23 @@
                form[field.id].$dirty}">
   <label for="{$ field.id $}"
          class="control-label">{$ field.title $}</label>
-  <span ng-if="field.getHelpText()"
+  <span ng-if="field.desc"
         class="help-icon"
         data-container="body"
         data-html="true"
         title=""
         data-toggle="tooltip"
-        data-original-title="{$ field.getHelpText() $}">
+        data-original-title="{$ field.desc $}">
     <span class="fa fa-question-circle"></span>
+  </span>
+  <span ng-if="field.info"
+        class="help-icon"
+        data-container="body"
+        data-html="true"
+        title=""
+        data-toggle="tooltip"
+        data-original-title="{$ field.info $}">
+    <span class="fa fa-info-circle"></span>
   </span>
   <span ng-if="field.required"
         class="hz-icon-required fa fa-asterisk"></span>
@@ -24,8 +33,8 @@
            ng-required="field.required"
            ng-disabled="field.disabled"
            ng-pattern="field.pattern"
-           ng-change="field.change()"
-           placeholder="{$ field.getHelpText() $}"/>
+           ng-change="{$ field.change $}"
+           placeholder="{$ field.desc $}"/>
     <div ng-switch-when="radio"
          class="btn-group"
          id="{$ field.id $}">

@@ -51,6 +51,7 @@
     var ctrl = this;
     $controller('BasePortController',
                 {ctrl: ctrl,
+                 node: node,
                  $uibModalInstance: $uibModalInstance});
 
     ctrl.modalTitle = gettext("Edit Port");
@@ -69,8 +70,15 @@
     }
 
     ctrl.pxeEnabled.value = port.pxe_enabled ? 'True' : 'False';
+
+    ctrl.portgroup_uuid.value = port.portgroup_uuid;
+
     if (cannotEditConnectivityAttr) {
-      ctrl.pxeEnabled.disable(UNABLE_TO_UPDATE_CONNECTIVITY_ATTR_MSG);
+      angular.forEach(
+        [ctrl.pxeEnabled, ctrl.portgroup_uuid],
+        function(field) {
+          field.disable(UNABLE_TO_UPDATE_CONNECTIVITY_ATTR_MSG);
+        });
     }
 
     ctrl.localLinkConnection.setValues(
@@ -101,6 +109,9 @@
                          ctrl.localLinkConnection.toPortAttr(),
                          "/local_link_connection");
       patcher.buildPatch(port.extra, ctrl.port.extra, "/extra");
+      patcher.buildPatch(port.portgroup_uuid,
+                         ctrl.portgroup_uuid.value,
+                         "/portgroup_uuid");
 
       var patch = patcher.getPatch();
       $log.info("patch = " + JSON.stringify(patch.patch));

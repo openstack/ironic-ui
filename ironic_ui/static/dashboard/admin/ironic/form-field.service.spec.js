@@ -53,7 +53,8 @@
         expect(field.info).toBeUndefined();
         expect(field.autoFocus).toBe(false);
         expect(field.change).toBeUndefined();
-        expect(formFieldService).toBeDefined();
+        expect(field.hasValue).toBeDefined();
+        expect(field.disable).toBeDefined();
       });
 
       it('FormField - local parameters', function() {
@@ -77,37 +78,6 @@
 
         field.value = 'True';
         expect(field.hasValue()).toBe(true);
-      });
-
-      it('hasHelpText', function() {
-        var field = new formFieldService.FormField({});
-        expect(field.hasHelpText()).toBe(false);
-        expect(field.getHelpText()).toBe('');
-      });
-
-      it('hasHelpText/getHelpText - desc', function() {
-        var field = new formFieldService.FormField({
-          desc: 'desc'
-        });
-        expect(field.hasHelpText()).toBe(true);
-        expect(field.getHelpText()).toBe('desc');
-      });
-
-      it('hasHelpText/getHelpText - info', function() {
-        var field = new formFieldService.FormField({
-          info: 'info'
-        });
-        expect(field.hasHelpText()).toBe(true);
-        expect(field.getHelpText()).toBe('info');
-      });
-
-      it('getHelpText - desc/info', function() {
-        var field = new formFieldService.FormField({
-          desc: 'desc',
-          info: 'info'
-        });
-        expect(field.hasHelpText()).toBe(true);
-        expect(field.getHelpText()).toBe('desc<br><br>info');
       });
 
       it('disable', function() {

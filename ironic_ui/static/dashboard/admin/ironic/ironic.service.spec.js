@@ -28,6 +28,7 @@
     'getDriverProperties',
     'getNode',
     'getNodes',
+    'getPortgroupPorts',
     'getPortgroups',
     'getPortsWithNode',
     'getBootDevice',
@@ -573,6 +574,24 @@
         it('deletePortgroup - nonexistent portgroup', function() {
           ironicAPI.deletePortgroup(0)
             .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('getPortgroupPorts', function() {
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.createPortgroup({node_uuid: node.uuid});
+            })
+            .then(function(portgroup) {
+              expect(portgroup).toBeDefined();
+              expect(portgroup)
+                .toEqual(ironicBackendMockService.getPortgroup(portgroup.uuid));
+              ironicAPI.getPortgroupPorts(portgroup.uuid).then(function(ports) {
+                expect(ports).toEqual([]);
+              });
+            })
+            .catch(failTest);
 
           ironicBackendMockService.flush();
         });

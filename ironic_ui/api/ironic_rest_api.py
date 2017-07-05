@@ -379,3 +379,23 @@ class Portgroups(generic.View):
         """
         return ironic.portgroup_delete(request,
                                        request.DATA.get('portgroup_id'))
+
+
+@urls.register
+class PortgroupPorts(generic.View):
+
+    url_regex = r'ironic/portgroups/(?P<portgroup_id>{})/ports$'. \
+                format(LOGICAL_NAME_PATTERN)
+
+    @rest_utils.ajax()
+    def get(self, request, portgroup_id):
+        """Get the ports for a specified portgroup.
+
+        :param request: HTTP request.
+        :param node_id: UUID or name of portgroup.
+        :return: List of port objects.
+        """
+        ports = ironic.portgroup_get_ports(request, portgroup_id)
+        return {
+            'ports': [i.to_dict() for i in ports]
+        }

@@ -28,7 +28,9 @@
     'horizon.dashboard.admin.ironic.validMacAddressPattern',
     'horizon.dashboard.admin.ironic.validDatapathIdPattern',
     'horizon.dashboard.admin.ironic.form-field.service',
-    'ctrl'
+    'horizon.app.core.openstack-service-api.ironic',
+    'ctrl',
+    'node'
   ];
 
   /**
@@ -138,9 +140,12 @@
                               validMacAddressPattern,
                               validDatapathIdPattern,
                               formFieldService,
-                              ctrl) {
+                              ironic,
+                              ctrl,
+                              node) {
     ctrl.port = {
-      extra: {}
+      extra: {},
+      node_uuid: node.uuid
     };
 
     ctrl.address = new formFieldService.FormField({
@@ -162,11 +167,33 @@
       options: ['True', 'False'],
       value: 'True'});
 
+    ctrl.portgroup_uuid = new formFieldService.FormField({
+      type: "select",
+      id: "portgroup-uuid",
+      title: gettext("Portgroup"),
+      desc: gettext("Portgroup that this port belongs to"),
+      portgroups: [],
+      options: "portgroup.uuid as portgroup.name ? portgroup.name : portgroup.uuid for portgroup in field.portgroups", // eslint-disable-line max-len
+      value: null});
+
     // Object used to manage local-link-connection form fields
     ctrl.localLinkConnection =
       new LocalLinkConnectionMgr(formFieldService,
                                  validMacAddressPattern,
                                  validDatapathIdPattern);
+
+    ironic.getPortgroups(node.uuid).then(function(portgroups) {
+      var field = ctrl.portgroup_uuid;
+
+      if (portgroups.length > 0) {
+        field.portgroups.push({uuid: null, name: gettext("Select a portgroup")});
+      }
+      field.portgroups = field.portgroups.concat(portgroups);
+
+      if (portgroups.length === 0) {
+        field.disable();
+      }
+    });
 
     /**
      * Cancel the modal

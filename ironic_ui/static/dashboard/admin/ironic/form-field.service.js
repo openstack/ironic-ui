@@ -85,31 +85,6 @@
       };
 
       /**
-       * @description Test whether the field has help-text.
-       *
-       * @return {boolean} Return true if the field has help text.
-       */
-      this.hasHelpText = function() {
-        return angular.isDefined(this.desc) || angular.isDefined(this.info);
-      };
-
-      /**
-       * @description Get the help-text associated with this field
-       *
-       * @return {string} Return true if the field has help text
-       */
-      this.getHelpText = function() {
-        var text = angular.isDefined(this.desc) ? this.desc : '';
-        if (angular.isDefined(this.info)) {
-          if (text !== '') {
-            text += '<br><br>';
-          }
-          text += this.info;
-        }
-        return text;
-      };
-
-      /**
        * @description Disable this field.
        *
        * @param {string} reason - Optional reason for disabling this field.

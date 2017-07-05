@@ -182,6 +182,12 @@
     function retrievePortgroups() {
       ironic.getPortgroups(ctrl.node.uuid).then(function(portgroups) {
         ctrl.portgroupsSrc = portgroups;
+        angular.forEach(portgroups, function(portgroup) {
+          portgroup.ports = [];
+          ironic.getPortgroupPorts(portgroup.uuid).then(function(ports) {
+            portgroup.ports = ports;
+          });
+        });
       });
     }
 

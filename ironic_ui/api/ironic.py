@@ -357,3 +357,15 @@ def portgroup_delete(request, portgroup_id):
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.portgroup.html#ironicclient.v1.portgroup.PortgroupManager.delete
     """
     return ironicclient(request).portgroup.delete(portgroup_id)
+
+
+def portgroup_get_ports(request, portgroup_id):
+    """Get the ports associated with a specified portgroup.
+
+    :param request: HTTP request.
+    :param portgroup_id: The UUID or name of the portgroup.
+    :return: List of ports.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.portgroup.html#ironicclient.v1.portgroup.PortgroupManager.list_ports
+    """
+    return ironicclient(request).portgroup.list_ports(portgroup_id)

@@ -168,6 +168,9 @@
           <th translate class="rsp-p2" style="width:white-space:nowrap;">
             Name
           </th>
+          <th translate class="rsp-p2" style="width:white-space:nowrap;">
+            Ports
+          </th>
           <th translate class="actions_column">
             Actions
           </th>
@@ -194,6 +197,9 @@
           <td class="rsp-p1">
             {$ portgroup.name | noValue $}
           </td>
+          <td class="rsp-p1">
+            {$ portgroup.ports.length | noValue $}
+          </td>
           <td class="actions_column">
             <action-list uib-dropdown class="pull-right">
               <action button-type="split-button"
@@ -203,9 +209,11 @@
                 {$ ::'Edit portgroup' | translate $}
               </action>
               <menu>
-                <li role="presentation">
+                <li role="presentation"
+                    ng-class="{disabled: portgroup.ports.length > 0}">
                   <a role="menuitem"
-                     ng-click="ctrl.deletePortgroups([portgroup]);
+                     ng-click="portgroup.ports.length > 0 ||
+                               ctrl.deletePortgroups([portgroup]);
                                $event.stopPropagation();
                                $event.preventDefault()">
                     <span class="fa fa-trash"></span>
