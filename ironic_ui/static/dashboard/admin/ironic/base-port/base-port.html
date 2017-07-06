@@ -26,49 +26,7 @@
     </div>
   </form>
 
-  <form id="AddExtraForm" name="AddExtraForm" style="margin-bottom:10px;">
-    <label for="extras" class="control-label" translate>Extras</label>
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon"
-            style="width:25%;text-align:right">
-        Add Extra:</span>
-      <input class="form-control"
-             type="text"
-             ng-model="extraName"
-             validate-unique="ctrl.checkExtraUnique"
-             placeholder="{$ ::'Property Name' | translate $}"/>
-      <span class="input-group-btn">
-        <button class="btn btn-primary"
-                type="button"
-                ng-disabled="!extraName || AddExtraForm.$invalid"
-                ng-click="ctrl.port.extra[extraName] = null;
-                          extraName = null">
-          <span class="fa fa-plus"> </span>
-        </button>
-      </span>
-    </div>
-  </form>
-
-  <form class="form-horizontal" id="ExtraForm" name="ExtraForm">
-    <div class="input-group input-group-sm"
-         ng-repeat="(propertyName, propertyValue) in ctrl.port.extra">
-      <span class="input-group-addon"
-            style="width:25%;text-align:right">
-        {$ propertyName $}
-      </span>
-      <input class="form-control"
-             type="text"
-             name="{$ propertyName $}"
-             ng-model="ctrl.port.extra[propertyName]"
-             ng-required="true"/>
-      <div class="input-group-btn">
-        <a class="btn btn-default"
-           ng-click="ctrl.deleteExtra(propertyName)">
-          <span class="fa fa-minus"> </span>
-        </a>
-      </div>
-    </div>
-  </form>
+  <property-collection-editor collection="ctrl.extra"></property-collection-editor>
 </div>
 <!--modal footer-->
 <div class="modal-footer ng-scope">
@@ -79,7 +37,7 @@
   <button type="submit"
           ng-disabled="CreatePortForm.$invalid ||
                        LocalLinkConnectionForm.$invalid ||
-                       ExtraForm.$invalid"
+                       !ctrl.extra.complete()"
           ng-click="ctrl.submit()"
           class="btn btn-primary">
     {$ ::ctrl.submitButtonTitle $}

@@ -1,0 +1,53 @@
+<div>
+  <!-- Add property to collection -->
+  <form id="add_{$ collection.id $}_form"
+        name="add_{$ collection.id $}_form"
+        style="margin-bottom:10px;">
+    <label for="add_{$ collection.id $}_input"
+           class="control-label">{$ collection.title $}</label>
+    <div class="input-group input-group-sm">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        {$ collection.addPropertyLabel $}:</span>
+      <input id="add_{$ collection.id $}_input"
+             class="form-control"
+             type="text"
+             ng-model="newPropertyName"
+             validate-unique="collection.checkPropertyUnique"
+             placeholder="{$ collection.placeholder $}"/>
+      <span class="input-group-btn">
+        <button class="btn btn-primary"
+                type="button"
+                ng-disabled="!newPropertyName ||
+                             add_{$ collection.id $}_form.$invalid"
+                ng-click="collection.addProperty(newPropertyName);
+                          newPropertyName = null">
+          <span class="fa fa-plus"> </span>
+        </button>
+      </span>
+    </div>
+  </form>
+  <!-- Property list -->
+  <form class="form-horizontal"
+        id="{$ collection.id $}_form"
+        name="{$ collection.id $}_form">
+    <div class="input-group input-group-sm"
+         ng-repeat="(propertyName, propertyValue) in collection.properties">
+      <span class="input-group-addon"
+            style="width:25%;text-align:right">
+        {$ propertyName $}
+      </span>
+      <input class="form-control"
+             type="text"
+             name="{$ propertyName $}"
+             ng-model="collection.properties[propertyName]"
+             ng-required="true"/>
+      <div class="input-group-btn">
+        <a class="btn btn-default"
+           ng-click="collection.deleteProperty(propertyName)">
+          <span class="fa fa-minus"> </span>
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
