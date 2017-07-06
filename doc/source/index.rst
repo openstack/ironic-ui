@@ -1,6 +1,6 @@
-===============================================
-Welcome to Ironic UI's developer documentation!
-===============================================
+=====================================
+Welcome to Ironic UI's documentation!
+=====================================
 
 Introduction
 ============
@@ -21,13 +21,10 @@ For more information on ironic, see `the ironic documentation`_.
 
 .. _the ironic documentation: http://docs.openstack.org/developer/ironic/
 
-Administrator's Guide
-=====================
-
 .. toctree::
   :maxdepth: 1
 
   Introduction to ironic <http://docs.openstack.org/developer/ironic/deploy/user-guide.html>
-  Installing the ironic UI <installation>
+  Installing the ironic UI <install/index>
   Contributing <contributing>
   Release notes <http://docs.openstack.org/releasenotes/ironic-ui>
