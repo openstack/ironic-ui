@@ -384,3 +384,18 @@ def portgroup_get_ports(request, portgroup_id):
     http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.portgroup.html#ironicclient.v1.portgroup.PortgroupManager.list_ports
     """
     return ironicclient(request).portgroup.list_ports(portgroup_id)
+
+
+def node_set_raid_config(request, node_id, target_raid_config):
+    """Set target raid configuration for a given node.
+
+    :param request: HTTP request.
+    :param node_id: The UUID or name of the node.
+    :param target_raid_config: Target raid configuration.
+    :return: Node.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.set_target_raid_config
+    """
+    return ironicclient(request).node.set_target_raid_config(
+        node_id,
+        target_raid_config)

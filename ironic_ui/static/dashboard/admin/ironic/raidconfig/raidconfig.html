@@ -1,0 +1,81 @@
+<div class="modal-header" modal-draggable>
+  <button type="button"
+          class="close"
+          ng-click="$dismiss()"
+          aria-hidden="true"
+          aria-label="Close">
+    <span aria-hidden="true" class="fa fa-times"></span>
+  </button>
+  <h3 class="modal-title">{$ ::ctrl.modalTitle $}</h3>
+</div>
+<div class="modal-body">
+  <form id="SetTargetRaidConfigForm" name="SetTargetRaidConfigForm" class="well well-sm">
+    <!-- raid config -->
+    <form-field field="ctrl.size_gb" form="SetTargetRaidConfigForm"></form-field>
+    <form-field field="ctrl.raid_level" form="SetTargetRaidConfigForm"></form-field>
+    <form-field field="ctrl.root_volume"
+                form="SetTargetRaidConfigForm"></form-field>
+    <button class="btn btn-primary"
+            type="button"
+            ng-click="ctrl.addLogicalDisk()"
+            ng-disabled="SetTargetRaidConfigForm.$invalid || ctrl.size_gb.value < 1"
+            translate>
+      Add Logical Disk
+    </button>
+  </form>
+<!-- Logical Disks -->
+<form id="LogicalDisksForm" name="LogicalDisksForm">
+  <div>
+    <table hz-table ng-cloak
+           st-table="ctrl.logicalDisks"
+           st-safe-src="ctrl.logicalDisksSrc"
+           class="table table-rsp table-detail">
+      <thead>
+        <tr>
+          <th translate class="rsp-p1" style="white-space:nowrap">
+            Size GB
+          </th>
+          <th translate class="rsp-p1" style="white-space:nowrap">
+            RAID Level
+          </th>
+          <th translate class="rsp-p1" style="width:100%">
+            Root Volume
+          </th>
+          <th translate class="actions_column">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="disk in ctrl.logicalDisks">
+        <td class="rsp-p1">{$ disk.size_gb $}</td>
+        <td class="rsp-p1">{$ disk.raid_level $}</td>
+        <td class="rsp-p1">{$ disk.is_root_volume $}</td>
+        <td>
+          <a class="btn btn-default"
+             ng-click="ctrl.deleteLogicalDisk(disk)">
+             <span class="fa fa-minus"> </span>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</form>
+</div>
+<!--modal footer-->
+<div class="modal-footer">
+  <button class="btn btn-default secondary"
+          type="button"
+          ng-click="ctrl.cancel()"
+          translate>
+    Cancel
+  </button>
+  <button class="btn btn-primary"
+          type="button"
+          ng-click="ctrl.setTargetRaidConfig()"
+          translate>
+    Set Target RAID Config
+  </button>
+</div>
+

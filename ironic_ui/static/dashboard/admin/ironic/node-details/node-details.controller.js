@@ -36,6 +36,7 @@
     'horizon.dashboard.admin.ironic.edit-portgroup.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.bootdevice.service',
+    'horizon.dashboard.admin.ironic.raidconfig.service',
     'horizon.dashboard.admin.ironic.node-state-transition.service',
     'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
@@ -53,6 +54,7 @@
                                        editPortgroupService,
                                        maintenanceService,
                                        bootDeviceService,
+                                       raidConfigService,
                                        nodeStateTransitionService,
                                        validUuidPattern) {
     var ctrl = this;
@@ -64,6 +66,7 @@
     ctrl.actions = actions;
     ctrl.maintenanceService = maintenanceService;
     ctrl.bootDeviceService = bootDeviceService;
+    ctrl.raidConfigService = raidConfigService;
 
     ctrl.sections = [
       {

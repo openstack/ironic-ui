@@ -45,6 +45,14 @@
             <span>{$ "Set boot device" | translate $}</span>
           </a>
         </li>
+        <li role="presentation">
+          <a role="menuitem"
+             ng-click="ctrl.raidConfigService.setRaidConfig(ctrl.node);
+                       $event.stopPropagation();
+                       $event.preventDefault()">
+            <span>{$ "Set RAID configuration" | translate $}</span>
+          </a>
+        </li>
         <li role="presentation"
             ng-repeat="transition in ctrl.nodeStateTransitions">
           <a role="menuitem"
