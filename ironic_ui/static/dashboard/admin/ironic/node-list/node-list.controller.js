@@ -27,6 +27,7 @@
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.actions',
     'horizon.dashboard.admin.ironic.maintenance.service',
+    'horizon.dashboard.admin.ironic.bootdevice.service',
     'horizon.dashboard.admin.ironic.enroll-node.service',
     'horizon.dashboard.admin.ironic.edit-node.service',
     'horizon.dashboard.admin.ironic.create-port.service',
@@ -38,6 +39,7 @@
                                     ironic,
                                     actions,
                                     maintenanceService,
+                                    bootDeviceService,
                                     enrollNodeService,
                                     editNodeService,
                                     createPortService,
@@ -48,6 +50,7 @@
     ctrl.nodesSrc = [];
     ctrl.actions = actions;
     ctrl.maintenanceService = maintenanceService;
+    ctrl.bootDeviceService = bootDeviceService;
 
     ctrl.enrollNode = enrollNode;
     ctrl.editNode = editNode;

@@ -1,6 +1,7 @@
 #
 # Copyright 2015, 2016 Hewlett Packard Enterprise Development Company LP
 # Copyright 2016 Cray Inc.
+# Copyright 2017 Intel Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -276,6 +277,37 @@ class BootDevice(generic.View):
         :return: Dictionary with keys "boot_device" and "persistent"
         """
         return ironic.node_get_boot_device(request, node_id)
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, node_id):
+        """Set the boot device for a specific node
+
+        :param request: HTTP request.
+        :param node_id: Node name or uuid
+        :return: null.
+        """
+        return ironic.node_set_boot_device(
+            request,
+            node_id,
+            request.DATA.get('boot_device'),
+            persistent=request.DATA.get('persistent'))
+
+
+@urls.register
+class SupportedBootDevices(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_id>{})/boot_device/supported$' . \
+                format(LOGICAL_NAME_PATTERN)
+
+    @rest_utils.ajax()
+    def get(self, request, node_id):
+        """Get the list of supported boot devices for a specified node
+
+        :param request: HTTP request.
+        :param node_id: Node name or uuid
+        :return: List of supported boot devices
+        """
+        return ironic.node_get_supported_boot_devices(request, node_id)
 
 
 @urls.register

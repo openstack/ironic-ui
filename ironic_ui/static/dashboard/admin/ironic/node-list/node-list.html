@@ -163,6 +163,14 @@
                       "Maintenance off" : "Maintenance on" | translate $}</span>
                   </a>
                 </li>
+                <li role="presentation">
+                  <a role="menuitem"
+                     ng-click="table.bootDeviceService.setBootDevice(node);
+                               $event.stopPropagation();
+                               $event.preventDefault()">
+                    <span>{$ "Set boot device" | translate $}</span>
+                  </a>
+                </li>
                 <li role="presentation"
                     ng-class="{disabled: !(
                               node.provision_state === 'available' ||

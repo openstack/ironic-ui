@@ -103,12 +103,11 @@
 
     // Additional service parameters
     var params = {
-      // Currently, all nodes have the same boot device.
-      bootDevice: {boot_device: 'pxe', persistent: true},
       // Console info
       consoleType: "shellinabox",
       consoleUrl: "http://localhost:",
-      defaultDriver: "agent_ipmitool"
+      defaultDriver: "agent_ipmitool",
+      supportedBootDevices: ["pxe", "bios", "safe"]
     };
 
     // List of supported drivers
@@ -123,6 +122,8 @@
       flush: flush,
       postTest: postTest,
       getNode: getNode,
+      getNodeBootDevice: getNodeBootDevice,
+      getNodeSupportedBootDevices: getNodeSupportedBootDevices,
       nodeGetConsoleUrl: nodeGetConsoleUrl,
       getDrivers: getDrivers,
       getImages: getImages,
@@ -183,7 +184,12 @@
           base: node,
           consolePort: getNextAvailableSystemPort(),
           ports: {}, // Indexed by port-uuid
-          portgroups: {} // Indexed by portgroup-uuid
+          portgroups: {}, // Indexed by portgroup-uuid
+          supportedBootDevices: service.params.supportedBootDevices,
+          bootDevice: {
+            boot_device: service.params.supportedBootDevices[0],
+            persistent: true
+          }
         };
 
         nodes[node.uuid] = backendNode;
@@ -196,7 +202,7 @@
     }
 
     /**
-     * description Get a specified node.
+     * @description Get a specified node.
      *
      * @param {string} nodeId - Uuid or name of the requested node.
      * @return {object|null} Base node object, or null if the node
@@ -207,6 +213,29 @@
     }
 
     /**
+     * @description Get the boot device of a specified node.
+     *
+     * @param {string} nodeId - Uuid or name of the requested node.
+     * @return {object} Boot device.
+     */
+    function getNodeBootDevice(nodeId) {
+      return angular.isDefined(nodes[nodeId])
+        ? nodes[nodeId].bootDevice : undefined;
+    }
+
+    /**
+     * @description Get the list of supported boot devices of
+     *   a specified node.
+     *
+     * @param {string} nodeId - Uuid or name of the requested node.
+     * @return {string []} List of supported boot devices.
+     */
+    function getNodeSupportedBootDevices(nodeId) {
+      return angular.isDefined(nodes[nodeId])
+        ? nodes[nodeId].supportedBootDevices : undefined;
+    }
+
+    /*
      * @description Get the console-url for a specified node.
      *
      * @param {string} nodeId - Uuid or name of the node.
@@ -493,7 +522,47 @@
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/boot_device$/,
                            undefined,
                            ['nodeId'])
-        .respond(responseCode.SUCCESS, service.params.bootDevice);
+        .respond(function(method, url, data, headers, params) {
+          if (angular.isDefined(nodes[params.nodeId])) {
+            return [200, nodes[params.nodeId].bootDevice];
+          } else {
+            return [400, null];
+          }
+        });
+
+      // Get supported boot devices
+      $httpBackend.whenGET(
+          /\/api\/ironic\/nodes\/([^\/]+)\/boot_device\/supported$/,
+          undefined,
+          ['nodeId'])
+        .respond(function(method, url, data, headers, params) {
+          if (angular.isDefined(nodes[params.nodeId])) {
+            return [200, nodes[params.nodeId].supportedBootDevices];
+          } else {
+            return [400, null];
+          }
+        });
+
+      // Set boot device
+      $httpBackend.whenPUT(/\/api\/ironic\/nodes\/(.+)\/boot_device/,
+                           undefined,
+                           undefined,
+                           ['nodeId'])
+        .respond(function(method, url, data, headers, params) {
+          data = JSON.parse(data);
+          var status = 404;
+          if (angular.isDefined(nodes[params.nodeId])) {
+            var node = nodes[params.nodeId];
+            if (node.supportedBootDevices.indexOf(data.boot_device) !== -1) {
+              node.bootDevice.boot_device = data.boot_device;
+              if (angular.isDefined(data.persistent)) {
+                node.bootDevice.persistent = data.persistent;
+              }
+              status = 200;
+            }
+          }
+          return [status, null];
+        });
 
       // Validate the interfaces associated with a specified node
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/validate$/,

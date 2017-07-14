@@ -31,7 +31,9 @@
     'getPortgroups',
     'getPortsWithNode',
     'getBootDevice',
+    'getSupportedBootDevices',
     'nodeGetConsole',
+    'nodeSetBootDevice',
     'nodeSetConsoleMode',
     'nodeSetPowerState',
     'nodeSetMaintenance',
@@ -296,7 +298,8 @@
             .then(function(node) {
               expect(node.console_enabled).toEqual(false);
               return node;
-            });
+            })
+            .catch(failTest);
 
           ironicBackendMockService.flush();
         });
@@ -304,19 +307,81 @@
         it('getBootDevice', function() {
           createNode({driver: defaultDriver})
             .then(function(node) {
-              expect(node.console_enabled).toEqual(false);
-              return node;
-            })
-            .then(function(node) {
               return ironicAPI.getBootDevice(node.uuid)
                 .then(function(bootDevice) {
-                  return bootDevice;
+                  return {node: node, bootDevice: bootDevice};
                 });
             })
-            .then(function(bootDevice) {
-              expect(bootDevice).toEqual(
-                ironicBackendMockService.params.bootDevice);
-            });
+            .then(function(data) {
+              expect(data.bootDevice).toEqual(
+                ironicBackendMockService.getNodeBootDevice(data.node.uuid));
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('getSupportedBootDevices', function() {
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.getSupportedBootDevices(node.uuid);
+            })
+            .then(function(bootDevices) {
+              expect(bootDevices).toEqual(
+                ironicBackendMockService.params.supportedBootDevices);
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('nodeSetBootDevice', function() {
+          var bootDevice = {
+            boot_device: "bios",
+            persistent: false
+          };
+
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.nodeSetBootDevice(node.uuid,
+                                                 bootDevice.boot_device,
+                                                 bootDevice.persistent)
+                .then(function() {
+                  return node;
+                });
+            })
+            .then(function(node) {
+              ironicAPI.getBootDevice(node.uuid).then(function(device) {
+                expect(device).toEqual(bootDevice);
+              });
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('nodeSetBootDevice - bad device', function() {
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.getBootDevice(node.uuid)
+                .then(function(device) {
+                  return {node: node, currentBootDevice: device};
+                });
+            })
+            .then(function(data) {
+              ironicAPI.nodeSetBootDevice(data.node.uuid,
+                                          "bad-device",
+                                          false)
+                .then(failTest)
+                .catch(function() {
+                  // Ensure the boot device is unchanged
+                  ironicAPI.getBootDevice(data.node.uuid)
+                    .then(function(device) {
+                      expect(device).toEqual(data.currentBootDevice);
+                    });
+                });
+            })
+            .catch(failTest);
 
           ironicBackendMockService.flush();
         });
