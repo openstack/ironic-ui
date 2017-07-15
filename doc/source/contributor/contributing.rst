@@ -1,11 +1,6 @@
-.. _contributing:
-
-=========================
-Contributing to Ironic UI
-=========================
-
-If you're interested in contributing to the Ironic UI project,
-the following will help get you started.
+=================
+How to Contribute
+=================
 
 Contributor License Agreement
 -----------------------------

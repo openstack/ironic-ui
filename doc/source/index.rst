@@ -26,5 +26,5 @@ For more information on ironic, see `the ironic documentation`_.
 
   Introduction to ironic <http://docs.openstack.org/developer/ironic/deploy/user-guide.html>
   Installing the ironic UI <install/index>
-  Contributing <contributing>
+  Contributing <contributor/index>
   Release notes <http://docs.openstack.org/releasenotes/ironic-ui>
