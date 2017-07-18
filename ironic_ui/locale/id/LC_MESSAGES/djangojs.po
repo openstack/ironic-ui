@@ -3,13 +3,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev53\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev64\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-06-30 15:16+0000\n"
+"POT-Creation-Date: 2017-07-15 00:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-30 03:16+0000\n"
+"PO-Revision-Date: 2017-07-08 03:14+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -58,6 +58,20 @@ msgid_plural ""
 msgstr[0] ""
 "Apakah Anda yakin ingin menghapus port \"%s\"? Tindakan ini tidak bisa "
 "dibatalkan."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgid_plural ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+msgstr[0] ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+
+msgid "Attributes"
+msgstr "Attributes"
 
 msgid "Boot Device"
 msgstr "Boot Device"
@@ -114,6 +128,10 @@ msgstr[0] "Delete Node (hapus node)"
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "Delete Port (hapus port)"
+
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "Delete Portgroup"
 
 msgid "Deploy Kernel"
 msgstr "Deploy Kernel (mengerahkan kernel)"
@@ -197,6 +215,9 @@ msgstr "Kernel"
 msgid "Last Error"
 msgstr "Last Error (kesalahan terakhir)"
 
+msgid "Local Link Connection"
+msgstr "Local Link Connection"
+
 msgid "Local link connection"
 msgstr "Koneksi link lokal"
 
@@ -230,11 +251,18 @@ msgstr "Tak ada Instance"
 msgid "No network ports have been defined"
 msgstr "Tidak ada port jaringan telah didefinisikan"
 
+msgid "No portgroups have been defined"
+msgstr "No portgroups telah didefinisikan"
+
 msgid "No reason given."
 msgstr "Tidak ada alasan yang diberikan."
 
 msgid "Node"
 msgstr "Node (simpul)"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "Node %s sudah dalam target maintenance state."
 
 msgid "Node Driver"
 msgstr "Node Driver"
@@ -254,6 +282,9 @@ msgstr "One of this, (.*) must be specified\\."
 msgid "Overview"
 msgstr "Iktisar"
 
+msgid "PXE Enabled"
+msgstr "PXE Diaktifkan"
+
 msgid "PXE enabled"
 msgstr "PXE enabled"
 
@@ -262,6 +293,15 @@ msgstr "Persistent"
 
 msgid "Port successfully created"
 msgstr "Port berhasil dibuat"
+
+msgid "Portgroup"
+msgstr "Portgroup"
+
+msgid "Portgroup successfully created"
+msgstr "Portgroup berhasil dibuat"
+
+msgid "Portgroups"
+msgstr "Portgroups"
 
 msgid "Ports"
 msgstr "Port-Port"
@@ -327,6 +367,9 @@ msgstr "Wajib"
 msgid "Reservation"
 msgstr "Reservation"
 
+msgid "Resource Class"
+msgstr "Resource Class"
+
 msgid "Root GB"
 msgstr "Root GB"
 
@@ -374,6 +417,11 @@ msgid_plural "Successfully deleted ports \"%s\""
 msgstr[0] "Berhasil hapus port \"%s\""
 
 #, python-format
+msgid "Successfully deleted portgroup \"%s\""
+msgid_plural "Successfully deleted portgroups \"%s\""
+msgstr[0] "Successfully deleted portgroup \"%s\""
+
+#, python-format
 msgid "Successfully updated node %s"
 msgstr "Berhasil perbarui node %s"
 
@@ -416,6 +464,10 @@ msgid "Unable to create port: %s"
 msgstr "Tidak dapat membuat port: %s"
 
 #, python-format
+msgid "Unable to create portgroup: %s"
+msgstr "Tidak dapat membuat portgroup: %s"
+
+#, python-format
 msgid "Unable to delete node \"%s\""
 msgid_plural "Unable to delete nodes \"%s\""
 msgstr[0] "Tidak dapat menghapus node \"%s\""
@@ -424,14 +476,23 @@ msgstr[0] "Tidak dapat menghapus node \"%s\""
 msgid "Unable to delete node %s: %s"
 msgstr "Tidak dapat menghapus node %s: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete ports \"%s\""
-msgstr[0] "Tidak dapat hapus port \"%s\""
+msgstr[0] "Unable to delete port \"%s\""
 
 #, python-format
 msgid "Unable to delete port: %s"
 msgstr "Tidak dapat menghapus port: %s"
+
+#, python-format
+msgid "Unable to delete portgroup \"%s\""
+msgid_plural "Unable to delete portgroups \"%s\""
+msgstr[0] "Unable to delete portgroup \"%s\""
+
+#, python-format
+msgid "Unable to delete portgroup: %s"
+msgstr "Tidak dapat menghapus portgroup: %s"
 
 #, python-format
 msgid "Unable to get console for node %s: %s"
@@ -444,6 +505,10 @@ msgstr "Tidak dapat daya mati pada node: %s"
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Tidak dapat mengambil Ironic driver: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic node portgroups: %s"
+msgstr "Unable to retrieve Ironic node portgroups: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic nodes. %s"
@@ -464,6 +529,10 @@ msgstr "Tidak dapat mengambil Ironic node port: %s"
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "Tidak dapat mengambil Ironic node: %s"
+
+#, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "Unable to set Ironic node %s maintenance state: %s"
 
 #, python-format
 msgid "Unable to set console mode: %s"
