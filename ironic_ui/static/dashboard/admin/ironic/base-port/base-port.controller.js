@@ -27,95 +27,44 @@
     '$uibModalInstance',
     'horizon.dashboard.admin.ironic.validMacAddressPattern',
     'horizon.dashboard.admin.ironic.validDatapathIdPattern',
+    'horizon.dashboard.admin.ironic.form-field.service',
     'ctrl'
   ];
-
-  /**
-   * @description Utility class for managing form fields
-   *
-   * @param {object} args - Valid properties are:
-   *   value - Initial value of the field
-   *   required - Does the field require a value
-   *   desc - Field description
-   *   pattern - Regular expression pattern used to match
-   *   valid input values
-   *   disabled - Is the field disabled
-   *   info - Additional information about the current state of
-   *   the field. It will be displayed in a tooltip associated
-   *   with the field.
-   *
-   * @return {void}
-   */
-  function Field(args) {
-    this.value = angular.isDefined(args.value) ? args.value : undefined;
-    this.required = angular.isDefined(args.required) ? args.required : false;
-    this.desc = angular.isDefined(args.desc) ? args.desc : undefined;
-    this.pattern = angular.isDefined(args.pattern)
-      ? new RegExp(args.pattern) : undefined;
-    this.disabled = angular.isDefined(args.disabled) ? args.disabled : false;
-    this.info = angular.isDefined(args.info) ? args.info : undefined;
-
-    /**
-     * Test whether the field has a non-empty value. Note that an
-     * empty value can be either '' or undefined in the case of a
-     * required field
-     *
-     * @return {boolean} Return true if the field has a value
-     */
-    this.hasValue = function() {
-      return angular.isDefined(this.value) && this.value !== '';
-    };
-
-    /**
-     * Test whether the field has help-text
-     *
-     * @return {boolean} Return true if the field has help text
-     */
-    this.hasHelpText = function() {
-      return this.desc || this.info;
-    };
-
-    /**
-     * Get the help-text associated with this field
-     *
-     * @return {string} Return true if the field has help text
-     */
-    this.getHelpText = function() {
-      var text = angular.isDefined(this.desc) ? this.desc : '';
-      if (angular.isDefined(this.info)) {
-        if (text !== '') {
-          text += '<br><br>';
-        }
-        text += this.info;
-      }
-      return text;
-    };
-  }
 
   /**
    * @description Utility class used to manage local-link-connection
    *   form fields.
    *
+   * @param {string} formFieldService - Provider service for creating
+   *   form fields.
    * @param {string} validMacAddressPattern - Regular expression
    *   pattern used to test for valid mac addresses.
    * @param {string} validDatapathIdPattern - Regular expression
    *   pattern used to test for valid datapath ids.
    * @return {void}
    */
-  function LocalLinkConnectionMgr(validMacAddressPattern,
+  function LocalLinkConnectionMgr(formFieldService,
+                                  validMacAddressPattern,
                                   validDatapathIdPattern) {
-    this.port_id = new Field({});
+    var mgr = this;
 
-    this.switch_id = new Field({
-      desc: gettext("MAC address or OpenFlow datapath ID"),
-      pattern: validMacAddressPattern + '|' + validDatapathIdPattern});
+    mgr.port_id = new formFieldService.FormField(
+      {id: 'port_id', title: 'port_id'});
 
-    this.switch_info = new Field({});
+    mgr.switch_id = new formFieldService.FormField(
+        {id: 'switch_id',
+         title: 'switch_id',
+         desc: gettext("MAC address or OpenFlow datapath ID"),
+         pattern: new RegExp(validMacAddressPattern + '|' +
+                             validDatapathIdPattern)});
 
-    this.fields = {
-      port_id: this.port_id,
-      switch_id: this.switch_id,
-      switch_info: this.switch_info
+    mgr.switch_info = new formFieldService.FormField(
+      {id: 'switch_info', title: 'switch_info'});
+
+    mgr.fields = {
+      port_id: mgr.port_id,
+      switch_id: mgr.switch_id,
+      switch_info: mgr.switch_info
     };
 
     /**
@@ -123,12 +72,16 @@
      *
      * @return {void}
      */
-    this.update = function() {
-      var required = this.port_id.hasValue() || this.switch_id.hasValue();
-
-      this.port_id.required = required;
-      this.switch_id.required = required;
+    mgr.update = function() {
+      var required = mgr.port_id.hasValue() || mgr.switch_id.hasValue();
+      mgr.port_id.required = required;
+      mgr.switch_id.required = required;
     };
+
+    // Add form field value change handlers
+    angular.forEach(mgr.fields, function(field) {
+      field.change = mgr.update;
+    });
 
     /**
      * Generate an attribute object that conforms to the format
@@ -138,33 +91,45 @@
      * A value of null is returned if the local-link-connection
      * information is incomplete.
      */
-    this.toPortAttr = function() {
+    mgr.toPortAttr = function() {
       var attr = null;
-      if (this.port_id.hasValue() &&
-          this.switch_id.hasValue()) {
+      if (mgr.port_id.hasValue() &&
+          mgr.switch_id.hasValue()) {
         attr = {};
-        attr.port_id = this.port_id.value;
-        attr.switch_id = this.switch_id.value;
+        attr.port_id = mgr.port_id.value;
+        attr.switch_id = mgr.switch_id.value;
 
-        if (this.switch_info.hasValue()) {
-          attr.switch_info = this.switch_info.value;
+        if (mgr.switch_info.hasValue()) {
+          attr.switch_info = mgr.switch_info.value;
         }
       }
       return attr;
     };
 
     /**
-     * dis/enable the local-link-connection form fields
+     * @description Set values of form fields;
      *
-     * @param {boolean} disabled - True if the local-link-connection form
-     * fields should be disabled
-     * @param {string} reason - Optional reason for the state change
+     * @param {object} values - Dictionary of values indexed by
+     *   property-name
      * @return {void}
      */
-    this.setDisabled = function(disabled, reason) {
-      angular.forEach(this.fields, function(field) {
-        field.disabled = disabled;
-        field.info = reason;
+    mgr.setValues = function(values) {
+      angular.forEach(mgr.fields, function(field, propertyName) {
+        if (angular.isDefined(values[propertyName])) {
+          field.value = values[propertyName];
+        }
+      });
+    };
+
+    /**
+     * @description Disable the local-link-connection form fields.
+     *
+     * @param {string} reason - Optional reason for disabling fields.
+     * @return {void}
+     */
+    mgr.disable = function(reason) {
+      angular.forEach(mgr.fields, function(item) {
+        item.disable(reason);
       });
     };
   }
@@ -172,17 +137,35 @@
   function BasePortController($uibModalInstance,
                               validMacAddressPattern,
                               validDatapathIdPattern,
+                              formFieldService,
                               ctrl) {
     ctrl.port = {
-      address: null,
       extra: {}
     };
 
-    ctrl.pxeEnabled = new Field({value: 'True'});
+    ctrl.address = new formFieldService.FormField({
+      id: "macAddress",
+      title: gettext("MAC address"),
+      desc: gettext("MAC address for this port. Required."),
+      pattern: new RegExp(validMacAddressPattern),
+      value: null,
+      required: true,
+      autoFocus: true
+    });
+
+    ctrl.pxeEnabled = new formFieldService.FormField({
+      type: "radio",
+      id: "pxeEnabled",
+      title: gettext("PXE enabled"),
+      desc: gettext(
+        "Indicates whether this port should be used when PXE booting this node"),
+      options: ['True', 'False'],
+      value: 'True'});
 
     // Object used to manage local-link-connection form fields
     ctrl.localLinkConnection =
-      new LocalLinkConnectionMgr(validMacAddressPattern,
+      new LocalLinkConnectionMgr(formFieldService,
+                                 validMacAddressPattern,
                                  validDatapathIdPattern);
 
     /**

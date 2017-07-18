@@ -10,50 +10,8 @@
 </div>
 <div class="modal-body">
   <form id="CreatePortForm" name="CreatePortForm">
-    <div class="form-group"
-         ng-class="{'has-error': CreatePortForm.macAddress.$invalid &&
-                   CreatePortForm.macAddress.$dirty}">
-      <label for="macAddress"
-             class="control-label"
-             translate>MAC address</label>
-      <span class="hz-icon-required fa fa-asterisk"></span>
-      <div>
-        <input type="text"
-               class="form-control"
-               ng-model="ctrl.port.address"
-               id="macAddress"
-               name="macAddress"
-               ng-required="true"
-               ng-pattern="'([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})'"
-               auto-focus
-               placeholder="{$ ::'MAC address for this port. Required.' | translate $}"/>
-      </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <label for="pxeEnabled"
-               class="control-label"
-               translate>
-          PXE enabled
-        </label>
-        <span ng-if="ctrl.pxeEnabled.hasHelpText()"
-              class="help-icon"
-              data-container="body"
-              data-html="true"
-              title=""
-              data-toggle="tooltip"
-              data-original-title="{$ ctrl.pxeEnabled.getHelpText() $}">
-          <span class="fa fa-question-circle"></span>
-        </span>
-      </div>
-      <div class="btn-group" id="pxeEnabled">
-        <label class="btn btn-default"
-               ng-model="ctrl.pxeEnabled.value"
-               ng-repeat="opt in ['True', 'False']"
-               ng-disabled="ctrl.pxeEnabled.disabled"
-               uib-btn-radio="opt">{$ opt $}</label>
-      </div>
-    </div>
+    <form-field field="ctrl.address" form="CreatePortForm"></form-field>
+    <form-field field="ctrl.pxeEnabled" form="CreatePortForm"></form-field>
   </form>
 
   <form id="LocalLinkConnectionForm"
@@ -61,34 +19,9 @@
         class="well well-sm">
     <h4 translate>Local link connection</h4>
     <div class="form-group"
-         ng-repeat="(propertyName, propertyObj) in
-                    ctrl.localLinkConnection.fields"
-         ng-class="{'has-error': LocalLinkConnectionForm.{$ propertyName $}.$invalid &&
-                   LocalLinkConnectionForm.{$ propertyName $}.$dirty}">
-      <label class="control-label"
-             for="{$ propertyName $}">{$ propertyName $}
-        <span ng-if="propertyObj.required"
-              class="hz-icon-required fa fa-asterisk"></span>
-        <span ng-if="propertyObj.hasHelpText()"
-              class="help-icon"
-              data-container="body"
-              title=""
-              data-toggle="tooltip"
-              data-html="true"
-              data-original-title="{$ propertyObj.getHelpText() $}">
-          <span class="fa fa-question-circle"></span>
-        </span>
-      </label>
-      <input class="form-control"
-             type="text"
-             id="{$ propertyName $}"
-             name="{$ propertyName $}"
-             ng-model="propertyObj.value"
-             ng-required="propertyObj.required"
-             placeholder="{$ propertyObj.desc $}"
-             ng-pattern="propertyObj.pattern"
-             ng-disabled="propertyObj.disabled"
-             ng-change="ctrl.localLinkConnection.update()"/>
+         ng-repeat="(propertyName, propertyField) in
+                    ctrl.localLinkConnection.fields">
+      <form-field field="propertyField" form="LocalLinkConnectionForm"></form-field>
     </div>
   </form>
 

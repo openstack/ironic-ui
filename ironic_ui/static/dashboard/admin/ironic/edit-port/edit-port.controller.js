@@ -62,26 +62,22 @@
                                node.provision_state === "manageable"));
 
     // Initialize form fields
-    ctrl.port.address = port.address;
+    ctrl.address.value = port.address;
+    if ((node.provision_state === "active" || node.instance_uuid) &&
+        !node.maintenance) {
+      ctrl.address.disable();
+    }
 
     ctrl.pxeEnabled.value = port.pxe_enabled ? 'True' : 'False';
     if (cannotEditConnectivityAttr) {
-      ctrl.pxeEnabled.disabled = true;
-      ctrl.pxeEnabled.info = UNABLE_TO_UPDATE_CONNECTIVITY_ATTR_MSG;
+      ctrl.pxeEnabled.disable(UNABLE_TO_UPDATE_CONNECTIVITY_ATTR_MSG);
     }
 
-    angular.forEach(
-      ['port_id', 'switch_id', 'switch_info'],
-      function(prop) {
-        if (angular.isDefined(port.local_link_connection[prop])) {
-          ctrl.localLinkConnection[prop].value =
-            port.local_link_connection[prop];
-        }
-      });
+    ctrl.localLinkConnection.setValues(
+      port.local_link_connection);
 
     if (cannotEditConnectivityAttr) {
-      ctrl.localLinkConnection.setDisabled(
-        true,
+      ctrl.localLinkConnection.disable(
         UNABLE_TO_UPDATE_CONNECTIVITY_ATTR_MSG);
     }
 
@@ -97,7 +93,7 @@
 
       $log.info("Updating port " + JSON.stringify(port));
 
-      patcher.buildPatch(port.address, ctrl.port.address, "/address");
+      patcher.buildPatch(port.address, ctrl.address.value, "/address");
       patcher.buildPatch(port.pxe_enabled ? 'True' : 'False',
                          ctrl.pxeEnabled.value,
                          "/pxe_enabled");
