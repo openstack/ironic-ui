@@ -6,12 +6,12 @@
 # ChungYoung Cho <openstack.cho@gmail.com>, 2017. #zanata
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2017. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
-# Wonil Choi <wonil22.choi@samsung.com>, 2017. #zanata
+# Wonil Choi <wonil0522@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev53\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev70\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-06-30 15:16+0000\n"
+"POT-Creation-Date: 2017-07-18 16:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -158,6 +158,9 @@ msgstr "MAC 주소"
 
 msgid "MAC address"
 msgstr "MAC 주소"
+
+msgid "MAC address for this port. Required."
+msgstr "이 포트를 위한 MAC 주소. 필수항목."
 
 msgid "Maintenance"
 msgstr "유지보수"

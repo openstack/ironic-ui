@@ -3,13 +3,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev64\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev70\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-15 00:56+0000\n"
+"POT-Creation-Date: 2017-07-18 16:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-07-08 03:14+0000\n"
+"PO-Revision-Date: 2017-07-20 10:57+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -185,6 +185,11 @@ msgstr "General (umum)"
 msgid "Image Source"
 msgstr "Image Source"
 
+msgid "Indicates whether this port should be used when PXE booting this node"
+msgstr ""
+"Menunjukkan apakah port ini harus digunakan saat PXE melakukan booting node "
+"ini"
+
 msgid "Inspect"
 msgstr "Inspect (periksa)"
 
@@ -226,6 +231,9 @@ msgstr "MAC Address"
 
 msgid "MAC address"
 msgstr "MAC address"
+
+msgid "MAC address for this port. Required."
+msgstr "MAC address untuk port ini. Wajib."
 
 msgid "MAC address or OpenFlow datapath ID"
 msgstr "Alamat MAC atau OpenFlow datapath ID"
@@ -355,6 +363,9 @@ msgstr "Reboot"
 msgid "Refresh"
 msgstr "Refresh"
 
+msgid "Refresh page to see set boot device"
+msgstr "Segarkan halaman untuk melihat perangkat booting yang ditetapkan"
+
 msgid "Refresh page to see updated console details"
 msgstr "Segarkan halaman untuk melihat rincian konsol yang diperbarui"
 
@@ -396,6 +407,15 @@ msgstr "SSH terminal port (port terminal SSH)"
 
 msgid "Select a Driver"
 msgstr "Pilih Driver"
+
+msgid "Select a boot device"
+msgstr "Pilih perangkat booting"
+
+msgid "Set Boot Device"
+msgstr "Set Boot Device (setel perangkat booting)"
+
+msgid "Set boot device"
+msgstr "Setel perangkat booting"
 
 msgid "Soft power off"
 msgstr "Soft power off"
@@ -523,6 +543,11 @@ msgid "Unable to retrieve driver properties: %s"
 msgstr "Tidak dapat mengambil driver property: %s"
 
 #, python-format
+msgid "Unable to retrieve supported boot devices for Ironic node. %s"
+msgstr ""
+"Tidak dapat mengambil perangkat booting yang didukung untuk node Ironic. %s"
+
+#, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
 msgstr "Tidak dapat mengambil Ironic node port: %s"
 
@@ -533,6 +558,10 @@ msgstr "Tidak dapat mengambil Ironic node: %s"
 #, python-format
 msgid "Unable to set Ironic node %s maintenance state: %s"
 msgstr "Unable to set Ironic node %s maintenance state: %s"
+
+#, python-format
+msgid "Unable to set boot device: %s"
+msgstr "Tidak dapat mengatur perangkat booting: %s"
 
 #, python-format
 msgid "Unable to set console mode: %s"
