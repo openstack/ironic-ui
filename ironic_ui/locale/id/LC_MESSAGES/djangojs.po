@@ -3,13 +3,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev70\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev73\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-18 16:08+0000\n"
+"POT-Creation-Date: 2017-07-21 15:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-07-20 10:57+0000\n"
+"PO-Revision-Date: 2017-07-23 05:11+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -308,6 +308,9 @@ msgstr "Portgroup"
 msgid "Portgroup successfully created"
 msgstr "Portgroup berhasil dibuat"
 
+msgid "Portgroup that this port belongs to"
+msgstr "Portgroup yang dimiliki port ini"
+
 msgid "Portgroups"
 msgstr "Portgroups"
 
@@ -410,6 +413,9 @@ msgstr "Pilih Driver"
 
 msgid "Select a boot device"
 msgstr "Pilih perangkat booting"
+
+msgid "Select a portgroup"
+msgstr "Pilih portgroup"
 
 msgid "Set Boot Device"
 msgstr "Set Boot Device (setel perangkat booting)"
@@ -541,6 +547,10 @@ msgstr "Tidak dapat mengambil perangkat boot untuk simpul Ironis. %s"
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
 msgstr "Tidak dapat mengambil driver property: %s"
+
+#, python-format
+msgid "Unable to retrieve portgroup ports: %s"
+msgstr "Tidak dapat mengambil port portgroup: %s"
 
 #, python-format
 msgid "Unable to retrieve supported boot devices for Ironic node. %s"

@@ -4,18 +4,19 @@
 # Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
 # sunanchen <KF.sunanchen@h3c.com>, 2016. #zanata
 # vuuv <froms2008@gmail.com>, 2016. #zanata
+# Bin <liubin@glab.cn>, 2017. #zanata
 # Gaoxiao Zhu <zhu.gaoxiao@h3c.com>, 2017. #zanata
 # liujunpeng <liujunpeng@inspur.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev70\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev73\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-18 16:08+0000\n"
+"POT-Creation-Date: 2017-07-21 15:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-30 03:16+0000\n"
-"Last-Translator: Gaoxiao Zhu <zhu.gaoxiao@h3c.com>\n"
+"PO-Revision-Date: 2017-07-22 03:50+0000\n"
+"Last-Translator: Bin <liubin@glab.cn>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -37,6 +38,15 @@ msgstr "放弃清理"
 msgid "Actions"
 msgstr "动作"
 
+msgid "Add Extra"
+msgstr "增加额外信息"
+
+msgid "Add Instance Property"
+msgstr "添加实例属性"
+
+msgid "Add Property"
+msgstr "添加属性"
+
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
@@ -51,6 +61,21 @@ msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
 msgstr[0] "你确认要删除端口\"%s\"吗？本操作无法恢复。"
 
+#, python-format
+msgid ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgid_plural ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+msgstr[0] "你确定要删除端口组\"%s\"？本操作无法恢复。"
+
+msgid "Attributes"
+msgstr "属性"
+
+msgid "Boot Device"
+msgstr "引导设备"
+
 msgid "Cancel"
 msgstr "取消"
 
@@ -60,14 +85,32 @@ msgstr "机架ID"
 msgid "Choose an Image"
 msgstr "选择一个镜像"
 
+msgid "Clean"
+msgstr "清理"
+
+msgid "Clean Node"
+msgstr "清理节点"
+
 msgid "Clean Step"
 msgstr "清理步骤"
+
+msgid "Clean node"
+msgstr "清理节点"
+
+msgid "Clean steps should be an non-empty array"
+msgstr "清理步骤应该是一个非空数组"
+
+msgid "Click link to view console"
+msgstr "点击链接查看控制台"
 
 msgid "Configuration"
 msgstr "配置"
 
 msgid "Console Enabled"
 msgstr "允许控制台"
+
+msgid "Console Info."
+msgstr "控制台信息。"
 
 msgid "Create Port"
 msgstr "创建端口"
@@ -86,11 +129,18 @@ msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "删除端口"
 
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "删除端口组"
+
 msgid "Deploy Kernel"
 msgstr "部署内核"
 
 msgid "Deploy Ramdisk"
 msgstr "部署虚拟内存盘"
+
+msgid "Device"
+msgstr "设备"
 
 msgid "Driver"
 msgstr "驱动"
@@ -103,6 +153,11 @@ msgstr "驱动信息"
 
 msgid "Driver Validation"
 msgstr "驱动验证"
+
+msgid ""
+"Each cleaning step must be an object that contains \"interface\" and \"step"
+"\" properties"
+msgstr "每一步清理步骤必需是一个包含“接口”和“步骤”属性的对象"
 
 msgid "Edit Node"
 msgstr "编辑节点"
@@ -128,6 +183,9 @@ msgstr "概要信息"
 msgid "Image Source"
 msgstr "镜像源"
 
+msgid "Indicates whether this port should be used when PXE booting this node"
+msgstr "当PXE应到该节点时，表明此端口是否应该被使用"
+
 msgid "Inspect"
 msgstr "检查"
 
@@ -146,6 +204,9 @@ msgstr "实例信息"
 msgid "Instance Name"
 msgstr "实例名字"
 
+msgid "Instance Property Name"
+msgstr "实例属性名称"
+
 msgid "Interface"
 msgstr "接口"
 
@@ -154,6 +215,9 @@ msgstr "内核"
 
 msgid "Last Error"
 msgstr "最近的一次错误"
+
+msgid "Local Link Connection"
+msgstr "本地链接连接"
 
 msgid "Local link connection"
 msgstr "本地链接连接"
@@ -182,14 +246,27 @@ msgstr "移动"
 msgid "Name"
 msgstr "名称"
 
+msgid "Network Interface"
+msgstr "网络接口"
+
 msgid "No Instance"
 msgstr "没有实例"
 
 msgid "No network ports have been defined"
 msgstr "未定义网络端口"
 
+msgid "No portgroups have been defined"
+msgstr "未定义端口组"
+
+msgid "No reason given."
+msgstr "没有原因提供。"
+
 msgid "Node"
 msgstr "节点"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "节点\"%s\"已经处于目标维护状态"
 
 msgid "Node Driver"
 msgstr "节点驱动"
@@ -209,8 +286,29 @@ msgstr "必须指定其中的一个 (.*)"
 msgid "Overview"
 msgstr "概览"
 
+msgid "PXE Enabled"
+msgstr "PXE启用"
+
+msgid "PXE enabled"
+msgstr "PXE启用"
+
+msgid "Persistent"
+msgstr "持久"
+
 msgid "Port successfully created"
 msgstr "端口创建成功"
+
+msgid "Portgroup"
+msgstr "端口组"
+
+msgid "Portgroup successfully created"
+msgstr "端口组创建成功"
+
+msgid "Portgroup that this port belongs to"
+msgstr "此端口所属的端口组"
+
+msgid "Portgroups"
+msgstr "端口组"
 
 msgid "Ports"
 msgstr "端口"
@@ -229,6 +327,9 @@ msgstr "属性"
 
 msgid "Property Name"
 msgstr "属性名称"
+
+msgid "Provide a list of cleaning steps in JSON format"
+msgstr "提供一个JSON格式的清理步骤列表"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
@@ -253,8 +354,17 @@ msgstr "内存盘"
 msgid "Reason"
 msgstr "原因"
 
+msgid "Reboot"
+msgstr "重启"
+
 msgid "Refresh"
 msgstr "刷新"
+
+msgid "Refresh page to see set boot device"
+msgstr "刷新页面来设置引导设备"
+
+msgid "Refresh page to see updated console details"
+msgstr "刷新页面查看更新的控制台细节"
 
 msgid "Refresh page to see updated power status"
 msgstr "刷新页面来确认电源状态是否更新"
@@ -264,6 +374,9 @@ msgstr "必需的"
 
 msgid "Reservation"
 msgstr "预留"
+
+msgid "Resource Class"
+msgstr "资源类"
 
 msgid "Root GB"
 msgstr "根磁盘 GB"
@@ -292,6 +405,24 @@ msgstr "SSH 终端端口"
 msgid "Select a Driver"
 msgstr "选择一种驱动"
 
+msgid "Select a boot device"
+msgstr "选择一个引导设备"
+
+msgid "Select a portgroup"
+msgstr "选择一个端口组"
+
+msgid "Set Boot Device"
+msgstr "设置引导设备"
+
+msgid "Set boot device"
+msgstr "设置引导设备"
+
+msgid "Soft power off"
+msgstr "软关机"
+
+msgid "Soft reboot"
+msgstr "软重启"
+
 msgid "Submit"
 msgstr "提交"
 
@@ -304,6 +435,11 @@ msgstr[0] "成功删除节点\"%s\""
 msgid "Successfully deleted port \"%s\""
 msgid_plural "Successfully deleted ports \"%s\""
 msgstr[0] "删除端口\"%s\"成功"
+
+#, python-format
+msgid "Successfully deleted portgroup \"%s\""
+msgid_plural "Successfully deleted portgroups \"%s\""
+msgstr[0] "成功删除端口组\"%s\""
 
 #, python-format
 msgid "Successfully updated node %s"
@@ -347,6 +483,10 @@ msgid "Unable to create port: %s"
 msgstr "无法创建端口: %s"
 
 #, python-format
+msgid "Unable to create portgroup: %s"
+msgstr "无法创建端口组： %s"
+
+#, python-format
 msgid "Unable to delete node \"%s\""
 msgid_plural "Unable to delete nodes \"%s\""
 msgstr[0] "无法删除节点\"%s\""
@@ -355,7 +495,7 @@ msgstr[0] "无法删除节点\"%s\""
 msgid "Unable to delete node %s: %s"
 msgstr "无法删除Ironic节点\"%s\": %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete ports \"%s\""
 msgstr[0] "无法删除端口\"%s\""
@@ -363,6 +503,19 @@ msgstr[0] "无法删除端口\"%s\""
 #, python-format
 msgid "Unable to delete port: %s"
 msgstr "无法删除端口: %s"
+
+#, python-format
+msgid "Unable to delete portgroup \"%s\""
+msgid_plural "Unable to delete portgroups \"%s\""
+msgstr[0] "无法删除端口组\"%s\""
+
+#, python-format
+msgid "Unable to delete portgroup: %s"
+msgstr "无法删除端口组：%s"
+
+#, python-format
+msgid "Unable to get console for node %s: %s"
+msgstr "无法获取节点的控制台 %s: %s"
 
 #, python-format
 msgid "Unable to power off the node: %s"
@@ -373,12 +526,28 @@ msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "无法获取Ironic驱动: %s"
 
 #, python-format
+msgid "Unable to retrieve Ironic node portgroups: %s"
+msgstr "无法获取Ironic节点端口组信息: %s"
+
+#, python-format
 msgid "Unable to retrieve Ironic nodes. %s"
 msgstr "无法获取Ironic节点信息: %s"
 
 #, python-format
+msgid "Unable to retrieve boot device for Ironic node. %s"
+msgstr "无法获取Ironic节点引导设备信息。%s"
+
+#, python-format
 msgid "Unable to retrieve driver properties: %s"
 msgstr "无法获取驱动属性: %s"
+
+#, python-format
+msgid "Unable to retrieve portgroup ports: %s"
+msgstr "无法获取端口组端口：%s"
+
+#, python-format
+msgid "Unable to retrieve supported boot devices for Ironic node. %s"
+msgstr "无法获取Ironic节点支持的引导设备信息。%s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
@@ -387,6 +556,18 @@ msgstr "无法获取Ironic节点端口信息: %s"
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "无法获取Ironic节点信息: %s"
+
+#, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "不能设置Ironic节点%s维护状态：%s"
+
+#, python-format
+msgid "Unable to set boot device: %s"
+msgstr "不能设置引导设备：%s"
+
+#, python-format
+msgid "Unable to set console mode: %s"
+msgstr "不能设置控制台模式：%s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
@@ -403,6 +584,9 @@ msgstr "无法更新端口%s：%s"
 #, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "无法验证节点%s：%s"
+
+msgid "Unable to validate the JSON input"
+msgstr "无法验证JSON输入"
 
 msgid "Update Node"
 msgstr "更新节点"
