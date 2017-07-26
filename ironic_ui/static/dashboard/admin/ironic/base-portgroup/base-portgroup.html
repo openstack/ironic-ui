@@ -1,0 +1,37 @@
+<div class="modal-header" modal-draggable>
+  <button type="button"
+          class="close"
+          ng-click="$dismiss()"
+          aria-hidden="true"
+          aria-label="Close">
+    <span aria-hidden="true" class="fa fa-times"></span>
+  </button>
+  <h3 class="modal-title">{$ ::ctrl.modalTitle $}</h3>
+</div>
+<div class="modal-body">
+  <form id="CreatePortgroupForm" name="CreatePortgroupForm">
+    <form-field field="ctrl.address" form="CreatePortgroupForm"></form-field>
+    <form-field field="ctrl.name" form="CreatePortgroupForm"></form-field>
+    <form-field field="ctrl.standalone_ports_supported"
+                form="CreatePortgroupForm"></form-field>
+    <form-field field="ctrl.mode" form="CreatePortgroupForm"></form-field>
+  </form>
+
+  <property-collection-editor collection="ctrl.properties"></property-collection-editor>
+  <property-collection-editor collection="ctrl.extra"></property-collection-editor>
+</div>
+<!--modal footer-->
+<div class="modal-footer ng-scope">
+  <button class="btn btn-default" ng-click="ctrl.cancel()">
+    <span class="fa fa-close"></span>
+    <span class="ng-scope" translate>Cancel</span>
+  </button>
+  <button type="submit"
+          ng-disabled="CreatePortgroupForm.$invalid ||
+                       !ctrl.properties.complete() ||
+                       !ctrl.extra.complete()"
+          ng-click="ctrl.submit()"
+          class="btn btn-primary">
+    {$ ::ctrl.submitButtonTitle $}
+  </button>
+</div>
