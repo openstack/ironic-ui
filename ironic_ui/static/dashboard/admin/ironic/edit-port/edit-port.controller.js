@@ -89,7 +89,7 @@
         UNABLE_TO_UPDATE_CONNECTIVITY_ATTR_MSG);
     }
 
-    ctrl.port.extra = angular.copy(port.extra);
+    ctrl.extra.properties = angular.copy(port.extra);
 
     /**
      * Apply updates to the port being edited
@@ -108,7 +108,7 @@
       patcher.buildPatch(port.local_link_connection,
                          ctrl.localLinkConnection.toPortAttr(),
                          "/local_link_connection");
-      patcher.buildPatch(port.extra, ctrl.port.extra, "/extra");
+      patcher.buildPatch(port.extra, ctrl.extra.properties, "/extra");
       patcher.buildPatch(port.portgroup_uuid,
                          ctrl.portgroup_uuid.value,
                          "/portgroup_uuid");

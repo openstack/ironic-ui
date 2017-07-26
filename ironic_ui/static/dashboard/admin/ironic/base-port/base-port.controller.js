@@ -29,9 +29,9 @@
     'horizon.dashboard.admin.ironic.validDatapathIdPattern',
     'horizon.dashboard.admin.ironic.form-field.service',
     'horizon.app.core.openstack-service-api.ironic',
+    'horizon.dashboard.admin.ironic.property-collection.service',
     'ctrl',
-    'node'
-  ];
+    'node'];
 
   /**
    * @description Utility class used to manage local-link-connection
@@ -141,13 +141,9 @@
                               validDatapathIdPattern,
                               formFieldService,
                               ironic,
+                              propertyCollectionService,
                               ctrl,
                               node) {
-    ctrl.port = {
-      extra: {},
-      node_uuid: node.uuid
-    };
-
     ctrl.address = new formFieldService.FormField({
       id: "macAddress",
       title: gettext("MAC address"),
@@ -186,13 +182,21 @@
       var field = ctrl.portgroup_uuid;
 
       if (portgroups.length > 0) {
-        field.portgroups.push({uuid: null, name: gettext("Select a portgroup")});
+        field.portgroups.push({uuid: null,
+                               name: gettext("Select a portgroup")});
       }
       field.portgroups = field.portgroups.concat(portgroups);
 
       if (portgroups.length === 0) {
         field.disable();
       }
+    });
+
+    ctrl.extra = new propertyCollectionService.PropertyCollection({
+      id: 'extra',
+      title: gettext('Extras'),
+      addPropertyLabel: gettext('Add Extra'),
+      placeholder: gettext('Property Name')
     });
 
     /**
@@ -202,27 +206,6 @@
      */
     ctrl.cancel = function() {
       $uibModalInstance.dismiss('cancel');
-    };
-
-    /**
-     * Delete a port metadata property
-     *
-     * @param {string} propertyName - Name of the property
-     * @return {void}
-     */
-    ctrl.deleteExtra = function(propertyName) {
-      delete ctrl.port.extra[propertyName];
-    };
-
-    /**
-     * Check whether the specified port metadata property already exists
-     *
-     * @param {string} propertyName - Name of the metadata property
-     * @return {boolean} True if the property already exists,
-     * otherwise false
-     */
-    ctrl.checkExtraUnique = function(propertyName) {
-      return !(propertyName in ctrl.port.extra);
     };
   }
 })();

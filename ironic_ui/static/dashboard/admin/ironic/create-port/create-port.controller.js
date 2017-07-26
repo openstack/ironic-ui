@@ -54,9 +54,11 @@
      * @return {void}
      */
     ctrl.createPort = function() {
-      var port = angular.copy(ctrl.port);
-
-      port.address = ctrl.address.value;
+      var port = {
+        extra: ctrl.extra.properties,
+        node_uuid: node.id,
+        address: ctrl.address.value
+      };
 
       var attr = ctrl.localLinkConnection.toPortAttr();
       if (attr) {
