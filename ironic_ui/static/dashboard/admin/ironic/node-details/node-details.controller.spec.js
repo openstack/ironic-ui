@@ -18,80 +18,8 @@
   'use strict';
 
   describe('horizon.dashboard.admin.ironic.node-details', function () {
-    var ctrl, $q, nodeStateTransitionService;
-    var nodeUuid = "0123abcd-0123-4567-abcd-0123456789ab";
-    var nodeName = "herp";
-    var numPorts = 2;
-    var bootDevice = {boot_device: 'pxe', persistent: true};
-    var consoleEnabled = true;
-    var consoleInfo = "console-info";
-
-    function portUuid(nodeUuid, index) {
-      return '' + index + index + nodeUuid.substring(2);
-    }
-
-    function portMacAddr(index) {
-      var mac = '' + index + index;
-      for (var i = 0; i < 5; i++) {
-        mac += ':' + index + index;
-      }
-      return mac;
-    }
-
-    function createPort(nodeUuid, index, extra) {
-      var port = {uuid: portUuid(nodeUuid, index),
-                  address: portMacAddr(index)};
-      port.id = port.uuid;
-      port.name = port.address;
-      if (angular.isDefined(extra)) {
-        port.extra = extra;
-      }
-      return port;
-    }
-
-    function createNode(name, uuid) {
-      return {name: name,
-              uuid: uuid,
-              provision_state: 'enroll'};
-    }
-
-    var ironicAPI = {
-      getNode: function (uuid) {
-        var node = createNode(nodeName, uuid);
-        return $q.when(node);
-      },
-
-      getPortsWithNode: function (uuid) {
-        var ports = [];
-        for (var i = 0; i < numPorts; i++) {
-          ports.push(createPort(uuid, i));
-        }
-        return $q.when(ports);
-      },
-
-      getPortgroups: function() {
-        return $q.when([]);
-      },
-
-      getBootDevice: function () {
-        return $q.when(bootDevice);
-      },
-
-      validateNode: function() {
-        return $q.when({});
-      },
-
-      nodeGetConsole: function() {
-        return $q.when({console_enabled: consoleEnabled,
-                        console_info: consoleInfo});
-      }
-    };
-
-    var nodeActions = {
-      getPowerTransitions: function() {
-        return [];
-      }
-    };
+    var nodeStateTransitionService, $controller, $location,
+      ironicBackendMockService, $rootScope, ironicAPI;
 
     beforeEach(module(function($provide) {
       $provide.value('$uibModal', jasmine.createSpy());
@@ -99,15 +27,14 @@
 
     beforeEach(module('horizon.dashboard.admin.ironic'));
 
-    beforeEach(module(function($provide) {
-      $provide.value('horizon.app.core.openstack-service-api.ironic',
-                     ironicAPI);
-    }));
+    beforeEach(module('horizon.framework.util'));
 
     beforeEach(module(function($provide) {
       $provide.value('horizon.framework.widgets.toast.service',
-                     {});
+                     {add: function() {}});
     }));
+
+    beforeEach(module('horizon.app.core.openstack-service-api'));
 
     beforeEach(module(function($provide) {
       $provide.value('horizon.dashboard.admin.ironic.edit-node.service',
@@ -120,89 +47,195 @@
     }));
 
     beforeEach(inject(function ($injector, _$rootScope_, _$location_) {
-      var scope = _$rootScope_.$new();
-      $q = $injector.get('$q');
-      var controller = $injector.get('$controller');
-      var $location = _$location_;
-      $location.path('/admin/ironic/' + nodeUuid + '/');
+      $location = _$location_;
+      $controller = $injector.get('$controller');
+      $rootScope = _$rootScope_;
 
       nodeStateTransitionService = $injector.get(
         'horizon.dashboard.admin.ironic.node-state-transition.service');
 
-      ctrl = controller(
+      ironicBackendMockService =
+        $injector.get('horizon.dashboard.admin.ironic.backend-mock.service');
+      ironicBackendMockService.init();
+
+      ironicAPI =
+          $injector.get('horizon.app.core.openstack-service-api.ironic');
+    }));
+
+    function createNode() {
+      return ironicAPI.createNode(
+        {driver: ironicBackendMockService.params.defaultDriver})
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function createController(node) {
+      $location.path('/admin/ironic/' + node.uuid + '/');
+
+      var nodeActions = {
+        getPowerTransitions: function() {
+          return [];
+        }
+      };
+
+      return $controller(
         'horizon.dashboard.admin.ironic.NodeDetailsController',
-        {$scope: scope,
+        {$scope: $rootScope.$new(),
          $location: $location,
          'horizon.dashboard.admin.ironic.edit-port.service': {},
          'horizon.dashboard.admin.ironic.actions': nodeActions});
-
-      scope.$apply();
-    }));
+    }
 
     it('controller should be defined', function () {
-      expect(ctrl).toBeDefined();
+      createNode()
+        .then(function(node) {
+          var ctrl = createController(node);
+          expect(ctrl).toBeDefined();
+        });
+      ironicBackendMockService.flush();
     });
 
     it('should have a basePath', function () {
-      expect(ctrl.basePath).toBeDefined();
+      createNode()
+        .then(function(node) {
+          var ctrl = createController(node);
+          expect(ctrl.basePath).toBeDefined();
+        });
+      ironicBackendMockService.flush();
     });
 
     it('should have a node', function () {
-      expect(ctrl.node).toBeDefined();
-      var node = createNode(nodeName, nodeUuid);
-      node.id = node.uuid;
-      node.bootDevice = bootDevice;
-      node.console_enabled = consoleEnabled;
-      node.console_info = consoleInfo;
-      expect(ctrl.node).toEqual(node);
+      var node, ctrl;
+      createNode()
+        .then(function(createdNode) {
+          node = createdNode;
+          ctrl = createController(node);
+        })
+        .catch(function() {
+          fail();
+        });
+
+      ironicBackendMockService.flush();
+
+      // The controller augments the base node with additional attributes
+      var ctrlNode = ironicBackendMockService.getNode(node.uuid);
+      ctrlNode.id = node.uuid;
+      ironicAPI.nodeGetConsole(node.uuid)
+        .then(function(consoleInfo) {
+          ctrlNode.console_info = consoleInfo.console_info;
+        })
+        .then(function() {
+          ironicAPI.getBootDevice(node.uuid)
+            .then(function(bootDevice) {
+              ctrlNode.bootDevice = bootDevice;
+            });
+        })
+        .catch(function() {
+          fail();
+        });
+
+      ironicBackendMockService.flush();
+      expect(ctrl.node).toEqual(ctrlNode);
     });
 
     it('should have ports', function () {
-      expect(ctrl.portsSrc).toBeDefined();
-      expect(ctrl.portsSrc.length).toEqual(numPorts);
+      var portAddress = '11:22:33:44:55:66';
+      var port, ctrl;
 
-      var ports = [];
-      for (var i = 0; i < numPorts; i++) {
-        var port = createPort(ctrl.node.uuid, i);
-        port.id = port.uuid;
-        port.name = port.address;
-        ports.push(port);
-      }
-      expect(ctrl.portsSrc).toEqual(ports);
+      createNode()
+        .then(function(node) {
+          return ironicAPI.createPort({node_uuid: node.uuid,
+                                       address: portAddress})
+            .then(function(port) {
+              return {node: node, port: port};
+            });
+        })
+        .then(function(data) {
+          port = data.port;
+          ctrl = createController(data.node);
+        })
+        .catch(function() {
+          fail();
+        });
+
+      ironicBackendMockService.flush();
+
+      var ctrlPort = ironicBackendMockService.getPort(port.uuid);
+      ctrlPort.id = ctrlPort.uuid;
+      ctrlPort.name = ctrlPort.address;
+      expect(ctrl.portsSrc.length).toEqual(1);
+      expect(ctrl.portsSrc[0].address).toBe(portAddress);
+      expect(ctrl.portsSrc[0]).toEqual(ctrlPort);
     });
 
     it('should have a uuid regular expression pattern', function () {
+      var ctrl;
+      createNode()
+        .then(function(node) {
+          ctrl = createController(node);
+        })
+        .catch(function() {
+          fail();
+        });
+      ironicBackendMockService.flush();
+
       expect(ctrl.re_uuid).toBeDefined();
     });
 
     it('should have an isUuid function', function () {
+      var ctrl;
+      createNode()
+        .then(function(node) {
+          ctrl = createController(node);
+        })
+        .catch(function() {
+          fail();
+        });
+      ironicBackendMockService.flush();
+
       expect(ctrl.isUuid).toBeDefined();
       expect(ctrl.isUuid(ctrl.node.uuid)).toEqual(true);
       expect(ctrl.isUuid("not a uuid")).toEqual(false);
     });
 
     it('should have a getVifPortId function', function () {
+      var ctrl;
+      createNode()
+        .then(function(node) {
+          ctrl = createController(node);
+        });
+      ironicBackendMockService.flush();
+
       expect(ctrl.getVifPortId).toBeDefined();
-      expect(ctrl.getVifPortId(createPort(ctrl.node.uuid, 1))).toEqual("");
-      var extra = {vif_port_id: "port_uuid"};
-      expect(ctrl.getVifPortId(createPort(ctrl.node.uuid, 1, extra))).
-        toEqual("port_uuid");
     });
 
     it('should have node-state-transitions', function () {
+      var ctrl;
+      createNode()
+        .then(function(node) {
+          ctrl = createController(node);
+        });
+      ironicBackendMockService.flush();
+
       expect(ctrl.nodeStateTransitions).toBeDefined();
       expect(ctrl.nodeStateTransitions).toEqual(
         nodeStateTransitionService.getTransitions(ctrl.node.provision_state));
     });
 
     it('should have node-validation', function () {
+      var ctrl;
+      createNode()
+        .then(function(node) {
+          ctrl = createController(node);
+        })
+        .catch(function() {
+          fail();
+        });
+      ironicBackendMockService.flush();
+
       expect(ctrl.nodeValidation).toBeDefined();
       expect(ctrl.nodeValidation).toEqual([]);
-    });
-
-    it('should have a boot device', function () {
-      expect(ctrl.node.bootDevice).toBeDefined();
-      expect(ctrl.node.bootDevice).toEqual(bootDevice);
     });
   });
 })();

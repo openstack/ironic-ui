@@ -514,10 +514,6 @@
           return [responseCode.SUCCESS, {}];
         });
 
-      // Get the ports belonging to a specified node
-      $httpBackend.whenGET(/\/api\/ironic\/ports/)
-        .respond(responseCode.SUCCESS, []);
-
       // Get boot device
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/boot_device$/,
                            undefined,
@@ -603,9 +599,9 @@
         });
 
       // Get ports
-      $httpBackend.whenGET(/\/api\/ironic\/ports\/$/)
-        .respond(function(method, url, data) {
-          var nodeId = JSON.parse(data).node_id;
+      $httpBackend.whenGET(/\/api\/ironic\/ports\//)
+        .respond(function(method, url, data, header, params) {
+          var nodeId = params.node_id;
           var status = responseCode.RESOURCE_NOT_FOUND;
           var ports = [];
           if (angular.isDefined(nodes[nodeId])) {
@@ -624,9 +620,9 @@
         });
 
       // Get portgroups. This function is not fully implemented.
-      $httpBackend.whenGET(/\/api\/ironic\/ports\/$/)
-        .respond(function(method, url, data) {
-          var nodeId = JSON.parse(data).node_id;
+      $httpBackend.whenGET(/\/api\/ironic\/portgroups\//)
+        .respond(function(method, url, data, header, params) {
+          var nodeId = params.node_id;
           var status = responseCode.RESOURCE_NOT_FOUND;
           var portgroups = [];
           if (angular.isDefined(nodes[nodeId])) {
