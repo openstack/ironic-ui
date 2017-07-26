@@ -41,7 +41,18 @@ var BASE_NODE_CONTROLLER_PROPERTIES = [
   'submitButtonTitle',
   'validHostNameRegex'];
 
+/* exported BASE_PORT_CONTROLLER_PROPERTIES */
+
+var BASE_PORT_CONTROLLER_PROPERTIES = [
+  'address',
+  'cancel',
+  'extra',
+  'localLinkConnection',
+  'pxeEnabled',
+  'portgroup_uuid'];
+
 /* exported BASE_PORTGROUP_CONTROLLER_PROPERTIES */
+
 var BASE_PORTGROUP_CONTROLLER_PROPERTIES = [
   'address',
   'cancel',

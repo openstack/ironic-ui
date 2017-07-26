@@ -402,46 +402,76 @@
           return [status, ""];
         });
 
-      function _addItem(node, path, value) {
-        var parts = path.substring(1).split("/");
-        var leaf = parts.pop();
-        var obj = node;
-        for (var i = 0; i < parts.length; i++) {
-          var part = parts[i];
-          if (angular.isUndefined(obj[part])) {
-            obj[part] = {};
+      function _addItem(obj, path, value) {
+        var pathNames = path.substring(1).split("/");
+        var leaf = pathNames.pop();
+        var part = obj;
+        for (var i = 0; i < pathNames.length; i++) {
+          var name = pathNames[i];
+          if (angular.isUndefined(part[name])) {
+            part[name] = {};
           }
-          obj = obj[part];
+          part = part[name];
         }
-        obj[leaf] = value;
+        part[leaf] = value;
       }
 
-      function _removeItem(node, path) {
-        var parts = path.substring(1).split("/");
-        var leaf = parts.pop();
-        var obj = node;
-        for (var i = 0; i < parts.length; i++) {
-          obj = obj[parts[i]];
+      function _removeItem(obj, path) {
+        var pathNames = path.substring(1).split("/");
+        var leaf = pathNames.pop();
+        var part = obj;
+        for (var i = 0; i < pathNames.length; i++) {
+          part = part[pathNames[i]];
         }
-        delete obj[leaf];
+        delete part[leaf];
       }
 
-      function _replaceItem(node, path, value) {
-        if (path === "/name" &&
-            node.name !== null) {
-          delete nodes[node.name];
-          if (value !== null) {
-            nodes[value] = node;
+      function _replaceItem(obj, path, value, collection) {
+        // Special handling for changing the name of an object
+        // that is stored in a name-indexed collection.
+        if (path === "/name" && obj.name !== null) {
+          if (angular.isDefined(collection)) {
+            delete collection[obj.name];
+            if (value !== null) {
+              collection[value] = obj;
+            }
           }
         }
 
-        var parts = path.substring(1).split("/");
-        var leaf = parts.pop();
-        var obj = node;
-        for (var i = 0; i < parts.length; i++) {
-          obj = obj[parts[i]];
+        var pathNames = path.substring(1).split("/");
+        var leaf = pathNames.pop();
+        var part = obj;
+        for (var i = 0; i < pathNames.length; i++) {
+          part = part[pathNames[i]];
         }
-        obj[leaf] = value;
+        part[leaf] = value;
+      }
+
+      /**
+       * @description Apply a patch to a specified object.
+       *
+       * @param {object} obj - Object to be patched, e.g. node, port, ...
+       * @param {object} patch - Patch object.
+       * @param {object} collection - Optional. Collection to which the
+       *  object belongs. Only required if the collection indexes the
+       *  object by name.
+       * @return {void}
+       */
+      function patchObject(obj, patch, collection) {
+        angular.forEach(patch, function(operation) {
+          switch (operation.op) {
+            case "add":
+              _addItem(obj, operation.path, operation.value);
+              break;
+            case "remove":
+              _removeItem(obj, operation.path);
+              break;
+            case "replace":
+              _replaceItem(obj, operation.path, operation.value, collection);
+              break;
+            default:
+          }
+        });
       }
 
       // Update node
@@ -453,21 +483,7 @@
           var status = responseCode.RESOURCE_NOT_FOUND;
           var node = service.getNode(params.nodeId);
           if (angular.isDefined(node)) {
-            var patch = JSON.parse(data).patch;
-            angular.forEach(patch, function(operation) {
-              switch (operation.op) {
-                case "add":
-                  _addItem(node, operation.path, operation.value);
-                  break;
-                case "remove":
-                  _removeItem(node, operation.path);
-                  break;
-                case "replace":
-                  _replaceItem(node, operation.path, operation.value);
-                  break;
-                default:
-              }
-            });
+            patchObject(node, JSON.parse(data).patch, nodes);
             status = responseCode.SUCCESS;
           }
           return [status, node];
@@ -520,9 +536,9 @@
                            ['nodeId'])
         .respond(function(method, url, data, headers, params) {
           if (angular.isDefined(nodes[params.nodeId])) {
-            return [200, nodes[params.nodeId].bootDevice];
+            return [responseCode.SUCCESS, nodes[params.nodeId].bootDevice];
           } else {
-            return [400, null];
+            return [responseCode.BAD_QUERY, null];
           }
         });
 
@@ -533,9 +549,10 @@
           ['nodeId'])
         .respond(function(method, url, data, headers, params) {
           if (angular.isDefined(nodes[params.nodeId])) {
-            return [200, nodes[params.nodeId].supportedBootDevices];
+            return [responseCode.SUCCESS,
+                    nodes[params.nodeId].supportedBootDevices];
           } else {
-            return [400, null];
+            return [responseCode.BAD_QUERY, null];
           }
         });
 
@@ -546,7 +563,7 @@
                            ['nodeId'])
         .respond(function(method, url, data, headers, params) {
           data = JSON.parse(data);
-          var status = 404;
+          var status = responseCode.RESOURCE_NOT_FOUND;
           if (angular.isDefined(nodes[params.nodeId])) {
             var node = nodes[params.nodeId];
             if (node.supportedBootDevices.indexOf(data.boot_device) !== -1) {
@@ -554,7 +571,7 @@
               if (angular.isDefined(data.persistent)) {
                 node.bootDevice.persistent = data.persistent;
               }
-              status = 200;
+              status = responseCode.SUCCESS;
             }
           }
           return [status, null];
@@ -596,6 +613,21 @@
             status = responseCode.EMPTY_RESPONSE;
           }
           return [status, ""];
+        });
+
+      // Update port
+      $httpBackend.whenPATCH(/\/api\/ironic\/ports\/([^\/]+)$/,
+                             undefined,
+                             undefined,
+                             ['portId'])
+        .respond(function(method, url, data, headers, params) {
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          var port = service.getPort(params.portId);
+          if (angular.isDefined(port)) {
+            patchObject(port, JSON.parse(data).patch);
+            status = responseCode.SUCCESS;
+          }
+          return [status, port];
         });
 
       // Get ports

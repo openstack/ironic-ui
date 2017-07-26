@@ -56,7 +56,7 @@
     ctrl.createPort = function() {
       var port = {
         extra: ctrl.extra.properties,
-        node_uuid: node.id,
+        node_uuid: node.uuid,
         address: ctrl.address.value
       };
 

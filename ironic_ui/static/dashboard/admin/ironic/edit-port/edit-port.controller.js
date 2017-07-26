@@ -105,9 +105,12 @@
       patcher.buildPatch(port.pxe_enabled ? 'True' : 'False',
                          ctrl.pxeEnabled.value,
                          "/pxe_enabled");
-      patcher.buildPatch(port.local_link_connection,
-                         ctrl.localLinkConnection.toPortAttr(),
-                         "/local_link_connection");
+      var attr = ctrl.localLinkConnection.toPortAttr();
+      if (attr) {
+        patcher.buildPatch(port.local_link_connection,
+                           attr,
+                           "/local_link_connection");
+      }
       patcher.buildPatch(port.extra, ctrl.extra.properties, "/extra");
       patcher.buildPatch(port.portgroup_uuid,
                          ctrl.portgroup_uuid.value,
