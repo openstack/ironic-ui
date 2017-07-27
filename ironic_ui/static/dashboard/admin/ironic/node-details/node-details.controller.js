@@ -31,6 +31,7 @@
     'horizon.dashboard.admin.ironic.basePath',
     'horizon.dashboard.admin.ironic.edit-node.service',
     'horizon.dashboard.admin.ironic.create-port.service',
+    'horizon.dashboard.admin.ironic.create-portgroup.service',
     'horizon.dashboard.admin.ironic.edit-port.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.bootdevice.service',
@@ -46,6 +47,7 @@
                                        basePath,
                                        editNodeService,
                                        createPortService,
+                                       createPortgroupService,
                                        editPortService,
                                        maintenanceService,
                                        bootDeviceService,
@@ -90,6 +92,7 @@
     ctrl.getVifPortId = getVifPortId;
     ctrl.editNode = editNode;
     ctrl.createPort = createPort;
+    ctrl.createPortgroup = createPortgroup;
     ctrl.deletePort = deletePort;
     ctrl.editPort = editPort;
     ctrl.refresh = refresh;
@@ -317,6 +320,19 @@
      */
     function toggleConsoleMode() {
       ironic.nodeSetConsoleMode(ctrl.node.uuid, !ctrl.node.console_enabled);
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.createPortgroup
+     * @description Initiate creation of a portgroup for the current
+     * node
+     *
+     * @return {void}
+     */
+    function createPortgroup() {
+      createPortgroupService.createPortgroup(ctrl.node).then(function() {
+        ctrl.refresh();
+      });
     }
   }
 })();
