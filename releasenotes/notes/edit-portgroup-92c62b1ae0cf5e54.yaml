@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    Adds support for editing portgroups from the node-details/configuration
+    page. Each entry in the portgroups table has an associated
+    ``Edit portgroup`` button that when clicked will launch a modal dialog
+    that guides the user in making changes.
