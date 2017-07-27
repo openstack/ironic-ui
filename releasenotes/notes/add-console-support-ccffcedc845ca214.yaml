@@ -9,7 +9,9 @@ features:
   - |
     The node-details/overview panel has a new ``Console info`` item in the
     ``General`` section. The value of this field is dependent on the console
-    type. For ``shellinabox`` the value is an anchor with the URL required
+    type.
+
+    For ``shellinabox``, the value is an anchor with the URL required
     to access the web console and title ``shellinabox``. For others, the
-    value is a string representation of the console_info object returned
-    by the get_console api call.
+    value is a string representation of the ``console_info`` object returned
+    by the ``get_console api`` call.

@@ -2,13 +2,13 @@
 features:
   - |
     A backend mock has been added that enables better unit testing of the
-    Ironic API service and other Ironic-UI components. The mock utilizes
-    Angular $httpbackend handlers to intercept requests targeted at the
-    Ironic-UI server-side REST endpoints, and returns simulated responses.
-  - |
+    ironic-ui application by mocking the ironic API service. The mock utilizes
+    angular $httpbackend handlers to intercept requests targeted at the
+    ironic-ui server-side REST endpoints, and returns simulated responses.
+
     A number of unit tests have been developed that illustrate the use
-    of the backend mock.
-  - |
+    of the backend mock functionality.
+
     Although the backend mock is a work in progress, enough
     functionality already exists to support test development for
     the current set of in-progress features.
