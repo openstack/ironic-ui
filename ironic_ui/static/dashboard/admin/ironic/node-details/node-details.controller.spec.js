@@ -233,9 +233,27 @@
           fail();
         });
       ironicBackendMockService.flush();
-
+      var defaultNodeInterfaces = ironicBackendMockService.defaultNodeInterfaces;
+      defaultNodeInterfaces[0].hw_interface = 'flat';
+      defaultNodeInterfaces[0].id = defaultNodeInterfaces[0].interface;
       expect(ctrl.nodeValidation).toBeDefined();
-      expect(ctrl.nodeValidation).toEqual([]);
+      expect(ctrl.nodeValidation).toEqual(defaultNodeInterfaces);
+    });
+
+    it('should have driver interfaces', function () {
+      var ctrl;
+      createNode()
+        .then(function(node) {
+          ctrl = createController(node);
+        })
+        .catch(function() {
+          fail();
+        });
+      ironicBackendMockService.flush();
+      var interfaceName = ironicBackendMockService.defaultNodeInterfaces[0].interface;
+      var hwInterface = ironicBackendMockService.defaultNode['' + interfaceName + '_interface'];
+      expect(ctrl.node['' + interfaceName + '_interface']).toBeDefined();
+      expect(ctrl.nodeValidation[0].hw_interface).toEqual(hwInterface);
     });
   });
 })();

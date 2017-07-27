@@ -53,7 +53,15 @@
       maintenance: false,
       maintenance_reason: null,
       name: null,
+      boot_interface: null,
+      console_interface: null,
+      deploy_interface: null,
+      inspect_interface: null,
       network_interface: "flat",
+      power_interface: null,
+      raid_interface: null,
+      storage_interface: null,
+      vendor_interface: null,
       power_state: null,
       properties: {},
       provision_state: "enroll",
@@ -116,6 +124,15 @@
     // List of images
     var images = [];
 
+    //list of interfaces returned by ironic node_validate API
+    var defaultNodeInterfaces = [
+      {
+        interface: 'network',
+        result: 'True',
+        reason: ' '
+      }
+    ];
+
     var service = {
       params: params,
       init: init,
@@ -128,7 +145,9 @@
       getDrivers: getDrivers,
       getImages: getImages,
       getPort: getPort,
-      getPortgroup: getPortgroup
+      getPortgroup: getPortgroup,
+      defaultNodeInterfaces: defaultNodeInterfaces,
+      defaultNode: defaultNode
     };
 
     var responseCode = {
@@ -564,7 +583,7 @@
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/validate$/,
                            undefined,
                            ['nodeId'])
-        .respond(responseCode.SUCCESS, []);
+        .respond(responseCode.SUCCESS, defaultNodeInterfaces);
 
       // Get the currently available drivers
       $httpBackend.whenGET(/\/api\/ironic\/drivers\/$/)
