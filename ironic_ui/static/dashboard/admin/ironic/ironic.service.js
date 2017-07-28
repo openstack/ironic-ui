@@ -60,6 +60,7 @@
       setNodeProvisionState: setNodeProvisionState,
       updateNode: updateNode,
       updatePort: updatePort,
+      updatePortgroup: updatePortgroup,
       validateNode: validateNode,
       createPortgroup: createPortgroup,
       getPortgroups: getPortgroups,
@@ -640,6 +641,32 @@
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to delete portgroup: %s'),
                                 [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Update the definition of a specified portgroup.
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#update-a-portgroup
+     *
+     * @param {string} portgroupId – UUID or name of a portgroup.
+     * @param {object[]} patch – Sequence of update operations
+     * @return {promise} Promise
+     */
+    function updatePortgroup(portgroupId, patch) {
+      return apiService.patch('/api/ironic/portgroups/' + portgroupId,
+                              {patch: patch})
+        .then(function(response) {
+          var msg = gettext('Successfully updated portgroup %s');
+          toastService.add('success', interpolate(msg, [portgroupId], false));
+          return response.data; // The updated portgroup
+        })
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to update portgroup %s: %s'),
+                                [portgroupId, response.data],
                                 false);
           toastService.add('error', msg);
           return $q.reject(msg);

@@ -33,6 +33,7 @@
     'horizon.dashboard.admin.ironic.create-port.service',
     'horizon.dashboard.admin.ironic.create-portgroup.service',
     'horizon.dashboard.admin.ironic.edit-port.service',
+    'horizon.dashboard.admin.ironic.edit-portgroup.service',
     'horizon.dashboard.admin.ironic.maintenance.service',
     'horizon.dashboard.admin.ironic.bootdevice.service',
     'horizon.dashboard.admin.ironic.node-state-transition.service',
@@ -49,6 +50,7 @@
                                        createPortService,
                                        createPortgroupService,
                                        editPortService,
+                                       editPortgroupService,
                                        maintenanceService,
                                        bootDeviceService,
                                        nodeStateTransitionService,
@@ -95,6 +97,7 @@
     ctrl.createPortgroup = createPortgroup;
     ctrl.deletePort = deletePort;
     ctrl.editPort = editPort;
+    ctrl.editPortgroup = editPortgroup;
     ctrl.refresh = refresh;
     ctrl.toggleConsoleMode = toggleConsoleMode;
     ctrl.deletePortgroups = deletePortgroups;
@@ -299,6 +302,18 @@
      */
     function deletePort(ports) {
       actions.deletePort(ports).then(function() {
+        ctrl.refresh();
+      });
+    }
+
+    /**
+     * @description: Edit a specified portgroup
+     *
+     * @param {portgroup} portgroup - Portgroup to be edited
+     * @return {void}
+     */
+    function editPortgroup(portgroup) {
+      editPortgroupService.editPortgroup(portgroup).then(function() {
         ctrl.refresh();
       });
     }

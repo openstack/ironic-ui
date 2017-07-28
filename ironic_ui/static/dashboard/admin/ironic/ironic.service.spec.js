@@ -41,6 +41,7 @@
     'setNodeProvisionState',
     'updateNode',
     'updatePort',
+    'updatePortgroup',
     'validateNode'
   ];
 

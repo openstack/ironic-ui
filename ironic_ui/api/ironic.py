@@ -359,6 +359,21 @@ def portgroup_delete(request, portgroup_id):
     return ironicclient(request).portgroup.delete(portgroup_id)
 
 
+def portgroup_update(request, portgroup_id, patch):
+    """Update a specified portgroup.
+
+    :param request: HTTP request.
+    :param portgroup_id: The UUID or name of the portgroup.
+    :param patch: Sequence of update operations
+    :return: Portgroup.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.port.html#ironicclient.v1.portgroup.PortgroupManager.update
+    """
+    portgroup = ironicclient(request).portgroup.update(portgroup_id, patch)
+    return dict([(f, getattr(portgroup, f, ''))
+                 for f in res_fields.PORTGROUP_DETAILED_RESOURCE.fields])
+
+
 def portgroup_get_ports(request, portgroup_id):
     """Get the ports associated with a specified portgroup.
 
