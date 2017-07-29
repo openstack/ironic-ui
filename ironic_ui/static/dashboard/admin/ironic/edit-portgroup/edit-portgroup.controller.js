@@ -26,6 +26,7 @@
   EditPortgroupController.$inject = [
     '$controller',
     '$uibModalInstance',
+    'horizon.framework.widgets.toast.service',
     '$log',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.update-patch.service',
@@ -34,6 +35,7 @@
 
   function EditPortgroupController($controller,
                                    $uibModalInstance,
+                                   toastService,
                                    $log,
                                    ironic,
                                    updatePatchService,
@@ -72,9 +74,8 @@
 
       patcher.buildPatch(portgroup.address, ctrl.address.value, "/address");
       patcher.buildPatch(portgroup.name, ctrl.name.value, "/name");
-      patcher.buildPatch(portgroup.standalone_ports_supported
-                         ? 'True' : 'False',
-                         ctrl.standalone_ports_supported.value,
+      patcher.buildPatch(portgroup.standalone_ports_supported,
+                         ctrl.standalone_ports_supported.value === 'True',
                          "/standalone_ports_supported");
       patcher.buildPatch(portgroup.mode,
                          ctrl.mode.value,
