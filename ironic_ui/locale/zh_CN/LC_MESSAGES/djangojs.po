@@ -9,13 +9,13 @@
 # liujunpeng <liujunpeng@inspur.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev73\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev90\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-21 15:07+0000\n"
+"POT-Creation-Date: 2017-07-27 21:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-07-22 03:50+0000\n"
+"PO-Revision-Date: 2017-07-30 12:00+0000\n"
 "Last-Translator: Bin <liubin@glab.cn>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
@@ -115,8 +115,14 @@ msgstr "控制台信息。"
 msgid "Create Port"
 msgstr "创建端口"
 
+msgid "Create Portgroup"
+msgstr "创建端口组"
+
 msgid "Created At"
 msgstr "创建于"
+
+msgid "Current Interface"
+msgstr "当前接口"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "默认为 ([^\"\\. ]+|\"[^\"]+\")"
@@ -216,6 +222,13 @@ msgstr "内核"
 msgid "Last Error"
 msgstr "最近的一次错误"
 
+msgid ""
+"Linux portgroup mode. For possible values refer to https://www.kernel.org/"
+"doc/Documentation/networking/bonding.txt"
+msgstr ""
+"Linux端口组模式。查看可能的值请参考https://www.kernel.org/doc/Documentation/"
+"networking/bonding.txt。"
+
 msgid "Local Link Connection"
 msgstr "本地链接连接"
 
@@ -231,6 +244,9 @@ msgstr "MAC地址"
 msgid "MAC address for this port. Required."
 msgstr "需要该端口的MAC地址"
 
+msgid "MAC address for this portgroup."
+msgstr "该端口组的MAC地址。"
+
 msgid "MAC address or OpenFlow datapath ID"
 msgstr "MAC地址或OpenFlow datapath ID"
 
@@ -240,11 +256,17 @@ msgstr "维护"
 msgid "Maintenance Reason"
 msgstr "维护原因"
 
+msgid "Mode"
+msgstr "模式"
+
 msgid "Move to"
 msgstr "移动"
 
 msgid "Name"
 msgstr "名称"
+
+msgid "Name for the portgroup."
+msgstr "为端口组命名。"
 
 msgid "Network Interface"
 msgstr "网络接口"
@@ -422,6 +444,13 @@ msgstr "软关机"
 
 msgid "Soft reboot"
 msgstr "软重启"
+
+msgid ""
+"Specifies whether ports in this portgroup can be used as standalone ports."
+msgstr "指定在该端口组中的端口是否可以用作独立端口。"
+
+msgid "Standalone Ports Supported"
+msgstr "独立端口支持"
 
 msgid "Submit"
 msgstr "提交"
