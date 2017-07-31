@@ -54,7 +54,7 @@
     ctrl.name.value = portgroup.name;
 
     ctrl.standalone_ports_supported.value =
-      portgroup.standalone_ports_supported ? 'True' : 'False';
+      portgroup.standalone_ports_supported;
 
     ctrl.mode.value = portgroup.mode;
 
@@ -75,7 +75,7 @@
       patcher.buildPatch(portgroup.address, ctrl.address.value, "/address");
       patcher.buildPatch(portgroup.name, ctrl.name.value, "/name");
       patcher.buildPatch(portgroup.standalone_ports_supported,
-                         ctrl.standalone_ports_supported.value === 'True',
+                         ctrl.standalone_ports_supported.value,
                          "/standalone_ports_supported");
       patcher.buildPatch(portgroup.mode,
                          ctrl.mode.value,

@@ -65,9 +65,7 @@
         port.local_link_connection = attr;
       }
 
-      if (ctrl.pxeEnabled.value !== 'True') {
-        port.pxe_enabled = ctrl.pxeEnabled.value;
-      }
+      port.pxe_enabled = ctrl.pxeEnabled.value;
 
       if (ctrl.portgroup_uuid.value !== null) {
         port.portgroup_uuid = ctrl.portgroup_uuid.value;

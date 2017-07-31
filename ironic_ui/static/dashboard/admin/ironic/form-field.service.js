@@ -30,27 +30,30 @@
      * @description Utility class for managing form fields.
      *              Used is association with the form-field directive.
      *
-     * @param {object} args - Base properties are:
+     * @param {object} args  - Base properties are:
      *   type [string]       - Field type. One of: 'input', 'radio', 'select'
      *   id [string]         - id/name of the DOM value element
      *   title [string]      - Label used to identify the field to the user
-     *   options             - type == radio [array]:
-     *                         List of options for a radio field
+     *   options             - type == radio [array of object]:
+     *                           List of option objects for a radio field.
+     *                           Each object has 'label' and 'value'
+     *                           properties.
      *                         type == select [string]:
-     *                         String expression that is passed to ng-options
+     *                           String expression that is passed to ng-options
      *   value               - Initial value of the field
      *   required [boolean]  - Does the field require a value
      *   desc [string]       - Field description
      *   pattern [RegExp]    - Regular expression pattern used to match
-     *                         valid input values
+     *                           valid input values
      *   disabled [boolean]  - Is the field disabled
-     *   info [string]       - Additional information about the current state of
-     *                         the field. It will be displayed in a tooltip
-     *                         associated with the field.
-     *   autoFocus [boolean] - True if the focus should be set to this field. Only
-     *                         applies to fields of type input.
-     *   change [string]     - Expression to be evaluated when the value of this
-     *                         field changes. Only applies to fields of type input.
+     *   info [string]       - Additional information about the current state
+     *                           of the field. It will be displayed in a tooltip
+     *                           associated with the field.
+     *   autoFocus [boolean] - True if the focus should be set to this field.
+     *                           Only applies to fields of type input.
+     *   change [string]     - Expression to be evaluated when the value of
+     *                           this field changes. Only applies to fields of
+     *                           type input.
      *
      * @return {void}
      */
