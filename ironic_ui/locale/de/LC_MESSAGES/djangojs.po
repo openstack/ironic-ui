@@ -5,13 +5,13 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev90\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev93\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-27 21:46+0000\n"
+"POT-Creation-Date: 2017-07-31 15:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-07-31 10:49+0000\n"
+"PO-Revision-Date: 2017-08-01 08:15+0000\n"
 "Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -188,6 +188,9 @@ msgstr "Knoten bearbeiten"
 
 msgid "Edit Port"
 msgstr "Port bearbeiten"
+
+msgid "Edit Portgroup"
+msgstr "Portgruppe bearbeiten"
 
 msgid "Enroll Node"
 msgstr "Knoten ausrollen"
@@ -503,6 +506,10 @@ msgstr "Knoten %s erfolgreich aktualisiert"
 msgid "Successfully updated port %s"
 msgstr "Port %s erfolgreich aktualisiert"
 
+#, python-format
+msgid "Successfully updated portgroup %s"
+msgstr "Portgruppe %s erfolgreich aktualisiert"
+
 msgid "Target Power State"
 msgstr "Ziel Power-Zustand"
 
@@ -536,6 +543,9 @@ msgstr "Port Update Patch kann nicht erstellt werden."
 #, python-format
 msgid "Unable to create port: %s"
 msgstr "Port kann nicht erstellt werden: %s"
+
+msgid "Unable to create portgroup update patch."
+msgstr "Portgruppen-Aktualisierung kann nicht erstellt werden."
 
 #, python-format
 msgid "Unable to create portgroup: %s"
@@ -642,6 +652,10 @@ msgid "Unable to update port %s: %s"
 msgstr "Port %s kann nicht aktualisiert werden: %s"
 
 #, python-format
+msgid "Unable to update portgroup %s: %s"
+msgstr "Portgruppe %s kann nicht aktualisiert werden: %s"
+
+#, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "Knoten %s kann nicht  validiert werden: %s"
 
@@ -653,6 +667,9 @@ msgstr "Knoten aktualisieren"
 
 msgid "Update Port"
 msgstr "Port aktualisieren"
+
+msgid "Update Portgroup"
+msgstr "Portgruppe aktualisieren"
 
 msgid "Updated At"
 msgstr "Aktualisiert am"
