@@ -28,6 +28,7 @@
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.app.core.openstack-service-api.glance',
     'horizon.dashboard.admin.ironic.base-node.service',
+    'horizon.dashboard.admin.ironic.graph.service',
     'horizon.dashboard.admin.ironic.validHostNamePattern',
     '$log',
     'ctrl'
@@ -37,6 +38,7 @@
                               ironic,
                               glance,
                               baseNodeService,
+                              graphService,
                               validHostNamePattern,
                               $log,
                               ctrl) {
@@ -131,7 +133,7 @@
      */
     ctrl._sortDriverProperties = function() {
       // Build dependency graph between driver properties
-      var graph = new baseNodeService.Graph();
+      var graph = new graphService.Graph();
 
       // Create vertices
       angular.forEach(ctrl.driverProperties, function(property, name) {
