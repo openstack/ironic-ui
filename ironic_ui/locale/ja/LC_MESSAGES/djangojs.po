@@ -6,14 +6,14 @@
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev70\n"
+"Project-Id-Version: ironic-ui 2.3.1.dev96\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-18 16:08+0000\n"
+"POT-Creation-Date: 2017-08-07 21:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-30 03:16+0000\n"
-"Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
+"PO-Revision-Date: 2017-08-09 05:33+0000\n"
+"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -35,6 +35,15 @@ msgstr "クリーニングの中止"
 msgid "Actions"
 msgstr "アクション"
 
+msgid "Add Extra"
+msgstr "拡張の追加"
+
+msgid "Add Instance Property"
+msgstr "インスタンスのプロパティーの追加"
+
+msgid "Add Property"
+msgstr "プロパティーの追加"
+
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
@@ -49,6 +58,22 @@ msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
 msgstr[0] "ポート「%s」 を削除してよろしいですか?この操作は取り消せません。"
 
+#, python-format
+msgid ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgid_plural ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+msgstr[0] ""
+"ポートグループ「%s」 を削除してよろしいですか?この操作は取り消せません。"
+
+msgid "Attributes"
+msgstr "属性"
+
+msgid "Boot Device"
+msgstr "ブートデバイス"
+
 msgid "Cancel"
 msgstr "取り消し"
 
@@ -58,8 +83,23 @@ msgstr "シャーシ ID"
 msgid "Choose an Image"
 msgstr "イメージの選択"
 
+msgid "Clean"
+msgstr "クリーニング"
+
+msgid "Clean Node"
+msgstr "ノードのクリーニング"
+
 msgid "Clean Step"
 msgstr "クリーニングステップ"
+
+msgid "Clean node"
+msgstr "ノードのクリーニング"
+
+msgid "Clean steps should be an non-empty array"
+msgstr "クリーニングステップは空でない配列である必要があります。"
+
+msgid "Click link to view console"
+msgstr "コンソールを表示するにはリンクをクリックします"
 
 msgid "Configuration"
 msgstr "設定"
@@ -67,11 +107,20 @@ msgstr "設定"
 msgid "Console Enabled"
 msgstr "コンソールの有効化"
 
+msgid "Console Info."
+msgstr "コンソール情報"
+
 msgid "Create Port"
 msgstr "ポートの作成"
 
+msgid "Create Portgroup"
+msgstr "ポートグループの作成"
+
 msgid "Created At"
 msgstr "作成時刻"
+
+msgid "Current Interface"
+msgstr "現在のインターフェース"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "デフォルトを ([^\"\\. ]+|\"[^\"]+\") にします"
@@ -84,11 +133,18 @@ msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "ポートの削除"
 
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "ポートグループの削除"
+
 msgid "Deploy Kernel"
 msgstr "カーネルのデプロイ"
 
 msgid "Deploy Ramdisk"
 msgstr "RAM ディスクのデプロイ"
+
+msgid "Device"
+msgstr "デバイス"
 
 msgid "Driver"
 msgstr "ドライバー"
@@ -102,17 +158,30 @@ msgstr "ドライバー情報"
 msgid "Driver Validation"
 msgstr "ドライバーの検証"
 
+msgid ""
+"Each cleaning step must be an object that contains \"interface\" and \"step"
+"\" properties"
+msgstr ""
+"各クリーニングステップは、「interface」と「step」プロパティーを含むオブジェク"
+"トである必要があります。"
+
 msgid "Edit Node"
 msgstr "ノードの編集"
 
 msgid "Edit Port"
 msgstr "ポートの編集"
 
+msgid "Edit Portgroup"
+msgstr "ポートグループの編集"
+
 msgid "Enroll Node"
 msgstr "ノードの登録"
 
 msgid "Extra"
 msgstr "拡張"
+
+msgid "Extra Property Name"
+msgstr "拡張プロパティー名"
 
 msgid "Extras"
 msgstr "拡張"
@@ -122,6 +191,10 @@ msgstr "一般"
 
 msgid "Image Source"
 msgstr "イメージソース"
+
+msgid "Indicates whether this port should be used when PXE booting this node"
+msgstr ""
+"このノードを PXE ブート時に、このポートがが使用されるべきかどうかを示します。"
 
 msgid "Inspect"
 msgstr "検査"
@@ -141,6 +214,9 @@ msgstr "インスタンス情報"
 msgid "Instance Name"
 msgstr "インスタンス名"
 
+msgid "Instance Property Name"
+msgstr "インスタンスのプロパティー名"
+
 msgid "Interface"
 msgstr "インターフェース"
 
@@ -149,6 +225,16 @@ msgstr "カーネル"
 
 msgid "Last Error"
 msgstr "最後のエラー"
+
+msgid ""
+"Linux portgroup mode. For possible values refer to https://www.kernel.org/"
+"doc/Documentation/networking/bonding.txt"
+msgstr ""
+"Linux のポートグループモードです。可能な値は、 https://www.kernel.org/doc/"
+"Documentation/networking/bonding.txt を参照してください。"
+
+msgid "Local Link Connection"
+msgstr "ローカルリンク接続"
 
 msgid "Local link connection"
 msgstr "ローカルリンク接続"
@@ -162,6 +248,9 @@ msgstr "MAC アドレス"
 msgid "MAC address for this port. Required."
 msgstr "このポートの MAC アドレス。必須。"
 
+msgid "MAC address for this portgroup."
+msgstr "このポートグループの MAC アドレス"
+
 msgid "MAC address or OpenFlow datapath ID"
 msgstr "MAC アドレスあるいは OpenFlow データパス ID"
 
@@ -171,11 +260,20 @@ msgstr "メンテナンス"
 msgid "Maintenance Reason"
 msgstr "メンテナンスの理由"
 
+msgid "Mode"
+msgstr "モード"
+
 msgid "Move to"
 msgstr "移動先"
 
 msgid "Name"
 msgstr "名前"
+
+msgid "Name for the portgroup."
+msgstr "ポートグループの名前"
+
+msgid "Network Interface"
+msgstr "ネットワークインターフェース"
 
 msgid "No Instance"
 msgstr "インスタンスなし"
@@ -183,8 +281,18 @@ msgstr "インスタンスなし"
 msgid "No network ports have been defined"
 msgstr "ネットワークポートが定義されていません"
 
+msgid "No portgroups have been defined"
+msgstr "ポートグループが定義されていません"
+
+msgid "No reason given."
+msgstr "理由がありません。"
+
 msgid "Node"
 msgstr "ノード"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "ノード %s は既にメンテナンスモードの対象になっています。"
 
 msgid "Node Driver"
 msgstr "ノードドライバー"
@@ -204,8 +312,29 @@ msgstr "(.*) の１つを指定する必要があります。"
 msgid "Overview"
 msgstr "概要"
 
+msgid "PXE Enabled"
+msgstr "PXE の有効化"
+
+msgid "PXE enabled"
+msgstr "PXE の有効化"
+
+msgid "Persistent"
+msgstr "永続"
+
 msgid "Port successfully created"
 msgstr "ポートが正常に作成されました"
+
+msgid "Portgroup"
+msgstr "ポートグループ"
+
+msgid "Portgroup successfully created"
+msgstr "ポートグループが正常に作成されました"
+
+msgid "Portgroup that this port belongs to"
+msgstr "このポートが属するポートグループ"
+
+msgid "Portgroups"
+msgstr "ポートグループ"
 
 msgid "Ports"
 msgstr "ポート"
@@ -224,6 +353,9 @@ msgstr "プロパティー"
 
 msgid "Property Name"
 msgstr "プロパティ名"
+
+msgid "Provide a list of cleaning steps in JSON format"
+msgstr "クリーニングステップの一覧を JSON 形式で提供します。"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
@@ -249,8 +381,18 @@ msgstr "RAM ディスク"
 msgid "Reason"
 msgstr "理由"
 
+msgid "Reboot"
+msgstr "リブート"
+
 msgid "Refresh"
 msgstr "最新表示"
+
+msgid "Refresh page to see set boot device"
+msgstr "設定されたブートデバイスを参照するにはページをリフレッシュしてください"
+
+msgid "Refresh page to see updated console details"
+msgstr ""
+"更新されたコンソールの詳細を参照するにはページをリフレッシュしてください"
 
 msgid "Refresh page to see updated power status"
 msgstr "電源状態を更新するにはページをリフレッシュしてください"
@@ -260,6 +402,9 @@ msgstr "必須"
 
 msgid "Reservation"
 msgstr "予約"
+
+msgid "Resource Class"
+msgstr "リソースクラス"
 
 msgid "Root GB"
 msgstr "ルートディスク (GB)"
@@ -288,6 +433,33 @@ msgstr "SSH ターミナルのポート"
 msgid "Select a Driver"
 msgstr "ドライバーを選択してください"
 
+msgid "Select a boot device"
+msgstr "ブートデバイスを選択してください。"
+
+msgid "Select a portgroup"
+msgstr "ポートグループを選択してください。"
+
+msgid "Set Boot Device"
+msgstr "ブートデバイスの設定"
+
+msgid "Set boot device"
+msgstr "ブートデバイスの設定"
+
+msgid "Soft power off"
+msgstr "ソフト電源オフ"
+
+msgid "Soft reboot"
+msgstr "ソフトリブート"
+
+msgid ""
+"Specifies whether ports in this portgroup can be used as standalone ports."
+msgstr ""
+"このポートグループのポートがスタンドアロンポートとして使用できるようにするか"
+"どうか指定してください。"
+
+msgid "Standalone Ports Supported"
+msgstr "スタンドアロンポートのサポート"
+
 msgid "Submit"
 msgstr "送信"
 
@@ -302,12 +474,21 @@ msgid_plural "Successfully deleted ports \"%s\""
 msgstr[0] "ポート \"%s\" を正常に削除しました"
 
 #, python-format
+msgid "Successfully deleted portgroup \"%s\""
+msgid_plural "Successfully deleted portgroups \"%s\""
+msgstr[0] "ポートグループ \"%s\" を正常に削除しました"
+
+#, python-format
 msgid "Successfully updated node %s"
 msgstr "ノード %s の更新に成功しました"
 
 #, python-format
 msgid "Successfully updated port %s"
 msgstr "ポート %s の更新に成功しました"
+
+#, python-format
+msgid "Successfully updated portgroup %s"
+msgstr "ポートグループ %s の更新に成功しました"
 
 msgid "Target Power State"
 msgstr "ターゲット電源状態"
@@ -342,6 +523,13 @@ msgstr "ポートを更新するパッチを作成できません。"
 msgid "Unable to create port: %s"
 msgstr "ポートを作成できません: %s"
 
+msgid "Unable to create portgroup update patch."
+msgstr "ポートグループを更新するパッチを作成できません。"
+
+#, python-format
+msgid "Unable to create portgroup: %s"
+msgstr "ポートグループを作成できません: %s"
+
 #, python-format
 msgid "Unable to delete node \"%s\""
 msgid_plural "Unable to delete nodes \"%s\""
@@ -351,7 +539,7 @@ msgstr[0] "ノード 「%s」を削除できません"
 msgid "Unable to delete node %s: %s"
 msgstr "ノード  %s を削除できません: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete ports \"%s\""
 msgstr[0] "ポート \"%s\" を削除できません"
@@ -359,6 +547,19 @@ msgstr[0] "ポート \"%s\" を削除できません"
 #, python-format
 msgid "Unable to delete port: %s"
 msgstr "ポートを削除できません: %s"
+
+#, python-format
+msgid "Unable to delete portgroup \"%s\""
+msgid_plural "Unable to delete portgroups \"%s\""
+msgstr[0] "ポートグループ \"%s\" を削除できません"
+
+#, python-format
+msgid "Unable to delete portgroup: %s"
+msgstr "ポートグループを削除できません: %s"
+
+#, python-format
+msgid "Unable to get console for node %s: %s"
+msgstr "ノード %s のコンソールを取得できません: %s"
 
 #, python-format
 msgid "Unable to power off the node: %s"
@@ -369,12 +570,28 @@ msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Ironic ドライバーの一覧を取得できません: %s"
 
 #, python-format
+msgid "Unable to retrieve Ironic node portgroups: %s"
+msgstr "Ironic ノードのポートグループ一覧を取得できません: %s"
+
+#, python-format
 msgid "Unable to retrieve Ironic nodes. %s"
 msgstr "Ironic ノードの一覧を取得できません: %s"
 
 #, python-format
+msgid "Unable to retrieve boot device for Ironic node. %s"
+msgstr "Ironic ノードのブートデバイスを取得できません: %s"
+
+#, python-format
 msgid "Unable to retrieve driver properties: %s"
 msgstr "ドライバープロパティーの一覧を取得できません: %s"
+
+#, python-format
+msgid "Unable to retrieve portgroup ports: %s"
+msgstr "ポートグループのポート一覧を取得できません: %s"
+
+#, python-format
+msgid "Unable to retrieve supported boot devices for Ironic node. %s"
+msgstr "Ironic ノードでサポートしているブートデバイス一覧を取得できません: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
@@ -383,6 +600,18 @@ msgstr "Ironic ノードのポート一覧を取得できません: %s"
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "Ironic ノードを取得できません: %s"
+
+#, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "Ironic ノード %s をメンテナンスモードにできません: %s"
+
+#, python-format
+msgid "Unable to set boot device: %s"
+msgstr "ブートデバイスを設定できません: %s"
+
+#, python-format
+msgid "Unable to set console mode: %s"
+msgstr "コンソールモードを設定できません: %s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
@@ -397,14 +626,24 @@ msgid "Unable to update port %s: %s"
 msgstr "ポート %s の更新に失敗しました: %s"
 
 #, python-format
+msgid "Unable to update portgroup %s: %s"
+msgstr "ポートグループ %s の更新に失敗しました: %s"
+
+#, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "ノード %s を検証できません: %s"
+
+msgid "Unable to validate the JSON input"
+msgstr "JSON の入力を検証できません。"
 
 msgid "Update Node"
 msgstr "ノードの更新"
 
 msgid "Update Port"
 msgstr "ポートの更新"
+
+msgid "Update Portgroup"
+msgstr "ポートグループの更新"
 
 msgid "Updated At"
 msgstr "最終更新"
