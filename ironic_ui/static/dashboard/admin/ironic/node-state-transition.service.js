@@ -124,6 +124,18 @@
       };
     }
 
+    /**
+     * @description Get the list of transitions originating
+     * from a specified source state.
+     *
+     * @param {string} sourceState – Name of source state
+     * @return {object[]} List of transition objects. Each
+     *   transition object contains the following fields:
+     *     source: Name of source state.
+     *     target: Name of target state.
+     *     verb: Verb used to accomplish the transition.
+     *     label: String description of the transition.
+     */
     this.getTransitions = function(sourceState) {
       var transitions = [];
       if (states.hasOwnProperty(sourceState)) {
@@ -133,6 +145,15 @@
                         });
       }
       return transitions;
+    };
+
+    /**
+     * @description Get a list of known states.
+     *
+     * @return {string[]} List of known node states.
+     */
+    this.getKnownStates = function() {
+      return Object.keys(states);
     };
   }
 }());
