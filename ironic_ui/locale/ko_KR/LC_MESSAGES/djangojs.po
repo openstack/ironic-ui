@@ -7,16 +7,17 @@
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2017. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 # Wonil Choi <wonil0522@gmail.com>, 2017. #zanata
+# minwook-shin <minwook0106@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev70\n"
+"Project-Id-Version: ironic-ui 3.0.1.dev3\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-18 16:08+0000\n"
+"POT-Creation-Date: 2017-08-09 17:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-30 03:16+0000\n"
-"Last-Translator: Sungjin Kang <gang.sungjin@gmail.com>\n"
+"PO-Revision-Date: 2017-08-10 10:43+0000\n"
+"Last-Translator: minwook-shin <minwook0106@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -38,6 +39,9 @@ msgstr "클린업 취소"
 msgid "Actions"
 msgstr "작업"
 
+msgid "Add Extra"
+msgstr "Extra 추가"
+
 #, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
@@ -52,6 +56,12 @@ msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
 msgstr[0] "포트 \"%s\" 를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
+msgid "Attributes"
+msgstr "특성"
+
+msgid "Boot Device"
+msgstr "부트 디바이스"
+
 msgid "Cancel"
 msgstr "취소하기"
 
@@ -60,6 +70,12 @@ msgstr "Chassis ID"
 
 msgid "Choose an Image"
 msgstr "이미지 선택하기"
+
+msgid "Clean"
+msgstr "정리"
+
+msgid "Clean Node"
+msgstr "클린 노드"
 
 msgid "Clean Step"
 msgstr "클린업 단계"
@@ -70,11 +86,17 @@ msgstr "구성"
 msgid "Console Enabled"
 msgstr "콘솔 활성화"
 
+msgid "Console Info."
+msgstr "콘솔 정보."
+
 msgid "Create Port"
 msgstr "포트 생성하기"
 
 msgid "Created At"
 msgstr "생성 시점"
+
+msgid "Current Interface"
+msgstr "현재 인터페이스"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
@@ -92,6 +114,9 @@ msgstr "커널 배치하기"
 
 msgid "Deploy Ramdisk"
 msgstr "램디스크 배치하기"
+
+msgid "Device"
+msgstr "장치"
 
 msgid "Driver"
 msgstr "드라이버"
@@ -153,6 +178,9 @@ msgstr "커널"
 msgid "Last Error"
 msgstr "마지막 에러"
 
+msgid "Local Link Connection"
+msgstr "로컬 링크 접속"
+
 msgid "MAC Address"
 msgstr "MAC 주소"
 
@@ -168,11 +196,17 @@ msgstr "유지보수"
 msgid "Maintenance Reason"
 msgstr "유지보수 사유"
 
+msgid "Mode"
+msgstr "모드"
+
 msgid "Move to"
 msgstr "이동"
 
 msgid "Name"
 msgstr "이름"
+
+msgid "Network Interface"
+msgstr "네트워크 인터페이스"
 
 msgid "No Instance"
 msgstr "인스턴스 없음"
@@ -201,8 +235,20 @@ msgstr "One of this, (.*) must be specified\\."
 msgid "Overview"
 msgstr "개요"
 
+msgid "PXE Enabled"
+msgstr "PXE 활성화됨"
+
+msgid "PXE enabled"
+msgstr "PXE 활성화됨"
+
+msgid "Persistent"
+msgstr "Persistent"
+
 msgid "Port successfully created"
 msgstr "포트가 성공적으로 생성됐습니다"
+
+msgid "Portgroup"
+msgstr "포트그룹"
 
 msgid "Ports"
 msgstr "포트들"
@@ -245,6 +291,9 @@ msgstr "램디스크"
 msgid "Reason"
 msgstr "원인"
 
+msgid "Reboot"
+msgstr "재시작"
+
 msgid "Refresh"
 msgstr "갱신"
 
@@ -256,6 +305,9 @@ msgstr "필수항목"
 
 msgid "Reservation"
 msgstr "예약"
+
+msgid "Resource Class"
+msgstr "리소스 클래스"
 
 msgid "Root GB"
 msgstr "루트 GB"
@@ -283,6 +335,18 @@ msgstr "SSH 터미널포트"
 
 msgid "Select a Driver"
 msgstr "드라이버 선택하기"
+
+msgid "Select a boot device"
+msgstr "부트 디바이스 선택"
+
+msgid "Set Boot Device"
+msgstr "부트 디바이스 설정"
+
+msgid "Set boot device"
+msgstr "부트 비다이스 설정"
+
+msgid "Soft reboot"
+msgstr "소프트 재시작"
 
 msgid "Submit"
 msgstr "제출"
