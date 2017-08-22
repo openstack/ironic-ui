@@ -29,6 +29,7 @@
     '$rootScope',
     '$controller',
     '$uibModalInstance',
+    'horizon.framework.widgets.toast.service',
     '$log',
     '$q',
     'horizon.app.core.openstack-service-api.ironic',
@@ -41,6 +42,7 @@
   function EditPortController($rootScope,
                               $controller,
                               $uibModalInstance,
+                              toastService,
                               $log,
                               $q,
                               ironic,
@@ -102,8 +104,8 @@
       $log.info("Updating port " + JSON.stringify(port));
 
       patcher.buildPatch(port.address, ctrl.address.value, "/address");
-      patcher.buildPatch(port.pxe_enabled ? 'True' : 'False',
-                         ctrl.pxeEnabled.value,
+      patcher.buildPatch(port.pxe_enabled,
+                         ctrl.pxeEnabled.value === 'True',
                          "/pxe_enabled");
       var attr = ctrl.localLinkConnection.toPortAttr();
       if (attr) {

@@ -59,13 +59,15 @@
      * @description Check whether an item is a property
      *
      * @param {object} item - item to be tested
-     * @return {boolean} True if the item is a number, string, or date
+     * @return {boolean} True if the item is a number, string, date,
+     *   or boolean.
      */
     function isProperty(item) {
       return item === null ||
         angular.isNumber(item) ||
         angular.isString(item) ||
-        angular.isDate(item);
+        angular.isDate(item) ||
+        typeof item === 'boolean';
     }
 
     /**
