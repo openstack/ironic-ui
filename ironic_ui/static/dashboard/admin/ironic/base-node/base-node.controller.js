@@ -28,6 +28,7 @@
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.app.core.openstack-service-api.glance',
     'horizon.dashboard.admin.ironic.base-node.service',
+    'horizon.dashboard.admin.ironic.driver-property.service',
     'horizon.dashboard.admin.ironic.graph.service',
     'horizon.dashboard.admin.ironic.validHostNamePattern',
     '$log',
@@ -38,6 +39,7 @@
                               ironic,
                               glance,
                               baseNodeService,
+                              driverPropertyService,
                               graphService,
                               validHostNamePattern,
                               $log,
@@ -199,9 +201,9 @@
         ctrl.driverProperties = {};
         angular.forEach(properties, function(desc, property) {
           ctrl.driverProperties[property] =
-            new baseNodeService.DriverProperty(property,
-                                               desc,
-                                               ctrl.driverProperties);
+            new driverPropertyService.DriverProperty(property,
+                                                     desc,
+                                                     ctrl.driverProperties);
         });
         ctrl.driverPropertyGroups = ctrl._sortDriverProperties();
         ctrl.loadingDriverProperties = false;

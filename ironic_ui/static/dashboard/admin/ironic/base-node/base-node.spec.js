@@ -20,94 +20,20 @@
   describe(
     'horizon.dashboard.admin.ironic.base-node.service',
     function() {
-      var service;
+      var service, driverPropertyService;
 
       beforeEach(module('horizon.dashboard.admin.ironic'));
-
-      beforeEach(module(function($provide) {
-        $provide.value('$uibModal', jasmine.createSpy());
-      }));
 
       beforeEach(inject(function($injector) {
         service =
           $injector.get('horizon.dashboard.admin.ironic.base-node.service');
+
+        driverPropertyService =
+          $injector.get('horizon.dashboard.admin.ironic.driver-property.service');
       }));
 
       it('defines the service', function() {
         expect(service).toBeDefined();
-      });
-
-      describe('DriverProperty', function() {
-        it('Base construction', function() {
-          var propertyName = 'propertyName';
-          var description = '';
-          var propertySet = [];
-          var property = new service.DriverProperty(propertyName,
-                                                    description,
-                                                    propertySet);
-          expect(property.name).toBe(propertyName);
-          expect(property.desc).toBe(description);
-          expect(property.propertySet).toBe(propertySet);
-          expect(property.getSelectOptions()).toBe(null);
-          expect(property.required).toBe(false);
-          expect(property.defaultValue).toBe(undefined);
-          expect(property.inputValue).toBe(undefined);
-          expect(property.getInputValue()).toBe(undefined);
-          expect(property.isActive()).toBe(true);
-        });
-
-        it('Required - ends with', function() {
-          var property = new service.DriverProperty('propertyName',
-                                                    ' Required.',
-                                                    []);
-          expect(property.required).toBe(true);
-        });
-
-        it('Not required - missing space', function() {
-          var property = new service.DriverProperty('propertyName',
-                                                    'Required.',
-                                                    []);
-          expect(property.required).toBe(false);
-        });
-
-        it('Not required - missing period', function() {
-          var property = new service.DriverProperty('propertyName',
-                                                    ' Required',
-                                                    []);
-          expect(property.required).toBe(false);
-        });
-
-        it('Select options', function() {
-          var property = new service.DriverProperty(
-            'propertyName',
-            'One of "foo", bar.',
-            []);
-          expect(property.getSelectOptions()).toEqual(['foo', 'bar']);
-        });
-
-        it('Select options - No single quotes', function() {
-          var property = new service.DriverProperty(
-            'propertyName',
-            "One of 'foo', bar.",
-            []);
-          expect(property.getSelectOptions()).toEqual(["'foo'", 'bar']);
-        });
-
-        it('default - is string', function() {
-          var property = new service.DriverProperty(
-            'propertyName',
-            'default is "5.1".',
-            []);
-          expect(property._getDefaultValue()).toEqual('5.1');
-        });
-
-        it('default - period processing', function() {
-          var property = new service.DriverProperty(
-            'propertyName',
-            'default is 5.1.',
-            []);
-          expect(property._getDefaultValue()).toEqual('5');
-        });
       });
 
       describe('PostfixExpr', function() {
@@ -120,9 +46,11 @@
 
         function evalBinary(val1, val2, op) {
           var propertySet = {};
-          var prop1 = new service.DriverProperty("prop1", "", propertySet);
+          var prop1 =
+            new driverPropertyService.DriverProperty("prop1", "", propertySet);
           propertySet.prop1 = prop1;
-          var prop2 = new service.DriverProperty("prop2", "", propertySet);
+          var prop2 =
+            new driverPropertyService.DriverProperty("prop2", "", propertySet);
           propertySet.prop2 = prop2;
 
           var expr = new service.PostfixExpr();
@@ -227,8 +155,10 @@
 
       describe('DriverPropertyGroup', function() {
         it('driverPropertyGroupHasRequired', function () {
-          var dp1 = new service.DriverProperty("dp-1", " Required.", []);
-          var dp2 = new service.DriverProperty("dp-2", " ", []);
+          var dp1 =
+            new driverPropertyService.DriverProperty("dp-1", " Required.", []);
+          var dp2 =
+            new driverPropertyService.DriverProperty("dp-2", " ", []);
 
           expect(service.driverPropertyGroupHasRequired).toBeDefined();
           expect(service.driverPropertyGroupHasRequired([])).toBe(false);
@@ -238,8 +168,10 @@
         });
 
         it('driverPropertyGroupsToString', function () {
-          var dp1 = new service.DriverProperty("dp-1", " Required.", []);
-          var dp2 = new service.DriverProperty("dp-2", " ", []);
+          var dp1 =
+            new driverPropertyService.DriverProperty("dp-1", " Required.", []);
+          var dp2 =
+            new driverPropertyService.DriverProperty("dp-2", " ", []);
 
           expect(service.driverPropertyGroupsToString).toBeDefined();
           expect(service.driverPropertyGroupsToString([])).toBe("[]");
@@ -250,8 +182,10 @@
         });
 
         it('compareDriverPropertyGroups', function () {
-          var dp1 = new service.DriverProperty("dp-1", " Required.", []);
-          var dp2 = new service.DriverProperty("dp-2", " ", []);
+          var dp1 =
+            new driverPropertyService.DriverProperty("dp-1", " Required.", []);
+          var dp2 =
+            new driverPropertyService.DriverProperty("dp-2", " ", []);
 
           expect(service.compareDriverPropertyGroups).toBeDefined();
           expect(service.compareDriverPropertyGroups([dp1], [dp1])).toBe(0);
