@@ -389,6 +389,48 @@
           ironicBackendMockService.flush();
         });
 
+        it('nodeSetRaidConfig', function() {
+          var raid = {
+            logical_disks: [{size_gb: 10, raid_level: '1', is_root_volume: false}]
+          };
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.nodeSetRaidConfig(node.uuid, raid)
+                .then(function() {
+                  return node;
+                });
+            })
+            .then(function(node) {
+              ironicAPI.getNode(node.uuid).then(function(node) {
+                expect(node.target_raid_config).toEqual(raid);
+              });
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('nodeSetRaidConfig - bad config', function() {
+          var badConfig = {
+            logical_disks: [{size_gb: 10, is_root_volume: false}]
+          };
+
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              ironicAPI.nodeSetRaidConfig(node.uuid, badConfig)
+                .then(function() {
+                  // Ensure the target raid config is unchanged
+                  ironicAPI.getNode(node.uuid)
+                    .then(function() {
+                      expect(node.target_raid_config).toEqual({});
+                    });
+                });
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
         it('createPort', function() {
           var macAddr = '00:00:00:00:00:00';
           var node;
