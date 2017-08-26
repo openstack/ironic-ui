@@ -52,13 +52,13 @@
 
   driverPropertyService.$inject = [
     '$log',
-    'horizon.dashboard.admin.ironic.base-node.service',
+    'horizon.dashboard.admin.ironic.postfix-expr.service',
     'horizon.dashboard.admin.ironic.validHostNamePattern',
     'horizon.dashboard.admin.ironic.validUuidPattern'
   ];
 
   function driverPropertyService($log,
-                                 baseNodeService,
+                                 postfixExprService,
                                  validHostNamePattern,
                                  validUuidPattern) {
     var service = {
@@ -219,7 +219,7 @@
         return true;
       }
       var ret = this.isActiveExpr.evaluate(this.propertySet);
-      return ret[0] === baseNodeService.PostfixExpr.status.OK &&
+      return ret[0] === postfixExprService.PostfixExpr.status.OK &&
         typeof ret[1] === "boolean" ? ret[1] : true;
     };
 
@@ -344,7 +344,7 @@
 
       // Build logical expression to describe under what conditions this
       // property is active
-      var expr = new baseNodeService.PostfixExpr();
+      var expr = new postfixExprService.PostfixExpr();
       var numAdds = 0;
 
       var i = NOT_INSIDE_MATCH;
@@ -360,10 +360,10 @@
           } else {
             expr.addProperty(match[2]);
             expr.addValue(this.desc.substring(i, j));
-            expr.addOperator(baseNodeService.PostfixExpr.op.EQ);
+            expr.addOperator(postfixExprService.PostfixExpr.op.EQ);
             numAdds++;
             if (numAdds > 1) {
-              expr.addOperator(baseNodeService.PostfixExpr.op.OR);
+              expr.addOperator(postfixExprService.PostfixExpr.op.OR);
             }
             i = NOT_INSIDE_MATCH;
           }
@@ -385,19 +385,19 @@
 
       // Build logical expression to describe under what conditions this
       // property is active
-      var expr = new baseNodeService.PostfixExpr();
+      var expr = new postfixExprService.PostfixExpr();
 
       var parts = match[1].split(", or ");
       expr.addProperty(parts[1]);
       expr.addValue(undefined);
-      expr.addOperator(baseNodeService.PostfixExpr.op.EQ);
+      expr.addOperator(postfixExprService.PostfixExpr.op.EQ);
 
       parts = parts[0].split(", ");
       for (var i = 0; i < parts.length; i++) {
         expr.addProperty(parts[i]);
         expr.addValue(undefined);
-        expr.addOperator(baseNodeService.PostfixExpr.op.EQ);
-        expr.addOperator(baseNodeService.PostfixExpr.op.AND);
+        expr.addOperator(postfixExprService.PostfixExpr.op.EQ);
+        expr.addOperator(postfixExprService.PostfixExpr.op.AND);
       }
       $log.debug("_analyzeOneOfDependencies | " +
                  this.desc + " | " +
