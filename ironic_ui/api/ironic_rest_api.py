@@ -347,20 +347,7 @@ class DriverProperties(generic.View):
 @urls.register
 class Portgroups(generic.View):
 
-    url_regex = r'ironic/portgroups/$'
-
-    @rest_utils.ajax()
-    def get(self, request):
-        """Get the list of portgroups associated with a specified node.
-
-        :param request: HTTP request.
-        :return: List of portgroups.
-        """
-        portgroups = ironic.portgroup_list(request,
-                                           request.GET.get('node_id'))
-        return {
-            'portgroups': [i.to_dict() for i in portgroups]
-        }
+    url_regex = r'ironic/portgroups$'
 
     @rest_utils.ajax(data_required=True)
     def post(self, request):
@@ -371,14 +358,25 @@ class Portgroups(generic.View):
         """
         return ironic.portgroup_create(request, request.DATA).to_dict()
 
-    @rest_utils.ajax(data_required=True)
-    def delete(self, request):
-        """Delete a portgroup.
+
+@urls.register
+class NodePortgroups(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_id>{})/portgroups$' . \
+                format(LOGICAL_NAME_PATTERN)
+
+    @rest_utils.ajax()
+    def get(self, request, node_id):
+        """Get the list of portgroups associated with a specified node.
 
         :param request: HTTP request.
+        :param node_id: Node name or uuid
+        :return: List of portgroups.
         """
-        return ironic.portgroup_delete(request,
-                                       request.DATA.get('portgroup_id'))
+        portgroups = ironic.portgroup_list(request, node_id)
+        return {
+            'portgroups': [i.to_dict() for i in portgroups]
+        }
 
 
 @urls.register
@@ -396,6 +394,15 @@ class Portgroup(generic.View):
         """
         patch = request.DATA.get('patch')
         return ironic.portgroup_update(request, portgroup_id, patch)
+
+    @rest_utils.ajax()
+    def delete(self, request, portgroup_id):
+        """Delete a portgroup.
+
+        :param request: HTTP request.
+        :param portgroup_id: UUID or name of portgroup.
+        """
+        return ironic.portgroup_delete(request, portgroup_id)
 
 
 @urls.register

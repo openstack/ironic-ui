@@ -574,7 +574,7 @@
     }
 
     /**
-     * @description Retrieve a list of portgroups associated with a node.
+     * @description Retrieve the list of portgroups associated with a node.
      *
      * http://developer.openstack.org/api-ref/baremetal/#list-detailed-portgroups
      *
@@ -582,8 +582,7 @@
      * @return {promise} List of portgroups.
      */
     function getPortgroups(nodeId) {
-      return apiService.get('/api/ironic/portgroups/',
-                            {params: {node_id: nodeId}})
+      return apiService.get('/api/ironic/nodes/' + nodeId + '/portgroups')
         .then(function(response) {
           // Add id property to support delete operations
           // using the deleteModalService
@@ -612,7 +611,7 @@
      * @return {promise} Promise containing the portgroup.
      */
     function createPortgroup(params) {
-      return apiService.post('/api/ironic/portgroups/', params)
+      return apiService.post('/api/ironic/portgroups', params)
         .then(function(response) {
           toastService.add('success',
                            gettext('Portgroup successfully created'));
@@ -636,8 +635,7 @@
      * @return {promise} Promise.
      */
     function deletePortgroup(portgroupId) {
-      return apiService.delete('/api/ironic/portgroups/',
-                               {portgroup_id: portgroupId})
+      return apiService.delete('/api/ironic/portgroups/' + portgroupId)
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to delete portgroup: %s'),
                                 [response.data],
