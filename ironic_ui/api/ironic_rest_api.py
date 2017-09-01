@@ -36,7 +36,7 @@ class Nodes(generic.View):
         """Get the list of nodes.
 
         :param request: HTTP request.
-        :return: nodes.
+        :return: List of nodes.
         """
         nodes = ironic.node_list(request)
         return {
@@ -45,21 +45,12 @@ class Nodes(generic.View):
 
     @rest_utils.ajax(data_required=True)
     def post(self, request):
-        """Create an Ironic node
+        """Create an Ironic node.
 
-        :param request: HTTP request
+        :param request: HTTP request.
         """
         params = request.DATA.get('node')
         return ironic.node_create(request, params)
-
-    @rest_utils.ajax(data_required=True)
-    def delete(self, request):
-        """Delete an Ironic node from inventory
-
-        :param request: HTTP request
-        """
-        params = request.DATA.get('node')
-        return ironic.node_delete(request, params)
 
 
 @urls.register
@@ -69,23 +60,32 @@ class Node(generic.View):
 
     @rest_utils.ajax()
     def get(self, request, node_id):
-        """Get information on a specific node.
+        """Get information on a specified node.
 
         :param request: HTTP request.
-        :param node_id: Node id.
+        :param node_id: Node name or uuid.
         :return: node.
         """
         return ironic.node_get(request, node_id).to_dict()
 
     @rest_utils.ajax(data_required=True)
     def patch(self, request, node_id):
-        """Update an Ironic node
+        """Update an Ironic node.
 
-        :param request: HTTP request
-        :param node_uuid: Node uuid.
+        :param request: HTTP request.
+        :param node_id: Node name or uuid.
         """
         patch = request.DATA.get('patch')
         return ironic.node_update(request, node_id, patch)
+
+    @rest_utils.ajax()
+    def delete(self, request, node_id):
+        """Delete an Ironic node from inventory
+
+        :param request: HTTP request.
+        :param node_id: Node name or uuid.
+        """
+        return ironic.node_delete(request, node_id)
 
 
 @urls.register
@@ -93,53 +93,40 @@ class Ports(generic.View):
 
     url_regex = r'ironic/ports/$'
 
-    @rest_utils.ajax()
-    def get(self, request):
-        """Get the list of ports associated with a specified node.
-
-        :param request: HTTP request
-        :return: List of ports.
-        """
-        node_id = request.GET.get('node_id')
-        ports = ironic.node_list_ports(request, node_id)
-        return {
-            'ports': [i.to_dict() for i in ports]
-        }
-
     @rest_utils.ajax(data_required=True)
     def post(self, request):
-        """Create a network port
+        """Create a network port.
 
-        :param request: HTTP request
+        :param request: HTTP request.
         :return: Port
         """
         port = request.DATA.get('port')
         return ironic.port_create(request, port).to_dict()
 
-    @rest_utils.ajax(data_required=True)
-    def delete(self, request):
-        """Delete a network port
-
-        :param request: HTTP request
-        """
-        params = request.DATA.get('port_uuid')
-        return ironic.port_delete(request, params)
-
 
 @urls.register
 class Port(generic.View):
 
-    url_regex = r'ironic/ports/(?P<port_id>[0-9a-f-]+)$'
+    url_regex = r'ironic/ports/(?P<port_uuid>[0-9a-f-]+)$'
 
     @rest_utils.ajax(data_required=True)
-    def patch(self, request, port_id):
-        """Update an Ironic port
+    def patch(self, request, port_uuid):
+        """Update an Ironic port.
 
-        :param request: HTTP request
-        :param port_id: Port id.
+        :param request: HTTP request.
+        :param port_uuid: Port uuid.
         """
         patch = request.DATA.get('patch')
-        return ironic.port_update(request, port_id, patch)
+        return ironic.port_update(request, port_uuid, patch)
+
+    @rest_utils.ajax()
+    def delete(self, request, port_uuid):
+        """Delete a network port.
+
+        :param request: HTTP request
+        :param port_uuid: Port uuid.
+        """
+        return ironic.port_delete(request, port_uuid)
 
 
 @urls.register
@@ -153,8 +140,8 @@ class StatesPower(generic.View):
         """Set the power state for a specified node.
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
-        :return: Return code
+        :param node_id: Node name or uuid.
+        :return: Return code.
         """
         return ironic.node_set_power_state(request,
                                            node_id,
@@ -165,21 +152,21 @@ class StatesPower(generic.View):
 @urls.register
 class StatesProvision(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_uuid>{})/states/provision$'. \
+    url_regex = r'ironic/nodes/(?P<node_id>{})/states/provision$'. \
                 format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax(data_required=True)
-    def put(self, request, node_uuid):
+    def put(self, request, node_id):
         """Set the provision state for a specified node.
 
         :param request: HTTP request.
-        :param node_id: Node uuid
-        :return: Return code
+        :param node_id: Node name or uuid.
+        :return: Return code.
         """
         verb = request.DATA.get('verb')
         clean_steps = request.DATA.get('clean_steps')
         return ironic.node_set_provision_state(request,
-                                               node_uuid,
+                                               node_id,
                                                verb,
                                                clean_steps)
 
@@ -187,29 +174,29 @@ class StatesProvision(generic.View):
 @urls.register
 class StatesConsole(generic.View):
 
-    url_regex = r'ironic/nodes/(?P<node_uuid>{})/states/console$'. \
+    url_regex = r'ironic/nodes/(?P<node_id>{})/states/console$'. \
                 format(LOGICAL_NAME_PATTERN)
 
     @rest_utils.ajax()
-    def get(self, request, node_uuid):
+    def get(self, request, node_id):
         """Get connection information for the node's console
 
         :param request: HTTP request.
-        :param node_id: Node uuid
-        :return: Connection information
+        :param node_id: Node name or uuid.
+        :return: Connection information.
         """
-        return ironic.node_get_console(request, node_uuid)
+        return ironic.node_get_console(request, node_id)
 
     @rest_utils.ajax(data_required=True)
-    def put(self, request, node_uuid):
+    def put(self, request, node_id):
         """Start or stop the serial console.
 
         :param request: HTTP request.
-        :param node_id: Node uuid
-        :return: Return code
+        :param node_id: Node name or uuid.
+        :return: Return code.
         """
         return ironic.node_set_console_mode(request,
-                                            node_uuid,
+                                            node_id,
                                             request.DATA.get('enabled'))
 
 
@@ -224,8 +211,8 @@ class Maintenance(generic.View):
         """Put a specified node into maintenance state
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
-        :return: Return code
+        :param node_id: Node name or uuid.
+        :return: Return code.
         """
         maint_reason = request.DATA.get('maint_reason')
         return ironic.node_set_maintenance(
@@ -239,8 +226,8 @@ class Maintenance(generic.View):
         """Take a specified node out of the maintenance state
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
-        :return: Return code
+        :param node_id: Node name or uuid.
+        :return: Return code.
         """
         return ironic.node_set_maintenance(request, node_id, 'off')
 
@@ -256,8 +243,8 @@ class Validate(generic.View):
         """Validate a specified node
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
-        :return: List of dictionaries of interface statuses
+        :param node_id: Node name or uuid.
+        :return: List of dictionaries of interface statuses.
         """
         return ironic.node_validate(request, node_id)
 
@@ -273,8 +260,8 @@ class BootDevice(generic.View):
         """Get the boot device for a specified node
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
-        :return: Dictionary with keys "boot_device" and "persistent"
+        :param node_id: Node name or uuid.
+        :return: Dictionary with keys "boot_device" and "persistent".
         """
         return ironic.node_get_boot_device(request, node_id)
 
@@ -283,7 +270,7 @@ class BootDevice(generic.View):
         """Set the boot device for a specific node
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
+        :param node_id: Node name or uuid.
         :return: null.
         """
         return ironic.node_set_boot_device(
@@ -301,11 +288,11 @@ class SupportedBootDevices(generic.View):
 
     @rest_utils.ajax()
     def get(self, request, node_id):
-        """Get the list of supported boot devices for a specified node
+        """Get the list of supported boot devices for a specified node.
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
-        :return: List of supported boot devices
+        :param node_id: Node name or uuid.
+        :return: List of supported boot devices.
         """
         return ironic.node_get_supported_boot_devices(request, node_id)
 
@@ -317,10 +304,10 @@ class Drivers(generic.View):
 
     @rest_utils.ajax()
     def get(self, request):
-        """Get the list of drivers
+        """Get the list of drivers.
 
-        :param request: HTTP request
-        :return: drivers
+        :param request: HTTP request.
+        :return: List of drivers.
         """
         drivers = ironic.driver_list(request)
         return {
@@ -337,9 +324,9 @@ class DriverProperties(generic.View):
     def get(self, request, driver_name):
         """Get the properties associated with a specified driver
 
-        :param request: HTTP request
-        :param driver_name: Driver name
-        :return: Dictionary of properties
+        :param request: HTTP request.
+        :param driver_name: Driver name.
+        :return: Dictionary of properties.
         """
         return ironic.driver_properties(request, driver_name)
 
@@ -360,6 +347,26 @@ class Portgroups(generic.View):
 
 
 @urls.register
+class NodePorts(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_id>{})/ports/detail$' . \
+                format(LOGICAL_NAME_PATTERN)
+
+    @rest_utils.ajax()
+    def get(self, request, node_id):
+        """Get the list of ports associated with a specified node.
+
+        :param request: HTTP request.
+        :param node_id: Node name or uuid.
+        :return: List of ports.
+        """
+        ports = ironic.node_list_ports(request, node_id)
+        return {
+            'ports': [i.to_dict() for i in ports]
+        }
+
+
+@urls.register
 class NodePortgroups(generic.View):
 
     url_regex = r'ironic/nodes/(?P<node_id>{})/portgroups$' . \
@@ -370,7 +377,7 @@ class NodePortgroups(generic.View):
         """Get the list of portgroups associated with a specified node.
 
         :param request: HTTP request.
-        :param node_id: Node name or uuid
+        :param node_id: Node name or uuid.
         :return: List of portgroups.
         """
         portgroups = ironic.portgroup_list(request, node_id)
@@ -387,9 +394,9 @@ class Portgroup(generic.View):
 
     @rest_utils.ajax(data_required=True)
     def patch(self, request, portgroup_id):
-        """Update an Ironic portgroup
+        """Update an Ironic portgroup.
 
-        :param request: HTTP request
+        :param request: HTTP request.
         :param portgroup_id: UUID or name of portgroup.
         """
         patch = request.DATA.get('patch')

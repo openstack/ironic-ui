@@ -404,9 +404,11 @@
         });
 
       // Delete node
-      $httpBackend.whenDELETE(/\/api\/ironic\/nodes\/$/)
-        .respond(function(method, url, data) {
-          var nodeId = JSON.parse(data).node;
+      $httpBackend.whenDELETE(/\/api\/ironic\/nodes\/([^\/]+)$/,
+                              undefined,
+                              ['nodeId'])
+        .respond(function(method, url, data, headers, params) {
+          var nodeId = params.nodeId;
           var status = responseCode.RESOURCE_NOT_FOUND;
           if (angular.isDefined(nodes[nodeId])) {
             var node = nodes[nodeId].base;
@@ -623,9 +625,11 @@
         });
 
       // Delete port
-      $httpBackend.whenDELETE(/\/api\/ironic\/ports\/$/)
-        .respond(function(method, url, data) {
-          var portUuid = JSON.parse(data).port_uuid;
+      $httpBackend.whenDELETE(/\/api\/ironic\/ports\/([^\/]+)$/,
+                              undefined,
+                              ['portUuid'])
+        .respond(function(method, url, data, headers, params) {
+          var portUuid = params.portUuid;
           var status = responseCode.RESOURCE_NOT_FOUND;
           if (angular.isDefined(ports[portUuid])) {
             delete ports[portUuid];
@@ -638,10 +642,10 @@
       $httpBackend.whenPATCH(/\/api\/ironic\/ports\/([^\/]+)$/,
                              undefined,
                              undefined,
-                             ['portId'])
+                             ['portUuid'])
         .respond(function(method, url, data, headers, params) {
           var status = responseCode.RESOURCE_NOT_FOUND;
-          var port = service.getPort(params.portId);
+          var port = service.getPort(params.portUuid);
           if (angular.isDefined(port)) {
             patchObject(port, JSON.parse(data).patch);
             status = responseCode.SUCCESS;
@@ -649,10 +653,12 @@
           return [status, port];
         });
 
-      // Get ports
-      $httpBackend.whenGET(/\/api\/ironic\/ports\//)
+      // Get the ports associated with a node
+      $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/ports\/detail$/,
+                           undefined,
+                           ['nodeId'])
         .respond(function(method, url, data, header, params) {
-          var nodeId = params.node_id;
+          var nodeId = params.nodeId;
           var status = responseCode.RESOURCE_NOT_FOUND;
           var ports = [];
           if (angular.isDefined(nodes[nodeId])) {
@@ -672,7 +678,6 @@
 
       // Get the portgroups associated with a node
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/(.+)\/portgroups/,
-                           undefined,
                            undefined,
                            ['nodeId'])
         .respond(function(method, url, data, header, params) {
