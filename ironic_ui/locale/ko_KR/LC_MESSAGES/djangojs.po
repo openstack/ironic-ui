@@ -5,19 +5,20 @@
 # Sungjin Kang <gang.sungjin@gmail.com>, 2016. #zanata
 # ChungYoung Cho <openstack.cho@gmail.com>, 2017. #zanata
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2017. #zanata
+# Jun-Sik Shin <jsshin@smartx.kr>, 2017. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 # Wonil Choi <wonil0522@gmail.com>, 2017. #zanata
 # minwook-shin <minwook0106@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 3.0.1.dev3\n"
+"Project-Id-Version: ironic-ui 3.0.1.dev16\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-08-09 17:47+0000\n"
+"POT-Creation-Date: 2017-09-15 02:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-10 10:43+0000\n"
-"Last-Translator: minwook-shin <minwook0106@gmail.com>\n"
+"PO-Revision-Date: 2017-09-16 08:03+0000\n"
+"Last-Translator: Wonil Choi <wonil0522@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -41,6 +42,12 @@ msgstr "작업"
 
 msgid "Add Extra"
 msgstr "Extra 추가"
+
+msgid "Add Instance Property"
+msgstr "인스턴스 속성 추가"
+
+msgid "Add Property"
+msgstr "속성 추가"
 
 #, python-format
 msgid ""
@@ -80,6 +87,9 @@ msgstr "클린 노드"
 msgid "Clean Step"
 msgstr "클린업 단계"
 
+msgid "Click link to view console"
+msgstr "콘솔을 보려면 링크를 클릭하세요"
+
 msgid "Configuration"
 msgstr "구성"
 
@@ -91,6 +101,9 @@ msgstr "콘솔 정보."
 
 msgid "Create Port"
 msgstr "포트 생성하기"
+
+msgid "Create Portgroup"
+msgstr "포트그룹 생성"
 
 msgid "Created At"
 msgstr "생성 시점"
@@ -133,6 +146,12 @@ msgstr "드라이버 확인"
 msgid "Edit Node"
 msgstr "노드 편집"
 
+msgid "Edit Port"
+msgstr "포트 수정"
+
+msgid "Edit Portgroup"
+msgstr "포트그룹 편집"
+
 msgid "Enroll Node"
 msgstr "노드 등록하기"
 
@@ -169,6 +188,9 @@ msgstr "인스턴스 정보"
 msgid "Instance Name"
 msgstr "인스턴스 이름"
 
+msgid "Instance Property Name"
+msgstr "인스턴스 속성 이름"
+
 msgid "Interface"
 msgstr "인터페이스"
 
@@ -181,6 +203,9 @@ msgstr "마지막 에러"
 msgid "Local Link Connection"
 msgstr "로컬 링크 접속"
 
+msgid "Local link connection"
+msgstr "로컬 링크 접속"
+
 msgid "MAC Address"
 msgstr "MAC 주소"
 
@@ -189,6 +214,12 @@ msgstr "MAC 주소"
 
 msgid "MAC address for this port. Required."
 msgstr "이 포트를 위한 MAC 주소. 필수항목."
+
+msgid "MAC address for this portgroup."
+msgstr "이 포트그룹을 위한 MAC 주소"
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "MAC 주소 또는 OpenFlow datapath ID"
 
 msgid "Maintenance"
 msgstr "유지보수"
@@ -205,6 +236,9 @@ msgstr "이동"
 msgid "Name"
 msgstr "이름"
 
+msgid "Name for the portgroup."
+msgstr "포트그룹의 이름"
+
 msgid "Network Interface"
 msgstr "네트워크 인터페이스"
 
@@ -213,6 +247,12 @@ msgstr "인스턴스 없음"
 
 msgid "No network ports have been defined"
 msgstr "네트워크 포트가 정의되지 않았습니다"
+
+msgid "No portgroups have been defined"
+msgstr "정의된 포트그룹이 없습니다"
+
+msgid "No reason given."
+msgstr "이유가 주어지지 않았습니다."
 
 msgid "Node"
 msgstr "노드"
@@ -248,6 +288,15 @@ msgid "Port successfully created"
 msgstr "포트가 성공적으로 생성됐습니다"
 
 msgid "Portgroup"
+msgstr "포트그룹"
+
+msgid "Portgroup successfully created"
+msgstr "포트그룹이 성공적으로 생성되었습니다"
+
+msgid "Portgroup that this port belongs to"
+msgstr "이 포트가 속한 포트그룹"
+
+msgid "Portgroups"
 msgstr "포트그룹"
 
 msgid "Ports"
@@ -297,6 +346,12 @@ msgstr "재시작"
 msgid "Refresh"
 msgstr "갱신"
 
+msgid "Refresh page to see set boot device"
+msgstr "부트 디바이스 설정을 보기 위해 페이지 새로 고치기 "
+
+msgid "Refresh page to see updated console details"
+msgstr "업데이트된 콘솔 자세한 정보를 보기 위해 페이지 새로 고치기"
+
 msgid "Refresh page to see updated power status"
 msgstr "갱신된 전원 상태를 보기 위해 페이지 새로 고치기"
 
@@ -339,14 +394,21 @@ msgstr "드라이버 선택하기"
 msgid "Select a boot device"
 msgstr "부트 디바이스 선택"
 
+msgid "Select a portgroup"
+msgstr "포트그룹 선택"
+
 msgid "Set Boot Device"
 msgstr "부트 디바이스 설정"
 
 msgid "Set boot device"
-msgstr "부트 비다이스 설정"
+msgstr "부트 디바이스 설정"
 
 msgid "Soft reboot"
 msgstr "소프트 재시작"
+
+msgid ""
+"Specifies whether ports in this portgroup can be used as standalone ports."
+msgstr "이 포트그룹 내 포트들이 standalone 포트로 사용 가능한 지 지정합니다."
 
 msgid "Submit"
 msgstr "제출"
@@ -365,6 +427,14 @@ msgstr[0] "포트 \"%s\" 를 성공적으로 삭제했습니다"
 msgid "Successfully updated node %s"
 msgstr "노드 %s가 성공적으로 업데이트 됨."
 
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "포트 %s가 성공적으로 업데이트하였습니다"
+
+#, python-format
+msgid "Successfully updated portgroup %s"
+msgstr "포트그룹 %s를 성공적으로 업데이트 하였습니다."
+
 msgid "Target Power State"
 msgstr "대상 전원 상태"
 
@@ -381,9 +451,16 @@ msgstr "노드 업데이트 패치를 만들수 없습니다."
 msgid "Unable to create node: %s"
 msgstr "노드를 생성할 수 없습니다: %s"
 
+msgid "Unable to create port update patch."
+msgstr "포트 업데이트 패치를 만들 수 없습니다."
+
 #, python-format
 msgid "Unable to create port: %s"
 msgstr "포트를 생성할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to create portgroup: %s"
+msgstr "포트그룹을 생성할 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to delete node \"%s\""
@@ -404,12 +481,24 @@ msgid "Unable to delete port: %s"
 msgstr "포트를 삭제할 수 없습니다: %s"
 
 #, python-format
+msgid "Unable to delete portgroup: %s"
+msgstr "포트그룹을 삭제할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to get console for node %s: %s"
+msgstr "노드 %s를 위한 콘솔을 가져올 수 없습니다: %s"
+
+#, python-format
 msgid "Unable to power off the node: %s"
 msgstr "노드의 전원을 끌 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Ironic 드라이버를 되찾을 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic node portgroups: %s"
+msgstr "Ironic 노드 포트그룹을 가져올 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic nodes. %s"
@@ -424,12 +513,32 @@ msgid "Unable to retrieve driver properties: %s"
 msgstr "드라이버 속성을 되찾을 수 없습니다 : %s"
 
 #, python-format
+msgid "Unable to retrieve portgroup ports: %s"
+msgstr "포트그룹 포트들을 가져올 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to retrieve supported boot devices for Ironic node. %s"
+msgstr "Ironic 노드를 위한 지원되는 부트 장치를 가져올 수 없습니다: %s"
+
+#, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
 msgstr "Ironic 노드 포트를 가져올 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "해당 Ironic 노드를 가져올 수 없습니다: %s "
+
+#, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "Ironic 노드 %s 유지보수 상태를 설정 할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to set boot device: %s"
+msgstr "부트 디바이스 설정을 할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to set console mode: %s"
+msgstr "콘솔 모드를 설정할 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
@@ -440,11 +549,28 @@ msgid "Unable to update node %s: %s"
 msgstr "노드 %s를 업데이트 할 수 없습니다: %s"
 
 #, python-format
+msgid "Unable to update port %s: %s"
+msgstr "포트 %s를 업데이트 할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to update portgroup %s: %s"
+msgstr "포트그룹 %s를 업데이트 할 수 없습니다: %s"
+
+#, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "노드 %s를 검증할수 없습니다: %s"
 
+msgid "Unable to validate the JSON input"
+msgstr "JSON 입력의 유효성을 확인할 수 없습니다"
+
 msgid "Update Node"
 msgstr "노드 업데이트"
+
+msgid "Update Port"
+msgstr "포트 업데이트"
+
+msgid "Update Portgroup"
+msgstr "포트그룹 업데이트"
 
 msgid "Updated At"
 msgstr "업데이트 시점"

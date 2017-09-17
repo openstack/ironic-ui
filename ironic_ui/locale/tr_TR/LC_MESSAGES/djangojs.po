@@ -2,17 +2,16 @@
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Mücahit Büyükyılmaz <mucahit@deltanoc.com>, 2016. #zanata
-# Andreas Jaeger <jaegerandi@gmail.com>, 2017. #zanata
 # işbaran akçayır <isbaran@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev53\n"
+"Project-Id-Version: ironic-ui 3.0.1.dev16\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-06-30 15:16+0000\n"
+"POT-Creation-Date: 2017-09-15 02:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-30 03:16+0000\n"
+"PO-Revision-Date: 2017-09-16 08:03+0000\n"
 "Last-Translator: işbaran akçayır <isbaran@gmail.com>\n"
 "Language-Team: Turkish (Turkey)\n"
 "Language: tr-TR\n"
@@ -25,6 +24,10 @@ msgstr " ([^\" ]+|\"[^\"]+\") \\(Öntanımlı\\)"
 
 msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr "%s düğümünün hazırlık durumnda bir değişklik yapılması isteği geldi"
 
 msgid "Abort cleaning"
 msgstr "Temizliği iptal et"
@@ -62,6 +65,23 @@ msgstr[0] ""
 msgstr[1] ""
 "\"%s\" bağlantı noktalarını silmek istediğinize emin misiniz? Bu eylem geri "
 "alınamaz."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgid_plural ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+msgstr[0] ""
+"\"%s\" bağlantı noktası grubunu silmek istediğinize emin misiniz? Bu eylem "
+"geri getirilemez."
+msgstr[1] ""
+"\"%s\" bağlantı noktası gruplarını silmek istediğinize emin misiniz? Bu "
+"eylem geri getirilemez."
+
+msgid "Attributes"
+msgstr "Öznitelikler"
 
 msgid "Boot Device"
 msgstr "Önyükleme Aygıtı"
@@ -105,8 +125,14 @@ msgstr "Konsol Bilgisi."
 msgid "Create Port"
 msgstr "Bağlantı Noktası Oluştur"
 
+msgid "Create Portgroup"
+msgstr "Bağlantı Noktası Grubu Oluştur"
+
 msgid "Created At"
 msgstr "Oluşturulduğu zaman"
+
+msgid "Current Interface"
+msgstr "Mevcut Arayüz"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "Öntanımlı olarak ([^\"\\. ]+|\"[^\"]+\")"
@@ -120,6 +146,11 @@ msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "Bağlantı Noktasını Sil"
 msgstr[1] "Bağlantı Noktalarını Sil"
+
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "Bağlantı Noktası Grubunu Sil"
+msgstr[1] "Bağlantı Noktası Gruplarını Sil"
 
 msgid "Deploy Kernel"
 msgstr "Çekirdeği Yerleştir"
@@ -155,6 +186,9 @@ msgstr "Düğümü Düzenle"
 msgid "Edit Port"
 msgstr "Bağlantı Noktasını Düzenle"
 
+msgid "Edit Portgroup"
+msgstr "Bağlantı Noktası Grubunu Düzenle"
+
 msgid "Enroll Node"
 msgstr "Düğümü Kaydet"
 
@@ -172,6 +206,11 @@ msgstr "Genel"
 
 msgid "Image Source"
 msgstr "İmaj Kaynağı"
+
+msgid "Indicates whether this port should be used when PXE booting this node"
+msgstr ""
+"Bu düğüm PXE önyüklenirken bu bağlantı noktasının kullanılıp "
+"kullanılmayacağını gösterir"
 
 msgid "Inspect"
 msgstr "İncele"
@@ -203,6 +242,16 @@ msgstr "Çekirdek"
 msgid "Last Error"
 msgstr "Son Hata"
 
+msgid ""
+"Linux portgroup mode. For possible values refer to https://www.kernel.org/"
+"doc/Documentation/networking/bonding.txt"
+msgstr ""
+"Linux bağlantı noktası grubu kipi. Muhtemel değerler için https://www.kernel."
+"org/doc/Documentation/networking/bonding.txt adresine başvurun"
+
+msgid "Local Link Connection"
+msgstr "Yerel Ağ Bağlantısı"
+
 msgid "Local link connection"
 msgstr "Yerel bağlantı"
 
@@ -211,6 +260,12 @@ msgstr "MAC Adresi"
 
 msgid "MAC address"
 msgstr "MAC adresi"
+
+msgid "MAC address for this port. Required."
+msgstr "Bu bağlantı noktası için MAC adresi. Gerekli."
+
+msgid "MAC address for this portgroup."
+msgstr "Bu bağlantı noktası grubu için MAC adresi."
 
 msgid "MAC address or OpenFlow datapath ID"
 msgstr "MAC adresi veya OpenFlow veriyolu ID'si"
@@ -221,11 +276,17 @@ msgstr "Bakım"
 msgid "Maintenance Reason"
 msgstr "Bakım Sebebi"
 
+msgid "Mode"
+msgstr "Kip"
+
 msgid "Move to"
 msgstr "Taşı"
 
 msgid "Name"
 msgstr "İsim"
+
+msgid "Name for the portgroup."
+msgstr "Bağlantı noktası grubu için isim."
 
 msgid "Network Interface"
 msgstr "Ağ Arayüzü"
@@ -236,11 +297,18 @@ msgstr "Sunucu Yok"
 msgid "No network ports have been defined"
 msgstr "Hiçbir ağ bağlantı noktası tanımlanmamış"
 
+msgid "No portgroups have been defined"
+msgstr "Herhangi bir bağlantı noktası grubu tanımlanmamış"
+
 msgid "No reason given."
 msgstr "Sebep verilmemiş."
 
 msgid "Node"
 msgstr "Düğüm"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "Düğüm %s zaten hedef bakım durumunda."
 
 msgid "Node Driver"
 msgstr "Düğüm Sürücüsü"
@@ -260,6 +328,9 @@ msgstr "Bunlardan biri, (.*) belirtilmeli\\."
 msgid "Overview"
 msgstr "Önizleme"
 
+msgid "PXE Enabled"
+msgstr "PXE Etkin"
+
 msgid "PXE enabled"
 msgstr "PXE etkin"
 
@@ -268,6 +339,18 @@ msgstr "Kalıcı"
 
 msgid "Port successfully created"
 msgstr "Bağlantı noktası başarıyla oluşturuldu"
+
+msgid "Portgroup"
+msgstr "Bağlantı noktası grubu"
+
+msgid "Portgroup successfully created"
+msgstr "Bağlantı noktası grubu başarıyla oluşturuldu"
+
+msgid "Portgroup that this port belongs to"
+msgstr "Bu bağlantı noktasının ait olduğu bağlantı noktası grubu"
+
+msgid "Portgroups"
+msgstr "Bağlantı noktası grupları"
 
 msgid "Ports"
 msgstr "Portlar"
@@ -321,6 +404,9 @@ msgstr "Yeniden başlat"
 msgid "Refresh"
 msgstr "Tazele"
 
+msgid "Refresh page to see set boot device"
+msgstr "Önyükleme aygıtı ayarlamayı görmek için sayfayı tazeleyin"
+
 msgid "Refresh page to see updated console details"
 msgstr "Güncel konsol ayrıntılarını görmek için sayfayı tazeleyin"
 
@@ -332,6 +418,9 @@ msgstr "Gerekli"
 
 msgid "Reservation"
 msgstr "Yer ayırmalar"
+
+msgid "Resource Class"
+msgstr "Kaynak Sınıfı"
 
 msgid "Root GB"
 msgstr "Kök GB"
@@ -360,11 +449,32 @@ msgstr "SSH terminal bağlantı noktası"
 msgid "Select a Driver"
 msgstr "Bir Sürücü Seçin"
 
+msgid "Select a boot device"
+msgstr "Bir önyükleme aygıtı seçin"
+
+msgid "Select a portgroup"
+msgstr "Bir bağlantı noktası grubu seçin"
+
+msgid "Set Boot Device"
+msgstr "Önyükleme Aygıtı Ayarla"
+
+msgid "Set boot device"
+msgstr "Önyükleme aygıtı ayarla"
+
 msgid "Soft power off"
 msgstr "Yumuşak güç kapa"
 
 msgid "Soft reboot"
 msgstr "Yumuşak yeniden başlatma"
+
+msgid ""
+"Specifies whether ports in this portgroup can be used as standalone ports."
+msgstr ""
+"Bu bağlantı noktası grubundaki bağlantı noktalarının bağımsız bağlantı "
+"noktaları olarak kullanılıp kullanılamayacağını belirtir."
+
+msgid "Standalone Ports Supported"
+msgstr "Bağımsız Bağlantı Noktaları Destekleniyor"
 
 msgid "Submit"
 msgstr "Gönder"
@@ -382,12 +492,22 @@ msgstr[0] "\"%s\" bağlantı noktası başarıyla silindi"
 msgstr[1] "\"%s\" bağlantı noktaları başarıyla silindi"
 
 #, python-format
+msgid "Successfully deleted portgroup \"%s\""
+msgid_plural "Successfully deleted portgroups \"%s\""
+msgstr[0] "\"%s\" bağlantı noktası grubu başarıyla silindi"
+msgstr[1] "\"%s\" bağlantı noktası grupları başarıyla silindi"
+
+#, python-format
 msgid "Successfully updated node %s"
 msgstr "Düğüm %s başarıyla güncellendi"
 
 #, python-format
 msgid "Successfully updated port %s"
 msgstr "Bağlantı noktası %s başarıyla güncellendi"
+
+#, python-format
+msgid "Successfully updated portgroup %s"
+msgstr "Bağlantı noktası grubu %s başarıyla güncellendi"
 
 msgid "Target Power State"
 msgstr "Hedef Güç Durumu"
@@ -422,6 +542,13 @@ msgstr "Bağlantı noktası güncelleme yaması oluşturulamadı."
 msgid "Unable to create port: %s"
 msgstr "Bağlantı noktası oluşturulamıyor: %s"
 
+msgid "Unable to create portgroup update patch."
+msgstr "Bağlantı noktası grubu güncelleme yaması oluşturulamadı."
+
+#, python-format
+msgid "Unable to create portgroup: %s"
+msgstr "Bağlantı noktası grubu oluşturulamadı: %s"
+
 #, python-format
 msgid "Unable to delete node \"%s\""
 msgid_plural "Unable to delete nodes \"%s\""
@@ -432,7 +559,7 @@ msgstr[1] "\"%s\" düğümleri silinemedi"
 msgid "Unable to delete node %s: %s"
 msgstr "Düğüm %s silinemiyor: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete ports \"%s\""
 msgstr[0] "\"%s\" bağlantı noktası silinemiyor"
@@ -441,6 +568,16 @@ msgstr[1] "\"%s\" bağlantı noktaları silinemiyor"
 #, python-format
 msgid "Unable to delete port: %s"
 msgstr "Bağlantı noktası silinemiyor: %s"
+
+#, python-format
+msgid "Unable to delete portgroup \"%s\""
+msgid_plural "Unable to delete portgroups \"%s\""
+msgstr[0] "\"%s\" bağlantı noktası grubu silinemedi"
+msgstr[1] "\"%s\" bağlantı noktası grupları silinemedi"
+
+#, python-format
+msgid "Unable to delete portgroup: %s"
+msgstr "Bağlantı noktası grubu silinemedi: %s"
 
 #, python-format
 msgid "Unable to get console for node %s: %s"
@@ -455,6 +592,10 @@ msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Ironic sürücüleri alınamıyor: %s"
 
 #, python-format
+msgid "Unable to retrieve Ironic node portgroups: %s"
+msgstr "Ironic düğümü bağlantı noktası grupları alınamadı: %s"
+
+#, python-format
 msgid "Unable to retrieve Ironic nodes. %s"
 msgstr "Ironic düğümler alınamadı. %s"
 
@@ -467,12 +608,28 @@ msgid "Unable to retrieve driver properties: %s"
 msgstr "Sürücü özellikleri alınamıyor: %s"
 
 #, python-format
+msgid "Unable to retrieve portgroup ports: %s"
+msgstr "Bağlantı noktası grubu bağlantı noktaları alınamadı: %s"
+
+#, python-format
+msgid "Unable to retrieve supported boot devices for Ironic node. %s"
+msgstr "Ironic düğümü için desteklenen ön yükleme aygıtları alınamadı. %s"
+
+#, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
 msgstr "Ironic düğümü bağlantı noktaları alınamadı: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
 msgstr "Ironic düğümü alınamadı: %s"
+
+#, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "Ironic düğümü %s bakım durumuna ayarlanamadı: %s"
+
+#, python-format
+msgid "Unable to set boot device: %s"
+msgstr "Önyükleme aygıtı ayarlanamadı: %s"
 
 #, python-format
 msgid "Unable to set console mode: %s"
@@ -491,6 +648,10 @@ msgid "Unable to update port %s: %s"
 msgstr "Bağlantı noktası %s güncellenemiyor: %s"
 
 #, python-format
+msgid "Unable to update portgroup %s: %s"
+msgstr "%s bağlantı noktası grubu güncellenemedi: %s"
+
+#, python-format
 msgid "Unable to validate node %s: %s"
 msgstr "Düğüm %s onaylanamıyor: %s"
 
@@ -502,6 +663,9 @@ msgstr "Düğümü Güncelle"
 
 msgid "Update Port"
 msgstr "Bağlantı Noktasını Güncelle"
+
+msgid "Update Portgroup"
+msgstr "Bağlantı Noktası Grubunu Güncelle"
 
 msgid "Updated At"
 msgstr "Güncelleme saati"
