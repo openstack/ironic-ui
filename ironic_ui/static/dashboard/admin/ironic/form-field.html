@@ -42,7 +42,7 @@
              ng-model="field.value"
              ng-repeat="opt in field.options"
              ng-disabled="field.disabled"
-             uib-btn-radio="opt">{$ opt $}</label>
+             uib-btn-radio="opt.value">{$ opt.label $}</label>
     </div>
     <div ng-switch-when="select">
         <select id="field.id"

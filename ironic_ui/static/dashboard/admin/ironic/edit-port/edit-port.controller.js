@@ -71,7 +71,7 @@
       ctrl.address.disable();
     }
 
-    ctrl.pxeEnabled.value = port.pxe_enabled ? 'True' : 'False';
+    ctrl.pxeEnabled.value = port.pxe_enabled;
 
     ctrl.portgroup_uuid.value = port.portgroup_uuid;
 
@@ -105,7 +105,7 @@
 
       patcher.buildPatch(port.address, ctrl.address.value, "/address");
       patcher.buildPatch(port.pxe_enabled,
-                         ctrl.pxeEnabled.value === 'True',
+                         ctrl.pxeEnabled.value,
                          "/pxe_enabled");
       var attr = ctrl.localLinkConnection.toPortAttr();
       if (attr) {

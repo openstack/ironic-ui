@@ -59,22 +59,31 @@
       id: "standalonePorts",
       title: gettext("Standalone Ports Supported"),
       desc: gettext(
-        "Specifies whether ports in this portgroup can be used as standalone ports."),
-      options: ['True', 'False'],
-      value: 'True'});
+        "Specifies whether ports in this portgroup can be used as standalone ports."), // eslint-disable-line max-len
+      options: [{label: 'True', value: true},
+                {label: 'False', value: false}],
+      value: true});
+
+    var modeOptions = function(modes) {
+      var options = [];
+      angular.forEach(modes, function(mode) {
+        options.push({label:mode, value: mode});
+      });
+      return options;
+    };
 
     ctrl.mode = new formFieldService.FormField({
       type: "radio",
       id: "mode",
       title: gettext("Mode"),
       desc: gettext("Linux portgroup mode. For possible values refer to https://www.kernel.org/doc/Documentation/networking/bonding.txt"), // eslint-disable-line max-len
-      options: ['balance-rr',
-                'active-backup',
-                'balance-xor',
-                'broadcast',
-                '802.3ad',
-                'balance-tlb',
-                'balance-alb'],
+      options: modeOptions(['balance-rr',
+                            'active-backup',
+                            'balance-xor',
+                            'broadcast',
+                            '802.3ad',
+                            'balance-tlb',
+                            'balance-alb']),
       value: 'active-backup'});
 
     ctrl.properties = new propertyCollectionService.PropertyCollection({

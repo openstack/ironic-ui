@@ -160,8 +160,9 @@
       title: gettext("PXE enabled"),
       desc: gettext(
         "Indicates whether this port should be used when PXE booting this node"),
-      options: ['True', 'False'],
-      value: 'True'});
+      options: [{label: 'True', value: true},
+                {label: 'False', value: false}],
+      value: true});
 
     ctrl.portgroup_uuid = new formFieldService.FormField({
       type: "select",
