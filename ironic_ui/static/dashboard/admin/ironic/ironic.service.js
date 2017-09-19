@@ -101,11 +101,11 @@
      * http://developer.openstack.org/api-ref/baremetal/?
      * expanded=create-node-detail#list-nodes-detailed
      *
-     * @param {string} uuid – UUID or logical name of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Node
      */
-    function getNode(uuid) {
-      return apiService.get('/api/ironic/nodes/' + uuid)
+    function getNode(nodeId) {
+      return apiService.get('/api/ironic/nodes/' + nodeId)
         .then(function(response) {
           nodeErrorService.checkNodeError(response.data);
           return response.data; // The node
@@ -171,16 +171,11 @@
      *
      * http://developer.openstack.org/api-ref/baremetal/#list-detailed-ports
      *
-     * @param {string} uuid – UUID or logical name of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} List of ports
      */
-    function getPortsWithNode(uuid) {
-      var config = {
-        params : {
-          node_id: uuid
-        }
-      };
-      return apiService.get('/api/ironic/ports/', config)
+    function getPortsWithNode(nodeId) {
+      return apiService.get('/api/ironic/nodes/' + nodeId + '/ports/detail')
         .then(function(response) {
           // Add id and name properties to support delete operations
           // using the deleteModalService
@@ -261,19 +256,19 @@
      *
      * http://developer.openstack.org/api-ref/baremetal/#change-node-power-state
      *
-     * @param {string} uuid – UUID or logical name of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @param {string} state - Target power state ['on', 'off', 'reboot']
      * @param {boolean} soft - Flag for graceful power 'off' or reboot
      * @return {promise} Promise
      */
-    function nodeSetPowerState(uuid, state, soft) {
+    function nodeSetPowerState(nodeId, state, soft) {
       var data = {
         state: state
       };
       if (angular.isDefined(soft)) {
         data.soft = soft;
       }
-      return apiService.patch('/api/ironic/nodes/' + uuid + '/states/power',
+      return apiService.patch('/api/ironic/nodes/' + nodeId + '/states/power',
                               data)
         .then(function() {
           toastService.add('success',
@@ -293,21 +288,21 @@
      *
      * http://developer.openstack.org/api-ref/baremetal/#change-node-provision-state
      *
-     * @param {string} uuid – UUID of a node.
+     * @param {string} nodeId – UUID of a node.
      * @param {string} verb – Provisioning verb used to move node to desired
      *                        target state
      * @param {object []} cleanSteps - List of cleaning steps. Only used
      * when the value of verb is 'clean'
      * @return {promise} Promise
      */
-    function setNodeProvisionState(uuid, verb, cleanSteps) {
-      return apiService.put('/api/ironic/nodes/' + uuid + '/states/provision',
+    function setNodeProvisionState(nodeId, verb, cleanSteps) {
+      return apiService.put('/api/ironic/nodes/' + nodeId + '/states/provision',
                             {verb: verb,
                              clean_steps: cleanSteps})
         .then(function() {
           var msg = gettext(
             'A request has been made to change the provisioning state of node %s');
-          toastService.add('success', interpolate(msg, [uuid], false));
+          toastService.add('success', interpolate(msg, [nodeId], false));
         })
         .catch(function(response) {
           var msg = interpolate(
@@ -347,17 +342,14 @@
      *
      * http://developer.openstack.org/api-ref/baremetal/#delete-node
      *
-     * @param {string} nodeIdent – UUID or logical name of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Promise
      */
-    function deleteNode(nodeIdent) {
-      var data = {
-        node: nodeIdent
-      };
-      return apiService.delete('/api/ironic/nodes/', data)
+    function deleteNode(nodeId) {
+      return apiService.delete('/api/ironic/nodes/' + nodeId)
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to delete node %s: %s'),
-                                [nodeIdent, response.data],
+                                [nodeId, response.data],
                                 false);
           toastService.add('error', msg);
           return $q.reject(msg);
@@ -369,23 +361,23 @@
      *
      * http://developer.openstack.org/api-ref/baremetal/#update-node
      *
-     * @param {string} uuid – UUID of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @param {object[]} patch – Sequence of update operations
      * @return {promise} Promise
      */
-    function updateNode(uuid, patch) {
+    function updateNode(nodeId, patch) {
       var data = {
         patch: patch
       };
-      return apiService.patch('/api/ironic/nodes/' + uuid, data)
+      return apiService.patch('/api/ironic/nodes/' + nodeId, data)
         .then(function(response) {
           var msg = gettext('Successfully updated node %s');
-          toastService.add('success', interpolate(msg, [uuid], false));
+          toastService.add('success', interpolate(msg, [nodeId], false));
           return response.data; // The updated node
         })
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to update node %s: %s'),
-                                [uuid, response.data],
+                                [nodeId, response.data],
                                 false);
           toastService.add('error', msg);
           return $q.reject(msg);
@@ -496,10 +488,7 @@
      * @return {promise} Promise
      */
     function deletePort(portUuid) {
-      var data = {
-        port_uuid: portUuid
-      };
-      return apiService.delete('/api/ironic/ports/', data)
+      return apiService.delete('/api/ironic/ports/' + portUuid)
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to delete port: %s'),
                                 [response.data],
@@ -541,16 +530,16 @@
      * http://developer.openstack.org/api-ref/baremetal/?
      * expanded=start-stop-console-detail#start-stop-console
      *
-     * @param {string} uuid – UUID of a node.
+     * @param {string} nodeId – UUID or logical name of a node.
      * @param {boolean} enabled – true to start the console, false to stop it
      * @return {promise} Promise
      */
-    function nodeSetConsoleMode(uuid, enabled) {
-      return apiService.put('/api/ironic/nodes/' + uuid + '/states/console',
+    function nodeSetConsoleMode(nodeId, enabled) {
+      return apiService.put('/api/ironic/nodes/' + nodeId + '/states/console',
                             {enabled: enabled})
         .then(function(response) {
           var msg = gettext('Refresh page to see updated console details');
-          toastService.add('success', interpolate(msg, [uuid], false));
+          toastService.add('success', interpolate(msg, [nodeId], false));
           return response.data;
         })
         .catch(function(response) {
@@ -560,15 +549,15 @@
         });
     }
 
-    function nodeGetConsole(uuid) {
-      return apiService.get('/api/ironic/nodes/' + uuid + '/states/console')
+    function nodeGetConsole(nodeId) {
+      return apiService.get('/api/ironic/nodes/' + nodeId + '/states/console')
         .then(function(response) {
           return response.data; // Object containing console information
         })
         .catch(function(response) {
           var msg = gettext('Unable to get console for node %s: %s');
           toastService.add('error',
-                           interpolate(msg, [uuid, response.data], false));
+                           interpolate(msg, [nodeId, response.data], false));
           return $q.reject(msg);
         });
     }
