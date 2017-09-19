@@ -665,30 +665,35 @@
         });
 
       // Create portgroup
-      $httpBackend.whenPOST(/\/api\/ironic\/portgroups\/$/)
+      $httpBackend.whenPOST(/\/api\/ironic\/portgroups$/)
         .respond(function(method, url, data) {
           return createPortgroup(JSON.parse(data));
         });
 
-      // Get portgroups. This function is not fully implemented.
-      $httpBackend.whenGET(/\/api\/ironic\/portgroups\//)
+      // Get the portgroups associated with a node
+      $httpBackend.whenGET(/\/api\/ironic\/nodes\/(.+)\/portgroups/,
+                           undefined,
+                           undefined,
+                           ['nodeId'])
         .respond(function(method, url, data, header, params) {
-          var nodeId = params.node_id;
           var status = responseCode.RESOURCE_NOT_FOUND;
           var portgroups = [];
-          if (angular.isDefined(nodes[nodeId])) {
-            angular.forEach(nodes[nodeId].portgroups, function(portgroup) {
-              portgroups.push(portgroup);
-            });
+          if (angular.isDefined(nodes[params.nodeId])) {
+            angular.forEach(nodes[params.nodeId].portgroups,
+                            function(portgroup) {
+                              portgroups.push(portgroup);
+                            });
             status = responseCode.SUCCESS;
           }
           return [status, {portgroups: portgroups}];
         });
 
-      // Delete portgroup. This function is not yet implemented.
-      $httpBackend.whenDELETE(/\/api\/ironic\/portgroups\/$/)
-        .respond(function(method, url, data) {
-          var portgroupId = JSON.parse(data).portgroup_id;
+      // Delete portgroup.
+      $httpBackend.whenDELETE(/\/api\/ironic\/portgroups\/([^\/]+)$/,
+                              undefined,
+                             ['portgroupId'])
+        .respond(function() {
+          var portgroupId = params.portgroup_id;
           var status = responseCode.RESOURCE_NOT_FOUND;
           if (angular.isDefined(portgroups[portgroupId])) {
             var portgroup = portgroups[portgroupId];
