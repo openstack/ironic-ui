@@ -57,6 +57,7 @@
       nodeSetMaintenance: nodeSetMaintenance,
       nodeSetBootDevice: nodeSetBootDevice,
       nodeSetPowerState: nodeSetPowerState,
+      nodeSetRaidConfig: nodeSetRaidConfig,
       setNodeProvisionState: setNodeProvisionState,
       updateNode: updateNode,
       updatePort: updatePort,
@@ -276,6 +277,31 @@
         })
         .catch(function(response) {
           var msg = interpolate(gettext('Unable to power off the node: %s'),
+                                [response.data],
+                                false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Set the target raid configuration of a node
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#set-target-raid-config
+     *
+     * @param {string} nodeId – UUID or logical name of a node.
+     * @param {string} raidConfig - Target raid configuration.
+     * @return {promise} Promise
+     */
+    function nodeSetRaidConfig(nodeId, raidConfig) {
+      return apiService.put('/api/ironic/nodes/' + nodeId + '/states/raid',
+                            {target_raid_config: raidConfig})
+        .then(function() {
+          toastService.add('success',
+                           gettext('Refresh page.'));
+        })
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to set raid config: %s'),
                                 [response.data],
                                 false);
           toastService.add('error', msg);

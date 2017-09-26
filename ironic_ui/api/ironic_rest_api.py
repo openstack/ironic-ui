@@ -430,3 +430,23 @@ class PortgroupPorts(generic.View):
         return {
             'ports': [i.to_dict() for i in ports]
         }
+
+
+@urls.register
+class RaidConfig(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_id>{})/states/raid$'. \
+                format(LOGICAL_NAME_PATTERN)
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, node_id):
+        """Set the RAID configuration for a specified node.
+
+        :param request: HTTP request.
+        :param node_id: Node name or node uuid
+        :return: None
+        """
+        return ironic.node_set_raid_config(
+            request,
+            node_id,
+            request.DATA.get('target_raid_config'))

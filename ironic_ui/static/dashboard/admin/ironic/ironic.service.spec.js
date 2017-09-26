@@ -37,6 +37,7 @@
     'nodeSetBootDevice',
     'nodeSetConsoleMode',
     'nodeSetPowerState',
+    'nodeSetRaidConfig',
     'nodeSetMaintenance',
     'setNodeProvisionState',
     'updateNode',
