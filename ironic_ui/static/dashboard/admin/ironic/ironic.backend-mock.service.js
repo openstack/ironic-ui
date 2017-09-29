@@ -713,6 +713,21 @@
           return [status, ""];
         });
 
+      // Update portgroup
+      $httpBackend.whenPATCH(/\/api\/ironic\/portgroups\/([^\/]+)$/,
+                             undefined,
+                             undefined,
+                             ['portgroupId'])
+        .respond(function(method, url, data, headers, params) {
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          var portgroup = service.getPortgroup(params.portgroupId);
+          if (angular.isDefined(portgroup)) {
+            patchObject(portgroup, JSON.parse(data).patch, portgroups);
+            status = responseCode.SUCCESS;
+          }
+          return [status, portgroup];
+        });
+
       // Get portgroup ports
       $httpBackend.whenGET(/\/api\/ironic\/portgroups\/([^\/]+)\/ports$/,
                            undefined,
