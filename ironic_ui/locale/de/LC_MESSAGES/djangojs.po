@@ -2,14 +2,14 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 3.0.1.dev16\n"
+"Project-Id-Version: ironic-ui 3.0.1.dev24\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-09-15 02:10+0000\n"
+"POT-Creation-Date: 2017-09-26 16:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-09-16 08:03+0000\n"
-"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
+"PO-Revision-Date: 2017-09-29 10:33+0000\n"
+"Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -30,6 +30,9 @@ msgstr ""
 msgid "Abort cleaning"
 msgstr "Bereinigung abbrechen"
 
+msgid "Action"
+msgstr "Aktion"
+
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -38,6 +41,9 @@ msgstr "Extra hinzufügen"
 
 msgid "Add Instance Property"
 msgstr "Instanzeigenschaft hinzufügen"
+
+msgid "Add Logical Disk"
+msgstr "Logische Festplatte hinzufügen."
 
 msgid "Add Property"
 msgstr "Eigenschaft hinzufügen"
@@ -390,6 +396,9 @@ msgstr "Provisionierungsstatus"
 msgid "Put Node(s) Into Maintenance Mode"
 msgstr "Knoten in Wartungsmodus setzen"
 
+msgid "RAID Level"
+msgstr "RAID-Ebene"
+
 msgid "Ramdisk"
 msgstr "Ramdisk"
 
@@ -411,6 +420,9 @@ msgstr "Seite neu laden, um aktualisierte Konsolendetails anzuzeigen"
 msgid "Refresh page to see updated power status"
 msgstr "Aktualisiere Seite, um den Power Status zu sehen"
 
+msgid "Refresh page."
+msgstr "Seite aktualisieren."
+
 msgid "Required"
 msgstr "Erforderlich"
 
@@ -422,6 +434,12 @@ msgstr "Ressourcen-Klasse"
 
 msgid "Root GB"
 msgstr "Root GB"
+
+msgid "Root Volume"
+msgstr "Root-Datenträger"
+
+msgid "Root Volume."
+msgstr "Root-Datenträger"
 
 msgid "SSH Address"
 msgstr "SSH Adresse"
@@ -456,8 +474,20 @@ msgstr "Wählen Sie eine Portgruppe"
 msgid "Set Boot Device"
 msgstr "Boot-Gerät setzen"
 
+msgid "Set RAID Configuration"
+msgstr "RAID-Konfiguration setzen"
+
+msgid "Set RAID configuration"
+msgstr "RAID-Konfiguration setzen"
+
+msgid "Set Target RAID Config"
+msgstr "Ziel RAID-Konfiguration setzen"
+
 msgid "Set boot device"
 msgstr "Boot-Gerät setzen"
+
+msgid "Size GB"
+msgstr "Größe GB"
 
 msgid "Soft power off"
 msgstr "Sanftes Ausschalten"
@@ -465,11 +495,20 @@ msgstr "Sanftes Ausschalten"
 msgid "Soft reboot"
 msgstr "Sanfter Neustart"
 
+msgid "Specifies RAID Level."
+msgstr "Gibt die RAID-Ebene an."
+
+msgid "Specifies logical disk size in GiB. Required."
+msgstr "Gibt die logische Plattengröße in GiB an. Erforderlich."
+
 msgid ""
 "Specifies whether ports in this portgroup can be used as standalone ports."
 msgstr ""
 "Gibt an, ob Ports aus dieser Portgruppe auch eigenständig verwendet werden "
 "können."
+
+msgid "Specifies whether root volume or not."
+msgstr "Gibt an, ob es sich um einen Root-Datenträger handelt."
 
 msgid "Standalone Ports Supported"
 msgstr "Unterstützung für eigenständige Ports"
@@ -639,6 +678,10 @@ msgstr "Konsolenmodus kann nicht gesetzt werden: %s"
 #, python-format
 msgid "Unable to set node provision state: %s"
 msgstr "Kann Provisionierungszustand nicht setzen: %s"
+
+#, python-format
+msgid "Unable to set raid config: %s"
+msgstr "Raid-Konfiguration kann nicht gesetzt werden: %s"
 
 #, python-format
 msgid "Unable to update node %s: %s"
