@@ -5,16 +5,17 @@
 # Martine Marin <mmarin@fr.ibm.com>, 2016. #zanata
 # Nicolas Fournier <nicolas.fournier3@gmail.com>, 2016. #zanata
 # Gérald LONLAS <g.lonlas@gmail.com>, 2017. #zanata
+# Loic Nicolle <loic.nicolle@orange.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.3.1.dev70\n"
+"Project-Id-Version: ironic-ui 3.0.1.dev27\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-18 16:08+0000\n"
+"POT-Creation-Date: 2017-10-05 18:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-03 10:49+0000\n"
-"Last-Translator: Gérald LONLAS <g.lonlas@gmail.com>\n"
+"PO-Revision-Date: 2017-10-09 07:28+0000\n"
+"Last-Translator: Loic Nicolle <loic.nicolle@orange.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -30,6 +31,9 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 msgid "A request has been made to change the provisioning state of node %s"
 msgstr ""
 "Une requête a été envoyé pour changer l'état du provisionnement du nœud %s"
+
+msgid "Action"
+msgstr "Action"
 
 msgid "Actions"
 msgstr "Actions"
@@ -53,6 +57,9 @@ msgstr[0] ""
 "Etes-vous certain de vouloir supprimer le port \"%s\" ? Cette action est "
 "irréversible."
 msgstr[1] ""
+
+msgid "Attributes"
+msgstr "Attributs"
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -108,6 +115,9 @@ msgstr "Info du pilote"
 msgid "Edit Node"
 msgstr "Editer le nœud"
 
+msgid "Edit Port"
+msgstr "Editer le port"
+
 msgid "Enroll Node"
 msgstr "Enroller le nœud"
 
@@ -119,6 +129,9 @@ msgstr "Extras"
 
 msgid "General"
 msgstr "Général"
+
+msgid "Image Source"
+msgstr "Image source"
 
 msgid "Inspection Finished At"
 msgstr "Inspection terminée à"
@@ -134,6 +147,9 @@ msgstr "Infos de l'instance"
 
 msgid "Instance Name"
 msgstr "Nom de l'instance"
+
+msgid "Interface"
+msgstr "Interface"
 
 msgid "Kernel"
 msgstr "Noyau"
@@ -156,8 +172,14 @@ msgstr "Maintenance"
 msgid "Maintenance Reason"
 msgstr "Raison de la maintenance"
 
+msgid "Mode"
+msgstr "Mode"
+
 msgid "Name"
 msgstr "Nom"
+
+msgid "Network Interface"
+msgstr "Interface réseau"
 
 msgid "No Instance"
 msgstr "Pas d'instance"
@@ -229,17 +251,38 @@ msgstr "Mettre le(s) nœud(s) en mode maintenance"
 msgid "Ramdisk"
 msgstr "Ramdisk"
 
+msgid "Reason"
+msgstr "Raison"
+
+msgid "Reboot"
+msgstr "Redémarrage"
+
 msgid "Refresh"
 msgstr "Rafraichir"
 
 msgid "Refresh page to see updated power status"
 msgstr "Rafraichir la page pour voir les statuts d'alimentation à jour"
 
+msgid "Refresh page."
+msgstr "Rafraichir la page."
+
 msgid "Required"
 msgstr "Obligatoire"
 
 msgid "Reservation"
 msgstr "Réservation"
+
+msgid "Root Volume"
+msgstr "Volume racine"
+
+msgid "Root Volume."
+msgstr "Volume racine."
+
+msgid "SSH Key Contents"
+msgstr "Contenu de la clef"
+
+msgid "SSH Password"
+msgstr "Mot de passe SSH"
 
 msgid "SSH Port"
 msgstr "Port SSH"
@@ -249,6 +292,12 @@ msgstr "Utilisateur SSH"
 
 msgid "Select a Driver"
 msgstr "Sélectionner un pilote"
+
+msgid "Size GB"
+msgstr "Taille Go"
+
+msgid "Soft reboot"
+msgstr "Redémarrage logiciel"
 
 msgid "Submit"
 msgstr "Envoyer"
@@ -318,6 +367,10 @@ msgid "Unable to retrieve Ironic drivers: %s"
 msgstr "Impossible de récupérer les pilotes Ironic : %s"
 
 #, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Impossible de récupérer les noeuds Ironic. %s"
+
+#, python-format
 msgid "Unable to retrieve driver properties: %s"
 msgstr "Impossible de récupérer les propriétés du pilote : %s"
 
@@ -339,6 +392,9 @@ msgstr "Impossible de mettre à jour le nœud %s : %s"
 
 msgid "Update Node"
 msgstr "Mettre à jour le nœud"
+
+msgid "Update Port"
+msgstr "Mettre à jour le port"
 
 msgid "Updated At"
 msgstr "Mis à jour à"
