@@ -598,6 +598,24 @@
           return [status, null];
         });
 
+      // Set RAID config
+      $httpBackend.whenPUT(/\/api\/ironic\/nodes\/(.+)\/states\/raid/,
+                           undefined,
+                           undefined,
+                           ['nodeId'])
+        .respond(function(method, url, data, headers, params) {
+          data = JSON.parse(data);
+          var status = responseCode.RESOURCE_NOT_FOUND;
+          if (angular.isDefined(nodes[params.nodeId])) {
+            var node = nodes[params.nodeId];
+            if (angular.isDefined(data.target_raid_config)) {
+              node.base.target_raid_config = data.target_raid_config;
+              status = responseCode.SUCCESS;
+            }
+          }
+          return [status, null];
+        });
+
       // Validate the interfaces associated with a specified node
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/validate$/,
                            undefined,
