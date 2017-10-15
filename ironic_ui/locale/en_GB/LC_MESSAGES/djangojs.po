@@ -1,0 +1,719 @@
+# OpenStack Infra <zanata@openstack.org>, 2015. #zanata
+# Rob Cresswell <robert.cresswell@outlook.com>, 2015. #zanata
+# Andi Chandler <andi@gowling.com>, 2016. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Rob Cresswell <robert.cresswell@outlook.com>, 2016. #zanata
+# Andi Chandler <andi@gowling.com>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: ironic-ui 3.0.1.dev30\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2017-10-13 15:41+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-10-09 07:46+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
+"Language-Team: English (United Kingdom)\n"
+"Language: en-GB\n"
+"X-Generator: Zanata 3.9.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+msgstr " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
+
+msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
+
+#, python-format
+msgid "A request has been made to change the provisioning state of node %s"
+msgstr "A request has been made to change the provisioning state of node %s"
+
+msgid "Abort cleaning"
+msgstr "Abort cleaning"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Add Extra"
+msgstr "Add Extra"
+
+msgid "Add Instance Property"
+msgstr "Add Instance Property"
+
+msgid "Add Logical Disk"
+msgstr "Add Logical Disk"
+
+msgid "Add Property"
+msgstr "Add Property"
+
+#, python-format
+msgid ""
+"Are you sure you want to delete node \"%s\"? This action cannot be undone."
+msgid_plural ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+msgstr[0] ""
+"Are you sure you want to delete node \"%s\"? This action cannot be undone."
+msgstr[1] ""
+"Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete port \"%s\"? This action cannot be undone."
+msgid_plural ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+msgstr[0] ""
+"Are you sure you want to delete port \"%s\"? This action cannot be undone."
+msgstr[1] ""
+"Are you sure you want to delete ports \"%s\"? This action cannot be undone."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgid_plural ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+msgstr[0] ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgstr[1] ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+
+msgid "Attributes"
+msgstr "Attributes"
+
+msgid "Boot Device"
+msgstr "Boot Device"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Chassis ID"
+msgstr "Chassis ID"
+
+msgid "Choose an Image"
+msgstr "Choose an Image"
+
+msgid "Clean"
+msgstr "Clean"
+
+msgid "Clean Node"
+msgstr "Clean Node"
+
+msgid "Clean Step"
+msgstr "Clean Step"
+
+msgid "Clean node"
+msgstr "Clean node"
+
+msgid "Clean steps should be an non-empty array"
+msgstr "Clean steps should be an non-empty array"
+
+msgid "Click link to view console"
+msgstr "Click link to view console"
+
+msgid "Configuration"
+msgstr "Configuration"
+
+msgid "Console Enabled"
+msgstr "Console Enabled"
+
+msgid "Console Info."
+msgstr "Console Info."
+
+msgid "Create Port"
+msgstr "Create Port"
+
+msgid "Create Portgroup"
+msgstr "Create Portgroup"
+
+msgid "Created At"
+msgstr "Created At"
+
+msgid "Current Interface"
+msgstr "Current Interface"
+
+msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "Delete Node"
+msgstr[1] "Delete Nodes"
+
+msgid "Delete Port"
+msgid_plural "Delete Ports"
+msgstr[0] "Delete Port"
+msgstr[1] "Delete Ports"
+
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "Delete Portgroup"
+msgstr[1] "Delete Portgroups"
+
+msgid "Deploy Kernel"
+msgstr "Deploy Kernel"
+
+msgid "Deploy Ramdisk"
+msgstr "Deploy Ramdisk"
+
+msgid "Device"
+msgstr "Device"
+
+msgid "Driver"
+msgstr "Driver"
+
+msgid "Driver Details"
+msgstr "Driver Details"
+
+msgid "Driver Info"
+msgstr "Driver Info"
+
+msgid "Driver Validation"
+msgstr "Driver Validation"
+
+msgid ""
+"Each cleaning step must be an object that contains \"interface\" and \"step"
+"\" properties"
+msgstr ""
+"Each cleaning step must be an object that contains \"interface\" and \"step"
+"\" properties"
+
+msgid "Edit Node"
+msgstr "Edit Node"
+
+msgid "Edit Port"
+msgstr "Edit Port"
+
+msgid "Edit Portgroup"
+msgstr "Edit Portgroup"
+
+msgid "Enroll Node"
+msgstr "Enroll Node"
+
+msgid "Extra"
+msgstr "Extra"
+
+msgid "Extra Property Name"
+msgstr "Extra Property Name"
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "General"
+msgstr "General"
+
+msgid "Image Source"
+msgstr "Image Source"
+
+msgid "Indicates whether this port should be used when PXE booting this node"
+msgstr "Indicates whether this port should be used when PXE booting this node"
+
+msgid "Inspect"
+msgstr "Inspect"
+
+msgid "Inspection Finished At"
+msgstr "Inspection Finished At"
+
+msgid "Inspection Started At"
+msgstr "Inspection Started At"
+
+msgid "Instance ID"
+msgstr "Instance ID"
+
+msgid "Instance Info"
+msgstr "Instance Info"
+
+msgid "Instance Name"
+msgstr "Instance Name"
+
+msgid "Instance Property Name"
+msgstr "Instance Property Name"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "Kernel"
+msgstr "Kernel"
+
+msgid "Last Error"
+msgstr "Last Error"
+
+msgid ""
+"Linux portgroup mode. For possible values refer to https://www.kernel.org/"
+"doc/Documentation/networking/bonding.txt"
+msgstr ""
+"Linux portgroup mode. For possible values refer to https://www.kernel.org/"
+"doc/Documentation/networking/bonding.txt"
+
+msgid "Local Link Connection"
+msgstr "Local Link Connection"
+
+msgid "Local link connection"
+msgstr "Local link connection"
+
+msgid "MAC Address"
+msgstr "MAC Address"
+
+msgid "MAC address"
+msgstr "MAC address"
+
+msgid "MAC address for this port. Required."
+msgstr "MAC address for this port. Required."
+
+msgid "MAC address for this portgroup."
+msgstr "MAC address for this portgroup."
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "MAC address or OpenFlow datapath ID"
+
+msgid "Maintenance"
+msgstr "Maintenance"
+
+msgid "Maintenance Reason"
+msgstr "Maintenance Reason"
+
+msgid "Mode"
+msgstr "Mode"
+
+msgid "Move to"
+msgstr "Move to"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Name for the portgroup."
+msgstr "Name for the portgroup."
+
+msgid "Network Interface"
+msgstr "Network Interface"
+
+msgid "No Instance"
+msgstr "No Instance"
+
+msgid "No network ports have been defined"
+msgstr "No network ports have been defined"
+
+msgid "No portgroups have been defined"
+msgstr "No portgroups have been defined"
+
+msgid "No reason given."
+msgstr "No reason given."
+
+msgid "Node"
+msgstr "Node"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "Node %s is already in target maintenance state."
+
+msgid "Node Driver"
+msgstr "Node Driver"
+
+msgid "Node ID"
+msgstr "Node ID"
+
+msgid "Node Info"
+msgstr "Node Info"
+
+msgid "Node Name"
+msgstr "Node Name"
+
+msgid "One of this, (.*) must be specified\\."
+msgstr "One of this, (.*) must be specified\\."
+
+msgid "Overview"
+msgstr "Overview"
+
+msgid "PXE Enabled"
+msgstr "PXE Enabled"
+
+msgid "PXE enabled"
+msgstr "PXE enabled"
+
+msgid "Persistent"
+msgstr "Persistent"
+
+msgid "Port successfully created"
+msgstr "Port successfully created"
+
+msgid "Portgroup"
+msgstr "Portgroup"
+
+msgid "Portgroup successfully created"
+msgstr "Portgroup successfully created"
+
+msgid "Portgroup that this port belongs to"
+msgstr "Portgroup that this port belongs to"
+
+msgid "Portgroups"
+msgstr "Portgroups"
+
+msgid "Ports"
+msgstr "Ports"
+
+msgid "Power State"
+msgstr "Power State"
+
+msgid "Power off"
+msgstr "Power off"
+
+msgid "Power on"
+msgstr "Power on"
+
+msgid "Properties"
+msgstr "Properties"
+
+msgid "Property Name"
+msgstr "Property Name"
+
+msgid "Provide a list of cleaning steps in JSON format"
+msgstr "Provide a list of cleaning steps in JSON format"
+
+msgid ""
+"Provide a reason for why you are putting the selected node(s) into "
+"maintenance mode (optional)"
+msgstr ""
+"Provide a reason for why you are putting the selected node(s) into "
+"maintenance mode (optional)"
+
+msgid "Provision State"
+msgstr "Provision State"
+
+msgid "Provisioning State"
+msgstr "Provisioning State"
+
+msgid "Provisioning Status"
+msgstr "Provisioning Status"
+
+msgid "Put Node(s) Into Maintenance Mode"
+msgstr "Put Node(s) Into Maintenance Mode"
+
+msgid "RAID Level"
+msgstr "RAID Level"
+
+msgid "Ramdisk"
+msgstr "Ramdisk"
+
+msgid "Reason"
+msgstr "Reason"
+
+msgid "Reboot"
+msgstr "Reboot"
+
+msgid "Refresh"
+msgstr "Refresh"
+
+msgid "Refresh page to see set boot device"
+msgstr "Refresh page to see set boot device"
+
+msgid "Refresh page to see updated console details"
+msgstr "Refresh page to see updated console details"
+
+msgid "Refresh page to see updated power status"
+msgstr "Refresh page to see updated power status"
+
+msgid "Refresh page."
+msgstr "Refresh page."
+
+msgid "Required"
+msgstr "Required"
+
+msgid "Reservation"
+msgstr "Reservation"
+
+msgid "Resource Class"
+msgstr "Resource Class"
+
+msgid "Root GB"
+msgstr "Root GB"
+
+msgid "Root Volume"
+msgstr "Root Volume"
+
+msgid "Root Volume."
+msgstr "Root Volume."
+
+msgid "SSH Address"
+msgstr "SSH Address"
+
+msgid "SSH Key Contents"
+msgstr "SSH Key Contents"
+
+msgid "SSH Key File"
+msgstr "SSH Key File"
+
+msgid "SSH Password"
+msgstr "SSH Password"
+
+msgid "SSH Port"
+msgstr "SSH Port"
+
+msgid "SSH Username"
+msgstr "SSH Username"
+
+msgid "SSH terminal port"
+msgstr "SSH terminal port"
+
+msgid "Select a Driver"
+msgstr "Select a Driver"
+
+msgid "Select a boot device"
+msgstr "Select a boot device"
+
+msgid "Select a portgroup"
+msgstr "Select a portgroup"
+
+msgid "Set Boot Device"
+msgstr "Set Boot Device"
+
+msgid "Set RAID Configuration"
+msgstr "Set RAID Configuration"
+
+msgid "Set RAID configuration"
+msgstr "Set RAID configuration"
+
+msgid "Set Target RAID Config"
+msgstr "Set Target RAID Config"
+
+msgid "Set boot device"
+msgstr "Set boot device"
+
+msgid "Size GB"
+msgstr "Size GB"
+
+msgid "Soft power off"
+msgstr "Soft power off"
+
+msgid "Soft reboot"
+msgstr "Soft reboot"
+
+msgid "Specifies RAID Level."
+msgstr "Specifies RAID Level."
+
+msgid "Specifies logical disk size in GiB. Required."
+msgstr "Specifies logical disk size in GiB. Required."
+
+msgid ""
+"Specifies whether ports in this portgroup can be used as standalone ports."
+msgstr ""
+"Specifies whether ports in this portgroup can be used as standalone ports."
+
+msgid "Specifies whether root volume or not."
+msgstr "Specifies whether root volume or not."
+
+msgid "Standalone Ports Supported"
+msgstr "Standalone Ports Supported"
+
+msgid "Submit"
+msgstr "Submit"
+
+#, python-format
+msgid "Successfully deleted node \"%s\""
+msgid_plural "Successfully deleted nodes \"%s\""
+msgstr[0] "Successfully deleted node \"%s\""
+msgstr[1] "Successfully deleted nodes \"%s\""
+
+#, python-format
+msgid "Successfully deleted port \"%s\""
+msgid_plural "Successfully deleted ports \"%s\""
+msgstr[0] "Successfully deleted port \"%s\""
+msgstr[1] "Successfully deleted ports \"%s\""
+
+#, python-format
+msgid "Successfully deleted portgroup \"%s\""
+msgid_plural "Successfully deleted portgroups \"%s\""
+msgstr[0] "Successfully deleted portgroup \"%s\""
+msgstr[1] "Successfully deleted portgroups \"%s\""
+
+#, python-format
+msgid "Successfully updated node %s"
+msgstr "Successfully updated node %s"
+
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "Successfully updated port %s"
+
+#, python-format
+msgid "Successfully updated portgroup %s"
+msgstr "Successfully updated portgroup %s"
+
+msgid "Target Power State"
+msgstr "Target Power State"
+
+msgid "Target Provision State"
+msgstr "Target Provision State"
+
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is enrolling, inspecting, manageable state; or in "
+"maintenance mode."
+
+msgid "UUID"
+msgstr "UUID"
+
+msgid "Unable to create node update patch."
+msgstr "Unable to create node update patch."
+
+#, python-format
+msgid "Unable to create node: %s"
+msgstr "Unable to create node: %s"
+
+msgid "Unable to create port update patch."
+msgstr "Unable to create port update patch."
+
+#, python-format
+msgid "Unable to create port: %s"
+msgstr "Unable to create port: %s"
+
+msgid "Unable to create portgroup update patch."
+msgstr "Unable to create portgroup update patch."
+
+#, python-format
+msgid "Unable to create portgroup: %s"
+msgstr "Unable to create portgroup: %s"
+
+#, python-format
+msgid "Unable to delete node \"%s\""
+msgid_plural "Unable to delete nodes \"%s\""
+msgstr[0] "Unable to delete node \"%s\""
+msgstr[1] "Unable to delete nodes \"%s\""
+
+#, python-format
+msgid "Unable to delete node %s: %s"
+msgstr "Unable to delete node %s: %s"
+
+#, python-format
+msgid "Unable to delete port \"%s\""
+msgid_plural "Unable to delete ports \"%s\""
+msgstr[0] "Unable to delete port \"%s\""
+msgstr[1] "Unable to delete ports \"%s\""
+
+#, python-format
+msgid "Unable to delete port: %s"
+msgstr "Unable to delete port: %s"
+
+#, python-format
+msgid "Unable to delete portgroup \"%s\""
+msgid_plural "Unable to delete portgroups \"%s\""
+msgstr[0] "Unable to delete portgroup \"%s\""
+msgstr[1] "Unable to delete portgroups \"%s\""
+
+#, python-format
+msgid "Unable to delete portgroup: %s"
+msgstr "Unable to delete portgroup: %s"
+
+#, python-format
+msgid "Unable to get console for node %s: %s"
+msgstr "Unable to get console for node %s: %s"
+
+#, python-format
+msgid "Unable to power off the node: %s"
+msgstr "Unable to power off the node: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic drivers: %s"
+msgstr "Unable to retrieve Ironic drivers: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic node portgroups: %s"
+msgstr "Unable to retrieve Ironic node portgroups: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Unable to retrieve Ironic nodes. %s"
+
+#, python-format
+msgid "Unable to retrieve boot device for Ironic node. %s"
+msgstr "Unable to retrieve boot device for Ironic node. %s"
+
+#, python-format
+msgid "Unable to retrieve driver properties: %s"
+msgstr "Unable to retrieve driver properties: %s"
+
+#, python-format
+msgid "Unable to retrieve portgroup ports: %s"
+msgstr "Unable to retrieve portgroup ports: %s"
+
+#, python-format
+msgid "Unable to retrieve supported boot devices for Ironic node. %s"
+msgstr "Unable to retrieve supported boot devices for Ironic node. %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node ports: %s"
+msgstr "Unable to retrieve the Ironic node ports: %s"
+
+#, python-format
+msgid "Unable to retrieve the Ironic node: %s"
+msgstr "Unable to retrieve the Ironic node: %s"
+
+#, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "Unable to set Ironic node %s maintenance state: %s"
+
+#, python-format
+msgid "Unable to set boot device: %s"
+msgstr "Unable to set boot device: %s"
+
+#, python-format
+msgid "Unable to set console mode: %s"
+msgstr "Unable to set console mode: %s"
+
+#, python-format
+msgid "Unable to set node provision state: %s"
+msgstr "Unable to set node provision state: %s"
+
+#, python-format
+msgid "Unable to set raid config: %s"
+msgstr "Unable to set raid config: %s"
+
+#, python-format
+msgid "Unable to update node %s: %s"
+msgstr "Unable to update node %s: %s"
+
+#, python-format
+msgid "Unable to update port %s: %s"
+msgstr "Unable to update port %s: %s"
+
+#, python-format
+msgid "Unable to update portgroup %s: %s"
+msgstr "Unable to update portgroup %s: %s"
+
+#, python-format
+msgid "Unable to validate node %s: %s"
+msgstr "Unable to validate node %s: %s"
+
+msgid "Unable to validate the JSON input"
+msgstr "Unable to validate the JSON input"
+
+msgid "Update Node"
+msgstr "Update Node"
+
+msgid "Update Port"
+msgstr "Update Port"
+
+msgid "Update Portgroup"
+msgstr "Update Portgroup"
+
+msgid "Updated At"
+msgstr "Updated At"
+
+msgid "Valid"
+msgstr "Valid"
+
+msgid "Virtualization Software"
+msgstr "Virtualisation Software"
+
+msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
+msgstr "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
