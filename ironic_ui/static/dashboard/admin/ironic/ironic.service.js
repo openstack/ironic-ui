@@ -53,6 +53,7 @@
       getPortsWithNode: getPortsWithNode,
       getBootDevice: getBootDevice,
       getSupportedBootDevices: getSupportedBootDevices,
+      injectNmi: injectNmi,
       nodeGetConsole: nodeGetConsole,
       nodeSetConsoleMode: nodeSetConsoleMode,
       nodeSetMaintenance: nodeSetMaintenance,
@@ -349,6 +350,26 @@
             gettext('Unable to set node provision state: %s'),
             [response.data],
             false);
+          toastService.add('error', msg);
+          return $q.reject(msg);
+        });
+    }
+
+    /**
+     * @description Inject Non-Masking Interrupts into a specified node
+     *
+     * http://developer.openstack.org/api-ref/baremetal/#inject-nmi
+     *
+     * @param {string} nodeId – UUID or logical name of a node.
+     * @return {promise} Promise. No content on success.
+     */
+    function injectNmi(nodeId) {
+      return apiService.put('/api/ironic/nodes/' + nodeId +
+                            '/management/inject_nmi')
+        .catch(function(response) {
+          var msg = interpolate(gettext('Unable to inject NMI: %s'),
+                                [response.data],
+                                false);
           toastService.add('error', msg);
           return $q.reject(msg);
         });

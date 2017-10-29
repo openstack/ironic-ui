@@ -70,6 +70,14 @@
                 callback="ctrl.toggleConsoleMode">
           {$ ctrl.node.console_enabled ? 'Disable console' : 'Enable console' | translate $}
         </action>
+        <li role="presentation">
+          <a role="menuitem"
+             ng-click="ctrl.injectNmi();
+                       $event.stopPropagation();
+                       $event.preventDefault()">
+            <span>{$ "Inject NMI" | translate $}</span>
+          </a>
+        </li>
       </menu>
     </action-list>
   </div>

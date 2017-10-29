@@ -255,5 +255,18 @@
       expect(ctrl.node['' + interfaceName + '_interface']).toBeDefined();
       expect(ctrl.nodeValidation[0].hw_interface).toEqual(hwInterface);
     });
+
+    it('should have injectNmi', function () {
+      var ctrl;
+      createNode()
+        .then(function(node) {
+          ctrl = createController(node);
+        })
+        .catch(function() {
+          fail();
+        });
+      ironicBackendMockService.flush();
+      expect(ctrl.injectNmi).toBeDefined();
+    });
   });
 })();
