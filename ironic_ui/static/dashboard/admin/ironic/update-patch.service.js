@@ -82,9 +82,9 @@
 
     /**
      * @description Add instructions to the patch for processing a
-     * specified item
+     * specified property or collection
      *
-     * @param {object} item - item to be added
+     * @param {object} item - value of the item to be added
      * @param {string} path - Path to the item being added
      * @param {string} op - add or remove
      * @return {void}
@@ -92,9 +92,14 @@
     UpdatePatch.prototype._processItem = function(item, path, op) {
       $log.info("UpdatePatch._processItem: " + path + " " + op);
       if (isProperty(item)) {
-        this.patch.push({op: op, path: path, value: item});
+        if (op === 'remove') {
+          this.patch.push({op: op, path: path});
+        } else {
+          this.patch.push({op: op, path: path, value: item});
+        }
       } else if (isCollection(item)) {
-        angular.forEach(item, function(partName, part) {
+        $log.info("Processing collection " + path);
+        angular.forEach(item, function(part, partName) {
           this._processItem(part, path + "/" + partName, op);
         });
       } else {

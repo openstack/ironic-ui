@@ -30,6 +30,7 @@
     'horizon.framework.widgets.toast.service',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.dashboard.admin.ironic.events',
+    'horizon.dashboard.admin.ironic.driverInterfaces',
     'horizon.dashboard.admin.ironic.edit-node.service',
     'horizon.dashboard.admin.ironic.update-patch.service',
     '$log',
@@ -42,6 +43,7 @@
                               toastService,
                               ironic,
                               ironicEvents,
+                              driverInterfaces,
                               editNodeService,
                               updatePatchService,
                               $log,
@@ -67,8 +69,6 @@
 
     ctrl.node[instanceInfoId] = {};
 
-    ctrl.node[instanceInfoId] = {};
-
     init(node);
 
     function init(node) {
@@ -80,11 +80,9 @@
 
     function _loadNodeData(nodeId) {
       ironic.getNode(nodeId).then(function(node) {
-        ctrl.baseNode = node;
-
+        ctrl.baseNode = angular.copy(node);
         ctrl.node.name = node.name;
         ctrl.node.resource_class = node.resource_class;
-        ctrl.node.network_interface = node.network_interface;
         for (var i = 0; i < ctrl.drivers.length; i++) {
           if (ctrl.drivers[i].name === node.driver) {
             ctrl.selectedDriver = ctrl.drivers[i];
@@ -92,12 +90,23 @@
           }
         }
 
-        ctrl.loadDriverProperties(node.driver).then(function() {
+        ctrl.loadDriver(node.driver).then(function() {
           angular.forEach(node.driver_info, function(value, property) {
             if (angular.isDefined(ctrl.driverProperties[property])) {
               ctrl.driverProperties[property].inputValue = value;
             }
           });
+
+          if (ctrl.driverType === 'classic') {
+            ctrl.node.network_interface = node.network_interface;
+            ctrl.node.storage_interface = node.storage_interface;
+          } else {
+            angular.forEach(
+              ctrl.driverInterfaceFields,
+              function(field, interfaceName) {
+                field.value = ctrl.baseNode[interfaceName + '_interface'];
+              });
+          }
         });
 
         ctrl.node.properties = angular.copy(node.properties);
@@ -121,9 +130,9 @@
         this.id = id;
         this.path = path;
       };
+
       angular.forEach([new PatchItem("name", "/name"),
                        new PatchItem("resource_class", "/resource_class"),
-                       new PatchItem("network_interface", "/network_interface"),
                        new PatchItem("driver", "/driver"),
                        new PatchItem("properties", "/properties"),
                        new PatchItem("extra", "/extra"),
@@ -134,6 +143,15 @@
                                            targetNode[item.id],
                                            item.path);
                       });
+
+      angular.forEach(driverInterfaces, function(interfaceName) {
+        var propName = interfaceName + '_interface';
+        if (angular.isDefined(sourceNode[propName])) {
+          patcher.buildPatch(sourceNode[propName],
+                             targetNode[propName],
+                             '/' + propName);
+        }
+      });
 
       return patcher.getPatch();
     };
@@ -152,6 +170,10 @@
                      property.inputValue);
           ctrl.node.driver_info[name] = property.inputValue;
         }
+      });
+
+      angular.forEach(ctrl.driverInterfaceFields, function(field, interfaceName) {
+        ctrl.node[interfaceName + '_interface'] = field.value;
       });
 
       $log.info("Updating node " + JSON.stringify(ctrl.baseNode));

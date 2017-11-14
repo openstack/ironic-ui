@@ -27,31 +27,41 @@
     '$uibModalInstance',
     'horizon.app.core.openstack-service-api.ironic',
     'horizon.app.core.openstack-service-api.glance',
+    'horizon.dashboard.admin.ironic.form-field.service',
     'horizon.dashboard.admin.ironic.base-node.service',
     'horizon.dashboard.admin.ironic.driver-property.service',
     'horizon.dashboard.admin.ironic.graph.service',
     'horizon.dashboard.admin.ironic.validHostNamePattern',
+    'horizon.dashboard.admin.ironic.driverInterfaces',
     '$log',
+    '$q',
     'ctrl'
   ];
 
   function BaseNodeController($uibModalInstance,
                               ironic,
                               glance,
+                              formFieldService,
                               baseNodeService,
                               driverPropertyService,
                               graphService,
                               validHostNamePattern,
+                              driverInterfaces,
                               $log,
+                              $q,
                               ctrl) {
     ctrl.validHostNameRegex = new RegExp(validHostNamePattern);
     ctrl.drivers = null;
     ctrl.images = null;
     ctrl.loadingDriverProperties = false;
+    ctrl.driverType = null;
     // Object containing the set of properties associated with the currently
     // selected driver
     ctrl.driverProperties = null;
     ctrl.driverPropertyGroups = null;
+    // Dictionary of form-fields for supported interfaces indexed by interface
+    // name for the currently selected driver
+    ctrl.driverInterfaceFields = {};
 
     ctrl.modalTitle = gettext("Node");
     ctrl.submitButtonTitle = gettext("Submit");
@@ -91,9 +101,13 @@
       name: null,
       driver: null,
       driver_info: {},
-      network_interface: null,
       resource_class: null
     };
+
+    // Initialize hardware interfaces
+    angular.forEach(driverInterfaces, function(interfaceName) {
+      ctrl.node[interfaceName + '_interface'] = null;
+    });
 
     angular.forEach(ctrl.propertyCollections, function(collection) {
       ctrl.node[collection.id] = {};
@@ -189,8 +203,8 @@
      * @param {string} driverName - Name of driver
      * @return {void}
      */
-    ctrl.loadDriverProperties = function(driverName) {
-      ctrl.node.driver = driverName;
+    ctrl._loadDriverProperties = function(driverName) {
+      ctrl.node.driver = null;
       ctrl.node.driver_info = {};
 
       ctrl.loadingDriverProperties = true;
@@ -198,6 +212,7 @@
       ctrl.driverPropertyGroups = null;
 
       return ironic.getDriverProperties(driverName).then(function(properties) {
+        ctrl.node.driver = driverName;
         ctrl.driverProperties = {};
         angular.forEach(properties, function(desc, property) {
           ctrl.driverProperties[property] =
@@ -274,6 +289,59 @@
         ready = false;
       }
       return ready;
+    };
+
+    /**
+     * @description Load details for a specified driver.
+     *   Includes driver type and supported interfaces.
+     *
+     * @param {string} driverName - driver name
+     * @return {void}
+     */
+    ctrl._loadDriverDetails = function(driverName) {
+      // Re-initialize driver related properties
+      ctrl.driverType = null;
+      angular.forEach(driverInterfaces, function(interfaceName) {
+        ctrl.node[interfaceName + '_interface'] = null;
+      });
+
+      ctrl.driverInterfaceFields = {};
+      return ironic.getDriverDetails(driverName).then(function(details) {
+        ctrl.driverType = details.type;
+
+        // Extract interface information for dynamic drivers
+        angular.forEach(driverInterfaces, function(interfaceName) {
+          var enabled = 'enabled_' + interfaceName + '_interfaces';
+          if (angular.isDefined(details[enabled]) && details[enabled] !== null) {
+            var options = [];
+            angular.forEach(details[enabled], function(value) {
+              options.push({label: value, value: value});
+            });
+
+            ctrl.driverInterfaceFields[interfaceName] =
+              new formFieldService.FormField(
+                {type: 'radio',
+                 id: interfaceName,
+                 title: interfaceName,
+                 options: options,
+                 value: details['default_' + interfaceName + '_interface']});
+          }
+        });
+      });
+    };
+
+    /**
+     * @description Load a specified driver.
+     *
+     * @param {string} driverName - driver name
+     * @return {promise} Promise that completes
+     *  when both properties and details are loaded.
+     */
+    ctrl.loadDriver = function(driverName) {
+      var promises = [];
+      promises.push(ctrl._loadDriverProperties(driverName));
+      promises.push(ctrl._loadDriverDetails(driverName));
+      return $q.all(promises);
     };
   }
 })();

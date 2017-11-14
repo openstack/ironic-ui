@@ -83,8 +83,8 @@
     ctrl.portgroupDetailsTemplateUrl = path + "portgroup-details.html";
 
     ctrl.node = null;
-    ctrl.nodeValidation = [];
-    ctrl.nodeValidationMap = {}; // Indexed by interface
+    ctrl.nodeValidation = []; // List of validation results
+    ctrl.nodeValidationMap = {}; // Validation results indexed by interface
     ctrl.nodeStateTransitions = [];
     ctrl.nodePowerTransitions = [];
     ctrl.ports = [];
@@ -156,19 +156,6 @@
     }
 
     /**
-     * @name horizon.dashboard.admin.ironic.NodeDetailsController.nodeGetInterface
-     * @description Retrieve the current underlying interface for specified interface
-     * type.
-     *
-     * @param {string} interfacename - Name of interface, e.g. power, boot, etc.
-     * @return {string} current name of interface for the requested interface type.
-    */
-    function nodeGetInterface(interfacename) {
-      return ctrl.node[interfacename + '_interface'] === null ? 'None'
-      : ctrl.node[interfacename + '_interface'];
-    }
-
-    /**
      * @name horizon.dashboard.admin.ironic.NodeDetailsController.retrievePorts
      * @description Retrieve the ports associated with the current node,
      * and store them in the controller instance.
@@ -227,7 +214,7 @@
         angular.forEach(response.data, function(interfaceStatus) {
           interfaceStatus.id = interfaceStatus.interface;
           ctrl.nodeValidationMap[interfaceStatus.interface] = interfaceStatus;
-          interfaceStatus.hw_interface = nodeGetInterface(interfaceStatus.interface);
+          interfaceStatus.hw_interface = ctrl.node[interfaceStatus.interface + '_interface'];
           nodeValidation.push(interfaceStatus);
         });
         ctrl.nodeValidation = nodeValidation;

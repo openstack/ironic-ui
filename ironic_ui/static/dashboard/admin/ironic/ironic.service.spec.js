@@ -25,6 +25,7 @@
     'deletePort',
     'deletePortgroup',
     'getDrivers',
+    'getDriverDetails',
     'getDriverProperties',
     'getNode',
     'getNodes',
@@ -120,10 +121,31 @@
         it('getDrivers', function() {
           ironicAPI.getDrivers()
             .then(function(drivers) {
-              expect(drivers.length).toBeGreaterThan(0);
-              angular.forEach(drivers, function(driver) {
-                expect(driver.name).toBeDefined();
-              });
+              expect(drivers).toEqual(ironicBackendMockService.getBaseDrivers());
+            })
+          .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('getDriverDetails', function() {
+          var driver = ironicBackendMockService.params.defaultDriver;
+          ironicAPI.getDriverDetails(driver)
+            .then(function(details) {
+              var drivers = ironicBackendMockService.getDrivers();
+              expect(details).toEqual(drivers[driver].details);
+            })
+          .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('getDriverProperties', function() {
+          var driver = ironicBackendMockService.params.defaultDriver;
+          ironicAPI.getDriverProperties(driver)
+            .then(function(properties) {
+              var drivers = ironicBackendMockService.getDrivers();
+              expect(properties).toEqual(drivers[driver].properties);
             })
           .catch(failTest);
 
@@ -639,6 +661,7 @@
 
           ironicBackendMockService.flush();
         });
+
       });
     });
 })();

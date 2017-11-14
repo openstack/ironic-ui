@@ -26,6 +26,15 @@
            data-target="#driverDetails"
            data-toggle="tab"
            translate>Driver Details</a></li>
+      <li ng-if="ctrl.driverType === 'classic' || !ctrl.driverProperties"
+          class="disabled">
+        <a data-target="#driverInterfaces"
+           translation>Driver Interfaces</a></li>
+      <li ng-if="ctrl.driverType === 'dynamic' && ctrl.driverProperties">
+          <a href=""
+             data-target="#driverInterfaces"
+             data-toggle="tab"
+             translate>Driver Interfaces</a><li>
     </ul>
 
     <!--base node form-->
@@ -69,7 +78,7 @@
             </div>
           </div>
           <!--network interface-->
-          <div class="form-group">
+          <div ng-if="ctrl.driverType === 'classic'" class="form-group">
             <label for="network_interface"
                    class="control-label"
                    translate>
@@ -91,6 +100,29 @@
               </div>
             </div>
           </div>
+          <!--storage interface-->
+          <div ng-if="ctrl.driverType === 'classic'" class="form-group">
+            <label for="storage_interface"
+                   class="control-label"
+                   translate>
+              Storage Interface
+            </label>
+            <span class="help-icon"
+                  data-container="body"
+                  title=""
+                  data-toggle="tooltip"
+                  data-original-title="{$ ::'Interface used for attaching and detaching volumes on this node.' | translate $}">
+              <span class="fa fa-question-circle"></span>
+            </span>
+            <div>
+              <div class="btn-group">
+                <label class="btn btn-default"
+                       ng-repeat="opt in ['noop', 'cinder']"
+                       ng-model="ctrl.node.storage_interface"
+                       uib-btn-radio="opt">{$ opt $}</label>
+              </div>
+            </div>
+          </div>
           <!--node driver-->
           <div class="form-group required">
             <label for="driver"
@@ -102,7 +134,7 @@
                       class="form-control"
                       ng-options="driver as driver.name for driver in ctrl.drivers"
                       ng-model="ctrl.selectedDriver"
-                      ng-change="ctrl.loadDriverProperties(ctrl.selectedDriver.name)">
+                      ng-change="ctrl.loadDriver(ctrl.selectedDriver.name)">
                 <option value="" disabled selected translate>Select a Driver</option>
               </select>
             </div>
@@ -253,7 +285,21 @@
           </div>
         </div>
         <!--end driver details tab-->
-      </div>
+
+        <!-- start of driver interfaces tab -->
+        <div class="tab-pane", id="driverInterfaces">
+          <p class="text-center"
+             ng-if="ctrl.loadingDriverProperties">
+            <small><em><i class="fa fa-spin fa-refresh"></i></em></small>
+          </p>
+          <form id="DriverInterfacesForm", name="DriverInterfacesForm">
+            <div ng-repeat="field in ctrl.driverInterfaceFields"
+                 class="form-group">
+              <form-field field="field" form="DriverInterfacesForm"></form-field>
+            </div>
+          </form>
+        </div>
+        </div>
       <!--end tabbed content-->
     </form>
     <!--end base node form-->

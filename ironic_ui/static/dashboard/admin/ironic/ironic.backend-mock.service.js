@@ -30,12 +30,14 @@
   ironicBackendMockService.$inject = [
     '$httpBackend',
     'horizon.framework.util.uuid.service',
-    'horizon.dashboard.admin.ironic.validMacAddressPattern'
+    'horizon.dashboard.admin.ironic.validMacAddressPattern',
+    'horizon.dashboard.admin.ironic.driverInterfaces'
   ];
 
   function ironicBackendMockService($httpBackend,
                                     uuidService,
-                                    validMacAddressPattern) {
+                                    validMacAddressPattern,
+                                    driverInterfaces) {
     // Default node object.
     var defaultNode = {
       chassis_uuid: null,
@@ -106,6 +108,38 @@
       uuid: undefined
     };
 
+    var drivers = {
+      ipmi: {
+        details: {
+          default_boot_interface: "pxe",
+          default_console_interface: "no-console",
+          default_deploy_interface: "iscsi",
+          default_inspect_interface: "no-inspect",
+          default_management_interface: "ipmitool",
+          default_network_interface: "flat",
+          default_power_interface: "ipmitool",
+          default_raid_interface: "no-raid",
+          default_vendor_interface: "ipmitool",
+          enabled_boot_interfaces: ["pxe"],
+          enabled_console_interfaces: ["no-console"],
+          enabled_deploy_interfaces: ["iscsi", "direct"],
+          enabled_inspect_interfaces: ["no-inspect"],
+          enabled_management_interfaces: ["ipmitool"],
+          enabled_network_interfaces: ["flat", "noop"],
+          enabled_power_interfaces: ["ipmitool"],
+          enabled_raid_interfaces: ["no-raid", "agent"],
+          enabled_vendor_interfaces: ["ipmitool", "no-vendor"],
+          hosts: ["testhost"],
+          name: "ipmi",
+          type: "dynamic"
+        },
+        properties: {
+          deploy_kernel: "UUID (from Glance)",
+          deploy_ramdisk: "UUID (from Glance)"
+        }
+      }
+    };
+
     // Value of the next available system port
     var nextAvailableSystemPort = 1024;
 
@@ -114,12 +148,9 @@
       // Console info
       consoleType: "shellinabox",
       consoleUrl: "http://localhost:",
-      defaultDriver: "agent_ipmitool",
+      defaultDriver: "ipmi",
       supportedBootDevices: ["pxe", "bios", "safe"]
     };
-
-    // List of supported drivers
-    var drivers = [{name: params.defaultDriver}];
 
     // List of images
     var images = [];
@@ -142,6 +173,7 @@
       getNodeBootDevice: getNodeBootDevice,
       getNodeSupportedBootDevices: getNodeSupportedBootDevices,
       nodeGetConsoleUrl: nodeGetConsoleUrl,
+      getBaseDrivers: getBaseDrivers,
       getDrivers: getDrivers,
       getImages: getImages,
       getPort: getPort,
@@ -189,8 +221,22 @@
     function createNode(params) {
       var node = null;
 
-      if (angular.isDefined(params.driver)) {
+      if (angular.isDefined(params.driver) &&
+          angular.isDefined(drivers[params.driver])) {
         node = angular.copy(defaultNode);
+
+        // For dynamic drivers, initialize interfaces based on
+        // default values
+        var details = drivers[params.driver].details;
+        if (details.type === 'dynamic') {
+          angular.forEach(driverInterfaces, function(interfaceName) {
+            var defaultInterface = 'default_' + interfaceName + '_interface';
+            if (angular.isDefined(details[defaultInterface])) {
+              node[interfaceName + '_interface'] = details[defaultInterface];
+            }
+          });
+        }
+
         angular.forEach(params, function(value, key) {
           node[key] = value;
         });
@@ -624,13 +670,28 @@
 
       // Get the currently available drivers
       $httpBackend.whenGET(/\/api\/ironic\/drivers\/$/)
-        .respond(responseCode.SUCCESS, {drivers: drivers});
+        .respond(function() {
+          return [responseCode.SUCCESS,
+                  {drivers: service.getBaseDrivers()}];
+        });
 
       // Get driver properties
       $httpBackend.whenGET(/\/api\/ironic\/drivers\/([^\/]+)\/properties$/,
                            undefined,
                            ['driverName'])
-        .respond(responseCode.SUCCESS, []);
+        .respond(function(method, url, data, headers, params) {
+          return [responseCode.SUCCESS,
+                  drivers[params.driverName].properties];
+        });
+
+      // Get driver details
+      $httpBackend.whenGET(/\/api\/ironic\/drivers\/([^\/]+)$/,
+                           undefined,
+                           ['driverName'])
+        .respond(function(method, url, data, headers, params) {
+          return [responseCode.SUCCESS,
+                  drivers[params.driverName].details];
+        });
 
       // Get glance images
       $httpBackend.whenGET(/\/api\/glance\/images/)
@@ -768,12 +829,27 @@
     } // init()
 
     /**
-     * @description Get the list of supported drivers
+     * @description Get the map of supported drivers
      *
-     * @return {[]} Array of driver objects
+     * @return {Object} Dictionary of driver objects
      */
     function getDrivers() {
       return drivers;
+    }
+
+    /**
+     * @description Get list of available drivers
+     *
+     * @return {[]} List of drivers. Each driver contains name
+     *              and type properties.
+     */
+    function getBaseDrivers() {
+      var driverList = [];
+      angular.forEach(drivers, function(driver) {
+        driverList.push({name: driver.details.name,
+                         type: driver.details.type});
+      });
+      return driverList;
     }
 
     /**

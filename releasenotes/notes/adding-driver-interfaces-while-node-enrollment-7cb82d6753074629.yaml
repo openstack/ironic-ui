@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    Adds support for selecting driver interfaces for dynamic drivers
+    while creating nodes. The support for driver interfaces is not compatible
+    with classic drivers. This feature is supported with Pike and further
+    versions of ironic.

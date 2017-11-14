@@ -450,3 +450,20 @@ class RaidConfig(generic.View):
             request,
             node_id,
             request.DATA.get('target_raid_config'))
+
+
+@urls.register
+class DriverDetails(generic.View):
+
+    url_regex = r'ironic/drivers/(?P<driver_name>[0-9a-zA-Z_-]+)$'. \
+                format(LOGICAL_NAME_PATTERN)
+
+    @rest_utils.ajax()
+    def get(self, request, driver_name):
+        """Get the details of a specified driver
+
+        :param request: HTTP request
+        :param driver_name: Driver name
+        :return: Dictionary of details
+        """
+        return ironic.driver_details(request, driver_name)
