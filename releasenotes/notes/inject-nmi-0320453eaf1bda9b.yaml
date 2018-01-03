@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    Adds support for injecting non-maskable interrupts into a node. A new
+    action ``Inject NMI`` has been added to the node actions dropdown menu
+    in the ``Node Details`` page.

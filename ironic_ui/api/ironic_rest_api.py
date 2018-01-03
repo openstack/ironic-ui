@@ -467,3 +467,20 @@ class DriverDetails(generic.View):
         :return: Dictionary of details
         """
         return ironic.driver_details(request, driver_name)
+
+
+@urls.register
+class InjectNmi(generic.View):
+
+    url_regex = r'ironic/nodes/(?P<node_id>{})/management/inject_nmi$'. \
+                format(LOGICAL_NAME_PATTERN)
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, node_id):
+        """Inject Non-Masking Interrupts into a specified node.
+
+        :param request: HTTP request.
+        :param node_id: Node name or uuid.
+        :return: Empty response.
+        """
+        return ironic.node_inject_nmi(request, node_id)

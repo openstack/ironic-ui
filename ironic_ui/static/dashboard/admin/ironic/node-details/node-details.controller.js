@@ -104,6 +104,7 @@
     ctrl.refresh = refresh;
     ctrl.toggleConsoleMode = toggleConsoleMode;
     ctrl.deletePortgroups = deletePortgroups;
+    ctrl.injectNmi = injectNmi;
 
     $scope.emptyObject = function(obj) {
       return angular.isUndefined(obj) || Object.keys(obj).length === 0;
@@ -352,6 +353,16 @@
       createPortgroupService.createPortgroup(ctrl.node).then(function() {
         ctrl.refresh();
       });
+    }
+
+    /**
+     * @name horizon.dashboard.admin.ironic.NodeDetailsController.injectNmi
+     * @description Inject non-masking interrupts into the current node
+     *
+     * @return {void}
+     */
+    function injectNmi() {
+      ironic.injectNmi(ctrl.node.uuid);
     }
   }
 })();

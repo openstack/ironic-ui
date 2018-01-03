@@ -662,6 +662,24 @@
           return [status, null];
         });
 
+      // Inject NMI
+      $httpBackend.whenPUT(/\/api\/ironic\/nodes\/(.+)\/management\/inject_nmi/,
+                           undefined,
+                           undefined,
+                           ['nodeId'])
+        .respond(function(method, url, data, headers, params) {
+          var status, response;
+          if (angular.isDefined(nodes[params.nodeId])) {
+            status = responseCode.EMPTY_RESPONSE;
+            response = '';
+          } else {
+            status = responseCode.INTERNAL_SERVER_ERROR;
+            response = 'Node ' + params.nodeId +
+              ' could not be found. (HTTP 404)';
+          }
+          return [status, response];
+        });
+
       // Validate the interfaces associated with a specified node
       $httpBackend.whenGET(/\/api\/ironic\/nodes\/([^\/]+)\/validate$/,
                            undefined,

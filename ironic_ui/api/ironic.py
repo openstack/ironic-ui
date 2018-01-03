@@ -259,6 +259,18 @@ def node_get_supported_boot_devices(request, node_id):
     return result.get('supported_boot_devices', [])
 
 
+def node_inject_nmi(request, node_id):
+    """Inject Non-Masking Interrupts into a specified node.
+
+    :param request: HTTP request.
+    :param node_id: The UUID or name of the node.
+    :return: Empty response.
+
+    http://docs.openstack.org/developer/python-ironicclient/api/ironicclient.v1.node.html#ironicclient.v1.node.NodeManager.inject_nmi
+    """
+    return ironicclient(request).node.inject_nmi(node_id)
+
+
 def driver_list(request):
     """Retrieve a list of drivers.
 

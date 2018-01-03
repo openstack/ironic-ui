@@ -34,6 +34,7 @@
     'getPortsWithNode',
     'getBootDevice',
     'getSupportedBootDevices',
+    'injectNmi',
     'nodeGetConsole',
     'nodeSetBootDevice',
     'nodeSetConsoleMode',
@@ -662,6 +663,26 @@
           ironicBackendMockService.flush();
         });
 
+        it('injectNmi', function() {
+          createNode({driver: defaultDriver})
+            .then(function(node) {
+              return ironicAPI.injectNmi(node.uuid);
+            })
+            .then(function(response) {
+              expect(response.status).toBe(204);
+              expect(response.data).toBe('');
+            })
+            .catch(failTest);
+
+          ironicBackendMockService.flush();
+        });
+
+        it('injectNmi - nonexistent node', function() {
+          ironicAPI.injectNmi(0)
+            .then(failTest);
+
+          ironicBackendMockService.flush();
+        });
       });
     });
 })();
