@@ -15,6 +15,9 @@
 import os
 import sys
 
+# Needs to be set for building documents without tox
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ironic_ui.test.settings')
+
 sys.path.insert(0, os.path.abspath('../..'))
 # -- General configuration ----------------------------------------------------
 
