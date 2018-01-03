@@ -20,6 +20,9 @@ import django
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", ".."))
 
+# Needs to be set for building documents without tox
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ironic_ui.test.settings')
+
 sys.path.insert(0, ROOT)
 
 sys.path.insert(0, os.path.abspath('../..'))
