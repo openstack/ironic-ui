@@ -1,15 +1,16 @@
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
+# suhartono <cloudsuhartono@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 3.0.1.dev34\n"
+"Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-11-14 19:59+0000\n"
+"POT-Creation-Date: 2018-01-17 20:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-11-15 04:49+0000\n"
+"PO-Revision-Date: 2018-01-09 05:09+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -207,6 +208,9 @@ msgid "Indicates whether this port should be used when PXE booting this node"
 msgstr ""
 "Menunjukkan apakah port ini harus digunakan saat PXE melakukan booting node "
 "ini"
+
+msgid "Inject NMI"
+msgstr "Menyuntikkan NMI"
 
 msgid "Inspect"
 msgstr "Inspect (periksa)"
@@ -609,6 +613,10 @@ msgstr "Tidak dapat menghapus portgroup: %s"
 #, python-format
 msgid "Unable to get console for node %s: %s"
 msgstr "Tidak dapat mendapatkan konsol untuk node %s: %s"
+
+#, python-format
+msgid "Unable to inject NMI: %s"
+msgstr "Tidak dapat menyuntikkan NMI: %s"
 
 #, python-format
 msgid "Unable to power off the node: %s"
