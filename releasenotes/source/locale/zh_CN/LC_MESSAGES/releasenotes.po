@@ -3,9 +3,9 @@
 # sunanchen <KF.sunanchen@h3c.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 2.0.0\n"
+"Project-Id-Version: ironic-ui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-14 19:59+0000\n"
+"POT-Creation-Date: 2018-02-02 17:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,6 +15,9 @@ msgstr ""
 "Language: zh-CN\n"
 "X-Generator: Zanata 3.9.6\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "2.0.0"
+msgstr "2.0.0版本"
 
 msgid "2.1.0"
 msgstr "2.1.0版本"
@@ -52,6 +55,12 @@ msgid "Ability to enroll a node without all required fields for other states"
 msgstr ""
 "可在缺少部分参数的情况下注册节点，并在创建之后通过编辑节点的方式来切换至其他"
 "状态"
+
+msgid "Add and delete nodes"
+msgstr "增加或删除节点"
+
+msgid "Add and delete ports"
+msgstr "增加或删除端口"
 
 msgid ""
 "Additional properties are displayed by clicking the detail-toggle-selector "
@@ -92,8 +101,22 @@ msgstr ""
 "尽管后端模拟是一个正在进行的工作，但是足够的功能已经存在去支持目前进行中的一"
 "组功能的测试开发。"
 
+msgid "Breadcrumbs have been added"
+msgstr "已增加面包屑导航"
+
 msgid "Current Series Release Notes"
 msgstr "当前版本发布说明"
+
+msgid ""
+"Currently it is not possible to edit a node via the UI once it has been "
+"enrolled. Therefore, the enrollment must be done accurately to ensure the "
+"node is enrolled accurately and can then be made available. At present, any "
+"errors made during enrollment can only be corrected by deleting the node and "
+"enrolling it again."
+msgstr ""
+"目前，不支持通过UI修改已经注册的节点的信息。因此，请务必保证节点注册信息的精"
+"确性和可用性。目前，注册节点过程中出现的错误，只能通过删除节点之后重新注册来"
+"修正"
 
 msgid ""
 "Detailed information for a portgroup is obtained by clicking the detail-"
@@ -127,6 +150,9 @@ msgstr ""
 msgid "Ironic UI Release Notes"
 msgstr "Ironic UI发布说明"
 
+msgid "Known Issues"
+msgstr "已知的问题"
+
 msgid "Move nodes between enroll, manageable, available and active states"
 msgstr "可在已注册，可管理，可用，运行中四种状态间切换"
 
@@ -138,6 +164,9 @@ msgstr "Newton版本发布说明(2.0.0 - 2.1.x)"
 
 msgid "Ocata Series Release Notes (2.2.0 - 2.2.x)"
 msgstr "Ocata版本发布说明(2.2.0 - 2.2.x)"
+
+msgid "Panel hidden if baremetal service or admin rights are not present"
+msgstr "如果当前baremetal service不可用或者admin权限不够，面板将会不可见"
 
 msgid "Pike Series Release Notes"
 msgstr "Pike版本发布说明"
@@ -213,6 +242,15 @@ msgstr ""
 "现在用户能够在定义/编辑端口的时候指定pxe_enabled和local-link-connection属性"
 
 msgid ""
+"This release adds support for adding and deleting nodes. Support has also "
+"been added for adding and deleting ports. The panel will now be hidden if "
+"the baremetal service is not present in the scenario where the collection of "
+"running services differs between multiple keystone regions."
+msgstr ""
+"该版本支持增加和删除节点的功能。同样也支持增加和删除端口。在多keystone "
+"regions的情况下，如果当前场景下，baremetal service不可用，面板将会被隐藏"
+
+msgid ""
 "This release adds support for editing nodes and moving those nodes between "
 "enroll, manageable, available and active states. It is now possible to "
 "enroll a node without all required fields for moving to manageable state "
@@ -222,3 +260,6 @@ msgstr ""
 "这个版本增加了编辑节点，在已注册、可管理、可用、运行中四种状态间切换的支持。"
 "现在可在缺少部分参数的情况下注册节点，并在创建之后通过编辑节点的方式来切换至"
 "可管理状态"
+
+msgid "UX improvements across the interface"
+msgstr "通过修改接口的方式提升UX "
