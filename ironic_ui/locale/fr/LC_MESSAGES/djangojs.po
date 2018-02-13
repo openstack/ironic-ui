@@ -6,15 +6,16 @@
 # Nicolas Fournier <nicolas.fournier3@gmail.com>, 2016. #zanata
 # Gérald LONLAS <g.lonlas@gmail.com>, 2017. #zanata
 # Loic Nicolle <loic.nicolle@orange.com>, 2017. #zanata
+# Loic Nicolle <loic.nicolle@orange.com>, 2018. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 3.0.1.dev30\n"
+"Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-10-13 15:41+0000\n"
+"POT-Creation-Date: 2018-02-05 16:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-10-20 02:49+0000\n"
+"PO-Revision-Date: 2018-02-12 03:24+0000\n"
 "Last-Translator: Loic Nicolle <loic.nicolle@orange.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -196,6 +197,9 @@ msgstr "Pas d'instance"
 msgid "No network ports have been defined"
 msgstr "Aucun port réseau n'a été défini"
 
+msgid "No reason given."
+msgstr "Aucune raison fournie."
+
 msgid "Node"
 msgstr "Nœud"
 
@@ -225,6 +229,9 @@ msgstr "Persistant"
 
 msgid "Port successfully created"
 msgstr "Port crée avec succès"
+
+msgid "Portgroup successfully created"
+msgstr "Portgroup crée avec succès"
 
 msgid "Ports"
 msgstr "Ports"
@@ -274,6 +281,9 @@ msgstr "Redémarrage"
 
 msgid "Refresh"
 msgstr "Rafraichir"
+
+msgid "Refresh page to see updated console details"
+msgstr "Rafraîchir la page pour voir les détails de la console mis à jour"
 
 msgid "Refresh page to see updated power status"
 msgstr "Rafraichir la page pour voir les statuts d'alimentation à jour"

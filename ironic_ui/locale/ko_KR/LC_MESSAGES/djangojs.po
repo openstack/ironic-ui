@@ -9,16 +9,17 @@
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 # Wonil Choi <wonil0522@gmail.com>, 2017. #zanata
 # minwook-shin <minwook0106@gmail.com>, 2017. #zanata
+# Ian Y. Choi <ianyrchoi@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: ironic-ui 3.0.1.dev16\n"
+"Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-09-15 02:10+0000\n"
+"POT-Creation-Date: 2018-02-05 16:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-09-16 08:03+0000\n"
-"Last-Translator: Wonil Choi <wonil0522@gmail.com>\n"
+"PO-Revision-Date: 2018-02-11 07:39+0000\n"
+"Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -37,6 +38,9 @@ msgstr "노드 %s의 프로비저닝 상태 변경을 위한 요청이 처리되
 msgid "Abort cleaning"
 msgstr "클린업 취소"
 
+msgid "Action"
+msgstr "동작"
+
 msgid "Actions"
 msgstr "작업"
 
@@ -45,6 +49,9 @@ msgstr "Extra 추가"
 
 msgid "Add Instance Property"
 msgstr "인스턴스 속성 추가"
+
+msgid "Add Logical Disk"
+msgstr "논리 디스크 추가"
 
 msgid "Add Property"
 msgstr "속성 추가"
@@ -62,6 +69,16 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to delete ports \"%s\"? This action cannot be undone."
 msgstr[0] "포트 \"%s\" 를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgid_plural ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+msgstr[0] ""
+"포트그룹 \"%s\" 을(를) 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
 
 msgid "Attributes"
 msgstr "특성"
@@ -86,6 +103,12 @@ msgstr "클린 노드"
 
 msgid "Clean Step"
 msgstr "클린업 단계"
+
+msgid "Clean node"
+msgstr "클린 노드"
+
+msgid "Clean steps should be an non-empty array"
+msgstr "클린 단계는 비어있지 않은 배열이어야 합니다."
 
 msgid "Click link to view console"
 msgstr "콘솔을 보려면 링크를 클릭하세요"
@@ -122,6 +145,10 @@ msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "포트 삭제"
 
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "포트그룹 삭제"
+
 msgid "Deploy Kernel"
 msgstr "커널 배치하기"
 
@@ -140,8 +167,18 @@ msgstr "드라이버 세부사항"
 msgid "Driver Info"
 msgstr "드라이버 정보"
 
+msgid "Driver Interfaces"
+msgstr "드라이버 인터페이스"
+
 msgid "Driver Validation"
 msgstr "드라이버 확인"
+
+msgid ""
+"Each cleaning step must be an object that contains \"interface\" and \"step"
+"\" properties"
+msgstr ""
+"각 클리닝 단계는 \"interface\"와 \"step\" 속성을 가지고 있는 오브젝트여야 합"
+"니다."
 
 msgid "Edit Node"
 msgstr "노드 편집"
@@ -169,6 +206,12 @@ msgstr "일반"
 
 msgid "Image Source"
 msgstr "이미지 소스"
+
+msgid "Indicates whether this port should be used when PXE booting this node"
+msgstr "이 노드에서 PXE 부팅 시 이 포트가 사용되어야 하는지를 가리킵니다."
+
+msgid "Inject NMI"
+msgstr "NMI 주입"
 
 msgid "Inspect"
 msgstr "검사"
@@ -199,6 +242,13 @@ msgstr "커널"
 
 msgid "Last Error"
 msgstr "마지막 에러"
+
+msgid ""
+"Linux portgroup mode. For possible values refer to https://www.kernel.org/"
+"doc/Documentation/networking/bonding.txt"
+msgstr ""
+"리눅스 포트그룹 모드. 가능한 설정은 https://www.kernel.org/doc/Documentation/"
+"networking/bonding.txt 을 참고하세요."
 
 msgid "Local Link Connection"
 msgstr "로컬 링크 접속"
@@ -256,6 +306,10 @@ msgstr "이유가 주어지지 않았습니다."
 
 msgid "Node"
 msgstr "노드"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "노드 %s는 이미 대상 유지보수 상태입니다."
 
 msgid "Node Driver"
 msgstr "노드 드라이버"
@@ -317,6 +371,9 @@ msgstr "속성"
 msgid "Property Name"
 msgstr "속성 명칭"
 
+msgid "Provide a list of cleaning steps in JSON format"
+msgstr "클리닝 단계의 리스트는 JSON 형식으로 제공하세요."
+
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
 "maintenance mode (optional)"
@@ -333,6 +390,9 @@ msgstr "권한설정 상태"
 
 msgid "Put Node(s) Into Maintenance Mode"
 msgstr "노드(들)을 유지보수 모드로 넣기"
+
+msgid "RAID Level"
+msgstr "RAID 레벨"
 
 msgid "Ramdisk"
 msgstr "램디스크"
@@ -355,6 +415,9 @@ msgstr "업데이트된 콘솔 자세한 정보를 보기 위해 페이지 새�
 msgid "Refresh page to see updated power status"
 msgstr "갱신된 전원 상태를 보기 위해 페이지 새로 고치기"
 
+msgid "Refresh page."
+msgstr "페이지를 갱신합니다."
+
 msgid "Required"
 msgstr "필수항목"
 
@@ -366,6 +429,12 @@ msgstr "리소스 클래스"
 
 msgid "Root GB"
 msgstr "루트 GB"
+
+msgid "Root Volume"
+msgstr "루트 볼륨"
+
+msgid "Root Volume."
+msgstr "루트 볼륨."
 
 msgid "SSH Address"
 msgstr "SSH주소"
@@ -400,15 +469,45 @@ msgstr "포트그룹 선택"
 msgid "Set Boot Device"
 msgstr "부트 디바이스 설정"
 
+msgid "Set RAID Configuration"
+msgstr "RAID 구성 설정"
+
+msgid "Set RAID configuration"
+msgstr "RAID 구성 설정"
+
+msgid "Set Target RAID Config"
+msgstr "대상 RAID 구성 설정"
+
 msgid "Set boot device"
 msgstr "부트 디바이스 설정"
+
+msgid "Size GB"
+msgstr "크기 (GB)"
+
+msgid "Soft power off"
+msgstr "소프트 전원 끄기"
 
 msgid "Soft reboot"
 msgstr "소프트 재시작"
 
+msgid "Specifies RAID Level."
+msgstr "RAID 레벨을 지정합니다."
+
+msgid "Specifies logical disk size in GiB. Required."
+msgstr "논리 디스크 크기를 GiB로 지정합니다. 필수."
+
 msgid ""
 "Specifies whether ports in this portgroup can be used as standalone ports."
 msgstr "이 포트그룹 내 포트들이 standalone 포트로 사용 가능한 지 지정합니다."
+
+msgid "Specifies whether root volume or not."
+msgstr "루트 볼륨인지 아닌지 지정합니다."
+
+msgid "Standalone Ports Supported"
+msgstr "독립형 포트 지원"
+
+msgid "Storage Interface"
+msgstr "스토리지 인터페이스"
 
 msgid "Submit"
 msgstr "제출"
@@ -422,6 +521,11 @@ msgstr[0] "노드 \"%s\" 를 성공적으로 삭제했습니다"
 msgid "Successfully deleted port \"%s\""
 msgid_plural "Successfully deleted ports \"%s\""
 msgstr[0] "포트 \"%s\" 를 성공적으로 삭제했습니다"
+
+#, python-format
+msgid "Successfully deleted portgroup \"%s\""
+msgid_plural "Successfully deleted portgroups \"%s\""
+msgstr[0] "포트그룹 \"%s\" 을(를) 성공적으로 삭제했습니다."
 
 #, python-format
 msgid "Successfully updated node %s"
@@ -441,6 +545,16 @@ msgstr "대상 전원 상태"
 msgid "Target Provision State"
 msgstr "대상 권한설정 상태"
 
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"연결된 노드가 등록, 검사, 관리 가능한 상태이거나 유지보수 모드가 아니라면, 포"
+"트가 업데이트된 연결 속성(pxe_enabled, local_link_connection, portgroup_id)"
+"을 가질 수 없어서 이 필드는 비활성화 되었습니다."
+
 msgid "UUID"
 msgstr "UUID"
 
@@ -458,6 +572,9 @@ msgstr "포트 업데이트 패치를 만들 수 없습니다."
 msgid "Unable to create port: %s"
 msgstr "포트를 생성할 수 없습니다: %s"
 
+msgid "Unable to create portgroup update patch."
+msgstr "포트그룹 업데이트 패치를 만들 수 없습니다."
+
 #, python-format
 msgid "Unable to create portgroup: %s"
 msgstr "포트그룹을 생성할 수 없습니다: %s"
@@ -471,7 +588,7 @@ msgstr[0] "노드 \"%s\" 를 삭제할 수 없습니다"
 msgid "Unable to delete node %s: %s"
 msgstr "노드 %s를 삭제할 수 없습니다: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete ports \"%s\""
 msgstr[0] "포트를 삭제할 수 없습니다: %s"
@@ -481,12 +598,21 @@ msgid "Unable to delete port: %s"
 msgstr "포트를 삭제할 수 없습니다: %s"
 
 #, python-format
+msgid "Unable to delete portgroup \"%s\""
+msgid_plural "Unable to delete portgroups \"%s\""
+msgstr[0] "포트그룹 \"%s\" 을(를) 삭제할 수 없습니다."
+
+#, python-format
 msgid "Unable to delete portgroup: %s"
 msgstr "포트그룹을 삭제할 수 없습니다: %s"
 
 #, python-format
 msgid "Unable to get console for node %s: %s"
 msgstr "노드 %s를 위한 콘솔을 가져올 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to inject NMI: %s"
+msgstr "NMI: %s 을(를) 주입할 수 없습니다"
 
 #, python-format
 msgid "Unable to power off the node: %s"
@@ -543,6 +669,10 @@ msgstr "콘솔 모드를 설정할 수 없습니다: %s"
 #, python-format
 msgid "Unable to set node provision state: %s"
 msgstr "노드 공급 상태를 설정 할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to set raid config: %s"
+msgstr "raid 구성: %s 을(를) 읽을 수 없습니다"
 
 #, python-format
 msgid "Unable to update node %s: %s"
