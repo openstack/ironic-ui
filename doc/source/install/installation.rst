@@ -3,6 +3,9 @@
 Ironic-UI Installation
 ======================
 
+Manual Installation
+-------------------
+
 Please note that the following instructions assume that you have an existing
 installation of the OpenStack Horizon dashboard application. For Horizon
 installation please see http://docs.openstack.org/developer/horizon/quickstart.html
@@ -40,8 +43,14 @@ installation please see http://docs.openstack.org/developer/horizon/quickstart.h
 
    The Bare Metal service should now be visible in the Horizon navigation.
 
-Ironic-UI Installation with DevStack
-------------------------------------
+6. Start the server in test mode with the ``npm run test`` command.
+
+7. Access the test page in order to initate tests.
+
+   http://localhost:8000/jasmine/?spec=horizon.dashboard.admin.ironic
+
+Installation with DevStack
+--------------------------
 
 In order to use the Ironic UI with devstack, you will need to enable
 the UI plugin separately in your installation local.conf file.
@@ -51,18 +60,11 @@ This is done in a similar fashion to enabling Ironic for devstack.
 Make sure you have horizon enabled, which is the default in devstack.
 
 Then, enable the Ironic UI plugin appending the following line to the end of the local.conf file,
-just after Ironic plugin enablement:
+just after Ironic plugin enablement::
 
     enable_plugin ironic-ui https://github.com/openstack/ironic-ui
 
 After this, you can run ./stack.sh from the devstack directory.
 
-   The Ironic Bare Metal Provisioning plugin should now be visible in the Horizon
-   navigation.
-
-6. Run JavaScript unit tests by either:
-
-   Running the tests locally with npm run test.
-
-   Visiting http://localhost:8000/jasmine/?spec=horizon.dashboard.admin.ironic in your
-   browser.
+The Bare Metal Provisioning plugin should now be visible in the Horizon
+navigation.
