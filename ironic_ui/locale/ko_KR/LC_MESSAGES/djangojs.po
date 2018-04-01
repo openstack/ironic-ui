@@ -14,11 +14,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-02-22 19:02+0000\n"
+"POT-Creation-Date: 2018-03-09 11:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-11 07:39+0000\n"
+"PO-Revision-Date: 2018-03-13 02:08+0000\n"
 "Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko_KR\n"
@@ -144,6 +144,10 @@ msgstr[0] "노드 삭제"
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "포트 삭제"
+
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "포트그룹 삭제"
 
 msgid "Deploy Kernel"
 msgstr "커널 배치하기"
@@ -302,6 +306,10 @@ msgstr "이유가 주어지지 않았습니다."
 
 msgid "Node"
 msgstr "노드"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "노드 %s는 이미 대상 유지보수 상태입니다."
 
 msgid "Node Driver"
 msgstr "노드 드라이버"
@@ -476,6 +484,9 @@ msgstr "부트 디바이스 설정"
 msgid "Size GB"
 msgstr "크기 (GB)"
 
+msgid "Soft power off"
+msgstr "소프트 전원 끄기"
+
 msgid "Soft reboot"
 msgstr "소프트 재시작"
 
@@ -577,7 +588,7 @@ msgstr[0] "노드 \"%s\" 를 삭제할 수 없습니다"
 msgid "Unable to delete node %s: %s"
 msgstr "노드 %s를 삭제할 수 없습니다: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete ports \"%s\""
 msgstr[0] "포트를 삭제할 수 없습니다: %s"

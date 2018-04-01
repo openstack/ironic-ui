@@ -1,15 +1,16 @@
 # Eunseop Shin <kairos9603@khu.ac.kr>, 2016. #zanata
 # minwook-shin <minwook0106@gmail.com>, 2017. #zanata
+# Sungjin Kang <gang.sungjin@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 19:02+0000\n"
+"POT-Creation-Date: 2018-03-09 11:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-10 10:39+0000\n"
-"Last-Translator: minwook-shin <minwook0106@gmail.com>\n"
+"PO-Revision-Date: 2018-04-01 05:10+0000\n"
+"Last-Translator: Sungjin Kang <gang.sungjin@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko_KR\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -26,6 +27,9 @@ msgstr "2.2.0"
 
 msgid "3.0.0"
 msgstr "3.0.0"
+
+msgid "3.1.0"
+msgstr "3.1.0"
 
 msgid "Ability to enroll a node without all required fields for other states"
 msgstr "다른 상태를 위해 요구되는 모든 필드를 제외한 노드 등록 능력"
@@ -82,6 +86,34 @@ msgstr "패널은 베어메탈 서비스 이거나 관지자의 권한이 없을
 
 msgid "Pike Series Release Notes"
 msgstr "Pike 시리즈에 대한 릴리즈 노트"
+
+msgid "Prelude"
+msgstr "서문"
+
+msgid "Queens Series Release Notes"
+msgstr "Queens 시리즈 릴리즈 노트"
+
+msgid ""
+"The port table in node-details/configuration tab has been modified as "
+"follows:"
+msgstr "노드 세부 정보 / 구성 탭에서 포트 표가 다음과 같이 수정되었습니다."
+
+msgid ""
+"The user is now able to abort a node cleaning operation. When cleaning is "
+"aborted the node is moved from the ``CLEAN WAIT`` state to the ``CLEAN "
+"FAIL`` state. When appropriate an \"Abort cleaning\" action will be present "
+"in individual node action menu."
+msgstr ""
+"이제 사용자는 노드 정리 작업을 중단 할 수 있습니다. 정리 프로세스가 중단되면 "
+"노드는 ``CLEAN WAIT`` 상태에서 ``CLEAN FAIL`` 상태로 변합니다. 정리 프로세스"
+"중 노드 동작 메뉴에 \"정리 작업 중단\" 동작 버튼이 보입니다."
+
+msgid ""
+"The user is now able to specify the pxe_enabled and local-link-connection "
+"attributes as part of defining/editing ports."
+msgstr ""
+"이제 사용자는 포트 정의 / 편집의 일부 항목으로 pxe_enabled, local-link-"
+"connection 속성을 지정할 수 있습니다."
 
 msgid ""
 "This release adds support for adding and deleting nodes. Support has also "
