@@ -16,8 +16,8 @@ signed OpenStack's contributor's agreement.
    * http://docs.openstack.org/infra/manual/developers.html
    * http://wiki.openstack.org/CLA
 
-LaunchPad Project
------------------
+LaunchPad
+---------
 
 Most of the tools used for OpenStack depend on a launchpad.net ID for
 authentication.
@@ -25,13 +25,13 @@ authentication.
 .. seealso::
 
    * https://launchpad.net
-   * https://launchpad.net/ironic-ui
+   * https://storyboard.openstack.org/#!/project/952
 
 Project Hosting Details
 -------------------------
 
 Bug tracker
-    http://launchpad.net/ironic-ui
+    https://storyboard.openstack.org/#!/project/952
 
 Mailing list (prefix subjects with ``[ironic-ui]`` for faster responses)
     http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-dev

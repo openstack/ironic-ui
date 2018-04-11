@@ -17,7 +17,7 @@ metal nodes, ports and drivers.
 * Free software: Apache license
 * Documentation: http://docs.openstack.org/ironic-ui/latest
 * Source: https://git.openstack.org/cgit/openstack/ironic-ui
-* Bugs: http://bugs.launchpad.net/ironic-ui
+* Bugs: https://storyboard.openstack.org/#!/project/952
 
 Features
 --------
