@@ -8,7 +8,8 @@ Manual Installation
 
 Please note that the following instructions assume that you have an existing
 installation of the OpenStack Horizon dashboard application. For Horizon
-installation please see http://docs.openstack.org/developer/horizon/quickstart.html
+installation please see
+https://docs.openstack.org/horizon/latest/contributor/quickstart.html.
 
 1. Clone the Ironic UI repository::
 

@@ -15,16 +15,16 @@ the project at any specific prior release.
 For information on any current or prior version of Ironic, see `the release
 notes`_.
 
-.. _the release notes: http://docs.openstack.org/releasenotes/ironic-ui/
+.. _the release notes: https://docs.openstack.org/releasenotes/ironic-ui/
 
 For more information on ironic, see `the ironic documentation`_.
 
-.. _the ironic documentation: http://docs.openstack.org/developer/ironic/
+.. _the ironic documentation: https://docs.openstack.org/ironic/latest/
 
 .. toctree::
   :maxdepth: 1
 
-  Introduction to ironic <http://docs.openstack.org/developer/ironic/deploy/user-guide.html>
+  Introduction to ironic <https://docs.openstack.org/ironic/latest/user/index.html>
   Installing the ironic UI <install/index>
   Contributing <contributor/index>
-  Release notes <http://docs.openstack.org/releasenotes/ironic-ui>
+  Release notes <https://docs.openstack.org/releasenotes/ironic-ui>

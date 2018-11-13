@@ -13,19 +13,8 @@ signed OpenStack's contributor's agreement.
 
 .. seealso::
 
-   * http://docs.openstack.org/infra/manual/developers.html
-   * http://wiki.openstack.org/CLA
-
-LaunchPad
----------
-
-Most of the tools used for OpenStack depend on a launchpad.net ID for
-authentication.
-
-.. seealso::
-
-   * https://launchpad.net
-   * https://storyboard.openstack.org/#!/project/952
+   * https://docs.openstack.org/infra/manual/developers.html
+   * https://wiki.openstack.org/CLA
 
 Project Hosting Details
 -------------------------
@@ -33,7 +22,7 @@ Project Hosting Details
 Bug tracker
     https://storyboard.openstack.org/#!/project/952
 
-Mailing list (prefix subjects with ``[ironic-ui]`` for faster responses)
+Mailing list (prefix subjects with ``[ironic]`` for faster responses)
     http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-discuss
 
 Code Hosting
@@ -41,5 +30,3 @@ Code Hosting
 
 Code Review
     https://review.opendev.org/#/q/status:open+project:openstack/ironic-ui,n,z
-
-
