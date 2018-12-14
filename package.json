@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://git.openstack.org/openstack/ironic-ui"
   },
-  "author": "Openstack <openstack-dev@lists.openstack.org>",
+  "author": "Openstack <openstack-discuss@lists.openstack.org>",
   "license": "Apache-2.0",
   "devDependencies": {
     "eslint": "1.10.3",
