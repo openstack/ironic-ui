@@ -141,7 +141,7 @@
     }
 
     /**
-     * @description Evaluate the experssion using property values from
+     * @description Evaluate the expression using property values from
      * a specified set
      *
      * @param {object} propertySet - Dictionary of DriverProperty instances
