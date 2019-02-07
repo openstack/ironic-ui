@@ -1,3 +1,26 @@
+- job:
+    name: ironic-ui-integration-tests
+    parent: horizon-integration-tests
+    required-projects:
+      - name: openstack/horizon
+      - name: openstack/ironic
+      - name: openstack/python-ironicclient
+      - name: openstack/ironic-ui
+    roles:
+      - zuul: openstack-infra/devstack
+      - zuul: openstack/horizon
+    irrelevant-files:
+      - ^.*\.rst$
+      - ^doc/.*$
+      - ^releasenotes/.*$
+    vars:
+      devstack_plugins:
+        ironic: https://git.openstack.org/openstack/ironic
+        ironic-ui: https://git.openstack.org/openstack/ironic-ui
+      devstack_services:
+        horizon: true
+      tox_envlist: integration
+
 - project:
     templates:
       - check-requirements
@@ -8,3 +31,7 @@
       - openstack-python36-jobs
       - publish-openstack-docs-pti
       - release-notes-jobs-python3
+    check:
+      jobs:
+        - ironic-ui-integration-tests:
+            voting: false
