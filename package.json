@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://git.openstack.org/openstack/ironic-ui"
+    "url": "https://git.openstack.org/openstack/ironic-ui"
   },
   "author": "Openstack <openstack-dev@lists.openstack.org>",
   "license": "Apache-2.0",
