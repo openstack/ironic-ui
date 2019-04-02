@@ -1,18 +1,28 @@
 # Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
+# Franco Tseng <francotseng18@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-02-22 19:02+0000\n"
+"POT-Creation-Date: 2019-03-29 16:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-08-09 08:49+0000\n"
-"Last-Translator: Shengjing Zhu <zsj950618@gmail.com>\n"
+"PO-Revision-Date: 2019-03-30 01:32+0000\n"
+"Last-Translator: Franco Tseng <francotseng18@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
 "X-Generator: Zanata 4.3.3\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
+msgid "Admin"
+msgstr "管理员"
+
 msgid "Ironic Bare Metal Provisioning"
 msgstr "裸金属 Ironic 配置向导"
+
+msgid "Node Details"
+msgstr "节点详情"
+
+msgid "System"
+msgstr "系统"
