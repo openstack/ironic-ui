@@ -1,22 +1,14 @@
-# OpenStack Infra <zanata@openstack.org>, 2015. #zanata
-# zhangjingwen <zhangjingwen@cn.fujitsu.com>, 2015. #zanata
-# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
-# Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
-# sunanchen <KF.sunanchen@h3c.com>, 2016. #zanata
-# vuuv <froms2008@gmail.com>, 2016. #zanata
-# Bin <liubin@glab.cn>, 2017. #zanata
-# Gaoxiao Zhu <zhu.gaoxiao@h3c.com>, 2017. #zanata
-# liujunpeng <liujunpeng@inspur.com>, 2017. #zanata
+# Franco Tseng <francotseng18@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-02-22 19:02+0000\n"
+"POT-Creation-Date: 2019-04-01 09:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-15 02:34+0000\n"
-"Last-Translator: Bin <liubin@glab.cn>\n"
+"PO-Revision-Date: 2019-04-02 02:19+0000\n"
+"Last-Translator: Franco Tseng <francotseng18@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -35,14 +27,20 @@ msgstr "更改节点 \"%s\" 服务状态的请求已提交。"
 msgid "Abort cleaning"
 msgstr "放弃清理"
 
-msgid "Actions"
+msgid "Action"
 msgstr "动作"
+
+msgid "Actions"
+msgstr "操作"
 
 msgid "Add Extra"
 msgstr "增加额外信息"
 
 msgid "Add Instance Property"
 msgstr "添加实例属性"
+
+msgid "Add Logical Disk"
+msgstr "添加逻辑盘"
 
 msgid "Add Property"
 msgstr "添加属性"
@@ -52,7 +50,7 @@ msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
 msgid_plural ""
 "Are you sure you want to delete nodes \"%s\"? This action cannot be undone."
-msgstr[0] "你确认要删除节点\"%s\"嘛？此操作将不可恢复"
+msgstr[0] "你确认要删除节点\"%s\"吗？此操作将不可恢复"
 
 #, python-format
 msgid ""
@@ -157,6 +155,9 @@ msgstr "驱动详情"
 msgid "Driver Info"
 msgstr "驱动信息"
 
+msgid "Driver Interfaces"
+msgstr "驱动接口"
+
 msgid "Driver Validation"
 msgstr "驱动验证"
 
@@ -187,13 +188,16 @@ msgid "Extras"
 msgstr "额外信息"
 
 msgid "General"
-msgstr "概要信息"
+msgstr "常规"
 
 msgid "Image Source"
 msgstr "镜像源"
 
 msgid "Indicates whether this port should be used when PXE booting this node"
 msgstr "当PXE应到该节点时，表明此端口是否应该被使用"
+
+msgid "Inject NMI"
+msgstr "注入NMI"
 
 msgid "Inspect"
 msgstr "检查"
@@ -205,13 +209,13 @@ msgid "Inspection Started At"
 msgstr "检查开始于"
 
 msgid "Instance ID"
-msgstr "云主机ID"
+msgstr "实例 ID"
 
 msgid "Instance Info"
 msgstr "实例信息"
 
 msgid "Instance Name"
-msgstr "实例名字"
+msgstr "实例名称"
 
 msgid "Instance Property Name"
 msgstr "实例属性名称"
@@ -223,7 +227,7 @@ msgid "Kernel"
 msgstr "内核"
 
 msgid "Last Error"
-msgstr "最近的一次错误"
+msgstr "最近的错误"
 
 msgid ""
 "Linux portgroup mode. For possible values refer to https://www.kernel.org/"
@@ -239,7 +243,7 @@ msgid "Local link connection"
 msgstr "本地链接连接"
 
 msgid "MAC Address"
-msgstr "MAC地址"
+msgstr "MAC 地址"
 
 msgid "MAC address"
 msgstr "MAC地址"
@@ -257,7 +261,7 @@ msgid "Maintenance"
 msgstr "维护"
 
 msgid "Maintenance Reason"
-msgstr "维护原因"
+msgstr "保持原因"
 
 msgid "Mode"
 msgstr "模式"
@@ -362,7 +366,7 @@ msgid ""
 msgstr "提供一个你为什么选择将节点置于维护模式的原因（可选）"
 
 msgid "Provision State"
-msgstr "配置状态"
+msgstr "置备状态"
 
 msgid "Provisioning State"
 msgstr "配置状态"
@@ -373,8 +377,11 @@ msgstr "配置状态"
 msgid "Put Node(s) Into Maintenance Mode"
 msgstr "将节点置于维护模式"
 
+msgid "RAID Level"
+msgstr "RAID级别"
+
 msgid "Ramdisk"
-msgstr "内存盘"
+msgstr "Ramdisk"
 
 msgid "Reason"
 msgstr "原因"
@@ -394,6 +401,9 @@ msgstr "刷新页面查看更新的控制台细节"
 msgid "Refresh page to see updated power status"
 msgstr "刷新页面来确认电源状态是否更新"
 
+msgid "Refresh page."
+msgstr "刷新页面。"
+
 msgid "Required"
 msgstr "必需的"
 
@@ -405,6 +415,12 @@ msgstr "资源类"
 
 msgid "Root GB"
 msgstr "根磁盘 GB"
+
+msgid "Root Volume"
+msgstr "根卷"
+
+msgid "Root Volume."
+msgstr "根卷"
 
 msgid "SSH Address"
 msgstr "SSH 地址"
@@ -439,8 +455,20 @@ msgstr "选择一个端口组"
 msgid "Set Boot Device"
 msgstr "设置引导设备"
 
+msgid "Set RAID Configuration"
+msgstr "设置RAID配置"
+
+msgid "Set RAID configuration"
+msgstr "设置RAID配置"
+
+msgid "Set Target RAID Config"
+msgstr "置目标RAID配置"
+
 msgid "Set boot device"
 msgstr "设置引导设备"
+
+msgid "Size GB"
+msgstr "大小 GB"
 
 msgid "Soft power off"
 msgstr "软关机"
@@ -448,12 +476,24 @@ msgstr "软关机"
 msgid "Soft reboot"
 msgstr "软重启"
 
+msgid "Specifies RAID Level."
+msgstr "指定RAID级别。"
+
+msgid "Specifies logical disk size in GiB. Required."
+msgstr "指定逻辑盘大小，单位GiB。(必须)"
+
 msgid ""
 "Specifies whether ports in this portgroup can be used as standalone ports."
 msgstr "指定在该端口组中的端口是否可以用作独立端口。"
 
+msgid "Specifies whether root volume or not."
+msgstr "指定是否为根卷。"
+
 msgid "Standalone Ports Supported"
 msgstr "独立端口支持"
+
+msgid "Storage Interface"
+msgstr "存储接口"
 
 msgid "Submit"
 msgstr "提交"
@@ -557,6 +597,10 @@ msgid "Unable to get console for node %s: %s"
 msgstr "无法获取节点的控制台 %s: %s"
 
 #, python-format
+msgid "Unable to inject NMI: %s"
+msgstr "无法注入NMI：%s"
+
+#, python-format
 msgid "Unable to power off the node: %s"
 msgstr "无法关闭节点电源: %s"
 
@@ -613,6 +657,10 @@ msgid "Unable to set node provision state: %s"
 msgstr "不能设置节点提供状态：%s"
 
 #, python-format
+msgid "Unable to set raid config: %s"
+msgstr "无法设置raid配置：%s"
+
+#, python-format
 msgid "Unable to update node %s: %s"
 msgstr "无法更新节点%s：%s"
 
@@ -641,7 +689,7 @@ msgid "Update Portgroup"
 msgstr "更新端口组"
 
 msgid "Updated At"
-msgstr "已更新于"
+msgstr "更新于"
 
 msgid "Valid"
 msgstr "有效"
