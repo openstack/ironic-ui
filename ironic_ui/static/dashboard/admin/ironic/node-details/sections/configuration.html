@@ -33,7 +33,7 @@
               <action button-type="split-button"
                       action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.createPort">
-                {$ ::'Create port' | translate $}
+                {$ ::'Create Port' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
@@ -41,7 +41,7 @@
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
-                  {$ ::'Delete ports' | translate $}
+                  {$ ::'Delete Ports' | translate $}
                 </action>
               </menu>
             </action-list>
@@ -93,7 +93,7 @@
                       action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.editPort"
                       item="port">
-                {$ ::'Edit port' | translate $}
+                {$ ::'Edit Port' | translate $}
               </action>
               <menu>
                 <li role="presentation">
@@ -102,7 +102,7 @@
                                $event.stopPropagation();
                                $event.preventDefault()">
                     <span class="fa fa-trash"></span>
-                    <span>{$ :: 'Delete port' | translate $}</span>
+                    <span>{$ ::'Delete Port' | translate $}</span>
                   </a>
                 </li>
               </menu>
@@ -139,7 +139,7 @@
               <action button-type="split-button"
                       action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.createPortgroup">
-                {$ ::'Create portgroup' | translate $}
+                {$ ::'Create Portgroup' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
@@ -147,7 +147,7 @@
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
-                  {$ ::'Delete portgroups' | translate $}
+                  {$ ::'Delete Portgroups' | translate $}
                 </action>
               </menu>
             </action-list>
@@ -206,7 +206,7 @@
                       action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.editPortgroup"
                       item="portgroup">
-                {$ ::'Edit portgroup' | translate $}
+                {$ ::'Edit Portgroup' | translate $}
               </action>
               <menu>
                 <li role="presentation"
@@ -217,7 +217,7 @@
                                $event.stopPropagation();
                                $event.preventDefault()">
                     <span class="fa fa-trash"></span>
-                    <span>{$ :: 'Delete portgroup' | translate $}</span>
+                    <span>{$ ::'Delete Portgroup' | translate $}</span>
                   </a>
                 </li>
               </menu>
