@@ -33,7 +33,7 @@
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
-                  {$ ::'Delete nodes' | translate $}
+                  {$ ::'Delete Nodes' | translate $}
                 </action>
                 <menu>
                   <li role="presentation"
@@ -58,7 +58,7 @@
                                  mode);
                                  $event.stopPropagation();
                                  $event.preventDefault()">
-                      <span>{$ mode ? 'Maintenance on' : 'Maintenance off' | translate $}</span>
+                      <span>{$ mode ? 'Maintenance On' : 'Maintenance Off' | translate $}</span>
                     </a>
                   </li>
                 </menu>
@@ -160,7 +160,7 @@
                                $event.stopPropagation();
                                $event.preventDefault()">
                     <span>{$ node.maintenance ?
-                      "Maintenance off" : "Maintenance on" | translate $}</span>
+                      "Maintenance Off" : "Maintenance On" | translate $}</span>
                   </a>
                 </li>
                 <li role="presentation">
@@ -168,7 +168,7 @@
                      ng-click="table.bootDeviceService.setBootDevice(node);
                                $event.stopPropagation();
                                $event.preventDefault()">
-                    <span>{$ "Set boot device" | translate $}</span>
+                    <span>{$ "Set Boot Device" | translate $}</span>
                   </a>
                 </li>
                 <li role="presentation"
@@ -182,13 +182,13 @@
                                $event.stopPropagation();
                                $event.preventDefault()">
                     <span class="fa fa-trash"></span>
-                    {$ ::'Delete node' | translate $}
+                    {$ ::'Delete Node' | translate $}
                   </a>
                 </li>
                 <action button-type="menu-item"
                         callback="table.createPort"
                         item="node">
-                  {$ ::'Create port' | translate $}
+                  {$ ::'Create Port' | translate $}
                 </action>
                 <li role="presentation"
                     ng-repeat="transition in table.getNodeStateTransitions(node)">
