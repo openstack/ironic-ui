@@ -34,7 +34,7 @@
                        $event.stopPropagation();
                        $event.preventDefault()">
             <span>{$ ctrl.node.maintenance ?
-              "Maintenance off" : "Maintenance on" | translate $}</span>
+              "Maintenance Off" : "Maintenance On" | translate $}</span>
           </a>
         </li>
         <li role="presentation">
@@ -42,7 +42,7 @@
              ng-click="ctrl.bootDeviceService.setBootDevice(ctrl.node);
                        $event.stopPropagation();
                        $event.preventDefault()">
-            <span>{$ "Set boot device" | translate $}</span>
+            <span>{$ "Set Boot Device" | translate $}</span>
           </a>
         </li>
         <li role="presentation"
@@ -60,7 +60,7 @@
                 disabled="isDefined(ctrl.nodeValidationMap.console)
                           && ctrl.nodeValidationMap.console.result===false"
                 callback="ctrl.toggleConsoleMode">
-          {$ ctrl.node.console_enabled ? 'Disable console' : 'Enable console' | translate $}
+          {$ ctrl.node.console_enabled ? 'Disable Console' : 'Enable Console' | translate $}
         </action>
       </menu>
     </action-list>
