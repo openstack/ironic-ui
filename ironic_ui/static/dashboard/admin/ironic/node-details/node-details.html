@@ -13,24 +13,24 @@
               callback="ctrl.actions.powerOn"
               item="ctrl.node"
               disabled="ctrl.node.power_state!=='power off'">
-        {$ 'Power on' | translate $}
+        {$ 'Power On' | translate $}
       </action>
       <menu>
         <action button-type="menu-item"
                 callback="ctrl.actions.powerOff"
                 item="ctrl.node"
                 disabled="ctrl.node.power_state!=='power on'">
-          {$ 'Power off' | translate $}
+          {$ 'Power Off' | translate $}
         </action>
         <action button-type="menu-item"
                 callback="ctrl.putNodeInMaintenanceMode"
                 disabled="ctrl.node.maintenance">
-          {$ 'Maintenance on' | translate $}
+          {$ 'Maintenance On' | translate $}
         </action>
         <action button-type="menu-item"
                 callback="ctrl.removeNodeFromMaintenanceMode"
                 disabled="!ctrl.node.maintenance">
-          {$ 'Maintenance off' | translate $}
+          {$ 'Maintenance Off' | translate $}
         </action>
         <li role="presentation"
             ng-repeat="transition in ctrl.nodeStateTransitions">

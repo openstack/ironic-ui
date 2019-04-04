@@ -29,7 +29,7 @@
               <action button-type="split-button"
                       action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.createPort">
-                {$ 'Create port' | translate $}
+                {$ 'Create Port' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
@@ -37,7 +37,7 @@
                         item="tCtrl.selected"
                         disabled="tCtrl.selected.length === 0">
                   <span class="fa fa-trash"></span>
-                  {$ 'Delete ports' | translate $}
+                  {$ 'Delete Ports' | translate $}
                 </action>
               </menu>
             </action-list>
@@ -95,14 +95,14 @@
                       action-classes="'btn btn-default btn-sm'"
                       callback="ctrl.editPort"
                       item="port">
-                {$ ::'Edit port' | translate $}
+                {$ ::'Edit Port' | translate $}
               </action>
               <menu>
                 <action button-type="menu-item"
                         callback="ctrl.deletePort"
                         item="[port]">
                   <span class="fa fa-trash"></span>
-                  {$ ::'Delete port' | translate $}
+                  {$ ::'Delete Port' | translate $}
                 </action>
               </menu>
             </action-list>
@@ -147,7 +147,7 @@
         <dd ng-if="ssh_key_contents">
           {$ ssh_key_contents | noValue $}
         </dd>
-        <dt translate>SSH terminal port</dt>
+        <dt translate>SSH Terminal Port</dt>
         <dd>{$ ctrl.node.driver_info.ssh_terminal_port | noValue $}</dd>
         <dt translate>Virtualization Software</dt>
         <dd>{$ ctrl.node.driver_info.ssh_virt_type | noValue $}</dd>
