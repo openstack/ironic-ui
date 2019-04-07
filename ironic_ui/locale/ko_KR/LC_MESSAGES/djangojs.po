@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-03-09 11:12+0000\n"
+"POT-Creation-Date: 2019-04-03 10:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -472,14 +472,8 @@ msgstr "부트 디바이스 설정"
 msgid "Set RAID Configuration"
 msgstr "RAID 구성 설정"
 
-msgid "Set RAID configuration"
-msgstr "RAID 구성 설정"
-
 msgid "Set Target RAID Config"
 msgstr "대상 RAID 구성 설정"
-
-msgid "Set boot device"
-msgstr "부트 디바이스 설정"
 
 msgid "Size GB"
 msgstr "크기 (GB)"
