@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2019-03-29 16:33+0000\n"
+"POT-Creation-Date: 2019-04-15 09:55+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,6 +32,9 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
 msgstr "更改节点 \"%s\" 服务状态的请求已提交。"
+
+msgid "A unique node name. Optional."
+msgstr "独一无二的节点名称。可选。"
 
 msgid "Abort cleaning"
 msgstr "放弃清理"
@@ -138,6 +141,9 @@ msgid "Delete Node"
 msgid_plural "Delete Nodes"
 msgstr[0] "删除节点"
 
+msgid "Delete Nodes"
+msgstr "删除多个节点"
+
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "删除端口"
@@ -145,6 +151,9 @@ msgstr[0] "删除端口"
 msgid "Delete Portgroup"
 msgid_plural "Delete Portgroups"
 msgstr[0] "删除端口组"
+
+msgid "Delete Ports"
+msgstr "删除端口"
 
 msgid "Deploy Kernel"
 msgstr "部署内核"
@@ -174,6 +183,9 @@ msgid ""
 "Each cleaning step must be an object that contains \"interface\" and \"step"
 "\" properties"
 msgstr "每一步清理步骤必需是一个包含“接口”和“步骤”属性的对象"
+
+msgid "Edit"
+msgstr "编辑"
 
 msgid "Edit Node"
 msgstr "编辑节点"
@@ -467,14 +479,8 @@ msgstr "设置引导设备"
 msgid "Set RAID Configuration"
 msgstr "设置RAID配置"
 
-msgid "Set RAID configuration"
-msgstr "设置RAID配置"
-
 msgid "Set Target RAID Config"
 msgstr "置目标RAID配置"
-
-msgid "Set boot device"
-msgstr "设置引导设备"
 
 msgid "Size GB"
 msgstr "大小 GB"
