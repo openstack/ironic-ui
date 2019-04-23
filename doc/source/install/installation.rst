@@ -12,7 +12,7 @@ installation please see http://docs.openstack.org/developer/horizon/quickstart.h
 
 1. Clone the Ironic UI repository::
 
-    git clone https://git.openstack.org/openstack/ironic-ui
+    git clone https://opendev.org/openstack/ironic-ui
 
 2. Change into the root directory of your horizon installation and
    activate the python virtualenv. Example::
