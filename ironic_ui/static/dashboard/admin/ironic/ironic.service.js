@@ -88,7 +88,7 @@
 
     /**
      * @description Retrieve a list of nodes
-     * http://developer.openstack.org/api-ref/baremetal/?
+     * https://docs.openstack.org/api-ref/baremetal/?
      * expanded=create-node-detail#list-nodes-detailed
      *
      * @return {promise} Node collection in JSON
@@ -114,7 +114,7 @@
     /**
      * @description Retrieve information about the given node.
      *
-     * http://developer.openstack.org/api-ref/baremetal/?
+     * https://docs.openstack.org/api-ref/baremetal/?
      * expanded=create-node-detail#list-nodes-detailed
      *
      * @param {string} nodeId – UUID or logical name of a node.
@@ -138,7 +138,7 @@
 
     /**
      * @description Retrieve the boot device for a node
-     * https://developer.openstack.org/api-ref/baremetal/#get-boot-device
+     * https://docs.openstack.org/api-ref/baremetal/#get-boot-device
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Dictionary describing the current boot device
@@ -160,7 +160,7 @@
 
     /**
      * @description Retrieve the supported boot devices for a node
-     * https://developer.openstack.org/api-ref/baremetal/#get-supported-boot-devices
+     * https://docs.openstack.org/api-ref/baremetal/#get-supported-boot-devices
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} List of supported boot devices
@@ -185,7 +185,7 @@
     /**
      * @description Retrieve a list of ports associated with a node.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#list-detailed-ports
+     * https://docs.openstack.org/api-ref/baremetal/#list-detailed-ports
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} List of ports
@@ -214,7 +214,7 @@
     /**
      * @description Set the maintenance state of a node
      *
-     * http://developer.openstack.org/api-ref/baremetal/#set-maintenance-flag
+     * https://docs.openstack.org/api-ref/baremetal/#set-maintenance-flag
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @param {boolean} mode - True to put the node in maintenance mode,
@@ -243,7 +243,7 @@
     /**
      * @description Set the boot device of a node
      *
-     * http://developer.openstack.org/api-ref/baremetal/#set-boot-device
+     * https://docs.openstack.org/api-ref/baremetal/#set-boot-device
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @param {string} bootDevice - Selected boot device.
@@ -270,7 +270,7 @@
     /**
      * @description Set the power state of the node.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#change-node-power-state
+     * https://docs.openstack.org/api-ref/baremetal/#change-node-power-state
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @param {string} state - Target power state ['on', 'off', 'reboot']
@@ -302,7 +302,7 @@
     /**
      * @description Set the target raid configuration of a node
      *
-     * http://developer.openstack.org/api-ref/baremetal/#set-target-raid-config
+     * https://docs.openstack.org/api-ref/baremetal/#set-target-raid-config
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @param {string} raidConfig - Target raid configuration.
@@ -327,7 +327,7 @@
     /**
      * @description Set the target provision state of the node.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#change-node-provision-state
+     * https://docs.openstack.org/api-ref/baremetal/#change-node-provision-state
      *
      * @param {string} nodeId – UUID of a node.
      * @param {string} verb – Provisioning verb used to move node to desired
@@ -358,7 +358,7 @@
     /**
      * @description Inject Non-Masking Interrupts into a specified node
      *
-     * http://developer.openstack.org/api-ref/baremetal/#inject-nmi
+     * https://docs.openstack.org/api-ref/baremetal/#inject-nmi
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Promise. No content on success.
@@ -378,7 +378,7 @@
     /**
      * @description Create an Ironic node
      *
-     * http://developer.openstack.org/api-ref/baremetal/#create-node
+     * https://docs.openstack.org/api-ref/baremetal/#create-node
      *
      * @param {object} params – Object containing parameters that define
      * the node to be created
@@ -401,7 +401,7 @@
     /**
      * @description Delete the specified node from inventory
      *
-     * http://developer.openstack.org/api-ref/baremetal/#delete-node
+     * https://docs.openstack.org/api-ref/baremetal/#delete-node
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Promise
@@ -420,7 +420,7 @@
     /**
      * @description Update the definition of a specified node.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#update-node
+     * https://docs.openstack.org/api-ref/baremetal/#update-node
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @param {object[]} patch – Sequence of update operations
@@ -448,7 +448,7 @@
     /**
      * @description Validate the specified node
      *
-     * http://developer.openstack.org/api-ref/baremetal/#validate-node
+     * https://docs.openstack.org/api-ref/baremetal/#validate-node
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} Promise. success: list of interface validation
@@ -469,7 +469,7 @@
     /**
      * @description Retrieve the list of Ironic drivers
      *
-     * http://developer.openstack.org/api-ref/baremetal/#list-drivers
+     * https://docs.openstack.org/api-ref/baremetal/#list-drivers
      *
      * @return {promise} Driver collection in JSON
      */
@@ -491,7 +491,7 @@
     /**
      * @description Retrieve properities of a specified driver
      *
-     * http://developer.openstack.org/api-ref/baremetal/#show-driver-properties
+     * https://docs.openstack.org/api-ref/baremetal/#show-driver-properties
      *
      * @param {string} driverName - Driver name
      * @returns {promise} Property list
@@ -515,7 +515,7 @@
     /**
      * @description Create a network port
      *
-     * http://developer.openstack.org/api-ref/baremetal/#create-port
+     * https://docs.openstack.org/api-ref/baremetal/#create-port
      *
      * @param {object} port – Object containing parameters that define
      * the port to be created
@@ -543,7 +543,7 @@
     /**
      * @description Delete a network port
      *
-     * http://developer.openstack.org/api-ref/baremetal/#delete-port
+     * https://docs.openstack.org/api-ref/baremetal/#delete-port
      *
      * @param {string} portUuid – UUID of the port to be deleted
      * @return {promise} Promise
@@ -562,7 +562,7 @@
     /**
      * @description Update the definition of a specified port.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#update-a-port
+     * https://docs.openstack.org/api-ref/baremetal/#update-a-port
      *
      * @param {string} portUuid – UUID of a port.
      * @param {object[]} patch – Sequence of update operations
@@ -588,7 +588,7 @@
     /**
      * @description Set the console mode of the node.
      *
-     * http://developer.openstack.org/api-ref/baremetal/?
+     * https://docs.openstack.org/api-ref/baremetal/?
      * expanded=start-stop-console-detail#start-stop-console
      *
      * @param {string} nodeId – UUID or logical name of a node.
@@ -626,7 +626,7 @@
     /**
      * @description Retrieve the list of portgroups associated with a node.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#list-detailed-portgroups
+     * https://docs.openstack.org/api-ref/baremetal/#list-detailed-portgroups
      *
      * @param {string} nodeId – UUID or logical name of a node.
      * @return {promise} List of portgroups.
@@ -654,7 +654,7 @@
     /**
      * @description Create a protgroup.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#create-portgroup
+     * https://docs.openstack.org/api-ref/baremetal/#create-portgroup
      *
      * @param {object} params – Object containing parameters that define
      *   the portgroup to be created.
@@ -679,7 +679,7 @@
     /**
      * @description Delete a portgroup.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#delete-portgroup
+     * https://docs.openstack.org/api-ref/baremetal/#delete-portgroup
      *
      * @param {string} portgroupId – UUID or name of the portgroup to be deleted.
      * @return {promise} Promise.
@@ -698,7 +698,7 @@
     /**
      * @description Update the definition of a specified portgroup.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#update-a-portgroup
+     * https://docs.openstack.org/api-ref/baremetal/#update-a-portgroup
      *
      * @param {string} portgroupId – UUID or name of a portgroup.
      * @param {object[]} patch – Sequence of update operations
@@ -724,7 +724,7 @@
     /**
      * @description Get the ports associated with a specified portgroup.
      *
-     * http://developer.openstack.org/api-ref/baremetal/#list-ports-by-portgroup
+     * https://docs.openstack.org/api-ref/baremetal/#list-ports-by-portgroup
      *
      * @param {string} portgroupId – UUID or name of the portgroup.
      * @return {promise} Promise containing a list of ports.
