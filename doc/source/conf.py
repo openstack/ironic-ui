@@ -160,7 +160,6 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'ironic-ui'
 copyright = u'2016, OpenStack Foundation'
 
 
@@ -185,22 +184,20 @@ html_theme = 'openstackdocs'
 
 # openstackdocstheme options
 repository_name = 'openstack/ironic-ui'
-bug_project = 'ironic-ui'
-bug_tag = ''
-
-# Must set this variable to include year, month, day, hours, and minutes.
-html_last_updated_fmt = '%Y-%m-%d %H:%M'
+use_storyboard = True
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = '%sdoc' % project
+htmlhelp_basename = 'ironic-uidoc'
+
+latex_use_xindy = False
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
     ('index',
-     '%s.tex' % project,
-     u'%s Documentation' % project,
+     'doc-ironic-ui.tex',
+     u'Ironic UI Documentation',
      u'OpenStack Foundation', 'manual'),
 ]
 
