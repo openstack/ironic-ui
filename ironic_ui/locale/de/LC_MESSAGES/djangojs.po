@@ -2,16 +2,17 @@
 # Frank Kloeker <eumel@arcor.de>, 2017. #zanata
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 # Robert Simai <robert.simai@suse.com>, 2018. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2019-04-15 09:55+0000\n"
+"POT-Creation-Date: 2019-09-27 08:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-24 10:37+0000\n"
-"Last-Translator: Robert Simai <robert.simai@suse.com>\n"
+"PO-Revision-Date: 2019-09-26 07:56+0000\n"
+"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -165,6 +166,9 @@ msgid "Delete Portgroup"
 msgid_plural "Delete Portgroups"
 msgstr[0] "Portgruppe löschen"
 msgstr[1] "Portgruppen löschen"
+
+msgid "Delete Portgroups"
+msgstr "Lösche Portgruppen"
 
 msgid "Delete Ports"
 msgstr "Ports löschen"
