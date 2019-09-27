@@ -2,15 +2,16 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2018. #zanata
 # Robert Simai <robert.simai@suse.com>, 2018. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 21:15+0000\n"
+"POT-Creation-Date: 2019-09-27 08:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-10-29 08:38+0000\n"
+"PO-Revision-Date: 2019-09-26 07:57+0000\n"
 "Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -227,6 +228,9 @@ msgstr "Queens Serie Releasenotes"
 
 msgid "Rocky Series Release Notes"
 msgstr "Rocky Serie Releasenotes"
+
+msgid "Stein Series Release Notes"
+msgstr "Stein Serie Releasenotes"
 
 msgid ""
 "Support has been added for inspecting nodes. For a node that is in the "
