@@ -17,7 +17,7 @@
 
   module.exports = function (config) {
     // This tox venv is setup in the post-install npm step
-    var toxPath = '../.tox/py27/lib/python2.7/site-packages/';
+    var toxPath = '../.tox/py36/lib/python3.6/site-packages/';
 
     config.set({
       preprocessors: {

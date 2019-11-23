@@ -1,0 +1,6 @@
+---
+upgrade:
+  - |
+    Python 2.7 support has been dropped. Last release of ironic-ui to
+    support Python 2.7 is OpenStack Train. The minimum version of Python
+    now supported by ironic-ui is Python 3.6.
