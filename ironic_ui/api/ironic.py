@@ -42,13 +42,13 @@ def ironicclient(request):
     cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', DEFAULT_CACERT)
     ironic_url = base.url_for(request, IRONIC_CLIENT_CLASS_NAME)
 
-    return client.Client(1,
-                         ironic_url,
-                         os_ironic_api_version=DEFAULT_IRONIC_API_VERSION,
-                         project_id=request.user.project_id,
-                         token=request.user.token.id,
-                         insecure=insecure,
-                         cacert=cacert)
+    return client.get_client(1,
+                             endpoint=ironic_url,
+                             os_ironic_api_version=DEFAULT_IRONIC_API_VERSION,
+                             project_id=request.user.project_id,
+                             token=request.user.token.id,
+                             insecure=insecure,
+                             cacert=cacert)
 
 
 def node_list(request):

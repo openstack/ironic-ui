@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    Fixed ``_construct_http_client() takes at least 1 argument`` when creating
+    an ironic client instance.
