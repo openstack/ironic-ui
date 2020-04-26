@@ -3,15 +3,16 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2018. #zanata
 # Robert Simai <robert.simai@suse.com>, 2018. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2019. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-27 11:57+0000\n"
+"POT-Creation-Date: 2020-04-24 17:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-09-28 07:32+0000\n"
+"PO-Revision-Date: 2020-04-25 09:17+0000\n"
 "Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -32,6 +33,12 @@ msgstr "3.0.0"
 
 msgid "3.1.0"
 msgstr "3.1.0"
+
+msgid "3.5.5"
+msgstr "3.5.5"
+
+msgid "4.0.0"
+msgstr "4.0.0"
 
 msgid ""
 "A backend mock has been added that enables better unit testing of the ironic-"
@@ -145,6 +152,9 @@ msgstr ""
 msgid "Breadcrumbs have been added"
 msgstr "Breadcrumbs wurden hinzugefügt"
 
+msgid "Bug Fixes"
+msgstr "Fehlerkorrekturen"
+
 msgid "Current Series Release Notes"
 msgstr "Aktuelle Serie Releasenotes"
 
@@ -222,6 +232,15 @@ msgstr "Pike Serie Releasenotes"
 
 msgid "Prelude"
 msgstr "Einleitung"
+
+msgid ""
+"Python 2.7 support has been dropped. Last release of ironic-ui to support "
+"Python 2.7 is OpenStack Train. The minimum version of Python now supported "
+"by ironic-ui is Python 3.6."
+msgstr ""
+"Python 2.7 Unterstützung wurde beendet. Der letzte Release von ironicu-ui "
+"der Python 2.7 unterstützt ist OpenStack Train. Die minimal Python Version "
+"welche von ironic-ui unterstützt wird ist Python 3.6."
 
 msgid "Queens Series Release Notes"
 msgstr "Queens Serie Releasenotes"
@@ -341,3 +360,9 @@ msgstr "Train Serie Releasenotes"
 
 msgid "UX improvements across the interface"
 msgstr "UX-Verbesserungen im Interface"
+
+msgid "Upgrade Notes"
+msgstr "Aktualisierungsnotizen"
+
+msgid "Ussuri Series Release Notes"
+msgstr "Ussuri Serie Releasenotes"
