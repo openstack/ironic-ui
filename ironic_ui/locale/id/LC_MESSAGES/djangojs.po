@@ -2,15 +2,16 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 # suhartono <cloudsuhartono@gmail.com>, 2018. #zanata
+# suhartono <cloudsuhartono@gmail.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2019-04-15 09:55+0000\n"
+"POT-Creation-Date: 2020-04-22 15:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-09 05:09+0000\n"
+"PO-Revision-Date: 2020-05-19 03:35+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -26,6 +27,13 @@ msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
 msgstr "Permintaan telah dibuat untuk mengubah keadaan provisioning node %s"
+
+msgid ""
+"A resource class name for future nova scheduling, in stand-alone usage only. "
+"Optional."
+msgstr ""
+"Nama kelas sumber daya untuk penjadwalan nova di masa depan, hanya dalam "
+"penggunaan yang berdiri sendiri. Pilihan."
 
 msgid "A unique node name. Optional."
 msgstr "Nama node yang unik. Pilihan."
@@ -152,6 +160,9 @@ msgid "Delete Portgroup"
 msgid_plural "Delete Portgroups"
 msgstr[0] "Delete Portgroup"
 
+msgid "Delete Portgroups"
+msgstr "Hapus Portgroups"
+
 msgid "Delete Ports"
 msgstr "Delete Port (hapus port)"
 
@@ -248,6 +259,11 @@ msgstr "Instance Property Name"
 msgid "Interface"
 msgstr "Interface (antarmuka)"
 
+msgid "Interface used for attaching and detaching volumes on this node."
+msgstr ""
+"Antarmuka yang digunakan untuk melampirkan dan melepaskan volume pada node "
+"ini."
+
 msgid "Kernel"
 msgstr "Kernel"
 
@@ -302,6 +318,13 @@ msgstr "Nama untuk portgroup"
 
 msgid "Network Interface"
 msgstr "Network Interface"
+
+msgid ""
+"Network interface used for switching between provisioning, tenant, and "
+"cleaning networks."
+msgstr ""
+"Antarmuka jaringan digunakan untuk beralih antara jaringan penyediaan, "
+"penyewa, dan pembersihan."
 
 msgid "No Instance"
 msgstr "Tak ada Instance"
