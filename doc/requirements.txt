@@ -6,7 +6,6 @@ testrepository>=0.0.18 # Apache-2.0/BSD
 testscenarios>=0.4 # Apache-2.0/BSD
 
 # The below is rewquired to build testing module reference
-mock>=2.0.0 # BSD
 
 # Include horizon as test requirement
 horizon
