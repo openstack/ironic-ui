@@ -19,22 +19,22 @@ from openstack_dashboard.test.settings import *  # noqa
 
 # pop these keys to avoid log warnings about deprecation
 # update_dashboards will populate them anyway
-HORIZON_CONFIG.pop('dashboards', None)
-HORIZON_CONFIG.pop('default_dashboard', None)
+HORIZON_CONFIG.pop('dashboards', None)  # noqa: F405
+HORIZON_CONFIG.pop('default_dashboard', None)  # noqa: F405
 
 # Update the dashboards with ironic_ui
-import ironic_ui.enabled
-import openstack_dashboard.enabled
-from openstack_dashboard.utils import settings
+import ironic_ui.enabled  # noqa: E402
+import openstack_dashboard.enabled  # noqa: E402
+from openstack_dashboard.utils import settings  # noqa: E402
 
 settings.update_dashboards(
     [
         ironic_ui.enabled,
         openstack_dashboard.enabled,
     ],
-    HORIZON_CONFIG,
-    INSTALLED_APPS
+    HORIZON_CONFIG,  # noqa: F405
+    INSTALLED_APPS  # noqa: F405
 )
 
 # Ensure any duplicate apps are removed after the update_dashboards call
-INSTALLED_APPS = list(set(INSTALLED_APPS))
+INSTALLED_APPS = list(set(INSTALLED_APPS))  # noqa: F405

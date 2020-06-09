@@ -40,4 +40,5 @@ class Ironic(horizon.Panel):
         else:
             return True
 
+
 dashboard.Admin.register(Ironic)

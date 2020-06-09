@@ -455,8 +455,7 @@ class RaidConfig(generic.View):
 @urls.register
 class DriverDetails(generic.View):
 
-    url_regex = r'ironic/drivers/(?P<driver_name>[0-9a-zA-Z_-]+)$'. \
-                format(LOGICAL_NAME_PATTERN)
+    url_regex = r'ironic/drivers/(?P<driver_name>[0-9a-zA-Z_-]+)$'
 
     @rest_utils.ajax()
     def get(self, request, driver_name):
