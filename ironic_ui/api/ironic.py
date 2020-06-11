@@ -45,7 +45,6 @@ def ironicclient(request):
     return client.get_client(1,
                              endpoint=ironic_url,
                              os_ironic_api_version=DEFAULT_IRONIC_API_VERSION,
-                             project_id=request.user.project_id,
                              token=request.user.token.id,
                              insecure=insecure,
                              cacert=cacert)
