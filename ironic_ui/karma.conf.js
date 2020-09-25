@@ -66,6 +66,7 @@
         toxPath + 'xstatic/pkg/objectpath/data/ObjectPath.js',
         toxPath + 'xstatic/pkg/angular_schema_form/data/schema-form.js',
         toxPath + '/horizon/static/horizon/js/horizon.js',
+        toxPath + '/horizon/static/horizon/js/horizon.uuid.js',
 
         /**
          * Include framework source code from horizon that we need.
