@@ -129,7 +129,7 @@ var path = require('path');
 
       frameworks: ['jasmine', 'jasmine-matchers'],
 
-      browsers: ['Chrome', 'PhantomJS'],
+      browsers: ['PhantomJS'],
 
       browserNoActivityTimeout: 60000,
 
@@ -142,7 +142,6 @@ var path = require('path');
       reporters: ['progress', 'coverage', 'threshold'],
 
       plugins: [
-        'karma-chrome-launcher',
         'karma-phantomjs-launcher',
         'karma-jasmine',
         'karma-jasmine-matchers',
