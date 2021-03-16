@@ -1,0 +1,8 @@
+---
+fixes:
+  - |
+    Fixes an issue where ``ironic-ui`` could fail when starting the
+    Baremetal Service's API client when a user's authentication provider
+    does not immediately support returning a ``project_id``. The remote
+    Baremetal API service will retrieve this value from the Identity
+    service.
