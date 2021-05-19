@@ -25,7 +25,6 @@
     templates:
       - check-requirements
       - openstack-cover-jobs
-      - horizon-nodejs10-jobs
       - horizon-nodejs14-jobs
       - horizon-non-primary-django-jobs
       - openstack-python3-xena-jobs
