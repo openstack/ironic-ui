@@ -12,9 +12,9 @@
 #    under the License.
 
 from django.conf.urls import include
-from django.conf.urls import url
+from django.urls import re_path
 import openstack_dashboard.urls
 
 urlpatterns = [
-    url(r'', include(openstack_dashboard.urls))
+    re_path(r'', include(openstack_dashboard.urls))
 ]

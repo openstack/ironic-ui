@@ -14,12 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf.urls import url
+from django.urls import re_path
 
 import ironic_ui.api.ironic_rest_api  # noqa
 from ironic_ui.content.ironic import views
 
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^([^/]+)/$', views.DetailView.as_view(), name='detail'),
+    re_path(r'^$', views.IndexView.as_view(), name='index'),
+    re_path(r'^([^/]+)/$', views.DetailView.as_view(), name='detail'),
 ]
