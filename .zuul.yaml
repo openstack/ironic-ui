@@ -25,7 +25,7 @@
     templates:
       - check-requirements
       - openstack-cover-jobs
-      - horizon-nodejs14-jobs
+      - horizon-nodejs-jobs
       - horizon-non-primary-django-jobs
       - openstack-python3-zed-jobs
       - publish-openstack-docs-pti
