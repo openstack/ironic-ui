@@ -166,7 +166,8 @@
 
         it('createNode - Missing input data', function() {
           createNode({})
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
@@ -201,7 +202,8 @@
 
         it('deleteNode - nonexistent node', function() {
           ironicAPI.deleteNode(0)
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
@@ -476,14 +478,16 @@
 
         it('createPort - missing input data', function() {
           ironicAPI.createPort({})
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
 
         it('createPort - bad input data', function() {
           ironicAPI.createPort({address: "", node_uuid: ""})
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
@@ -506,7 +510,8 @@
               return ironicAPI.createPort({address: macAddr,
                                            node_uuid: node.uuid});
             })
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
@@ -534,7 +539,8 @@
 
         it('deletePort - nonexistent port', function() {
           ironicAPI.deletePort(0)
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
@@ -581,14 +587,16 @@
 
         it('createPortgroup - missing input data', function() {
           ironicAPI.createPortgroup({})
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
 
         it('createPort - bad input data', function() {
           ironicAPI.createPort({node_uuid: ""})
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
@@ -605,7 +613,8 @@
               ironicAPI.deletePortgroup(portgroup.uuid).then(function() {
                 expect(ironicBackendMockService.getPortgroup(portgroup.uuid))
                   .toBeNull();
-              });
+              })
+            .catch(angular.noop);
             })
             .catch(failTest);
 
@@ -631,7 +640,8 @@
                   .toBeNull();
                 expect(ironicBackendMockService.getPortgroup(portgroup.uuid))
                   .toBeNull();
-              });
+              })
+            .catch(angular.noop);
             })
             .catch(failTest);
 
@@ -640,7 +650,8 @@
 
         it('deletePortgroup - nonexistent portgroup', function() {
           ironicAPI.deletePortgroup(0)
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });
@@ -679,7 +690,8 @@
 
         it('injectNmi - nonexistent node', function() {
           ironicAPI.injectNmi(0)
-            .then(failTest);
+            .then(failTest)
+            .catch(angular.noop);
 
           ironicBackendMockService.flush();
         });

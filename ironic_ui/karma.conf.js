@@ -129,20 +129,14 @@ var path = require('path');
 
       frameworks: ['jasmine', 'jasmine-matchers'],
 
-      browsers: ['PhantomJS'],
+      browsers: ['Firefox'],
 
       browserNoActivityTimeout: 60000,
-
-      phantomjsLauncher: {
-        // Have phantomjs exit if a ResourceError is encountered
-        // (useful if karma exits without killing phantom)
-        exitOnResourceError: true
-      },
 
       reporters: ['progress', 'coverage', 'threshold'],
 
       plugins: [
-        'karma-phantomjs-launcher',
+        'karma-firefox-launcher',
         'karma-jasmine',
         'karma-jasmine-matchers',
         'karma-ng-html2js-preprocessor',

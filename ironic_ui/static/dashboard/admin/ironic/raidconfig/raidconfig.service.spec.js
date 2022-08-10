@@ -118,7 +118,7 @@
 
       it('setRaidConfig - cancel', function() {
         spyOn($uibModal, 'open').and.returnValue(
-          {result: $q.reject('cancel')});
+          {result: $q.reject('cancel').catch(angular.noop)});
 
         createNode().then(function(data) {
           raidConfigService.setRaidConfig(data.node)

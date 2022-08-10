@@ -124,7 +124,7 @@
 
       it('setBootDevice - cancel', function() {
         spyOn($uibModal, 'open').and.returnValue(
-          {result: $q.reject('cancel')});
+          {result: $q.reject('cancel').catch(angular.noop)});
 
         createNode().then(function(data) {
           bootDeviceService.setBootDevice(data.node)
