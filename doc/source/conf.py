@@ -160,7 +160,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-copyright = u'2016, OpenStack Foundation'
+copyright = '2016, OpenStack Foundation'
 
 
 # A list of ignored prefixes for module index sorting.
@@ -198,8 +198,8 @@ latex_use_xindy = False
 latex_documents = [
     ('index',
      'doc-ironic-ui.tex',
-     u'Ironic UI Documentation',
-     u'OpenStack Foundation', 'manual'),
+     'Ironic UI Documentation',
+     'OpenStack Foundation', 'manual'),
 ]
 
 # Example configuration for intersphinx: refer to the Python standard library.
