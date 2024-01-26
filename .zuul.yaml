@@ -21,6 +21,13 @@
         horizon: true
       tox_envlist: integration
 
+- job:
+    name: ironic-ui-tox-codespell
+    parent: openstack-tox
+    timeout: 7200
+    vars:
+      tox_envlist: codespell
+
 - project:
     templates:
       - check-requirements
@@ -33,4 +40,6 @@
     check:
       jobs:
         - ironic-ui-integration-tests:
+            voting: false
+        - ironic-ui-tox-codespell:
             voting: false
