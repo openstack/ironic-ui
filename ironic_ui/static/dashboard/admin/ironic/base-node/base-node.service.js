@@ -69,14 +69,14 @@
     }
 
     /**
-     * @description Comaprison function used to sort driver property groups
+     * @description Comparison function used to sort driver property groups
      *
      * @param {DriverProperty[]} group1 - First group
      * @param {DriverProperty[]} group2 - Second group
      * @return {integer} Return:
      * < 0 if group1 should precede group2 in an ascending ordering
      * > 0 if group2 should precede group1
-     * 0 if group1 and group2 are considered equal from ordering perpsective
+     * 0 if group1 and group2 are considered equal from ordering perspective
      */
     function compareDriverPropertyGroups(group1, group2) {
       var group1HasRequired = driverPropertyGroupHasRequired(group1);

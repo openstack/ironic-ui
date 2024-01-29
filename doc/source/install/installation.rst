@@ -46,7 +46,7 @@ https://docs.openstack.org/horizon/latest/contributor/quickstart.html.
 
 6. Start the server in test mode with the ``npm run test`` command.
 
-7. Access the test page in order to initate tests.
+7. Access the test page in order to initiate tests.
 
    http://localhost:8000/jasmine/?spec=horizon.dashboard.admin.ironic
 

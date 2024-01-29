@@ -77,12 +77,12 @@
     /**
      * @description Depth-first-search graph traversal utility function
      *
-     * @param {object} vertex - Root vertex from which traveral will begin.
-     * It is assumed that this vertex has not alreday been visited as part
+     * @param {object} vertex - Root vertex from which traversal will begin.
+     * It is assumed that this vertex has not already been visited as part
      * of this traversal.
      * @param {object} visited - Associative array. Each named property
      * corresponds to a vertex with the same name, and has boolean value
-     * indicating whether the vertex has been alreday visited.
+     * indicating whether the vertex has been already visited.
      * @param {object[]} component - Array of vertices that define a strongly
      * connected component.
      * @returns {void}
@@ -107,7 +107,7 @@
      * be called to process each component.
      *
      * @param {function} componentFunc - Function called on each strongly
-     * connected component. Accepts aruments: array of vertex objects, and
+     * connected component. Accepts arguments: array of vertex objects, and
      * user-provided extra data that can be used in processing the component.
      * @param {object} extra - Extra data that is passed into the component
      * processing function.
