@@ -98,7 +98,7 @@
 
     init();
 
-    // RETRIVE NODES AND PORTS
+    // RETRIEVE NODES AND PORTS
 
     function init() {
       retrieveNodes();

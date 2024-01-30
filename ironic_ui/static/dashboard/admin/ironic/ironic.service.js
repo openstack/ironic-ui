@@ -489,7 +489,7 @@
     }
 
     /**
-     * @description Retrieve properities of a specified driver
+     * @description Retrieve properties of a specified driver
      *
      * https://docs.openstack.org/api-ref/baremetal/#show-driver-properties
      *
