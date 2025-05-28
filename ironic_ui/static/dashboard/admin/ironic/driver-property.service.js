@@ -19,8 +19,7 @@
   var REQUIRED = " " + gettext("Required") + ".";
 
   var SELECT_OPTIONS_REGEX =
-    new RegExp(
-      gettext('(?:[Oo]ne of )(?!this)((?:(?:"[^"]+"|[^,\\. ]+)(?:, |\\.))+)'));
+    new RegExp('(?:[Oo]ne of )(?!this)((?:(?:"[^"]+"|[^,\\. ]+)(?:, |\\.))+)');
 
   var DEFAULT_IS_REGEX =
       new RegExp(gettext('default (?:value )?is ([^"\\. ]+|"[^"]+")'));
