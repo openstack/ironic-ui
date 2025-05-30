@@ -1,6 +1,7 @@
 [run]
 branch = True
-source = ironic-ui
+source = ironic_ui
+omit = ironic_ui/tests/*
 
 [report]
 ignore_errors = True
