@@ -1,14 +1,15 @@
 # Yulia Ryndenkova <yryndenkova@hystax.com>, 2016. #zanata
+# Ivan Anfimov <lazekteam@gmail.com>, 2025. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 09:38+0000\n"
+"POT-Creation-Date: 2025-08-06 22:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-20 05:44+0000\n"
-"Last-Translator: Yulia Ryndenkova <yryndenkova@hystax.com>\n"
+"PO-Revision-Date: 2025-08-05 11:32+0000\n"
+"Last-Translator: Ivan Anfimov <lazekteam@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -21,22 +22,60 @@ msgstr "2.0.0"
 msgid "2.1.0"
 msgstr "2.1.0"
 
+msgid "2.2.0"
+msgstr "2.2.0"
+
+msgid "2023.1 Series Release Notes"
+msgstr "Примечания к выпуску 2023.1"
+
+msgid "2023.2 Series Release Notes"
+msgstr "Примечания к выпуску 2023.2"
+
+msgid "2024.1 Series Release Notes"
+msgstr "Примечания к выпуску 2024.1"
+
+msgid "2024.2 Series Release Notes"
+msgstr "Примечания к выпуску 2024.2"
+
+msgid "2025.1 Series Release Notes"
+msgstr "Примечания к выпуску 2025.1"
+
+msgid "3.0.0"
+msgstr "3.0.0"
+
+msgid "3.1.0"
+msgstr "3.1.0"
+
+msgid "3.5.5"
+msgstr "3.5.5"
+
+msgid "4.0.0"
+msgstr "4.0.0"
+
+msgid "4.3.0"
+msgstr "4.3.0"
+
+msgid "6.5.0"
+msgstr "6.5.0"
+
+#, fuzzy
 msgid "Ability to enroll a node without all required fields for other states"
 msgstr ""
 "Возможность зарегистрировать узел без обязательных полей для других состояний"
 
 msgid "Add and delete nodes"
-msgstr "Добавить и удалить узлы"
+msgstr "Добавление и удаление узлов"
 
 msgid "Add and delete ports"
-msgstr "Добавить и удалить порты"
+msgstr "Добавление и удаление портов"
 
-msgid "Breadcrumbs have been added"
-msgstr "Добавлены строки навигации"
+msgid "Bug Fixes"
+msgstr "Исправления ошибок"
 
 msgid "Current Series Release Notes"
-msgstr "Примечания к выпуску Current Series "
+msgstr "Примечания к текущему выпуску"
 
+#, fuzzy
 msgid ""
 "Currently it is not possible to edit a node via the UI once it has been "
 "enrolled. Therefore, the enrollment must be done accurately to ensure the "
@@ -51,26 +90,66 @@ msgstr ""
 "только посредством удаления и перерегистрации узла."
 
 msgid "Edit nodes after creation"
-msgstr "Редактирование узла после создания"
+msgstr "Изменение узлов после создания"
 
 msgid "Ironic UI Release Notes"
 msgstr "Примечания к выпуску Ironic UI "
 
 msgid "Known Issues"
-msgstr "Известные Проблемы"
+msgstr "Известные проблемы"
 
+#, fuzzy
 msgid "Move nodes between enroll, manageable, available and active states"
 msgstr ""
 "Перенести узел между регистрацией, управляемым, доступным и активным "
 "состояниями"
 
 msgid "New Features"
-msgstr "Новые Свойства"
+msgstr "Новые возможности"
 
+msgid "Newton Series Release Notes (2.0.0 - 2.1.x)"
+msgstr "Примечания к выпуску Newton (2.0.0 - 2.1.x)"
+
+msgid "Ocata Series Release Notes (2.2.0 - 2.2.x)"
+msgstr "Примечания к выпуску Ocata (2.2.0 - 2.2.x)"
+
+#, fuzzy
 msgid "Panel hidden if baremetal service or admin rights are not present"
 msgstr ""
 "Панель скрыта если baremetal сервис или права администратора отсутствуют"
 
+msgid "Pike Series Release Notes"
+msgstr "Примечания к выпуску Pike"
+
+msgid "Prelude"
+msgstr "Предисловие"
+
+msgid ""
+"Python 2.7 support has been dropped. Last release of ironic-ui to support "
+"Python 2.7 is OpenStack Train. The minimum version of Python now supported "
+"by ironic-ui is Python 3.6."
+msgstr ""
+"Поддержка Python 2.7 была прекращена. Последний релиз ironic-ui с поддержкой "
+"Python 2.7 - OpenStack Train. Минимальная версия Python, поддерживаемая "
+"ironic-ui - Python 3.6."
+
+msgid "Queens Series Release Notes"
+msgstr "Примечания к выпуску Queens"
+
+msgid "Rocky Series Release Notes"
+msgstr "Примечания к выпуску Rocky"
+
+msgid "Stein Series Release Notes"
+msgstr "Примечания к выпуску Stein"
+
+msgid ""
+"Support for Python 3.8 has been removed. Now the minimum python version "
+"supported is 3.9 ."
+msgstr ""
+"Поддержка Python 3.9 прекращена. Теперь Python 3.10 — минимальная "
+"поддерживаемая версия."
+
+#, fuzzy
 msgid ""
 "This release adds support for adding and deleting nodes. Support has also "
 "been added for adding and deleting ports. The panel will now be hidden if "
@@ -82,6 +161,7 @@ msgstr ""
 "скрыта в случае отсутствия baremetal сервиса в сценарии где набор запущенных "
 "сервисов  различается между различными регионами keystone. "
 
+#, fuzzy
 msgid ""
 "This release adds support for editing nodes and moving those nodes between "
 "enroll, manageable, available and active states. It is now possible to "
@@ -94,5 +174,26 @@ msgstr ""
 "зарегистрировать узел без всех необходимых полей для перехода в управляемое "
 "состояние за счет возможности редактирования узла, как только он был создан."
 
-msgid "UX improvements across the interface"
-msgstr "UX улучшения интерфейса"
+msgid "Train Series Release Notes"
+msgstr "Примечания к выпуску Train"
+
+msgid "Upgrade Notes"
+msgstr "Примечания к обновлению"
+
+msgid "Ussuri Series Release Notes"
+msgstr "Примечания к выпуску Ussuri"
+
+msgid "Victoria Series Release Notes"
+msgstr "Примечания к выпуску Victoria"
+
+msgid "Wallaby Series Release Notes"
+msgstr "Примечания к выпуску Wallaby"
+
+msgid "Xena Series Release Notes"
+msgstr "Примечания к выпуску Xena"
+
+msgid "Yoga Series Release Notes"
+msgstr "Примечания к выпуску Yoga"
+
+msgid "Zed Series Release Notes"
+msgstr "Примечания к выпуску Zed"

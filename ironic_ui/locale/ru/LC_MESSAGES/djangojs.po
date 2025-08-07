@@ -2,18 +2,18 @@
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Alexander <ainikitenkov@gmail.com>, 2016. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
-# Fedor Tarasenko <feodor.tarasenko@gmail.com>, 2016. #zanata
-# Alexander <ainikitenkov@gmail.com>, 2017. #zanata
+# Dmitriy Chubinidze <dcu995@gmail.com>, 2025. #zanata
+# Ivan Anfimov <lazekteam@gmail.com>, 2025. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2024-05-06 09:38+0000\n"
+"POT-Creation-Date: 2025-08-06 22:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-03 10:49+0000\n"
-"Last-Translator: Alexander <ainikitenkov@gmail.com>\n"
+"PO-Revision-Date: 2025-08-06 10:01+0000\n"
+"Last-Translator: Dmitriy Chubinidze <dcu995@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -23,20 +23,42 @@ msgstr ""
 msgid " ([^\" ]+|\"[^\"]+\") \\(Default\\)"
 msgstr " ([^\" ]+|\"[^\"]+\") \\(По умолчанию\\)"
 
-msgid "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
-msgstr "(?:[Oo]ne of )(?!this)((?:(?:\"[^\"]+\"|[^,\\. ]+)(?:, |\\.))+)"
-
 #, python-format
 msgid "A request has been made to change the provisioning state of node %s"
-msgstr "Запрос был создал для изменения состояния подготовки узла %s"
+msgstr "Сделан запрос на изменение состояния подготовки узла %s."
+
+msgid ""
+"A resource class name for future nova scheduling, in stand-alone usage only. "
+"Optional."
+msgstr ""
+"Имя класса ресурса для планирования, только для автономного использования. "
+"Необязательный параметр."
 
 msgid "A unique node name. Optional."
 msgstr "Уникальное имя узла. Необязательный параметр."
 
+msgid "Abort cleaning"
+msgstr "Прервать очистку"
+
+msgid "Action"
+msgstr "Действие"
+
 msgid "Actions"
 msgstr "Действия"
 
-#, fuzzy, python-format
+msgid "Add Extra"
+msgstr "Добавить дополнительное свойство"
+
+msgid "Add Instance Property"
+msgstr "Добавить свойство инстанса"
+
+msgid "Add Logical Disk"
+msgstr "Добавить логический диск"
+
+msgid "Add Property"
+msgstr "Добавить свойство"
+
+#, python-format
 msgid ""
 "Are you sure you want to delete node \"%s\"? This action cannot be undone."
 msgid_plural ""
@@ -45,9 +67,13 @@ msgstr[0] ""
 "Вы действительно хотите удалить узел \"%s\"? Это действие не может быть "
 "отменено."
 msgstr[1] ""
+"Вы действительно хотите удалить узлы \"%s\"? Это действие не может быть "
+"отменено."
 msgstr[2] ""
+"Вы действительно хотите удалить узлы \"%s\"? Это действие не может быть "
+"отменено."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you want to delete port \"%s\"? This action cannot be undone."
 msgid_plural ""
@@ -56,48 +82,109 @@ msgstr[0] ""
 "Вы действительно хотите удалить порт \"%s\"? Это действие не может быть "
 "отменено."
 msgstr[1] ""
+"Вы действительно хотите удалить порты \"%s\"? Это действие не может быть "
+"отменено."
 msgstr[2] ""
+"Вы действительно хотите удалить порты \"%s\"? Это действие не может быть "
+"отменено."
+
+#, python-format
+msgid ""
+"Are you sure you want to delete portgroup \"%s\"? This action cannot be "
+"undone."
+msgid_plural ""
+"Are you sure you want to delete portgroups \"%s\"? This action cannot be "
+"undone."
+msgstr[0] ""
+"Вы действительно хотите удалить группу портов \"%s\"? Это действие не может "
+"быть отменено."
+msgstr[1] ""
+"Вы действительно хотите удалить группы портов \"%s\"? Это действие не может "
+"быть отменено."
+msgstr[2] ""
+"Вы действительно хотите удалить группы портов \"%s\"? Это действие не может "
+"быть отменено."
+
+msgid "Attributes"
+msgstr "Атрибуты"
+
+msgid "Boot Device"
+msgstr "Загрузочное устройство"
 
 msgid "Cancel"
 msgstr "Отмена"
 
 msgid "Chassis ID"
-msgstr "ID устройства"
+msgstr "ID шасси"
 
 msgid "Choose an Image"
 msgstr "Выберите образ"
+
+msgid "Clean"
+msgstr "Очистить"
+
+msgid "Clean Node"
+msgstr "Очистить узел"
+
+msgid "Clean Step"
+msgstr "Шаг очистки"
+
+msgid "Clean node"
+msgstr "Очистить узел"
+
+msgid "Clean steps should be an non-empty array"
+msgstr "Шаги очистки должны быть непустым массивом"
+
+msgid "Click link to view console"
+msgstr "Нажмите ссылку, чтобы просмотреть консоль"
 
 msgid "Configuration"
 msgstr "Конфигурация"
 
 msgid "Console Enabled"
-msgstr "Консоль активирована"
+msgstr "Консоль включена"
+
+msgid "Console Info."
+msgstr "Информация о консоли."
 
 msgid "Create Port"
 msgstr "Создать порт"
 
+msgid "Create Portgroup"
+msgstr "Создать группу портов"
+
 msgid "Created At"
-msgstr "Создано"
+msgstr "Создано в"
+
+msgid "Current Interface"
+msgstr "Текущий интерфейс"
 
 msgid "Defaults to ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "По умолчанию ([^\"\\. ]+|\"[^\"]+\")"
 
-#, fuzzy
 msgid "Delete Node"
 msgid_plural "Delete Nodes"
 msgstr[0] "Удалить узел"
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "Удалить узлы"
+msgstr[2] "Удалить узлы"
 
 msgid "Delete Nodes"
 msgstr "Удалить узлы"
 
-#, fuzzy
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "Удалить порт"
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "Удалить порты"
+msgstr[2] "Удалить порты"
+
+msgid "Delete Portgroup"
+msgid_plural "Delete Portgroups"
+msgstr[0] "Удалить группу портов"
+msgstr[1] "Удалить группы портов"
+msgstr[2] "Удалить группы портов"
+
+msgid "Delete Portgroups"
+msgstr "Удалить группы портов"
 
 msgid "Delete Ports"
 msgstr "Удалить порты"
@@ -108,6 +195,9 @@ msgstr "Развернуть ядро"
 msgid "Deploy Ramdisk"
 msgstr "Развернуть Ramdisk"
 
+msgid "Device"
+msgstr "Устройство"
+
 msgid "Driver"
 msgstr "Драйвер"
 
@@ -117,11 +207,30 @@ msgstr "Детали дравера"
 msgid "Driver Info"
 msgstr "Информация о драйвере"
 
+msgid "Driver Interfaces"
+msgstr "Интерфейсы драйвера"
+
+msgid "Driver Validation"
+msgstr "Проверка драйвера"
+
+msgid ""
+"Each cleaning step must be an object that contains \"interface\" and "
+"\"step\" properties"
+msgstr ""
+"Каждый этап очистки должен быть объектом, содержащим свойства \"интерфейс\" "
+"и \"шаг\""
+
 msgid "Edit"
-msgstr "Редактировать"
+msgstr "Изменить"
 
 msgid "Edit Node"
-msgstr "Редактировать узел"
+msgstr "Изменить узел"
+
+msgid "Edit Port"
+msgstr "Изменить порт"
+
+msgid "Edit Portgroup"
+msgstr "Изменить группу портов"
 
 msgid "Enroll Node"
 msgstr "Зарегистрировать узел"
@@ -129,11 +238,27 @@ msgstr "Зарегистрировать узел"
 msgid "Extra"
 msgstr "Дополнительно"
 
+msgid "Extra Property Name"
+msgstr "Имя дополнительного свойства"
+
 msgid "Extras"
 msgstr "Дополнительно"
 
 msgid "General"
-msgstr "Общее"
+msgstr "Общий"
+
+msgid "Image Source"
+msgstr "Источник образа"
+
+msgid "Indicates whether this port should be used when PXE booting this node"
+msgstr ""
+"Указывает, следует ли использовать этот порт при PXE загрузке этого узла"
+
+msgid "Inject NMI"
+msgstr "Внедрить NMI"
+
+msgid "Inspect"
+msgstr "Исследовать"
 
 msgid "Inspection Finished At"
 msgstr "Проверка закончилась в"
@@ -150,11 +275,34 @@ msgstr "Информация об инстансе"
 msgid "Instance Name"
 msgstr "Имя инстанса"
 
+msgid "Instance Property Name"
+msgstr "Имя свойства инстанса"
+
+msgid "Interface"
+msgstr "Интерфейс"
+
+msgid "Interface used for attaching and detaching volumes on this node."
+msgstr ""
+"Интерфейс, используемый для присоединения и отсоединения дисков на этом узле."
+
 msgid "Kernel"
 msgstr "Ядро"
 
 msgid "Last Error"
 msgstr "Последняя ошибка"
+
+msgid ""
+"Linux portgroup mode. For possible values refer to https://www.kernel.org/"
+"doc/Documentation/networking/bonding.txt"
+msgstr ""
+"Режим группы портов Linux. Возможные значения см. на странице https://www."
+"kernel.org/doc/Documentation/networking/bonding.txt"
+
+msgid "Local Link Connection"
+msgstr "Локальное соединение"
+
+msgid "Local link connection"
+msgstr "Локальное соединение"
 
 msgid "MAC Address"
 msgstr "MAC адрес"
@@ -165,14 +313,39 @@ msgstr "MAC адрес"
 msgid "MAC address for this port. Required."
 msgstr "MAC адрес для этого порта. Обязательный параметр."
 
+msgid "MAC address for this portgroup."
+msgstr "MAC-адрес для этой группы портов."
+
+msgid "MAC address or OpenFlow datapath ID"
+msgstr "MAC-адрес или OpenFlow datapath ID"
+
 msgid "Maintenance"
-msgstr "Техническое обслуживание"
+msgstr "Обслуживание"
 
 msgid "Maintenance Reason"
-msgstr "Причина технического обслуживания"
+msgstr "Причина обслуживания"
+
+msgid "Mode"
+msgstr "Режим"
+
+msgid "Move to"
+msgstr "Перейти к"
 
 msgid "Name"
 msgstr "Имя"
+
+msgid "Name for the portgroup."
+msgstr "Имя для группы портов."
+
+msgid "Network Interface"
+msgstr "Сетевой интерфейс"
+
+msgid ""
+"Network interface used for switching between provisioning, tenant, and "
+"cleaning networks."
+msgstr ""
+"Сетевой интерфейс, используемый для переключения между сетями подготовки, "
+"пользователя и очистки."
 
 msgid "No Instance"
 msgstr "Нет инстанса"
@@ -180,8 +353,18 @@ msgstr "Нет инстанса"
 msgid "No network ports have been defined"
 msgstr "Сетевые порты не были заданы"
 
+msgid "No portgroups have been defined"
+msgstr "Группы портов не определены"
+
+msgid "No reason given."
+msgstr "Причина не указана."
+
 msgid "Node"
 msgstr "Узел"
+
+#, python-format
+msgid "Node %s is already in target maintenance state."
+msgstr "Узел %s уже находится в целевом состоянии обслуживания."
 
 msgid "Node Driver"
 msgstr "Драйвер узла"
@@ -201,14 +384,35 @@ msgstr "Один из этих, (.*) должен быть определен\\.
 msgid "Overview"
 msgstr "Обзор"
 
+msgid "PXE Enabled"
+msgstr "PXE включен"
+
+msgid "PXE enabled"
+msgstr "PXE включен"
+
+msgid "Persistent"
+msgstr "Постоянный"
+
 msgid "Port successfully created"
-msgstr "Порт создан успешно"
+msgstr "Порт успешно создан"
+
+msgid "Portgroup"
+msgstr "Группа портов"
+
+msgid "Portgroup successfully created"
+msgstr "Группа портов успешно создана"
+
+msgid "Portgroup that this port belongs to"
+msgstr "Группа портов, к которой принадлежит этот порт"
+
+msgid "Portgroups"
+msgstr "Группы портов"
 
 msgid "Ports"
 msgstr "Порты"
 
 msgid "Power State"
-msgstr "Состояние"
+msgstr "Состояние питания"
 
 msgid "Power off"
 msgstr "Выключить"
@@ -221,6 +425,9 @@ msgstr "Свойства"
 
 msgid "Property Name"
 msgstr "Имя свойства"
+
+msgid "Provide a list of cleaning steps in JSON format"
+msgstr "Предоставьте список этапов очистки в формате JSON"
 
 msgid ""
 "Provide a reason for why you are putting the selected node(s) into "
@@ -239,58 +446,174 @@ msgid "Provisioning Status"
 msgstr "Статус развертывания"
 
 msgid "Put Node(s) Into Maintenance Mode"
-msgstr "Перевести узел (узлы) в режим обслуживания"
+msgstr "Перевести узлы в режим обслуживания"
+
+msgid "RAID Level"
+msgstr "Уровень RAID"
 
 msgid "Ramdisk"
 msgstr "Ramdisk"
 
+msgid "Reason"
+msgstr "Причина"
+
+msgid "Reboot"
+msgstr "Перезагрузить"
+
 msgid "Refresh"
 msgstr "Обновить"
 
+msgid "Refresh page to see set boot device"
+msgstr "Обновите страницу, чтобы увидеть установленное загрузочное устройство."
+
+msgid "Refresh page to see updated console details"
+msgstr "Перезагрузите страницу, чтобы увидеть обновленную информацию о консоли"
+
 msgid "Refresh page to see updated power status"
 msgstr "Обновите страницу чтобы увидеть обновленный статус питания"
+
+msgid "Refresh page."
+msgstr "Обновите страницу."
 
 msgid "Required"
 msgstr "Обязательно"
 
 msgid "Reservation"
-msgstr "Резервация"
+msgstr "Бронирование"
+
+msgid "Resource Class"
+msgstr "Класс ресурса"
+
+msgid "Root GB"
+msgstr "Корень ГБ"
+
+msgid "Root Volume"
+msgstr "Корневой диск"
+
+msgid "Root Volume."
+msgstr "Корневой диск."
+
+msgid "SSH Address"
+msgstr "SSH адрес"
+
+msgid "SSH Key Contents"
+msgstr "Содержимое ключа SSH"
+
+msgid "SSH Key File"
+msgstr "Файл ключа SSH"
+
+msgid "SSH Password"
+msgstr "Пароль SSH"
 
 msgid "SSH Port"
-msgstr "Порт SSH"
+msgstr "SSH порт"
 
 msgid "SSH Username"
 msgstr "Имя пользователя SSH"
 
+msgid "SSH terminal port"
+msgstr "Порт терминала SSH"
+
 msgid "Select a Driver"
 msgstr "Выберите драйвер"
+
+msgid "Select a boot device"
+msgstr "Выберите загрузочное устройство"
+
+msgid "Select a portgroup"
+msgstr "Выберите группу портов"
+
+msgid "Set Boot Device"
+msgstr "Установить загрузочное устройство"
+
+msgid "Set RAID Configuration"
+msgstr "Установить конфигурацию RAID"
+
+msgid "Set Target RAID Config"
+msgstr "Установить целевую конфигурацию RAID"
+
+msgid "Size GB"
+msgstr "Размер ГБ"
+
+msgid "Soft power off"
+msgstr "Мягкое выключение"
+
+msgid "Soft reboot"
+msgstr "Мягкая перезагрузка"
+
+msgid "Specifies RAID Level."
+msgstr "Указывает уровень RAID."
+
+msgid "Specifies logical disk size in GiB. Required."
+msgstr "Указывает размер логического диска в ГиБ. Обязательно."
+
+msgid ""
+"Specifies whether ports in this portgroup can be used as standalone ports."
+msgstr ""
+"Указывает, можно ли использовать порты в этой группе портов как автономные "
+"порты."
+
+msgid "Specifies whether root volume or not."
+msgstr "Указывает, является ли диск корневым или нет."
+
+msgid "Standalone Ports Supported"
+msgstr "Автономные порты поддерживаются"
+
+msgid "Storage Interface"
+msgstr "Интерфейс хранилища"
 
 msgid "Submit"
 msgstr "Отправить"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Successfully deleted node \"%s\""
 msgid_plural "Successfully deleted nodes \"%s\""
 msgstr[0] "Узел \"%s\" успешно удален"
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "Узлы \"%s\" успешно удалены"
+msgstr[2] "Узлы \"%s\" успешно удалены"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Successfully deleted port \"%s\""
 msgid_plural "Successfully deleted ports \"%s\""
 msgstr[0] "Порт \"%s\" успешно удален"
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "Порты \"%s\" успешно удалены"
+msgstr[2] "Порты \"%s\" успешно удалены"
+
+#, python-format
+msgid "Successfully deleted portgroup \"%s\""
+msgid_plural "Successfully deleted portgroups \"%s\""
+msgstr[0] "Группа портов \"%s\" успешно удалена"
+msgstr[1] "Группы портов \"%s\" успешно удалены"
+msgstr[2] "Группы портов \"%s\" успешно удалены"
 
 #, python-format
 msgid "Successfully updated node %s"
 msgstr "Узел %s успешно обновлен"
 
+#, python-format
+msgid "Successfully updated port %s"
+msgstr "Порт %s успешно обновлен"
+
+#, python-format
+msgid "Successfully updated portgroup %s"
+msgstr "Группа портов %s успешно обновлена"
+
 msgid "Target Power State"
-msgstr "Целевое состояние"
+msgstr "Целевое состояние питания"
 
 msgid "Target Provision State"
 msgstr "Целевой статус развертывания"
+
+msgid ""
+"This field is disabled because a port cannot have any connectivity "
+"attributes (pxe_enabled, local_link_connection, portgroup_id) updated unless "
+"its associated node is in an enroll, inspecting, mangeable state; or in "
+"maintenance mode."
+msgstr ""
+"Это поле отключено, поскольку порт не может иметь каких-либо атрибутов "
+"подключения (pxe_enabled, local_link_connection, portgroup_id), если "
+"связанный с ним узел не находится в состоянии регистрации, проверки, "
+"управления или в режиме обслуживания."
 
 msgid "UUID"
 msgstr "UUID"
@@ -300,67 +623,160 @@ msgstr "Невозможно создать патч обновления узл
 
 #, python-format
 msgid "Unable to create node: %s"
-msgstr "Невозможно создать узел: %s"
+msgstr "Не удалось создать узел: %s"
+
+msgid "Unable to create port update patch."
+msgstr "Не удалось создать патч обновления порта."
 
 #, python-format
 msgid "Unable to create port: %s"
-msgstr "Невозможно создать порт: %s"
+msgstr "Не удалось создать порт: %s"
 
-#, fuzzy, python-format
+msgid "Unable to create portgroup update patch."
+msgstr "Не удалось создать патч обновления группы портов."
+
+#, python-format
+msgid "Unable to create portgroup: %s"
+msgstr "Не удалось создать группу портов: %s"
+
+#, python-format
 msgid "Unable to delete node \"%s\""
 msgid_plural "Unable to delete nodes \"%s\""
-msgstr[0] "Невозможно удалить узел \"%s\""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Не удалось удалить узел \"%s\""
+msgstr[1] "Не удалось удалить узлы \"%s\""
+msgstr[2] "Не удалось удалить узлы \"%s\""
 
 #, python-format
 msgid "Unable to delete node %s: %s"
-msgstr "Невозможно удалить узел %s: %s"
+msgstr "Не удалось удалить узел %s: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to delete port \"%s\""
 msgid_plural "Unable to delete ports \"%s\""
-msgstr[0] "Невозможно удалить порт \"%s\""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Не удалось удалить порт \"%s\""
+msgstr[1] "Не удалось удалить порты \"%s\""
+msgstr[2] "Не удалось удалить порты \"%s\""
 
 #, python-format
 msgid "Unable to delete port: %s"
-msgstr "Невозможно удалить порт: %s"
+msgstr "Не удалось удалить порт: %s"
+
+#, python-format
+msgid "Unable to delete portgroup \"%s\""
+msgid_plural "Unable to delete portgroups \"%s\""
+msgstr[0] "Не удалось удалить группу портов \"%s\""
+msgstr[1] "Не удалось удалить группы портов \"%s\""
+msgstr[2] "Не удалось удалить группы портов \"%s\""
+
+#, python-format
+msgid "Unable to delete portgroup: %s"
+msgstr "Не удалось удалить группу портов: %s"
+
+#, python-format
+msgid "Unable to get console for node %s: %s"
+msgstr "Не удалось получить консоль для узла %s: %s"
+
+#, python-format
+msgid "Unable to inject NMI: %s"
+msgstr "Не удалось внедрить NMI: %s"
 
 #, python-format
 msgid "Unable to power off the node: %s"
-msgstr "Невозможно выключить узел: %s"
+msgstr "Не удалось выключить узел: %s"
 
 #, python-format
 msgid "Unable to retrieve Ironic drivers: %s"
-msgstr "Невозможно получить драйвера Ironic: %s"
+msgstr "Не удалось получить драйвера Ironic: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic node portgroups: %s"
+msgstr "Не удалось получить группы портов узла Ironic: %s"
+
+#, python-format
+msgid "Unable to retrieve Ironic nodes. %s"
+msgstr "Не удалось получить узлы Ironic. %s"
+
+#, python-format
+msgid "Unable to retrieve boot device for Ironic node. %s"
+msgstr "Не удалось получить загрузочное устройство для узла Ironic. %s"
 
 #, python-format
 msgid "Unable to retrieve driver properties: %s"
-msgstr "Невозможно получить свойства драйвера: %s"
+msgstr "Не удалось получить свойства драйвера: %s"
+
+#, python-format
+msgid "Unable to retrieve portgroup ports: %s"
+msgstr "Не удалось получить порты группы портов: %s"
+
+#, python-format
+msgid "Unable to retrieve supported boot devices for Ironic node. %s"
+msgstr ""
+"Не удалось получить поддерживаемые загрузочные устройства для узла Ironic. %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node ports: %s"
-msgstr "Невозможно получить порты узла Ironic: %s"
+msgstr "Не удалось получить порты узла Ironic: %s"
 
 #, python-format
 msgid "Unable to retrieve the Ironic node: %s"
-msgstr "Невозможно получить узел Ironic: %s"
+msgstr "Не удалось получить узел Ironic: %s"
+
+#, fuzzy, python-format
+msgid "Unable to set Ironic node %s maintenance state: %s"
+msgstr "Не удалось установить состояние обслуживания %s узла Ironic: %s"
+
+#, python-format
+msgid "Unable to set boot device: %s"
+msgstr "Не удалось установить загрузочное устройство: %s"
+
+#, python-format
+msgid "Unable to set console mode: %s"
+msgstr "Не удалось установить режим консоли: %s"
 
 #, python-format
 msgid "Unable to set node provision state: %s"
-msgstr "Не удается установить состояние подготовки узла: %s"
+msgstr "Не удалось установить состояние подготовки узла: %s"
+
+#, python-format
+msgid "Unable to set raid config: %s"
+msgstr "Не удалось установить конфигурацию raid: %s"
 
 #, python-format
 msgid "Unable to update node %s: %s"
-msgstr "Невозможно обновить узел %s: %s"
+msgstr "Не удалось обновить узел %s: %s"
+
+#, python-format
+msgid "Unable to update port %s: %s"
+msgstr "Не удалось обновить порт %s: %s"
+
+#, python-format
+msgid "Unable to update portgroup %s: %s"
+msgstr "Не удалось обновить группу портов %s: %s"
+
+#, python-format
+msgid "Unable to validate node %s: %s"
+msgstr "Не удалось проверить узел %s: %s"
+
+msgid "Unable to validate the JSON input"
+msgstr "Не удалось проверить входные данные JSON"
 
 msgid "Update Node"
 msgstr "Обновить узел"
 
+msgid "Update Port"
+msgstr "Обновить порт"
+
+msgid "Update Portgroup"
+msgstr "Обновить групу портов"
+
 msgid "Updated At"
-msgstr "Обновлено"
+msgstr "Обновлено в"
+
+msgid "Valid"
+msgstr "Действительный"
+
+msgid "Virtualization Software"
+msgstr "Программное обеспечение для виртуализации"
 
 msgid "default (?:value )?is ([^\"\\. ]+|\"[^\"]+\")"
 msgstr "По умолчанию (?:value )? - ([^\"\\. ]+|\"[^\"]+\")"
