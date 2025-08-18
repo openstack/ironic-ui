@@ -316,7 +316,7 @@
                            gettext('Refresh page.'));
         })
         .catch(function(response) {
-          var msg = interpolate(gettext('Unable to set raid config: %s'),
+          var msg = interpolate(gettext('Unable to set RAID config: %s'),
                                 [response.data],
                                 false);
           toastService.add('error', msg);
