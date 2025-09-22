@@ -20,7 +20,7 @@ Project Hosting Details
 -------------------------
 
 Bug tracker
-    https://storyboard.openstack.org/#!/project/952
+    https://bugs.launchpad.net/ironic-ui
 
 Mailing list (prefix subjects with ``[ironic]`` for faster responses)
     http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-discuss

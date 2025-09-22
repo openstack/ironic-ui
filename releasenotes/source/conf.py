@@ -134,7 +134,7 @@ html_theme = 'openstackdocs'
 
 # openstackdocstheme options
 openstackdocs_repo_name = 'openstack/ironic-ui'
-openstackdocs_use_storyboard = True
+openstackdocs_use_storyboard = False
 openstackdocs_auto_name = False
 
 # Theme options are theme-specific and customize the look and feel of a theme
