@@ -18,7 +18,7 @@ metal nodes, ports and drivers.
 * Documentation: https://docs.openstack.org/ironic-ui/latest
 * Release notes: https://docs.openstack.org/releasenotes/ironic-ui/
 * Source: https://opendev.org/openstack/ironic-ui
-* Bugs: https://storyboard.openstack.org/#!/project/952
+* Bugs: https://bugs.launchpad.net/ironic-ui
 
 Features
 --------
