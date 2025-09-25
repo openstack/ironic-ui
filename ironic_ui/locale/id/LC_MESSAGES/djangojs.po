@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2025-08-06 22:50+0000\n"
+"POT-Creation-Date: 2025-09-15 22:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -677,10 +677,6 @@ msgstr "Tidak dapat mengatur mode konsol: %s"
 #, python-format
 msgid "Unable to set node provision state: %s"
 msgstr "Tidak dapat mengatur keadaan provision node: %s"
-
-#, python-format
-msgid "Unable to set raid config: %s"
-msgstr "Tidak dapat mengatur konfigurasi raid: %s"
 
 #, python-format
 msgid "Unable to update node %s: %s"
