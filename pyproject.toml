@@ -32,7 +32,7 @@ Homepage = "https://docs.openstack.org/ironic-ui/latest/"
 Repository = "https://opendev.org/openstack/ironic-ui"
 
 [tool.setuptools.packages.find]
-include = ["ironic_ui"]
+include = ["ironic_ui*"]
 
 [tool.codespell]
 quiet-level = 4
