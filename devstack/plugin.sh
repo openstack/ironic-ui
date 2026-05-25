@@ -1,15 +1,7 @@
 # plugin.sh - DevStack plugin.sh dispatch script ironic-ui
 
 function install_ironic_ui {
-    # NOTE(crushil): workaround for devstack bug: 1540328
-    # where devstack installs 'test-requirements' but should not do it
-    # for ironic-ui project as it installs Horizon from url.
-    # Remove following two 'mv' commands when mentioned bug is fixed.
-    mv $IRONIC_UI_DIR/test-requirements.txt $IRONIC_UI_DIR/_test-requirements.txt
-
     setup_develop ${IRONIC_UI_DIR}
-
-    mv $IRONIC_UI_DIR/_test-requirements.txt $IRONIC_UI_DIR/test-requirements.txt
 }
 
 # check for service enabled
