@@ -31,8 +31,10 @@ classifiers = [
 Homepage = "https://docs.openstack.org/ironic-ui/latest/"
 Repository = "https://opendev.org/openstack/ironic-ui"
 
-[tool.setuptools.packages.find]
-include = ["ironic_ui*"]
+[tool.setuptools]
+packages = [
+    "ironic_ui"
+]
 
 [tool.codespell]
 quiet-level = 4
