@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ironic-ui VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2025-09-15 22:21+0000\n"
+"POT-Creation-Date: 2026-09-16 09:43+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -108,9 +108,6 @@ msgstr "Nó Limpo"
 
 msgid "Clean Step"
 msgstr "Passo de Limpeza"
-
-msgid "Clean node"
-msgstr "Nó limpo"
 
 msgid "Clean steps should be an non-empty array"
 msgstr "Passos de limpeza deve ser uma matriz não vazia"
