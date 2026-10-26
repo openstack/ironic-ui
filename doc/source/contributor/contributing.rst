@@ -2,19 +2,14 @@
 How to Contribute
 =================
 
-Contributor License Agreement
------------------------------
+Contributor Agreement
+---------------------
 
-.. index::
-   single: license; agreement
+OpenStack follows the Developer Certificate of Origin (DCO) for all code
+contributions. Before submitting a change, please review the contribution
+workflow in the OpenStack Contributor Guide:
 
-In order to contribute to the Ironic UI project, you need to have
-signed OpenStack's contributor's agreement.
-
-.. seealso::
-
-   * https://docs.openstack.org/infra/manual/developers.html
-   * https://wiki.openstack.org/CLA
+   https://docs.openstack.org/contributors/
 
 Project Hosting Details
 -------------------------
